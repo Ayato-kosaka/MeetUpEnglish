@@ -11,13 +11,13 @@
 
   <body>
     <div style="height: 100%;max-width: 935px;width 100%;margin: 0 auto;">
-      <div id="main1">
-        <div id="main2">
+      <div style="margin-right: -280px;padding: 0px;width: 100%;float: left;">
+        <div style="width:654px;  background-color: white;  display: inline-block;  overflow-x: auto;">
           <%= yield %>
         </div>
       </div>
-      <div id="sub1">
-        <div id="sub2">
+      <div style="width: 280px;  float: right;  background-color: gray;">
+        <div style="position: fixed;">
         <% unless session[:user].nil? %>
         <p><%= session[:user]["name"]%></p>
         <p><%= session[:role]%></p> <% end %>
