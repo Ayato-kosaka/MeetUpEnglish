@@ -18,7 +18,7 @@
       <tr>
         <td><%= city.id %></td>
         <td><%= city.name %></td>
-        <td><%= Prefeture.find(city.prefectureId).name %></td>
+        <td><%= Prefecture.find(city.prefectureId).name %></td>
         <td><%= city.images.size %></td>
         <td><%= link_to 'Show', city %></td>
         <td><%= link_to 'Edit', edit_city_path(city) %></td>
