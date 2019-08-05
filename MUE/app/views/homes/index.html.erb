@@ -19,13 +19,13 @@
   <tbody>
     <% @homes.each do |home| %>
       <tr>
-        <td><%= home.cityId %></td>
+        <td><%= City.find(home.cityId).name %></td>
         <td><%= home.date %></td>
         <td><%= home.start %></td>
         <td><%= home.end %></td>
         <td><%= home.peopleNum %></td>
         <td><%= home.teacherId %></td>
-        <td><%= home.cafeId %></td>
+        <td><%= Cafe.find(home.cafeId).name %></td>
         <td><%= link_to 'Show', home %></td>
         <td><%= link_to 'Edit', edit_home_path(home) %></td>
         <td><%= link_to 'Destroy', home, method: :delete, data: { confirm: 'Are you sure?' } %></td>

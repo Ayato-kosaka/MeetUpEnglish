@@ -18,7 +18,7 @@
       <tr>
         <td><%= cafe.name %></td>
         <td><%= cafe.description %></td>
-        <td><%= cafe.cityId %></td>
+        <td><%= City.find(cafe.cityId).name %></td>
         <td><%= cafe.images.size %></td>
         <td><%= link_to 'Show', cafe %></td>
         <td><%= link_to 'Edit', edit_cafe_path(cafe) %></td>
