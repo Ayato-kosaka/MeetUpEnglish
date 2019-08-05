@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MUE</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div id="body">
+      <div id="main1">
+        <div id="main2">
+          <%= yield %>
+        </div>
+      </div>
+      <div id="sub1">
+        <div id="sub2">
+        <% unless session[:user].nil? %>
+        <p><%= session[:user]["name"]%></p>
+        <p><%= session[:role]%></p> <% end %>
+        <p><%= link_to 'home', homes_path %></p>
+        <p><%= link_to 'teacher', teachers_path %></p>
+        <p><%= link_to 'city', cities_path %></p>
+        <p><%= link_to 'cafe', caves_path %></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

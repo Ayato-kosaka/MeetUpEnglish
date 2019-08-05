@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cityId: 1
+  date: 2019-08-04
+  start: 2019-08-04 19:32:40
+  end: 2019-08-04 19:32:40
+  peopleNum: 1
+  teacherId: 1
+  cafeId: 1
+
+two:
+  cityId: 1
+  date: 2019-08-04
+  start: 2019-08-04 19:32:40
+  end: 2019-08-04 19:32:40
+  peopleNum: 1
+  teacherId: 1
+  cafeId: 1

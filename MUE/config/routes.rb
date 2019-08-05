@@ -1,0 +1,16 @@
+Rails.application.routes.draw do
+  root 'home#index'
+  resources :caves
+  resources :regions
+  resources :homes
+  resources :prefectures
+  resources :cities
+  controller :sessions do
+    get 'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
+  resources :admins
+  resources :teachers
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+end

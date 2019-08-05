@@ -1,0 +1,52 @@
+<%= form_with(model: home, local: true) do |form| %>
+  <% if home.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(home.errors.count, "error") %> prohibited this home from being saved:</h2>
+
+      <ul>
+      <% home.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :cityId %>
+    <%= form.number_field :cityId %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start %>
+    <%= form.time_select :start %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end %>
+    <%= form.time_select :end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :peopleNum %>
+    <%= form.number_field :peopleNum %>
+  </div>
+
+  <div class="field">
+    <%= form.label :teacherId %>
+    <%= form.number_field :teacherId %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cafeId %>
+    <%= form.number_field :cafeId %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
