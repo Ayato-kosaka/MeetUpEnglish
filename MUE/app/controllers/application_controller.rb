@@ -4,4 +4,5 @@ class ApplicationController < ActionController::Base
   private
 
   def require_Admin
+  end
 end
