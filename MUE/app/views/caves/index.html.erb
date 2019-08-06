@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Id</th>
       <th>Name</th>
       <th>Description</th>
       <th>Cityid</th>
@@ -16,6 +17,7 @@
   <tbody>
     <% @caves.each do |cafe| %>
       <tr>
+        <td><%= cafe.id %></td>
         <td><%= cafe.name %></td>
         <td><%= cafe.description %></td>
         <td><%= City.find(cafe.cityId).name %></td>
