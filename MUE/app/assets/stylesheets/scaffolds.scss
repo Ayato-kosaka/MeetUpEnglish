@@ -167,3 +167,34 @@ label {
   -ms-transform: rotateX(360deg);
   transform: rotateX(360deg);
 }
+
+#toc_container {
+    padding: 1em 2em 1em !important;
+    min-width: 90%;
+    margin: auto auto 55px auto;
+    background: #fff !important;
+    background: rgba(255,255,255,.5) !important;
+    border: 1px solid #eee;
+}
+#toc_container p{
+  text-align: center;
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 0px;
+  padding: 0;
+  margin-bottom: .7em;
+}
+#toc_container li{
+  list-style: none;
+}
+#toc_container li a{
+  display: block;
+  padding: .5em 0;
+  border-top: 1px dotted #ddd;
+  text-decoration: none;
+  text-shadow: none;
+  color: #0ba834f2;
+  font-size: 15px;
+  font-weight: bolder;
+  background: 0 0;
+}
