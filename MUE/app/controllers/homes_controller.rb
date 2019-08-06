@@ -1,6 +1,8 @@
 class HomesController < ApplicationController
   before_action :set_home, only: [:show, :edit, :update, :destroy]
 
+  skip_before_action :require_Admin, only: [:home]
+
   # GET /homes
   # GET /homes.json
   def index
