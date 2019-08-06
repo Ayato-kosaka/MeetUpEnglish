@@ -84,9 +84,25 @@ label {
   display: block;
 }
 
+.page_btn{/*ボタンの下地*/
+  color: #FFF !important;/*文字・アイコン色*/
+  border-radius: 7px;/*角丸に*/
+  position: relative;
+  display: inline-block;
+  height: 28px;/*高さ*/
+  width: 187.183px;/*幅*/
+  text-align: center;/*中身を中央寄せ*/
+  font-size: 14px;/*文字のサイズ*/
+  line-height: 26px;/*高さと合わせる*/
+  background-color: green;
+  overflow: hidden;/*はみ出た部分を隠す*/
+  text-decoration:none;/*下線は消す*/
+  margin-bottom: 10px;
+}
+
 #twitter-widget-1{
   overflow-y: scroll;
-  height:300px;
+  height:430px;
 }
 
 .insta_btn2{/*ボタンの下地*/
@@ -103,6 +119,7 @@ label {
   background: linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;/*グラデーション①*/
   overflow: hidden;/*はみ出た部分を隠す*/
   text-decoration:none;/*下線は消す*/
+  margin-bottom: 10px;
 }
 
 .insta_btn2:before{/*グラデーション②*/
