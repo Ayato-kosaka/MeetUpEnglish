@@ -9,8 +9,8 @@ body {
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 14px;
+  line-height: 1.75;
 }
 
 pre {
@@ -79,6 +79,19 @@ div {
     list-style: square;
   }
 }
+
+h1{
+  border-bottom-width: 5px;
+  border-bottom-style: solid;
+  border-bottom-color: #10081c;
+  color: #0ba834f2;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 30px;
+  line-height: 45px;
+  margin-top: 30px;
+  margin-bottom: 23px;
+}
+
 
 label {
   display: block;
