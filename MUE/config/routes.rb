@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'home/index'
+  get 'overview', to: 'homes#overview'
   resources :caves
   resources :regions
   resources :homes
