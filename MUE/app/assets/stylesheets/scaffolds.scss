@@ -200,11 +200,20 @@ label {
   font-size: 25px;
   list-style: none;
   border-bottom: 1px solid gray;
+}
+.region_a{
   &:hover {
     color: #fff;
     background-color: gray;
   }
+
 }
 #area_list li a{
+  display: block;
   padding-left: 25px;
+}
+.prefecture_list li{
+  border-top: 1px solid gray;
+  border-bottom: none !important;
+
 }

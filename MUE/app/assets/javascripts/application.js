@@ -15,4 +15,12 @@
 //= require turbolinks
 //= require_tree .
 $(function(){
+  $(".region_a").click(function(){
+    var region_childern_ul = $(this).parent().children("ul")
+    if(region_childern_ul.is(':hidden')){
+      region_childern_ul.show();
+    } else{
+      region_childern_ul.hide();
+    }
+  });
 })

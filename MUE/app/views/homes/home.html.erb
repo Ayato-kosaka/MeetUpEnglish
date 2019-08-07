@@ -2,11 +2,18 @@
   <ul style="display: block;">
     <% Region.all.each_with_index do |a,i| %>
     <li
-    id="region_<%= a.id %>"
-    <% if i==0 %>
-    style="border-top: 1px solid gray;"
-    <% end %> >
-    <a><%=a.name%></a></li>
+      <% if i==0 %>
+      style="border-top: 1px solid gray;"
+      <% end %> >
+      <a class="region_a"><%=a.name%></a>
+
+      <ul class="prefecture_list">
+        <% Prefecture.where(regionId: a.id).each do |b| %>
+        <li><a class="prefecture_a"><%= b.name %></a></li>
+        <% end %>
+      </ul>
+
+    </li>
     <% end %>
   </ul>
 </div>
