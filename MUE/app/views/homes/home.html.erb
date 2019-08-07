@@ -7,7 +7,13 @@
       <% end %> >
       <a class="region_a"><%=a.name%></a>
 
-      <ul class="prefecture_list">
+      <ul class="prefecture_list"
+      <% if i==2 %> 
+      id="display_show"
+      <% end %> style="display: block">
+        <% if Prefecture.find_by(regionId: a.id).nil? %>
+        <li><a class="prefecture_a">準備中</a></li>
+        <% end %>
         <% Prefecture.where(regionId: a.id).each do |b| %>
         <li><a class="prefecture_a"><%= b.name %></a></li>
         <% end %>
