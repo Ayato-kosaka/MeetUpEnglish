@@ -26,10 +26,6 @@ a {
     color: #666;
   }
 
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
 }
 
 th {
@@ -197,4 +193,18 @@ label {
   font-size: 15px;
   font-weight: bolder;
   background: 0 0;
+}
+
+#area_list li{
+  line-height: 3;
+  font-size: 25px;
+  list-style: none;
+  border-bottom: 1px solid gray;
+  &:hover {
+    color: #fff;
+    background-color: gray;
+  }
+}
+#area_list li a{
+  padding-left: 25px;
 }
