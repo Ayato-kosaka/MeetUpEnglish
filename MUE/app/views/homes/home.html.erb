@@ -16,7 +16,7 @@
         <% end %>
         <% Prefecture.where(regionId: a.id).each do |b| %>
         <li>
-          <%= link_to b.name, homes_schedule_path(selected_prefecture: b.id) %>
+          <%= link_to b.name, homes_schedule_path(selected_prefecture: b.id), data: {"turbolinks"=>false}  %>
         </li>
         <% end %>
       </ul>
