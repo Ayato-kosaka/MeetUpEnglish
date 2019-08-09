@@ -21,8 +21,8 @@
       <tr>
         <td><%= City.find(home.cityId).name %></td>
         <td><%= home.date %></td>
-        <td><%= home.start %></td>
-        <td><%= home.end %></td>
+        <td><%= home.start.strftime("%H:%M") %></td>
+        <td><%= home.end.strftime("%H:%M") %></td>
         <td><%= home.peopleNum %></td>
         <td><%= home.teacherId %></td>
         <td><%= Cafe.find(home.cafeId).name %></td>
