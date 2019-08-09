@@ -16,6 +16,8 @@
 //= require turbolinks
 //= require_tree .
 $(function(){
+  setTimeout(function(){
+
   $(".region_a").parent().children("ul").hide();
   $("#display_show").show();//のちに消す
   $(".region_a").click(function(){
@@ -26,4 +28,5 @@ $(function(){
       region_childern_ul.hide();
     }
   });
+},100);
 })
