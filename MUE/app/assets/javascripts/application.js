@@ -17,7 +17,7 @@
 //= require_tree .
 $(function(){
   $(".region_a").parent().children("ul").hide();
-    $("#display_show").show();
+  $("#display_show").show();//のちに消す
   $(".region_a").click(function(){
     var region_childern_ul = $(this).parent().children("ul")
     if(region_childern_ul.is(':hidden')){

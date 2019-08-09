@@ -13,6 +13,10 @@ p, ol, ul, td {
   line-height: 1.75;
 }
 
+li{
+  list-style: none;
+}
+
 pre {
   background-color: #eee;
   padding: 10px;
@@ -21,6 +25,7 @@ pre {
 
 a {
   color: #000;
+  text-decoration: none;
 
   &:visited {
     color: #666;
@@ -179,9 +184,6 @@ label {
   margin-bottom: 0px;
   padding: 0;
   margin-bottom: .7em;
-}
-#toc_container li{
-  list-style: none;
 }
 #toc_container li a{
   display: block;

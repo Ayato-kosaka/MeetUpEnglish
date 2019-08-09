@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'overview', to: 'homes#overview'
+  get 'homes/schedule'
   resources :caves
   resources :regions
   resources :homes

@@ -1,0 +1,10 @@
+<% City.where(prefectureId: @selectedPrefecture_id).each do |n| %>
+  <h1><%= n.name %></h1>
+  <ul>
+  <% Home.where(cityId: n.id).each do |m| %>
+    <li><table><tr>
+      <td><%= m.date.strftime("%Y年 %m月 %d日") %> <%= m.start.strftime("%H:%M") %>~<%= m.end.strftime("%H:%M") %></td><td><%= Cafe.find(m.cafeId).name %></td><td><%= Teacher.find(m.teacherId).name %>先生</td><td>残り人数:<%= m.peopleNum %></td>
+    </tr></table></li>
+  <% end %>
+  </ul>
+<% end %>

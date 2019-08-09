@@ -22,7 +22,9 @@
 
 <p>
   <strong>Avatar:</strong>
+  <% if @teacher.avatar.attached? %>
   <%= image_tag @teacher.avatar, :size=>"400x400" %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_teacher_path(@teacher) %> |

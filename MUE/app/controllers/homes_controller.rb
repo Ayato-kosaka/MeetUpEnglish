@@ -1,7 +1,10 @@
 class HomesController < ApplicationController
   before_action :set_home, only: [:show, :edit, :update, :destroy]
+  before_action :set_selectedPrefecture_id, only: [:schedule]
 
   skip_before_action :require_Admin, expect: [:index, :show, :edit, :new]
+
+  require 'time'
 
   # GET /homes
   # GET /homes.json
@@ -63,12 +66,22 @@ class HomesController < ApplicationController
     end
   end
 
+  def home
+    @selectedPrefecture_id
+  end
+
+  def schecule
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_home
       @home = Home.find(params[:id])
     end
 
+    def set_selectedPrefecture_id
+      @selectedPrefecture_id = params[:selected_prefecture]
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def home_params
       params.require(:home).permit(:cityId, :date, :start, :end, :peopleNum, :teacherId, :cafeId)
