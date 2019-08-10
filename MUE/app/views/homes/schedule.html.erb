@@ -1,5 +1,14 @@
+<div class="toc_container" style="width: auto; display: table;">
+<p >この記事の目次</p>
+<ul style="display: block;">
 <% City.where(prefectureId: @selectedPrefecture_id).each do |n| %>
-  <h1><%= n.name %></h1>
+    <li><a href="#schedule_index_<%= n.id %>"><%= n.name %></a></li>
+<% end %>
+</ul>
+</div>
+
+<% City.where(prefectureId: @selectedPrefecture_id).each do |n| %>
+  <h1 id="#schedule_index_<%= n.id %>"><%= n.name %></h1>
   <table>
   <% Home.where(cityId: n.id).each do |m| %>
     <% if Time.zone.parse(m.date.strftime("%Y%m%d")+m.end.strftime("%H%M"))<Time.current %>

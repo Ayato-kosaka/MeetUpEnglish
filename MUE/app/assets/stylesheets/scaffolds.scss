@@ -169,7 +169,7 @@ label {
   transform: rotateX(360deg);
 }
 
-#toc_container {
+.toc_container {
     padding: 1em 2em 1em !important;
     min-width: 90%;
     margin: auto auto 55px auto;
@@ -177,7 +177,7 @@ label {
     background: rgba(255,255,255,.5) !important;
     border: 1px solid #eee;
 }
-#toc_container p{
+.toc_container p{
   text-align: center;
   font-weight: 700;
   margin: 0;
@@ -185,7 +185,7 @@ label {
   padding: 0;
   margin-bottom: .7em;
 }
-#toc_container li a{
+.toc_container li a{
   display: block;
   padding: .5em 0;
   border-top: 1px dotted #ddd;
