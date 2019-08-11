@@ -15,21 +15,25 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-$(function(){
-
+$(function(){//prefectureを選ぶ画面のポチポチ + acgtive
 $(".region_a").parent().children("ul").hide();
 $("#display_show").show();//のちに消す
+$("#display_show").parent().children("a").addClass("active");//のちに消す
 $(".region_a").click(function(){
   var region_childern_ul = $(this).parent().children("ul")
   if(region_childern_ul.is(':hidden')){
     region_childern_ul.show();
+    $(this).addClass("active");
   } else{
     region_childern_ul.hide();
+    $(this).removeClass("active");
   }
  });
 })
+
+
 var swi = 0;
-$(window).scroll(function() {
+$(window).scroll(function() { //サイドボックスの固定
 
   if((swi == 0)&&($(this).scrollTop()>153)){
     swi = 1;
