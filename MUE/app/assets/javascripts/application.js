@@ -28,3 +28,18 @@ $(".region_a").click(function(){
   }
  });
 })
+var swi = 0;
+$(window).scroll(function() {
+
+  if((swi == 0)&&($(this).scrollTop()>153)){
+    swi = 1;
+    $("#sidebox").css("position","fixed");
+    $("#sidebox").css("top",33);
+  }
+
+  if((swi == 1)&&($(this).scrollTop()<=153)){
+    swi = 0;
+    $("#sidebox").css("position","static");
+  }
+
+})

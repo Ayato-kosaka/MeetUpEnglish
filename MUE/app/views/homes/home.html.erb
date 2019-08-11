@@ -12,7 +12,7 @@
       id="display_show"
       <% end %> style="display: block">
         <% if Prefecture.find_by(regionId: a.id).nil? %>
-        <li><a class="prefecture_a">準備中</a></li>
+        <li><a>準備中</a></li>
         <% end %>
         <% Prefecture.where(regionId: a.id).each do |b| %>
         <li>

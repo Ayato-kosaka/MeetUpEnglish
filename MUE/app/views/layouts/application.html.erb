@@ -10,14 +10,19 @@
   </head>
 
   <body>
+
+    <header style="width: 100%;height: 90px;background-color: white;margin-bottom: 30px;">
+      <div style="padding: 0px;width: 154px;float: left;"><div style="width:590px;  background-color: white;  display: inline-block;"><img src="https://firebasestorage.googleapis.com/v0/b/test-8d0bf.appspot.com/o/images%2FS__5120002.jpg?alt=media&token=0d0a3277-931a-4822-a88c-9bed623c0c19" style="height: 70px;"></div></div>
+      <div style="float: left; "><p style="font-family: Helevetica;font-weight: bold;font-style: oblique;margin: 0px;font-size: 50px;">Meet Up English</p></div>
+    </header>
     <div style="height: 100%;max-width: 935px;width 100%;margin: 0 auto;">
       <div style="margin-right: -280px;padding: 0px;width: 100%;float: left;">
         <div style="width:614px;  background-color: white;  display: inline-block;  overflow-x: auto;padding: 10px 20px 10px 20px;">
           <%= yield %>
         </div>
       </div>
-      <div style="width: 270px;  float: right;  background-color: gray; margin-left: 10px;">
-        <div style="position: fixed; width:270px;">
+      <div style="width: 270px;  float: right;  margin-left: 10px;">
+        <div id="sidebox" style=" width:270px;">
         <% unless session[:user].nil? %>
         <p><%= session[:user]["name"]%></p>
         <p><%= session[:role]%></p>
@@ -28,7 +33,7 @@
         <p><%= link_to "ログアウト", logout_url, method: :delete %></p> <% end %>
 
         <%= link_to "カフェ開催スケジュール", root_path, class: "page_btn",style: "background-color: #179c17", data: {"turbolinks"=>false} %>
-        <%= link_to "料金/すきま時間英会話とは", overview_path, class: "page_btn", style: "background-color: #da4f4f;" %>
+        <%= link_to "料金/すきま時間英会話とは", overview_path, class: "page_btn", style: "background-color: #da4f4f;", data: {"turbolinks"=>false} %>
 
         <!-- InstaWidget -->
         <a href="https://www.instagram.com/meet_up_english?ref=badge" class="insta_btn2">

@@ -205,16 +205,21 @@ label {
 }
 .region_a{
   &:hover {
-    color: #fff;
-    background-color: gray;
+    color: white !important;
+    background-color: #88c04899;
   }
 
 }
 #area_list li a{
   display: block;
   padding-left: 25px;
+  color: rgb(136, 192, 72);
+
 }
 .prefecture_list li{
   border-top: 1px solid gray;
   border-bottom: none !important;
+}
+.prefecture_list li a{
+  color: #588563 !important;
 }
