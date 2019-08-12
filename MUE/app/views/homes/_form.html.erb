@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :cityId %>
-    <%= form.number_field :cityId %>
+    <%= form.number_field :cityId, value:params[:selected_city]?params[:selected_city]:0 %>
   </div>
 
   <div class="field">
@@ -33,7 +33,7 @@
 
   <div class="field">
     <%= form.label :peopleNum %>
-    <%= form.number_field :peopleNum %>
+    <%= form.number_field :peopleNum, value:3 %>
   </div>
 
   <div class="field">
@@ -43,7 +43,7 @@
 
   <div class="field">
     <%= form.label :cafeId %>
-    <%= form.number_field :cafeId %>
+    <%= params[:selected_city]?(form.select :cafeId,Cafe.where(cityId: params[:selected_city]).map{|n|[n.name,n.id]}):(form.number_field :cafeId) %>
   </div>
 
   <div class="actions">
