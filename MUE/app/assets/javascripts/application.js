@@ -31,6 +31,10 @@ $(".region_a").click(function(){
  });
 })
 
+$(function(){
+  var str = $('textarea').val();
+$('#text').html(str.replace(/\r?\n/g, '<br>'));
+})
 
 var swi = 0;
 $(window).scroll(function() { //サイドボックスの固定
