@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :prefectureId %>
-    <%= form.number_field :prefectureId %>
+    <%= form.number_field :prefectureId, value: params[:selected_prefecture]?params[:selected_prefecture]:0%>
   </div>
 
   <div class="field">

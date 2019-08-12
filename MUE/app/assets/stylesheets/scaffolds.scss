@@ -33,10 +33,6 @@ a {
 
 }
 
-h2{
-  font-size: 32px;
-  line-height: 70px;
-}
 
 th {
   padding-bottom: 5px;
@@ -96,8 +92,14 @@ h1{
   line-height: 45px;
   margin-top: 30px;
   margin-bottom: 23px;
+  font-weight: inherit;
 }
 
+h2{
+  font-size: 32px;
+  line-height: 70px;
+  font-weight: inherit;
+}
 
 label {
   display: block;
@@ -198,7 +200,6 @@ label {
   text-shadow: none;
   color: #0ba834f2;
   font-size: 15px;
-  font-weight: bolder;
   background: 0 0;
 }
 

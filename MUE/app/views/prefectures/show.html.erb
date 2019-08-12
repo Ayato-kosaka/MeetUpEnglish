@@ -11,4 +11,5 @@
 </p>
 
 <%= link_to 'Edit', edit_prefecture_path(@prefecture) %> |
-<%= link_to 'Back', prefectures_path %>
+<%= link_to 'Back', prefectures_path %> <br>
+<%= link_to 'new city', new_city_path(selected_prefecture: @prefecture.id) %>

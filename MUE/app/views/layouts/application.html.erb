@@ -14,6 +14,9 @@
     <header style="width: 100%;height: 90px;background-color: white;margin-bottom: 30px;">
       <div style="padding: 0px;width: 154px;float: left;"><div style="width:590px;  background-color: white;  display: inline-block;"><img src="https://firebasestorage.googleapis.com/v0/b/test-8d0bf.appspot.com/o/images%2FS__5120002.jpg?alt=media&token=0d0a3277-931a-4822-a88c-9bed623c0c19" style="height: 70px;"></div></div>
       <div style="float: left; "><p style="font-family: Helevetica;font-weight: bold;font-style: oblique;margin: 0px;font-size: 50px;">Meet Up English</p></div>
+      <% unless session[:user].nil? %>
+      <div style="float: right;margin-right: 50px;"><ul><li>name:<%=session[:user]["name"]%></li><li>role:<%=session[:role]%></li><li><%= link_to "ログアウト", logout_url, method: :delete %></li></ul></div>
+      <%end%>
     </header>
     <div id="main" style="height: 100%;max-width: 935px;width 100%;margin: 0 auto;">
       <div style="margin-right: -280px;padding: 0px;width: 100%;float: left;">
@@ -24,13 +27,10 @@
       <div style="width: 270px;  float: right;  margin-left: 10px;">
         <div id="sidebox" style=" width:270px;">
         <% unless session[:user].nil? %>
-        <p><%= session[:user]["name"]%></p>
-        <p><%= session[:role]%></p>
         <p><%= link_to 'home', homes_path %></p>
         <p><%= link_to 'teacher', teachers_path %></p>
         <p><%= link_to 'city', cities_path %></p>
-        <p><%= link_to 'cafe', caves_path %></p>
-        <p><%= link_to "ログアウト", logout_url, method: :delete %></p> <% end %>
+        <p><%= link_to 'cafe', caves_path %></p><% end %>
 
         <%= link_to "カフェ開催スケジュール", root_path, class: "page_btn",style: "background-color: #179c17", data: {"turbolinks"=>false} %>
         <%= link_to "料金/すきま時間英会話とは", overview_path, class: "page_btn", style: "background-color: #da4f4f;", data: {"turbolinks"=>false} %>
