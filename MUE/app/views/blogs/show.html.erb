@@ -1,11 +1,32 @@
 <p id="notice"><%= notice %></p>
-<%= image_tag @blog.image, class: "blog_image"%>
 <h2><%= @blog.title %></h2>
+<%= image_tag @blog.image, class: "blog_image"%>
 
-<%= link_to 'Edit', edit_blog_path(@blog) %>
+<%= link_to 'EditBlog', edit_blog_path(@blog) %>
 
 <p class="text">
   <%= simple_format(@blog.text) %>
 </p>
 
-<%= link_to 'Edit', edit_blog_path(@blog) %>
+
+<% if Section.find_by(blogId:@blog.id) %>
+<div class="toc_container" style="width: auto; display: table;">
+<p >この記事の目次</p>
+<ul style="display: block;">
+<% Section.where(blogId: @blog.id).each do |n| %>
+    <li><a href="#blog_index_<%= n.id %>"><%= n.title %></a></li>
+<% end %>
+</ul>
+</div>
+<% end %>
+
+<%= link_to 'NewSection', new_section_path(selected_blog:@blog.id) %>
+
+<% Section.where(blogId: @blog.id).each do |n| %>
+  <h1 id="blog_index_<%= n.id %>"><%= n.title %></h1>
+  <%= link_to 'EditSection', edit_section_path(n.id,selected_blog:@blog.id) %> | <%= link_to 'DestroySection', n, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% if n.image.attached? %>
+  <%= image_tag n.image, class: "section_image"%>
+  <% end %>
+  <p><%= simple_format(n.text) %></p>
+<% end %>
