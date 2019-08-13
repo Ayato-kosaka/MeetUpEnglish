@@ -1,29 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Blogs</h1>
+<%= if session[:role]=="Admin" then link_to 'New Blog', new_blog_path end%>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Text</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @blogs.each do |blog| %>
-      <tr>
-        <td><%= blog.title %></td>
-        <td><%= blog.text %></td>
-        <td><%= link_to 'Show', blog %></td>
-        <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-        <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+
+
+<% @blogs.reverse.each do |blog| %>
+
+<article data-href="/blogs/<%= blog.id %>">
+  <div class="eyecatch">
+    <% if blog.image.attached? %>
+    <%= image_tag blog.image, :size=>"400x400" %>
     <% end %>
-  </tbody>
-</table>
+  </div>
+  <h3><%= link_to blog.title, blog %></h3>
+  <div class="blog_cratedAt">
+    <%= blog.created_at.strftime("%Y.%m.%d") %>
+  </div>
 
-<br>
+</article>
 
-<%= link_to 'New Blog', new_blog_path %>
+<% end %>

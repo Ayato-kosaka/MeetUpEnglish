@@ -1,6 +1,8 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
+  skip_before_action :require_Admin,only:[:index, :show]
+
   # GET /blogs
   # GET /blogs.json
   def index
@@ -69,6 +71,6 @@ class BlogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
-      params.require(:blog).permit(:title, :text)
+      params.require(:blog).permit(:title, :text, :image)
     end
 end

@@ -31,11 +31,6 @@ $(".region_a").click(function(){
  });
 })
 
-$(function(){
-  var str = $('textarea').val();
-$('#text').html(str.replace(/\r?\n/g, '<br>'));
-})
-
 var swi = 0;
 $(window).scroll(function() { //サイドボックスの固定
 
@@ -52,10 +47,10 @@ $(window).scroll(function() { //サイドボックスの固定
 
 })
 
-jQuery(function($) {
+jQuery(function($) {//articleのどこをタッチしても飛ぶ
 
   //data-hrefの属性を持つtrを選択しclassにclickableを付加
-  $('tr[data-href]').addClass('clickable')
+  $('article[data-href]').addClass('clickable')
 
     //クリックイベント
     .click(function(e) {
@@ -65,6 +60,6 @@ jQuery(function($) {
 
         //その要素の先祖要素で一番近いtrの
         //data-href属性の値に書かれているURLに遷移する
-        window.location = $(e.target).closest('tr').data('href');}
+        window.location = $(e.target).closest('article').data('href');}
   });
 });
