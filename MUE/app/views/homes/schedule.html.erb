@@ -17,7 +17,7 @@
     <% if Time.zone.parse(m.date.strftime("%Y%m%d")+m.end.strftime("%H%M"))<Time.current %>
       <% m.destroy %>
       <% next %>
-    <% end %><tr>
+    <% end %><tr data-href="mailto:meetup_english-tokyo@yahoo.co.jp">
       <td><%= m.date.strftime("%Y年 %m月 %d日") %> <%= m.start.strftime("%H:%M") %>~<%= m.end.strftime("%H:%M") %></td><td><%= Cafe.find(m.cafeId).name %></td><td><%= Teacher.find(m.teacherId).name %>先生</td><td>残り人数:<%= m.peopleNum %></td>
     </tr>
   <% end %>
