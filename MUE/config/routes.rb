@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :sections
+  resources :blogs
   get 'overview', to: 'homes#overview'
   get 'homes/schedule'
   resources :caves
