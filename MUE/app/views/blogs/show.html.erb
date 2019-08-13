@@ -2,7 +2,7 @@
 <h2><%= @blog.title %></h2>
 <%= image_tag @blog.image, class: "blog_image"%>
 
-<%= link_to 'EditBlog', edit_blog_path(@blog) %>
+<%=  if session[:role]=="Admin" then link_to 'EditBlog', edit_blog_path(@blog) end %>
 
 <p class="text">
   <%= simple_format(@blog.text) %>
@@ -20,11 +20,11 @@
 </div>
 <% end %>
 
-<%= link_to 'NewSection', new_section_path(selected_blog:@blog.id) %>
+<%= if session[:role]=="Admin" then link_to 'NewSection', new_section_path(selected_blog:@blog.id) end %>
 
 <% Section.where(blogId: @blog.id).each do |n| %>
   <h1 id="blog_index_<%= n.id %>"><%= n.title %></h1>
-  <%= link_to 'EditSection', edit_section_path(n.id,selected_blog:@blog.id) %> | <%= link_to 'DestroySection', n, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% if session[:role]=="Admin" %><%= link_to 'EditSection', edit_section_path(n.id,selected_blog:@blog.id) %> | <%= link_to 'DestroySection', n, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
   <% if n.image.attached? %>
   <%= image_tag n.image, class: "section_image"%>
   <% end %>

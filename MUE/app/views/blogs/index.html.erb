@@ -4,7 +4,7 @@
 
 
 
-
+<% if @blogs %>
 <% @blogs.reverse.each do |blog| %>
 
 <article data-href="/blogs/<%= blog.id %>">
@@ -15,10 +15,11 @@
   </div>
   <h3><%= link_to blog.title, blog %></h3>
   <div class="blog_cratedAt">
-    <%= link_to 'Edit', edit_blog_path(blog) %> | <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %> 
+    <% if session[:role]=="Admin" %><%= link_to 'Edit', edit_blog_path(blog)%> | <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %><%end%>
     <%= blog.created_at.strftime("%Y.%m.%d") %>
   </div>
 
 </article>
 
+<% end %>
 <% end %>
