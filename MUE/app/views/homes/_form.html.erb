@@ -10,11 +10,7 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :cityId %>
-    <%= form.number_field :cityId, value:params[:selected_city]?params[:selected_city]:0 %>
-  </div>
+  <% if params[:selected_city]   then @home.cityId = params[:selected_city] end %>
 
   <div class="field">
     <%= form.label :date %>
@@ -43,7 +39,11 @@
 
   <div class="field">
     <%= form.label :cafeId %>
+    <% if params[:selected_city] %>
     <%= params[:selected_city]?(form.select :cafeId,Cafe.where(cityId: params[:selected_city]).map{|n|[n.name,n.id]}):(form.number_field :cafeId) %>
+    <% else %>
+    <%= form.select :cafeId,Cafe.where(cityId: @home.cityId).map{|n|[n.name,n.id]} %>
+    <% end %>
   </div>
 
   <div class="actions">

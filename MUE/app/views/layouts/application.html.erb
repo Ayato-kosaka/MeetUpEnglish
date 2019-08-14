@@ -14,9 +14,12 @@
     <header style="width: 100%;height: 90px;background-color: white;margin-bottom: 30px;">
       <div style="padding: 0px;width: 154px;float: left;"><div style="width:590px;  background-color: white;  display: inline-block;"><img src="https://firebasestorage.googleapis.com/v0/b/test-8d0bf.appspot.com/o/images%2FS__5120002.jpg?alt=media&token=0d0a3277-931a-4822-a88c-9bed623c0c19" style="height: 70px;"></div></div>
       <div style="float: left; "><p style="font-family: Helevetica;font-weight: bold;font-style: oblique;margin: 0px;font-size: 50px;">Meet Up English</p></div>
-      <% unless session[:user].nil? %>
+      <% if session[:user].nil? %>
+      <div style="float: right;margin-right: 50px;"><ul><li><a href="mailto:meetup_english-tokyo@yahoo.co.jp?subject=I want to be a teacher&body=【Name】%0D%0A【Nearest station】%0D%0A【type of visa】%0D%0A【Gender】%0D%0A【Age】%0D%0A">I want to be a teacher</a>
+      </li></ul></div>
+      <% elsif %>
       <div style="float: right;margin-right: 50px;"><ul><li>name:<%=session[:user]["name"]%></li><li>role:<%=session[:role]%></li><li><%= link_to "ログアウト", logout_url, method: :delete %></li></ul></div>
-      <%end%>
+      <% end %>
     </header>
     <div id="main" style="height: 100%;max-width: 935px;width 100%;margin: 0 auto;">
       <div style="margin-right: -280px;padding: 0px;width: 100%;float: left;">
@@ -39,7 +42,7 @@
         <!-- LineWidget -->
       <a class="page_btn" style="height: 28px;width: 187px;background-color: #00b900;" href="https://access.line.me/oauth2/v2.1/login?returnUri=%2Foauth2%2Fv2.1%2Fauthorize%2Fconsent%3Fscope%3Dopenid%2Bprofile%2Bfriends%2Bgroups%2Btimeline.post%2Bmessage.write%26response_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fsocial-plugins.line.me%252Fwidget%252FloginCallback%253FreturnUrl%253Dhttps%25253A%25252F%25252Fsocial-plugins.line.me%25252Fwidget%25252Fclose%26state%3D711f2fcb8f5af13530dabd1acd89c3%26client_id%3D1446101138&loginChannelId=1446101138&loginState=wynctL0x40o8HHxBeG4mMU#/">
           <img alt="友達追加" border="0" height="28" src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png"></a>
-        
+
 
         <!-- InstaWidget -->
         <a href="https://www.instagram.com/meet_up_english?ref=badge" class="insta_btn2">

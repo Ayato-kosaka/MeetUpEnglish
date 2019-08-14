@@ -1,5 +1,6 @@
 <h2><%= Prefecture.find(@selectedPrefecture_id).name %>での開催スケジュール</h2>
-<p>参加したい方は、Twitter,Instagram,公式Line又はE-mailにてご連絡ください。<br>
+<%= if session[:role]  == "Admin" then link_to 'create new city', new_city_path(selected_prefecture:@selectedPrefecture_id) end %>
+<p>参加したい方は、参加申し込みボタン又はTwitter,Instagram,公式Lineにてご連絡ください。<br>
   もちろん、アポなし参加でも大丈夫です。</p>
 <div class="toc_container" style="width: auto; display: table;">
 <p >この記事の目次</p>
@@ -11,14 +12,14 @@
 </div>
 
 <% City.where(prefectureId: @selectedPrefecture_id).each do |n| %>
-  <h1 id="#schedule_index_<%= n.id %>"><%= n.name %></h1>
+  <h1 id="#schedule_index_<%= n.id %>"><%= n.name %> <%= if ((session[:role]  == "Admin")||(session[:role]  == "Teacher")) then link_to 'create new event', new_home_path(selected_city:n.id) end%></h1>
   <table>
   <% Home.where(cityId: n.id).each do |m| %>
     <% if Time.zone.parse(m.date.strftime("%Y%m%d")+m.end.strftime("%H%M"))<Time.current %>
       <% m.destroy %>
       <% next %>
     <% end %><tr>
-      <td><%= m.date.strftime("%Y年 %m月 %d日") %> <%= m.start.strftime("%H:%M") %>~<%= m.end.strftime("%H:%M") %></td><td><%= Cafe.find(m.cafeId).name %></td><td><%= Teacher.find(m.teacherId).name %>先生</td><td style="width: 73px;">残り人数:<%= m.peopleNum %></td><td style="/*! background-color: #11ab39; */ border-radius: 10px;width: 61px;padding: 0;background: linear-gradient(#00a23f,#39900a);"><a href="mailto:meetup_english-tokyo@yahoo.co.jp" style="display:inline-block; /*! color:white; *//*! border: solid #fff 3px; */border-radius: 12px;box-shadow: 1px 1px 1px 0 #a1a1a1;color: #fff;display: block;/*! font-size: 1.6em; */font-weight: 700;/*! line-height: 1.3; *//*! margin: 2em auto; *//*! padding: 1em 2em .8em; */"><a href="mailto:meetup_english-tokyo@yahoo.co.jp?subject=I want to go to Meet Up English&body=【氏名】%0D%0A【日程】<%= m.date.strftime("%Y年 %m月 %d日") %>%0D%0A【時間】%0D%0A【場所】<%= n.name %>:<%= Cafe.find(m.cafeId).name %>%0D%0A" style="display:inline-block; /*! color:white; *//*! border: solid #fff 3px; */border-radius: 12px;box-shadow: 1px 1px 1px 0 #a1a1a1;color: #fff;display: block;/*! font-size: 1.6em; */font-weight: 700;/*! line-height: 1.3; *//*! margin: 2em auto; *//*! padding: 1em 2em .8em; */">参加<br>申し込み</td>
+      <td><%= m.date.strftime("%Y年 %m月 %d日") %> <%= m.start.strftime("%H:%M") %>~<%= m.end.strftime("%H:%M") %></td><td><%= Cafe.find(m.cafeId).name %></td><td><%= Teacher.find(m.teacherId).name %>先生</td><td style="width: 73px;">残り人数:<%= m.peopleNum %></td><td style="/*! background-color: #11ab39; */ border-radius: 10px;width: 61px;padding: 0;background: linear-gradient(#00a23f,#39900a);"><a href="<%if session[:role]=="Admin?"%>mailto:meetup_english-tokyo@yahoo.co.jp?subject=I want to go to Meet Up English&body=【氏名】%0D%0A【日程】<%= m.date.strftime("%Y年 %m月 %d日") %>%0D%0A【時間】%0D%0A【場所】<%= n.name %>:<%= Cafe.find(m.cafeId).name %>%0D%0A<% else %> /homes/<%=m.id%>/edit<%end%>" style="display:inline-block; /*! color:white; *//*! border: solid #fff 3px; */border-radius: 12px;box-shadow: 1px 1px 1px 0 #a1a1a1;color: #fff;display: block;/*! font-size: 1.6em; */font-weight: 700;/*! line-height: 1.3; *//*! margin: 2em auto; *//*! padding: 1em 2em .8em; */">参加<br>申し込み</td>
     </tr>
   <% end %>
   </table>
