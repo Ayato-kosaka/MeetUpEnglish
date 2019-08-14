@@ -1,13 +1,4 @@
 <h1>Editing City</h1>
-<%= form_with model: @city, local: true  do |form| %>
-  <p>現在登録されている画像（削除するものはチェックしてください）</p>
-  <% @city.images.each do |image| %>
-    <%= form.check_box :image_ids, {:multiple => true}, image.id, false %>
-    <%= image_tag image, :size=>"100x100" %> <br>
-  <% end %>
-  <%= form.submit("delete images") %>
-<% end %>
 <%= render 'form', city: @city %>
 
-<%= link_to 'Show', @city %> |
-<%= link_to 'Back', cities_path %>
+<%= link_to 'Back', homes_schedule_path(selected_prefecture: @city.prefectureId), data: {"turbolinks"=>false}  %>
