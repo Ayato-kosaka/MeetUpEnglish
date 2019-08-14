@@ -10,7 +10,12 @@
       </ul>
     </div>
   <% end %>
-  <% if params[:selected_city]   then @home.cityId = params[:selected_city] end %>
+  <% if params[:selected_city]%>
+  <div class="field" style="display:none">
+    <%= form.label :cityId %>
+    <%= form.number_field :cityId, value:params[:selected_city] %>
+  </div>
+  <% end %>
 
   <div class="field">
     <%= form.label :date %>
@@ -29,18 +34,23 @@
 
   <div class="field">
     <%= form.label :peopleNum %>
-    <%= form.number_field :peopleNum, value:3 %>
+    <%= form.number_field :peopleNum, value:@home.peopleNum ? @home.peopleNum: 3 %>
   </div>
 
+  <% if session[:role] == "Teacher" %>
+    <% @home.teacherId = session[:user]["id"] %>
+  <% elsif %>
   <div class="field">
     <%= form.label :teacherId %>
-    <%= form.number_field :teacherId %>
+    <%= form.select :teacherId,Teacher.all.map{|n|[n.name,n.id]} %>
   </div>
+  <% end %>
+
 
   <div class="field">
     <%= form.label :cafeId %>
     <% if params[:selected_city] %>
-    <%= params[:selected_city]?(form.select :cafeId,Cafe.where(cityId: params[:selected_city]).map{|n|[n.name,n.id]}):(form.number_field :cafeId) %>
+    <%= form.select :cafeId,Cafe.where(cityId: params[:selected_city]).map{|n|[n.name,n.id]} %>
     <% else %>
     <%= form.select :cafeId,Cafe.where(cityId: @home.cityId).map{|n|[n.name,n.id]} %>
     <% end %>
