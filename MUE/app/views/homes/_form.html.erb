@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-    
+
   <% if params[:selected_city]%>
   <div class="field" style="display:none">
     <%= form.label :cityId %>
@@ -26,12 +26,12 @@
 
   <div class="field">
     <%= form.label :start %>
-    <%= form.time_select :start %>
+    <%= form.time_select :start,default: Date.today + 10.hours + 0.minutes%>
   </div>
 
   <div class="field">
     <%= form.label :end %>
-    <%= form.time_select :end %>
+    <%= form.time_select :end,default: Date.today + 10.hours + 0.minutes %>
   </div>
 
   <div class="field">

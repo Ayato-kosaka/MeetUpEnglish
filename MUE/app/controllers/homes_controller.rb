@@ -30,10 +30,11 @@ class HomesController < ApplicationController
   # POST /homes.json
   def create
     @home = Home.new(home_params)
+    @selectedPrefecture_id =  City.find(@home.cityId).prefectureId
 
     respond_to do |format|
       if @home.save
-        format.html { redirect_to @home, notice: 'Home was successfully created.' }
+        format.html { redirect_to homes_schedule_path(selected_prefecture: @selectedPrefecture_id), notice: 'Home was successfully created.' }
         format.json { render :show, status: :created, location: @home }
       else
         format.html { render :new }
@@ -45,9 +46,10 @@ class HomesController < ApplicationController
   # PATCH/PUT /homes/1
   # PATCH/PUT /homes/1.json
   def update
+    @selectedPrefecture_id =  City.find(@home.cityId).prefectureId
     respond_to do |format|
       if @home.update(home_params)
-        format.html { redirect_to @home, notice: 'Home was successfully updated.' }
+        format.html { redirect_to homes_schedule_path(selected_prefecture: @selectedPrefecture_id), notice: 'Home was successfully updated.' }
         format.json { render :show, status: :ok, location: @home }
       else
         format.html { render :edit }
