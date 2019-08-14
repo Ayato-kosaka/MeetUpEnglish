@@ -248,14 +248,3 @@ article{
 table {
  width:100%
 }
-
-
-@media screen and (min-width:1000px), print {
-
-}
-
-@media screen and (max-width:1000px), print {
-  #sidebox2{
-    display: none;
-  }
-}
