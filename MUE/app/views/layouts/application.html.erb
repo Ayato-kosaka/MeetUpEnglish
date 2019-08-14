@@ -4,6 +4,7 @@
     <title>Meet Up English</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <script src="https://kit.fontawesome.com/16fa72faa1.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -28,8 +29,8 @@
           <%= yield %>
         </div>
       </div>
-      <div id="sidebox2" style="width: 270px;  float: right;  margin-left: 10px;">
-        <div id="sidebox" style=" width:270px;">
+      <div id="sidebox1" style="width: 270px;  float: right;  margin-left: 10px;">
+        <div id="sidebox2" style=" width:270px;">
         <% unless session[:user].nil? %>
         <p><%= link_to 'teacher', teachers_path %></p>
         <p><%= link_to 'cafe', caves_path %></p><% end %>

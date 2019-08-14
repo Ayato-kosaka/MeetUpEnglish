@@ -248,3 +248,20 @@ article{
 table {
  width:100%
 }
+
+
+@media screen and (min-width:1000px), print {
+
+}
+
+@media screen and (max-width:1000px), print {
+  #sidebox1{
+    display: none;
+  }
+  #main{
+    max-width: 100%!important;
+  }
+  #main div{
+    width: 100%!important;
+  }
+}

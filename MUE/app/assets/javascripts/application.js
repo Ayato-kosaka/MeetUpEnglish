@@ -36,13 +36,13 @@ $(window).scroll(function() { //サイドボックスの固定
 
   if((swi == 0)&&($(this).scrollTop()>153)){
     swi = 1;
-    $("#sidebox").css("position","fixed");
-    $("#sidebox").css("top",33);
+    $("#sidebox2").css("position","fixed");
+    $("#sidebox2").css("top",33);
   }
 
   if((swi == 1)&&($(this).scrollTop()<=153)){
     swi = 0;
-    $("#sidebox").css("position","static");
+    $("#sidebox2").css("position","static");
   }
 
 })
