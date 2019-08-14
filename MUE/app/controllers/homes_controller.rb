@@ -59,9 +59,10 @@ class HomesController < ApplicationController
   # DELETE /homes/1
   # DELETE /homes/1.json
   def destroy
+    @selectedPrefecture_id =  City.find(@home.cityId).prefectureId
     @home.destroy
     respond_to do |format|
-      format.html { redirect_to homes_url, notice: 'Home was successfully destroyed.' }
+      format.html { redirect_to homes_schedule_path(selected_prefecture: @selectedPrefecture_id), notice: 'Home was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
