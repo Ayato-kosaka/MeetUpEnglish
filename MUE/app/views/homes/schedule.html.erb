@@ -1,5 +1,5 @@
 <h2><%= Prefecture.find(@selectedPrefecture_id).name %>での開催スケジュール</h2>
-<%= if session[:role]  == "Admin" then link_to 'create new city', new_city_path(selected_prefecture:@selectedPrefecture_id) end %>
+<%= if session[:role]  == "Admin" then link_to 'create new city', new_city_path(selected_prefecture:@selectedPrefecture_id), data: {"turbolinks"=>false} end %>
 <p>参加したい方は、参加申し込みボタン又はTwitter,Instagram,公式Lineにてご連絡ください。<br>
   もちろん、アポなし参加でも大丈夫です。</p>
 <div class="toc_container" style="width: auto; display: table;">
