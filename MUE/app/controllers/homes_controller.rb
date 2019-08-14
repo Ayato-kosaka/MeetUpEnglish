@@ -84,6 +84,6 @@ class HomesController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def home_params
-      params.require(:home).permit(:date, :start, :end, :peopleNum, :teacherId, :cafeId)
+      params.require(:home).permit(:cityId, :date, :start, :end, :peopleNum, :teacherId, :cafeId)
     end
 end
