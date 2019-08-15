@@ -57,9 +57,9 @@
     </div>
 
     <footer>
-      <div><%= link_to "Schedule", root_path,data: {"turbolinks"=>false} %></div>
-      <div id="footer_center_div"><%= link_to "Overview", overview_path,data: {"turbolinks"=>false} %></div>
-      <div><%= link_to "Blog", blogs_path, data: {"turbolinks"=>false} %></div>
+      <div data-href="/"><%= link_to "Schedule", root_path,data: {"turbolinks"=>false} %></div>
+      <div id="footer_center_div" data-href="/overview"><%= link_to "Overview", overview_path,data: {"turbolinks"=>false} %></div>
+      <div data-href="/blogs"><%= link_to "Blog", blogs_path, data: {"turbolinks"=>false} %></div>
     </footer>
   </body>
 </html>
