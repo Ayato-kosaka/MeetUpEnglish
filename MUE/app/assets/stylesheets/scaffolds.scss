@@ -80,11 +80,6 @@ h1 {
  margin-bottom:23px;
  font-weight:inherit
 }
-h2 {
- font-size:32px;
- line-height:70px;
- font-weight:inherit
-}
 label {
  display:block
 }
@@ -156,9 +151,9 @@ textarea {
  -ms-transform:rotateX(360deg);
  transform:rotateX(360deg)
 }
+
 .toc_container {
- padding:1em 2em 1em !important;
- min-width:90%;
+ padding:1em 2em 1em;
  margin:55px auto 55px auto;
  background:#fff !important;
  background:rgba(255,255,255,0.5) !important;
@@ -181,6 +176,9 @@ textarea {
  color:#0ba834f2;
  font-size:15px;
  background:0 0
+}
+#area_list_ul{
+  display: block;
 }
 #area_list li {
  line-height:3;
@@ -250,32 +248,77 @@ table {
 }
 
 
-#main{
-  height: 100%;max-width: 935px;width: 100%;margin: 0 auto;
-}
-#main1{
-  margin-right: -280px;padding: 0px;width: 100%;float: left;
-}
-#main2{
-  width:614px;  background-color: white;  display: inline-block;  overflow-x: auto;padding: 10px 20px 10px 20px;
-}
 @media screen and (max-width:639px) {
 /*スマホ用のcssを記述*/
-  #sidebox1{
-    display: none;
+
+  // aplication css
+  body{margin: 0;}
+  h2{margin-block-start: 0.83em;margin-block-end: 0.83em;font-size: 1.5rem;font-weight: bold;margin: 22px 0;line-height: normal;}
+  #sidebox1{display: none;}
+  #main{background-color: white;padding: 10px;margin: 10px 0;}
+  header{
+    padding: 10px 0 10px;background-color: white;
+    display: grid;grid-template-columns: 87px 230px;grid-template-rows: 40px;
   }
-  #main{
-    max-width: 100%!important;
-  }
-  #main div{
-    width: 100%!important;
-  }
+  #header1-1{}
+  #header1-2{}
+  #header1-img{height: 40px;}
+  #header2{margin-left: 10px;}
+  #header2-p{font-family: Helevetica;font-weight: bold;font-style: oblique;font-size: 23px;margin: 0;height: 100%;}
+  #header3{display: none;}
+  footer{display: grid;grid-template-columns: 33% 33% 33%;grid-template-rows: 60px;background-color: #179c17;
+    font-size: 24px;position: fixed;bottom: 0px;left: 0px;width: 100%;font-family: cursive;}
+  footer div{display: flex;}
+  footer a{margin: auto;color:white;&:visited{color:white;}}
+  #footer_center_div{border-style: solid;border-width: 0px 2px;border-color: white;}
+
+
+  // home css
+  #area_list_ul{padding: 14px 0;}
+
+  // blog css
+  .toc_container{min-width:80%;}
+}
+
+
+@media screen and (min-width:1024px) {
+/*pc用のcssを記述*/
+  h2{font-size:32px;line-height:70px;font-weight:inherit}
+  #main{height: 100%;max-width: 935px;width: 100%;margin: 0 auto;  }
+  #main1{margin-right: -280px;padding: 0px;width: 100%;float: left;  }
+  #main2{width:614px;  background-color: white;  display: inline-block;  overflow-x: auto;padding: 10px 20px 10px 20px; }
+  #sidebox1{width: 270px;  float: right;  margin-left: 10px;  }
+  #sidebox2{width:270px;  }
+  header{width: 100%;height: 90px;background-color: white;margin-bottom: 30px;}
+  #header1-1{padding: 0px;width: 154px;float: left;}
+  #header1-2{width:590px;  background-color: white;  display: inline-block;}
+  #header1-img{height: 70px;}
+  #header2{float: left;}
+  #header2-p{font-family: Helevetica;font-weight: bold;font-style: oblique;margin: 0px;font-size: 50px;}
+  #header3{float: right;margin-right: 50px;}
+  footer{display: none;}
+
+  // blog css
+  .toc_container{min-width:90%;}
 }
 
 @media only screen and (min-width:640px) and (max-width:1023px) {
 /*tablet用のcssを記述*/
-}
+  h2{font-size:32px;line-height:70px;font-weight:inherit}
+  #main{height: 100%;max-width: 935px;width: 100%;margin: 0 auto;  }
+  #main1{margin-right: -280px;padding: 0px;width: 100%;float: left;  }
+  #main2{width:614px;  background-color: white;  display: inline-block;  overflow-x: auto;padding: 10px 20px 10px 20px; }
+  #sidebox1{width: 270px;  float: right;  margin-left: 10px;  }
+  #sidebox2{width:270px;  }
+  header{width: 100%;height: 90px;background-color: white;margin-bottom: 30px;}
+  #header1-1{padding: 0px;width: 154px;float: left;}
+  #header1-2{width:590px;  background-color: white;  display: inline-block;}
+  #header1-img{height: 70px;}
+  #header2{float: left;}
+  #header2-p{font-family: Helevetica;font-weight: bold;font-style: oblique;margin: 0px;font-size: 50px;}
+  #header3{float: right;margin-right: 50px;}
+  footer{display: none;}
 
-@media screen and (min-width:1024px) {
-/*pc用のcssを記述*/
+  // blog css
+  .toc_container{min-width:90%;}
 }

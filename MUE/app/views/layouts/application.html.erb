@@ -4,6 +4,7 @@
     <title>Meet Up English</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <% unless session[:user].nil? %><meta name="viewport" content="width=device-width,initial-scale=1.0"><% end %>
     <script src="https://kit.fontawesome.com/16fa72faa1.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -11,14 +12,14 @@
 
   <body>
 
-    <header style="width: 100%;height: 90px;background-color: white;margin-bottom: 30px;">
-      <div style="padding: 0px;width: 154px;float: left;"><div style="width:590px;  background-color: white;  display: inline-block;"><img src="https://firebasestorage.googleapis.com/v0/b/test-8d0bf.appspot.com/o/images%2FS__5120002.jpg?alt=media&token=0d0a3277-931a-4822-a88c-9bed623c0c19" style="height: 70px;"></div></div>
-      <div style="float: left; "><p style="font-family: Helevetica;font-weight: bold;font-style: oblique;margin: 0px;font-size: 50px;">Meet Up English</p></div>
+    <header>
+      <div id="header1-1"><div id="header1-2"><img id="header1-img" src="https://firebasestorage.googleapis.com/v0/b/test-8d0bf.appspot.com/o/images%2FS__5120002.jpg?alt=media&token=0d0a3277-931a-4822-a88c-9bed623c0c19"></div></div>
+      <div id="header2"><p id="header2-p">Meet Up English</p></div>
       <% if session[:user].nil? %>
-      <div style="float: right;margin-right: 50px;"><ul><li><a href="mailto:meetup_english-tokyo@yahoo.co.jp?subject=I want to be a teacher&body=【Name】%0D%0A【Nearest station】%0D%0A【type of visa】%0D%0A【Gender】%0D%0A【Age】%0D%0A">I want to be a teacher</a>
+      <div id="header3"><ul><li><a href="mailto:meetup_english-tokyo@yahoo.co.jp?subject=I want to be a teacher&body=【Name】%0D%0A【Nearest station】%0D%0A【type of visa】%0D%0A【Gender】%0D%0A【Age】%0D%0A">I want to be a teacher</a>
       </li></ul></div>
       <% elsif %>
-      <div style="float: right;margin-right: 50px;"><ul><li>name:<%=session[:user]["name"]%></li><li>role:<%=session[:role]%></li><li><%= link_to "ログアウト", logout_url, method: :delete %></li></ul></div>
+      <div id="header3"><ul><li>name:<%=session[:user]["name"]%></li><li>role:<%=session[:role]%></li><li><%= link_to "ログアウト", logout_url, method: :delete %></li></ul></div>
       <% end %>
     </header>
 
@@ -28,11 +29,12 @@
           <%= yield %>
         </div>
       </div>
-      <div id="sidebox1" style="width: 270px;  float: right;  margin-left: 10px;">
-        <div id="sidebox2" style=" width:270px;">
+      <div id="sidebox1">
+        <div id="sidebox2">
         <% unless session[:user].nil? %>
         <p><%= link_to 'teacher', teachers_path %></p>
-        <p><%= link_to 'cafe', caves_path %></p><% end %>
+        <p><%= link_to 'cafe', caves_path %></p>
+        <% end %>
 
         <%= link_to "カフェ開催スケジュール", root_path, class: "page_btn",style: "background-color: #179c17", data: {"turbolinks"=>false} %>
         <%= link_to "料金/すきま時間英会話とは", overview_path, class: "page_btn", style: "background-color: #da4f4f;", data: {"turbolinks"=>false} %>
@@ -53,5 +55,11 @@
         <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">【Meet Up English 】<br><br>•「スキマ時間」に駅周辺のCaffeで<br><br>「英会話」をする。という、気軽にス<br><br>キマ時間を利用して英会話をするサー<br><br>ビスの提供を目指しております。<br><br>•参加費1000円〜でネイティブ講師と<br><br>の英会話サービスです。<br><br>✅興味のある方は是非DMを下さい!!<a href="https://twitter.com/hashtag/%E3%82%B9%E3%82%AD%E3%83%9E?src=hash&amp;ref_src=twsrc%5Etfw">#スキマ</a> <a href="https://twitter.com/hashtag/%E8%8B%B1%E8%AA%9E?src=hash&amp;ref_src=twsrc%5Etfw">#英語</a> <a href="https://twitter.com/hashtag/%E8%8B%B1%E4%BC%9A%E8%A9%B1?src=hash&amp;ref_src=twsrc%5Etfw">#英会話</a></p>&mdash; Meet Up English Group (@meetup_english) <a href="https://twitter.com/meetup_english/status/1159399521744388096?ref_src=twsrc%5Etfw">August 8, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
     </div>
+
+    <footer>
+      <div><%= link_to "Schedule", root_path,data: {"turbolinks"=>false} %></div>
+      <div id="footer_center_div"><%= link_to "Overview", overview_path,data: {"turbolinks"=>false} %></div>
+      <div><%= link_to "Blog", blogs_path, data: {"turbolinks"=>false} %></div>
+    </footer>
   </body>
 </html>
