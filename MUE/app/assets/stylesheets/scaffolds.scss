@@ -1,7 +1,7 @@
 body {
  background-color:#fafafa;
  color:#333;
- margin:33px;
+ margin: 0;
  font-family:verdana, arial, helvetica, sans-serif;
  font-size:13px;
  line-height:18px
@@ -250,6 +250,40 @@ table {
 }
 
 
+#footer1.cmn-footer {
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(20%,rgba(226,255,222,0)),to(#179c17));
+    background: -webkit-linear-gradient(rgba(226,255,222,0) 20%,#179c17 100%);
+    background: -o-linear-gradient(rgba(226,255,222,0) 20%,#179c17 100%);
+    background: linear-gradient(rgba(226,255,222,0) 20%,#179c17 100%);
+    height: 250px;
+    margin-top: 30px;
+}
+.pagetop {
+    padding-top: 23px;
+    text-align: center;
+    font-size: .75rem;
+    font-family: 'Poppins',sans-serif;
+    letter-spacing: .03125rem;
+    font-weight: 700;
+}
+.pagetop a {
+    text-decoration: none;
+    color: #179c17;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: block;
+    width: 90px;
+    margin: 40px auto 30px;
+}
+.copyright {
+    font-family: 'Poppins',sans-serif;
+    letter-spacing: .03125rem;
+    color: #179c17;
+    font-size: .75rem;
+    text-align: center;
+}
+
 @media screen and (max-width:639px) {
 /*スマホ用のcssを記述*/
 
@@ -258,7 +292,7 @@ table {
   h2{margin-block-start: 0.83em;margin-block-end: 0.83em;font-size: 1.5rem;font-weight: bold;margin: 22px 0;line-height: normal;}
   p{font-size: 16px;}
   #sidebox1{display: none;}
-  #main{background-color: white;padding: 10px;margin: 10px 0 60px 0;}
+  #main{background-color: white;padding: 10px;margin: 10px 0 60px 0; display: flex;}
   header{
     padding: 10px 0 10px;background-color: white;
     display: grid;grid-template-columns: 87px 230px;grid-template-rows: 40px;
@@ -287,9 +321,9 @@ table {
 @media screen and (min-width:1024px) {
 /*pc用のcssを記述*/
   h2{font-size:32px;line-height:70px;font-weight:inherit}
-  #main{height: 100%;max-width: 935px;width: 100%;margin: 0 auto;  }
+  #main{height: 100%;max-width: 935px;width: 100%;margin: 0 auto; display: flex;}
   #main1{margin-right: -280px;padding: 0px;width: 100%;float: left;  }
-  #main2{width:614px;  background-color: white;  display: inline-block;  overflow-x: auto;padding: 10px 20px 10px 20px; }
+  #main2{width:614px;  background-color: white;  display: inline-block;  overflow-x: auto;padding: 10px 20px 80px 20px; }
   #sidebox1{width: 270px;  float: right;  margin-left: 10px;  }
   #sidebox2{width:270px;  }
   header{width: 100%;height: 90px;background-color: white;margin-bottom: 30px;}
@@ -308,9 +342,9 @@ table {
 @media only screen and (min-width:640px) and (max-width:1023px) {
 /*tablet用のcssを記述*/
   h2{font-size:32px;line-height:70px;font-weight:inherit}
-  #main{height: 100%;max-width: 935px;width: 100%;margin: 0 auto;  }
+  #main{height: 100%;max-width: 935px;width: 100%;margin: 0 auto; display: flex;}
   #main1{margin-right: -280px;padding: 0px;width: 100%;float: left;  }
-  #main2{width:614px;  background-color: white;  display: inline-block;  overflow-x: auto;padding: 10px 20px 10px 20px; }
+  #main2{width:614px;  background-color: white;  display: inline-block;  overflow-x: auto;padding: 10px 20px 80px 20px; }
   #sidebox1{width: 270px;  float: right;  margin-left: 10px;  }
   #sidebox2{width:270px;  }
   header{width: 100%;height: 90px;background-color: white;margin-bottom: 30px;}

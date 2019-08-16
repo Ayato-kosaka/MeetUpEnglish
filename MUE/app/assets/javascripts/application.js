@@ -32,9 +32,9 @@ $(".region_a").click(function(){
 })
 
 var swi = 0;
-$(window).scroll(function() { //サイドボックスの固定
+$(window).scroll(function() { //サイドボックスの固定 1=>固定状態 0=>固定されていない
 
-  if((swi == 0)&&($(this).scrollTop()>153)){
+  if((swi == 0)&&($(this).scrollTop()>153)&&($(this).scrollTop()<($("body").height()-$("#footer1").height()-$("#sidebox2").height()))){
     swi = 1;
     $("#sidebox2").css("position","fixed");
     $("#sidebox2").css("top",33);
@@ -43,6 +43,12 @@ $(window).scroll(function() { //サイドボックスの固定
   if((swi == 1)&&($(this).scrollTop()<=153)){
     swi = 0;
     $("#sidebox2").css("position","static");
+  }
+
+  if((swi == 1)&&($(this).scrollTop()>=($("body").height()-$("#footer1").height()-$("#sidebox2").height()))) {
+    swi = 0;
+    $("#sidebox2").css("position","absolute");
+    $("#sidebox2").css("top",$("body").height()-$("#footer1").height()-$("#sidebox2").height()-24);
   }
 
 })
