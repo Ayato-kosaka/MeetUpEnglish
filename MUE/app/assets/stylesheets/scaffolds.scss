@@ -309,18 +309,11 @@ table {
   #header3{display: none;}
   #footer1.cmn-footer{margin-bottom: 60px;height: 390px; margin-top: -50px;}
   .pagetop{padding-top: 50px;}
-  .footer_page_btn{
-    text-align: center;
-    font-size: 0.95rem;
-    font-family: 'Poppins',sans-serif;
-    letter-spacing: .03125rem;
-    font-weight: 700;
-    -webkit-tap-highlight-color: transparent;}
-  .footer_page_btn a{    text-decoration: none;
-    color: #179c17;
-    padding: 10px 0;
-    display: block;
-    width: 100%;}
+  .footer_page_btn{ text-align: center;font-size: 0.95rem;font-family: 'Poppins',sans-serif;letter-spacing: .03125rem;font-weight: 700;-webkit-tap-highlight-color: transparent;}
+  .footer_page_btn a{    text-decoration: none;color: #179c17;padding: 10px 0;display: block;width: 100%;}
+  .twitter_btn i{position: relative;font-size: 17px;top: 2px;right: 3px;}
+  .insta_btn i{position: relative;font-size: 20px;top: 2px;right: 3px;}
+  .line_btn i{position: relative;font-size: 20px;top: 2px;right: 4px;}
   footer{display: grid;grid-template-columns: 33% 33% 33%;grid-template-rows: 60px;background-color: #179c17;
     font-size: 24px;position: fixed;bottom: 0px;left: 0px;width: 100%;font-family: cursive;}
   footer div{display: flex;}
