@@ -1,6 +1,8 @@
 class TeachersController < ApplicationController
   before_action :set_teacher, only: [:show, :edit, :update, :destroy]
 
+  skip_before_action :require_Admin, only: [:show]
+
   # GET /teachers
   # GET /teachers.json
   def index
