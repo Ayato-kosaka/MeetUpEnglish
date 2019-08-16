@@ -9,8 +9,8 @@
 
       <ul class="prefecture_list"
       <% if i==2 %>
-      id="display_show"
-      <% end %> style="display: block">
+      style="display: block;" id="display_show"
+      <% else %> style="display: none;" <% end %>>
         <% if Prefecture.find_by(regionId: a.id).nil? %>
         <li><a>準備中</a></li>
         <% end %>

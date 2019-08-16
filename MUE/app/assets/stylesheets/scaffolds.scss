@@ -87,6 +87,40 @@ textarea {
 	width: 100%;
 	height: 60vh;
 }
+#footer1.cmn-footer {
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(20%,rgba(226,255,222,0)),to(#179c17));
+    background: -webkit-linear-gradient(rgba(226,255,222,0) 20%,#179c17 100%);
+    background: -o-linear-gradient(rgba(226,255,222,0) 20%,#179c17 100%);
+    background: linear-gradient(rgba(226,255,222,0) 20%,#179c17 100%);
+    height: 250px;
+    margin-top: 30px;
+}
+.pagetop {
+    padding-top: 23px;
+    text-align: center;
+    font-size: .75rem;
+    font-family: 'Poppins',sans-serif;
+    letter-spacing: .03125rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+.pagetop a {
+    text-decoration: none;
+    color: #179c17;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: block;
+    width: 90px;
+    margin: 40px auto 30px;
+}
+.copyright {
+    font-family: 'Poppins',sans-serif;
+    letter-spacing: .03125rem;
+    color: #179c17;
+    font-size: .75rem;
+    text-align: center;
+}
 .page_btn {
  color:#FFF !important;
  border-radius:7px;
@@ -250,39 +284,7 @@ table {
 }
 
 
-#footer1.cmn-footer {
-    background: -webkit-gradient(linear,left top,left bottom,color-stop(20%,rgba(226,255,222,0)),to(#179c17));
-    background: -webkit-linear-gradient(rgba(226,255,222,0) 20%,#179c17 100%);
-    background: -o-linear-gradient(rgba(226,255,222,0) 20%,#179c17 100%);
-    background: linear-gradient(rgba(226,255,222,0) 20%,#179c17 100%);
-    height: 250px;
-    margin-top: 30px;
-}
-.pagetop {
-    padding-top: 23px;
-    text-align: center;
-    font-size: .75rem;
-    font-family: 'Poppins',sans-serif;
-    letter-spacing: .03125rem;
-    font-weight: 700;
-}
-.pagetop a {
-    text-decoration: none;
-    color: #179c17;
-    background-color: #fff;
-    padding: 10px 20px;
-    border-radius: 20px;
-    display: block;
-    width: 90px;
-    margin: 40px auto 30px;
-}
-.copyright {
-    font-family: 'Poppins',sans-serif;
-    letter-spacing: .03125rem;
-    color: #179c17;
-    font-size: .75rem;
-    text-align: center;
-}
+
 
 @media screen and (max-width:639px) {
 /*スマホ用のcssを記述*/
@@ -292,7 +294,7 @@ table {
   h2{margin-block-start: 0.83em;margin-block-end: 0.83em;font-size: 1.5rem;font-weight: bold;margin: 22px 0;line-height: normal;}
   p{font-size: 16px;}
   #sidebox1{display: none;}
-  #main{background-color: white;padding: 10px;margin: 10px 0 60px 0; display: flex;}
+  #main{background-color: white;padding: 10px;margin: 10px 0 0 0; display: block;}
   header{
     padding: 10px 0 10px;background-color: white;
     display: grid;grid-template-columns: 87px 230px;grid-template-rows: 40px;
@@ -303,6 +305,7 @@ table {
   #header2{margin-left: 10px;}
   #header2-p{font-family: Helevetica;font-weight: bold;font-style: oblique;font-size: 23px;margin: 0;height: 100%;}
   #header3{display: none;}
+  #footer1.cmn-footer{margin-bottom: 60px;height: 200px; margin-top: 0;}
   footer{display: grid;grid-template-columns: 33% 33% 33%;grid-template-rows: 60px;background-color: #179c17;
     font-size: 24px;position: fixed;bottom: 0px;left: 0px;width: 100%;font-family: cursive;}
   footer div{display: flex;}

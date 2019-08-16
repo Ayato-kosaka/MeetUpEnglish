@@ -16,19 +16,24 @@
 //= require turbolinks
 //= require_tree .
 $(function(){//prefectureを選ぶ画面のポチポチ + acgtive
-$(".region_a").parent().children("ul").hide();
-$("#display_show").show();//のちに消す
 $("#display_show").parent().children("a").addClass("active");//のちに消す
 $(".region_a").click(function(){
   var region_childern_ul = $(this).parent().children("ul")
-  if(region_childern_ul.is(':hidden')){
-    region_childern_ul.show();
-    $(this).addClass("active");
-  } else{
+  if($(this).hasClass("active")){
     region_childern_ul.hide();
     $(this).removeClass("active");
+  } else{
+    region_childern_ul.show();
+    $(this).addClass("active");
   }
  });
+
+ $(".pagetop").click(function () {
+        $('body,html').animate({
+            scrollTop: 0
+        }, 500);
+        return false;
+    });
 })
 
 var swi = 0;
