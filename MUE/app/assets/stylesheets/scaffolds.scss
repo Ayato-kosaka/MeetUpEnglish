@@ -24,7 +24,8 @@ pre {
 }
 a {
  color:#000;
- text-decoration:none
+ text-decoration:none;
+ -webkit-tap-highlight-color: transparent;
 }
 a:visited {
  color:#666
@@ -103,6 +104,7 @@ textarea {
     letter-spacing: .03125rem;
     font-weight: 700;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 .pagetop a {
     text-decoration: none;
