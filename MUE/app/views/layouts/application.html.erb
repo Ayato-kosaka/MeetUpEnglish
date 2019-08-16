@@ -5,7 +5,7 @@
     <%= favicon_link_tag('favicon.ico') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <% unless session[:user].nil? %><meta name="viewport" content="width=device-width,initial-scale=1.0"><% end %>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <script src="https://kit.fontawesome.com/16fa72faa1.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -58,7 +58,13 @@
       </div>
     </div>
 
-    <div id="footer1" class="cmn-footer"><div class="pagetop"> <a>↑PAGETOP</a></div><p class="copyright">© Meet Up English Group</p></div>
+    <div id="footer1" class="cmn-footer"><div class="pagetop"> <a>↑PAGETOP</a></div>
+    <div class="footer_page_btn"><a href="https://twitter.com/meetup_english?ref_src=twsrc%5Etfw">Follow Twitter</a></div>
+    <div class="footer_page_btn"><a href="https://www.instagram.com/meet_up_english?ref=badge">Follow Instagram</a></div>
+    <div class="footer_page_btn"><a href="https://access.line.me/oauth2/v2.1/login?returnUri=%2Foauth2%2Fv2.1%2Fauthorize%2Fconsent%3Fscope%3Dopenid%2Bprofile%2Bfriends%2Bgroups%2Btimeline.post%2Bmessage.write%26response_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fsocial-plugins.line.me%252Fwidget%252FloginCallback%253FreturnUrl%253Dhttps%25253A%25252F%25252Fsocial-
+      plugins.line.me%25252Fwidget%25252Fclose%26state%3D711f2fcb8f5af13530dabd1acd89c3%26client_id%3D1446101138&loginChannelId=1446101138&loginState=wynctL0x40o8HHxBeG4mMU#/">Follow Line</a></div>
+    <p class="copyright">© Meet Up English Group</p>
+  </div>
 
     <footer>
       <div data-href="/"><%= link_to "Schedule", root_path,data: {"turbolinks"=>false} %></div>
