@@ -1,31 +1,25 @@
 <p id="notice"><%= notice %></p>
+<h2><%= @teacher.name %>先生</h2>
+
+<%  if @teacher.avatar.attached? %>
+<%= image_tag @teacher.avatar ,style:"max-height:500px; width:100%"%>
+<% end %>
 
 <p>
-  <strong>Name:</strong>
-  <%= @teacher.name %>
+  <strong>Selfintroduction</strong><br>
+  <%= @teacher.selfIntroduction %>
 </p>
 
+<%  if session[:role]=="Admin"%>
 <p>
   <strong>Man:</strong>
   <%= @teacher.man %>
 </p>
-
-<p>
-  <strong>Selfintroduction:</strong>
-  <%= @teacher.selfIntroduction %>
-</p>
-
 <p>
   <strong>Email:</strong>
   <%= @teacher.email %>
 </p>
 
-<p>
-  <strong>Avatar:</strong>
-  <% if @teacher.avatar.attached? %>
-  <%= image_tag @teacher.avatar, :size=>"400x400" %>
-  <% end %>
-</p>
-
 <%= link_to 'Edit', edit_teacher_path(@teacher) %> |
 <%= link_to 'Back', teachers_path %>
+<% end %>
