@@ -22,11 +22,11 @@
       <% next %>
     <% end %><tr>
       <td><%= m.date.strftime("%Y/%m/%d") %><br><%= m.start.strftime("%H:%M") %>~<%= m.end.strftime("%H:%M") %></td>
-      <td><%= Cafe.find(m.cafeId).name %></td>
       <td><%= link_to teacher_path(m.teacherId), data: {"turbolinks"=>false} do %><%= Teacher.find(m.teacherId).name %> <br>先生<%end%></td>
-      <td style="width: 73px;">残り人数:<%= m.peopleNum %></td>
+      <td><p><%= Cafe.find(m.cafeId).name %></p>
+      <p>残り人数:<%= m.peopleNum %></p></td>
       <td style="border-radius: 10px;width: 61px;padding: 0;background: linear-gradient(#00a23f,#39900a);box-shadow: 1px 1px 1px 0 #a1a1a1;">
-          <a href="<%if session[:role]!="Admin"%>mailto:meetup_english-tokyo@yahoo.co.jp?subject=I want to go to Meet Up English&body=【氏名】%0D%0A【日程】<%= m.date.strftime("%Y年 %m月 %d日") %>%0D%0A【時間】%0D%0A【場所】<%= n.name %>:<%= Cafe.find(m.cafeId).name %>%0D%0A<% else %> /homes/<%=m.id%>/edit<%end%>" style="display:inline-block; border-radius: 12px;color: #fff;display: block;font-weight: 700;"><% if session[:role] == "Admin" %>edit<% else %> 参加<br>申し込み <% end %></td>
+          <a href="<%if session[:role]!="Admin"%>mailto:meetup_english-tokyo@yahoo.co.jp?subject=I want to go to Meet Up English&body=【氏名】%0D%0A【日程】<%= m.date.strftime("%Y年 %m月 %d日") %>%0D%0A【希望滞在時間】〇〇:〇〇～〇〇:〇〇%0D%0A【場所】<%= n.name %>:<%= Cafe.find(m.cafeId).name %>%0D%0A<% else %> /homes/<%=m.id%>/edit<%end%>" style="display:inline-block; border-radius: 12px;color: #fff;display: block;font-weight: 700;"><% if session[:role] == "Admin" %>edit<% else %> 参加<br>申し込み <% end %></td>
     </tr>
   <% end %>
   </table>
