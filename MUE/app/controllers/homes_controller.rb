@@ -2,7 +2,7 @@ class HomesController < ApplicationController
   before_action :set_home, only: [:show, :edit, :update, :destroy]
   before_action :set_selectedPrefecture_id, only: [:schedule]
 
-  skip_before_action :require_Admin, expect: [:index, :show, :edit, :new]
+  skip_before_action :require_Admin, except: [:index, :show, :edit, :new]
 
   require 'time'
 

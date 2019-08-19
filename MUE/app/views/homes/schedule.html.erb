@@ -16,7 +16,7 @@
     <%= link_to 'create new event', new_home_path(selected_city:n.id), data: {"turbolinks"=>false} %>
     <% end %></h1>
   <table>
-  <% Home.where(cityId: n.id).each do |m| %>
+  <% Home.where(cityId: n.id).sort_by{|a|Time.zone.parse(a.date.strftime("%Y%m%d")+a.start.strftime("%H%M"))}.each do |m| %>
     <% if Time.zone.parse(m.date.strftime("%Y%m%d")+m.end.strftime("%H%M"))<Time.current %>
       <% m.destroy %>
       <% next %>
