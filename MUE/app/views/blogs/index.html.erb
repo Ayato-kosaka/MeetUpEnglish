@@ -1,11 +1,12 @@
-<p id="notice"><%= notice %></p>
+<% if session[:role]=="Admin" %><p id="notice"><%= notice %></p><% end %>
+<h2>Meet Up English Blog</h2>
 
 <%= if session[:role]=="Admin" then link_to 'New Blog', new_blog_path end%>
 
 
 
 <% if @blogs %>
-<% @blogs.reverse.each do |blog| %>
+<% @blogs.order(:id).reverse.each do |blog| %>
 
 <article data-href="/blogs/<%= blog.id %>">
   <div class="eyecatch">
