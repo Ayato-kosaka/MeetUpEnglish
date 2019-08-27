@@ -4,19 +4,13 @@
 
 
       <% cafe = Cafe.find(cafeid) %>
-      <p>
-        <strong>Name:</strong>
+      <h1>
         <%= cafe.name %>
-      </p>
+      </h1>
+
 
       <p>
-        <strong>Description:</strong>
-        <%= cafe.description %>
-      </p>
-
-      <p>
-        <strong>Cityid:</strong>
-        <%= cafe.cityId %>
+        <%= simple_format(cafe.description) %>
       </p>
 
       <p>
