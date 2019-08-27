@@ -3,6 +3,21 @@
     <div class="modal-message-box">
 
 
+      <% teacher = Teacher.find(teacherid) %>
+      <h1>
+        <%= teacher.name+"先生" %>
+      </h1>
+
+      <% if teacher.avatar.attached? %>
+          <%= image_tag teacher.avatar, :size=>"400x400" %> <br>
+      <% end %>
+
+      <p>
+        <%= simple_format(teacher.selfIntroduction) %>
+      </p>
+
+      <br><br><br>
+
       <% cafe = Cafe.find(cafeid) %>
       <h1>
         <%= cafe.name %>

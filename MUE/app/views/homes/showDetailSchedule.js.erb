@@ -1,4 +1,4 @@
-$("#show_detail").html("<%= escape_javascript(render 'showDetailSchedule', { cafeid: params[:selected_cafeId]}) %>")
+$("#show_detail").html("<%= escape_javascript(render 'showDetailSchedule', { cafeid: params[:selected_cafeId], teacherid: params[:selected_teacherId]}) %>")
 
 $(function(){
  $(".modal-close-btn").click(function () {
