@@ -145,6 +145,7 @@ table {
     width: 100%;
     height: calc(100% - 60px);
     text-align: center;
+    img{max-width: 100%;height: auto;}
   }
 
   .modal-close-btn {
