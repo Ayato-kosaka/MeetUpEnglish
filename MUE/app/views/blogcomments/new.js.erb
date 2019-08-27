@@ -1,0 +1,8 @@
+$("#create_comment").html("<%= escape_javascript(render 'new', { blogid: params[:blogId],blogcomment: @blogcomment}) %>")
+
+$(function(){
+ $(".modal-close-btn").click(function () {
+   console.log( "click" );
+   $("#overlay").hide();
+ })
+})

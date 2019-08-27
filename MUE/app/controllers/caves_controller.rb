@@ -75,6 +75,6 @@ class CavesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cafe_params
-      params.require(:cafe).permit(:name, :description, :cityId, images: [])
+      params.require(:cafe).permit(:name, :description, :cityId, :url, images: [])
     end
 end

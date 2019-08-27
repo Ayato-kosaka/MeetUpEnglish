@@ -1,0 +1,35 @@
+<div id="overlay">
+  <div id="modalWindow">
+    <div class="modal-message-box">
+
+
+      <% cafe = Cafe.find(cafeid) %>
+      <p>
+        <strong>Name:</strong>
+        <%= cafe.name %>
+      </p>
+
+      <p>
+        <strong>Description:</strong>
+        <%= cafe.description %>
+      </p>
+
+      <p>
+        <strong>Cityid:</strong>
+        <%= cafe.cityId %>
+      </p>
+
+      <p>
+        <strong>Images:</strong><br>
+      <% if cafe.images.attached? %>
+        <% cafe.images.each do |image| %>
+          <%= image_tag image, :size=>"400x400" %> <br>
+        <% end %>
+      <% end %>
+      </p>
+
+
+    </div>
+    <button class="modal-close-btn">close</button>
+  </div>
+</div>

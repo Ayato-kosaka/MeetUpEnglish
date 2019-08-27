@@ -5,12 +5,12 @@
 <table>
   <thead>
     <tr>
-      <th>Cityid</th>
+      <th>City</th>
       <th>Date</th>
       <th>Start</th>
       <th>End</th>
       <th>Peoplenum</th>
-      <th>Teacherid</th>
+      <th>Teacher</th>
       <th>Cafeid</th>
       <th colspan="3"></th>
     </tr>
@@ -24,7 +24,7 @@
         <td><%= home.start.strftime("%H:%M") %></td>
         <td><%= home.end.strftime("%H:%M") %></td>
         <td><%= home.peopleNum %></td>
-        <td><%= home.teacherId %></td>
+        <td><%= Teacher.find(home.teacherId).name %></td>
         <td><%= Cafe.find(home.cafeId).name %></td>
         <td><%= link_to 'Show', home %></td>
         <td><%= link_to 'Edit', edit_home_path(home) %></td>

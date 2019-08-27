@@ -6,9 +6,10 @@
   <thead>
     <tr>
       <th>Id</th>
-      <th>Name</th>
-      <th>Description</th>
       <th>Cityid</th>
+      <th>Name</th>
+      <th>url</th>
+      <th>Description</th>
       <th>Images</th>
       <th colspan="3"></th>
     </tr>
@@ -18,9 +19,10 @@
     <% @caves.each do |cafe| %>
       <tr>
         <td><%= cafe.id %></td>
-        <td><%= cafe.name %></td>
-        <td><%= cafe.description %></td>
         <td><%= City.find(cafe.cityId).name %></td>
+        <td><%= cafe.name %></td>
+        <td><%= cafe.url? %></td>
+        <td><%= cafe.description %></td>
         <td><%= cafe.images.size %></td>
         <td><%= link_to 'Show', cafe %></td>
         <td><%= link_to 'Edit', edit_cafe_path(cafe) %></td>

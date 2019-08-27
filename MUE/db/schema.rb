@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_101327) do
+ActiveRecord::Schema.define(version: 2019_08_27_111920) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -41,6 +41,14 @@ ActiveRecord::Schema.define(version: 2019_08_13_101327) do
     t.string "name"
   end
 
+  create_table "blogcomments", force: :cascade do |t|
+    t.string "name"
+    t.text "text"
+    t.integer "blogId"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "blogs", force: :cascade do |t|
     t.string "title"
     t.text "text"
@@ -54,6 +62,7 @@ ActiveRecord::Schema.define(version: 2019_08_13_101327) do
     t.integer "cityId"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "url"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -94,6 +103,7 @@ ActiveRecord::Schema.define(version: 2019_08_13_101327) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "blogId"
+    t.integer "index"
   end
 
   create_table "teachers", force: :cascade do |t|

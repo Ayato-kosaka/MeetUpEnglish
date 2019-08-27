@@ -1,0 +1,8 @@
+$("#show_detail").html("<%= escape_javascript(render 'showDetailSchedule', { cafeid: params[:selected_cafeId]}) %>")
+
+$(function(){
+ $(".modal-close-btn").click(function () {
+   console.log( "click" );
+   $("#overlay").hide();
+ })
+})

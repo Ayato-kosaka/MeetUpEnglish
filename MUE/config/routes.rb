@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  get 'blogcomments/new'
+  post 'blogcomments' => 'blogcomments#create'
+
   resources :sections
   resources :blogs
   get 'overview', to: 'homes#overview'
   get 'homes/schedule'
+  get 'homes/showDetailSchedule'
   resources :caves
   resources :regions
   resources :homes

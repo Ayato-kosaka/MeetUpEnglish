@@ -50,7 +50,7 @@
 
 
   <div class="field">
-    <%= form.label :cafeId %>
+    <%= form.label "cafe" %> <%= link_to "create new cafe", new_cafe_path(selected_city: params[:selected_city]) %><br>
     <% if params[:selected_city] %>
     <%= form.select :cafeId,Cafe.where(cityId: params[:selected_city]).map{|n|[n.name,n.id]} %>
     <% else %>

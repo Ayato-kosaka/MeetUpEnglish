@@ -21,14 +21,21 @@
     <%= form.text_area :description %>
   </div>
 
-  <div class="field">
+  <% if params[:selected_city]%>
+  <div class="field" style="display:none">
     <%= form.label :cityId %>
-    <%= form.number_field :cityId %>
+    <%= form.number_field :cityId, value:params[:selected_city] %>
   </div>
+  <% end %>
 
   <div class="field">
     <%= form.label :images %>
     <%= form.file_field :images, multiple: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url %>
+    <%= form.number_field :url %>
   </div>
 
   <div class="actions">

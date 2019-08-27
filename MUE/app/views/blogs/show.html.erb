@@ -1,28 +1,40 @@
 <p id="notice"><%= notice %></p>
+<div id="create_comment">
+</div>
+<div class="around_blog">
+  <a class="left_blog" href="/blogs/<%=@next_blog? @next_blog.id: ""%>" data-turbolinks="false"><% if @next_blog then %><i>←</i><%= @next_blog.title %><% end %></a>
+  <a class="blogs_blog" href="/blogs/" data-turbolinks="false"><div>一覧</div></a>
+  <a class="right_blog" href="/blogs/<%=@before_blog? @before_blog.id: ""%>" data-turbolinks="false"><% if @before_blog then %><i><div>→</div></i><%=@before_blog.title%><% end %></a>
+</div>
+
+
 <h2><%= @blog.title %></h2>
 <%= image_tag @blog.image, class: "blog_image"%>
 
+<!-- タイトル本文 -->
 <%=  if session[:role]=="Admin" then link_to 'EditBlog', edit_blog_path(@blog) end %>
-
 <p class="text">
   <%= simple_format(@blog.text) %>
-</p>
+</p
 
 
-<% if Section.find_by(blogId:@blog.id) %>
+
+<!-- メニュー -->
 <div class="toc_container" style="width: auto; display: table;">
 <p >この記事の目次</p>
 <ul style="display: block;">
 <% Section.where(blogId: @blog.id).each do |n| %>
     <li><a href="#blog_index_<%= n.id %>"><%= n.title %></a></li>
 <% end %>
+<li><a href="#blog_index_comment">コメント</a></li>
 </ul>
 </div>
-<% end %>
 
+
+
+<!-- セクション -->
 <%= if session[:role]=="Admin" then link_to 'NewSection', new_section_path(selected_blog:@blog.id) end %>
-
-<% Section.where(blogId: @blog.id).each do |n| %>
+<% Section.where(blogId: @blog.id).order(:index).each do |n| %>
   <h1 id="blog_index_<%= n.id %>"><%= n.title %></h1>
   <% if session[:role]=="Admin" %><%= link_to 'EditSection', edit_section_path(n.id,selected_blog:@blog.id) %> | <%= link_to 'DestroySection', n, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
   <% if n.image.attached? %>
@@ -30,3 +42,21 @@
   <% end %>
   <p><%= simple_format(n.text) %></p>
 <% end %>
+
+<!-- 前後のブログ -->
+<div class="around_blog">
+  <a class="left_blog" href="/blogs/<%=@next_blog? @next_blog.id: ""%>" data-turbolinks="false"><% if @next_blog then %><i>←</i><%= @next_blog.title %><% end %></a>
+  <a class="blogs_blog" href="/blogs/" data-turbolinks="false"><div>一覧</div></a>
+  <a class="right_blog" href="/blogs/<%=@before_blog? @before_blog.id: ""%>" data-turbolinks="false"><% if @before_blog then %><i><div>→</div></i><%=@before_blog.title%><% end %></a>
+</div>
+
+<!-- コメント -->
+<div id="blog_index_comment">
+  <a data-remote="true" href="/blogcomments/new?blogId=<%= @blog.id %> "> <i class="fas fa-comments"></i>コメントする</a></div>
+
+<table id="blog_comments"><tbody>
+  <tr><th>コメント(<%= Blogcomment.where(blogId: @blog.id).size %>)</th></tr>
+  <% Blogcomment.where(blogId: @blog.id).to_enum.with_index.reverse_each do |n, index| %>
+  <tr><td class="number_blog_comments"><%= index+1 %></td><td><%= simple_format(n.text) %><div><%= n.name %></div><div class="created_blog_comments"><%= n.created_at.strftime("%Y/%m/%d %H:%M:%S") %></div></td></tr>
+  <% end %>
+</tbody></table>

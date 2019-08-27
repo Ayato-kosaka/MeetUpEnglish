@@ -29,11 +29,11 @@ $(".region_a").click(function(){
  });
 
  $(".pagetop").click(function () {
-        $('body,html').animate({
-            scrollTop: 0
-        }, 500);
-        return false;
-    });
+  $('body,html').animate({
+        scrollTop: 0
+    }, 500);
+    return false;
+ });
 })
 
 var swi = 0;

@@ -1,0 +1,28 @@
+<div id="overlay">
+  <div id="modalWindow">
+    <div class="modal-message-box">
+
+
+
+      <%= form_with(model: blogcomment, local: true) do |form| %>
+
+        <table id="blog_comment"><tbody>
+          <tr><th><%= form.label :name %></th></tr>
+          <tr><td><%= form.text_field :name, style:"height: 30px;" %></td></tr>
+          <tr><th><%= form.label "comment" %></th></tr>
+          <tr><td><%= form.text_area :text, style:"height: 100px" %></td></tr>
+          <tr><td class="actions"><%= form.submit %></td></tr>
+        </tbody></table>
+
+        <div class="field" style="display:none;">
+          <%= form.label :blogId %>
+          <%= form.text_field :blogId, value:blogid %>
+        </div>
+      <% end %>
+
+
+
+    </div>
+    <button class="modal-close-btn">close</button>
+  </div>
+</div>
