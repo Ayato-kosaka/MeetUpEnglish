@@ -1,6 +1,8 @@
 class CavesController < ApplicationController
   before_action :set_cafe, only: [:show, :edit, :update, :destroy]
 
+  skip_before_action :require_Admin, only: [:show]
+
   # GET /caves
   # GET /caves.json
   def index

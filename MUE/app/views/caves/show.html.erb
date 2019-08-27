@@ -1,23 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h1>
   <%= @cafe.name %>
-</p>
+</h1>
+
 
 <p>
-  <strong>Url:</strong>
-  <%= @cafe.url %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @cafe.description %>
-</p>
-
-<p>
-  <strong>Cityid:</strong>
-  <%= @cafe.cityId %>
+  <%= simple_format(@cafe.description) %>
 </p>
 
 <p>
@@ -28,6 +17,3 @@
   <% end %>
 <% end %>
 </p>
-
-<%= link_to 'Edit', edit_cafe_path(@cafe) %> |
-<%= link_to 'Back', caves_path %>
