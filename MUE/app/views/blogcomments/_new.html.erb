@@ -11,12 +11,12 @@
           <tr><td><%= form.text_field :name, style:"height: 30px;" %></td></tr>
           <tr><th><%= form.label "comment" %></th></tr>
           <tr><td><%= form.text_area :text, style:"height: 100px" %></td></tr>
-          <tr><td class="actions"><%= form.submit %></td></tr>
+          <tr><td class="actions"><%= form.submit '投稿' %></td></tr>
         </tbody></table>
 
         <div class="field" style="display:none;">
           <%= form.label :blogId %>
-          <%= form.text_field :blogId, value:blogid %>
+          <%= form.text_field :blogId, value:blogid%>
         </div>
       <% end %>
 
