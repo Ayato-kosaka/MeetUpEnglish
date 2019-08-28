@@ -40,7 +40,7 @@
   <% if n.image.attached? %>
   <%= image_tag n.image, class: "section_image"%>
   <% end %>
-  <p><%= simple_format(n.text) %></p>
+  <p><%= raw(n.text.gsub(/\n/, '<br>')) %></p>
 <% end %>
 
 <!-- 前後のブログ -->

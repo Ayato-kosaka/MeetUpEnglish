@@ -64,3 +64,6 @@ gem 'jquery-rails'
 gem 'aws-sdk-s3'
 
 gem 'google-analytics-rails'
+
+#gem 'will_paginate'
+#gem 'bootstrap-will_paginate'
