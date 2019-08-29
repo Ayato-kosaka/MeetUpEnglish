@@ -48,7 +48,7 @@
 
 
   <div class="field">
-    <%= form.label "cafe" %> <%= link_to "create new cafe", new_cafe_path(selected_city: params[:selected_city]) %><br>
+    <%= form.label "cafe" %> <%= link_to "create new cafe", new_cafe_path(selected_city: @home.cityId) %><br>
     <%= form.select :cafeId,Cafe.where(cityId: @home.cityId).map{|n|[n.name,n.id]} %>
   </div>
 
