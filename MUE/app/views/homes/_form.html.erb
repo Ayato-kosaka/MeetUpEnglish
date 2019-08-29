@@ -12,12 +12,10 @@
   <% end %>
 
 
-  <% if params[:selected_city]%>
   <div class="field" style="display:none">
     <%= form.label :cityId %>
-    <%= form.number_field :cityId, value:params[:selected_city] %>
+    <%= form.number_field :cityId, value:@home.cityId %>
   </div>
-  <% end %>
 
   <div class="field">
     <%= form.label :date %>
@@ -51,11 +49,7 @@
 
   <div class="field">
     <%= form.label "cafe" %> <%= link_to "create new cafe", new_cafe_path(selected_city: params[:selected_city]) %><br>
-    <% if params[:selected_city] %>
-    <%= form.select :cafeId,Cafe.where(cityId: params[:selected_city]).map{|n|[n.name,n.id]} %>
-    <% else %>
     <%= form.select :cafeId,Cafe.where(cityId: @home.cityId).map{|n|[n.name,n.id]} %>
-    <% end %>
   </div>
 
   <div class="actions">

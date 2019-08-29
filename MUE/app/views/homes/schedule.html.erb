@@ -1,4 +1,4 @@
-<h2><%= Prefecture.find(@selectedPrefecture_id).name %>での開催スケジュール</h2>
+<h2><%= @selectedPrefecture.name %>での開催スケジュール</h2>
 
 <div id="show_detail">
 </div>
@@ -17,8 +17,9 @@
 </div>
 
 <% City.where(prefectureId: @selectedPrefecture_id).each do |n| %>
-  <h1 id="#schedule_index_<%= n.id %>"><%= n.name %> <% if ((session[:role]  == "Admin")||(session[:role]  == "Teacher")) %>
-    <%= link_to 'create new event', new_home_path(selected_city:n.id), data: {"turbolinks"=>false} %>
+  <h1 id="#schedule_index_<%= n.id %>"><%= n.name %>
+    <% if ((session[:role]  == "Admin")||(session[:role]  == "Teacher")) %>
+      <%= link_to 'create new event', new_home_path(selected_city:n.id), data: {"turbolinks"=>false} %>
     <% end %></h1>
   <table>
   <% Home.where(cityId: n.id).sort_by{|a|Time.zone.parse(a.date.strftime("%Y%m%d")+a.start.strftime("%H%M"))}.each do |m| %>

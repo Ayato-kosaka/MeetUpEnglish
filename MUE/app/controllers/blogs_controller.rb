@@ -12,8 +12,8 @@ class BlogsController < ApplicationController
   # GET /blogs/1
   # GET /blogs/1.json
   def show
-    @next_blog =  Blog.where("id > "+@blog.id.to_s).limit(1)[0]
-    @before_blog =  Blog.where("id < "+@blog.id.to_s)[-1]
+    @next_blog =  Blog.where("id > "+@blog.id.to_s).order(:id).limit(1)[0]
+    @before_blog =  Blog.where("id < "+@blog.id.to_s).order(:id)[-1]
   end
 
   # GET /blogs/new

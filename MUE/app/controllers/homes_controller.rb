@@ -1,6 +1,6 @@
 class HomesController < ApplicationController
   before_action :set_home, only: [:show, :edit, :update, :destroy]
-  before_action :set_selectedPrefecture_id, only: [:schedule, :showDetailSchedule]
+  before_action :set_selectedPrefecture, only: [:schedule, :showDetailSchedule]
 
   skip_before_action :require_Admin, except: [:index, :show, :edit, :new]
 
@@ -20,6 +20,7 @@ class HomesController < ApplicationController
   # GET /homes/new
   def new
     @home = Home.new
+    @home.cityId = params[:selected_city]
   end
 
   # GET /homes/1/edit
@@ -34,7 +35,7 @@ class HomesController < ApplicationController
 
     respond_to do |format|
       if @home.save
-        format.html { redirect_to homes_schedule_path(selected_prefecture: @selectedPrefecture_id), notice: 'Home was successfully created.' }
+        format.html { redirect_to schedule_path(@selectedPrefecture_id), notice: 'Home was successfully created.' }
         format.json { render :show, status: :created, location: @home }
       else
         format.html { render :new }
@@ -49,7 +50,7 @@ class HomesController < ApplicationController
     @selectedPrefecture_id =  City.find(@home.cityId).prefectureId
     respond_to do |format|
       if @home.update(home_params)
-        format.html { redirect_to homes_schedule_path(selected_prefecture: @selectedPrefecture_id), notice: 'Home was successfully updated.' }
+        format.html { redirect_to schedule_path(@selectedPrefecture_id), notice: 'Home was successfully updated.' }
         format.json { render :show, status: :ok, location: @home }
       else
         format.html { render :edit }
@@ -82,8 +83,9 @@ class HomesController < ApplicationController
       @home = Home.find(params[:id])
     end
 
-    def set_selectedPrefecture_id
-      @selectedPrefecture_id = params[:selected_prefecture]
+    def set_selectedPrefecture
+      @selectedPrefecture = Prefecture.find(params[:id])
+      @selectedPrefecture_id = params[:id]
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def home_params

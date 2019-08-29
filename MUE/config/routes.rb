@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :sections
   resources :blogs
   get 'overview', to: 'homes#overview'
-  get 'homes/schedule'
+  get 'schedule/:id', to: 'homes#schedule', as: 'schedule'
   get 'homes/showDetailSchedule'
   resources :caves
   resources :regions
