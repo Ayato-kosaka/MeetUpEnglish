@@ -1,12 +1,12 @@
-<div id="overlay">
+h2<div id="overlay">
   <div id="modalWindow">
     <div class="modal-message-box">
 
-
+      <h1>イベントの詳細</h1>
       <% teacher = Teacher.find(teacherid) %>
-      <h1>
+      <h2>
         <%= teacher.name+"先生" %>
-      </h1>
+      </h2>
 
       <% if teacher.avatar.attached? %>
           <%= image_tag teacher.avatar, :size=>"400x400" %> <br>
@@ -19,9 +19,9 @@
       <br><br><br>
 
       <% cafe = Cafe.find(cafeid) %>
-      <h1>
+      <h2>
         <%= cafe.name %>
-      </h1>
+      </h2>
 
 
       <p>

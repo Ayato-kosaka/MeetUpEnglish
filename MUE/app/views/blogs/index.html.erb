@@ -1,5 +1,5 @@
 <% if session[:role]=="Admin" %><p id="notice"><%= notice %></p><% end %>
-<h2>Meet Up English Blog</h2>
+<h1>Meet Up English Blog</h1>
 
 <%= if session[:role]=="Admin" then link_to 'New Blog', new_blog_path end%>
 

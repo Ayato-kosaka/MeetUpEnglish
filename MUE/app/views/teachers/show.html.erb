@@ -5,10 +5,8 @@
 <%= image_tag @teacher.avatar ,style:"max-height:500px; width:100%"%>
 <% end %>
 
-<p>
-  <strong>Selfintroduction</strong><br>
-  <%= @teacher.selfIntroduction %>
-</p>
+  <h2>Selfintroduction</h2><br>
+  <p><%= @teacher.selfIntroduction %></p>
 
 <%  if session[:role]=="Admin"%>
 <p>
