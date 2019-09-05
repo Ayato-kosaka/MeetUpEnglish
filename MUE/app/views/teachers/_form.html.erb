@@ -47,6 +47,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit :onClick=>"ga('send','event','submit','click','CreateNewTeacher');"%>
   </div>
 <% end %>
