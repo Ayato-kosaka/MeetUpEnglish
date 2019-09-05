@@ -34,7 +34,7 @@
       <div id="sidebox1">
         <div id="sidebox2">
         <% unless session[:user].nil? %>
-        <p><%= link_to 'teacher', teachers_path %></p>
+        <p><%= link_to 'teacher', teachers_path, data: {"turbolinks"=>false} %></p>
         <p><%= link_to 'cafe', caves_path %></p>
         <% end %>
 
