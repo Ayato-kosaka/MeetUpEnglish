@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :prefectureId %>
-    <%= form.number_field :prefectureId, value: params[:selected_prefecture]?params[:selected_prefecture]:@city.prefectureId%>
+    <%= form.number_field :prefectureId, value: params[:selected_prefecture] ? params[:selected_prefecture] : (@city.prefectureId ? @city.prefectureId : 1)%>
   </div>
   <div class="actions">
     <%= form.submit %>
