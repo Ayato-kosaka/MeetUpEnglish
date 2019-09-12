@@ -28,7 +28,7 @@
       <% next %>
     <% end %>
     <tr>
-      <td><%= m.date.strftime("%Y/%m/%d") %><br><%= m.start.strftime("%H:%M") %>~<%= m.end.strftime("%H:%M") %></td>
+      <td><%= m.date.strftime("%Y/%m/%d(#{%w(日 月 火 水 木 金 土)[m.date.wday]})") %><br><%= m.start.strftime("%H:%M") %>~<%= m.end.strftime("%H:%M") %></td>
       <td class="onlypc"><%= link_to teacher_path(m.teacherId), data: {"turbolinks"=>false} do %><%= Teacher.find(m.teacherId).name %> <br>先生<%end%></td>
       <td><p class="onlypc" style="margin:0px;"><%= link_to Cafe.find(m.cafeId).name,Cafe.find(m.cafeId).url ? Cafe.find(m.cafeId).url: cafe_path(m.cafeId) %></p>
         <p style="margin:0px;">残席:<%= m.peopleNum %></p></td>
