@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @contact.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @contact.email %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @contact.title %>
+</p>
+
+<p>
+  <strong>Message:</strong><br>
+  <%= raw(@contact.message.gsub(/\n/, '<br>')) %>
+</p>
+
+<p>
+  <strong>Createdat:</strong><br>
+  <%= @contact.created_at %>
+</p>
+
+<% if @contact.home_id %>
+<p>
+  <strong>from:</strong>
+  <%= link_to 'click', home_path(@contact.home_id) %>
+</p>
+<% end %>
+
+
+<%= link_to 'Back', contacts_path %>

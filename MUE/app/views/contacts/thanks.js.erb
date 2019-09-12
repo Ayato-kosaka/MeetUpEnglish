@@ -1,0 +1,8 @@
+$("#create_contact").html("<%= escape_javascript(render 'thanks') %>")
+
+$(function(){
+ $(".modal-close-btn").click(function () {
+   console.log( "click" );
+   $("#overlay").hide();
+ })
+})

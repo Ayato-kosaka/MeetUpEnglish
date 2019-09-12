@@ -50,13 +50,14 @@
   <a class="right_blog" href="/blogs/<%=@before_blog? @before_blog.id: ""%>" data-turbolinks="false"><% if @before_blog then %><i><div>→</div></i><%=@before_blog.title%><% end %></a>
 </div>
 
+
 <!-- コメント -->
 <div id="blog_index_comment">
   <a data-remote="true" href="/blogcomments/new?blogId=<%= @blog.id %> "> <i class="fas fa-comments"></i>コメントする</a></div>
 
 <table id="blog_comments"><tbody>
-  <tr><th>コメント(<%= Blogcomment.where(blogId: @blog.id).size %>)</th></tr>
-  <% Blogcomment.where(blogId: @blog.id).to_enum.with_index.reverse_each do |n, index| %>
+  <tr><th>コメント(<%= @blog.comments.size %>)</th></tr>
+  <% @blog.comments.to_enum.with_index.reverse_each do |n, index| %><!-- .to_enum.with_index => index付与 -->
   <tr><td class="number_blog_comments"><%= index+1 %></td><td><%= simple_format(n.text) %><div><%= n.name %></div><div class="created_blog_comments"><%= n.created_at.strftime("%Y/%m/%d %H:%M:%S") %></div></td></tr>
   <% end %>
 </tbody></table>

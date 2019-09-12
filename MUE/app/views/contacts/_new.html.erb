@@ -1,0 +1,56 @@
+<div id="overlay">
+  <div id="modalWindow">
+    <div class="modal-message-box">
+
+
+
+      <h1>Contact</h1>
+      <p>Meet Up English のホームページにご訪問していただきありがとうございます。</p>
+      <%= form_with( model: contact, url: contact.home_id ? '/contacts/'+contact.home_id.to_s+'/create' : '/contacts', remote: true ) do |form| %>
+
+
+        <% if contact.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+            <ul>
+            <% contact.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="grid">
+
+        <div class="field grid1">
+          <%= form.label :name %>
+          <%= form.text_field :name %>
+        </div>
+
+        <div class="field grid2">
+          <%= form.label :email %>
+          <%= form.text_field :email %>
+        </div>
+
+        <div class="field grid3">
+          <%= form.label :title %>
+          <%= form.text_field :title, value: (@title_value ? @title_value : (contact.title ? contact.title : '')) %>
+        </div>
+
+        <div class="field grid4">
+          <%= form.label :message %>
+          <%= form.text_area :message, value: (@message_value ? @message_value : (contact.message ? contact.message : ''))  %>
+        </div>
+
+        </div>
+
+        <p style="text-align: center;"><%= form.submit :value=>"送信", :onClick=>"ga('send','event','submit','click','CreateNewContact');", :class=>'send', data: { disable_with: "送信中..." } %></p>
+      <% end %>
+
+
+
+
+    </div>
+    <button class="modal-close-btn">close</button>
+  </div>
+</div>

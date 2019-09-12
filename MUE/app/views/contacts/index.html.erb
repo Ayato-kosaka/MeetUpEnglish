@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Contacts</h1>
+
+<table style ="border-collapse: separate;border-spacing: 0px 8px;">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Title</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @contacts.order(:checked).order(created_at: :desc).each do |contact| %>
+      <tr data-href="/contacts/<%= contact.id %>" style="background-color: #d1f5f5;cursor: pointer;">
+        <td <% unless contact.checked %> class="text_orange_gradation" <% end %>><%= contact.name %></td>
+        <td><%= contact.title %></td>
+        <td><%= contact.created_at.strftime("%m/%d,%H:%M") %></td>
+        <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

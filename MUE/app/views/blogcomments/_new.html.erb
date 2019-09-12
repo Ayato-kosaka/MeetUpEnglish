@@ -3,21 +3,18 @@
     <div class="modal-message-box">
 
 
-
+      <h1>Blog Comment</h1>
       <%= form_with(model: blogcomment, local: true) do |form| %>
+
 
         <table id="blog_comment"><tbody>
           <tr><th><%= form.label :name %></th></tr>
           <tr><td><%= form.text_field :name, style:"height: 30px;" %></td></tr>
           <tr><th><%= form.label "comment" %></th></tr>
           <tr><td><%= form.text_area :text, style:"height: 100px" %></td></tr>
-          <tr><td class="actions"><%= form.submit '投稿' %></td></tr>
+          <tr><td class="actions"><%= form.submit '投稿' ,:class=>'send'%></td></tr>
         </tbody></table>
 
-        <div class="field" style="display:none;">
-          <%= form.label :blogId %>
-          <%= form.text_field :blogId, value:blogid%>
-        </div>
       <% end %>
 
 

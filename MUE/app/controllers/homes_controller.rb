@@ -74,7 +74,7 @@ class HomesController < ApplicationController
     @selectedPrefecture_id
   end
 
-  def schecule
+  def schedule
   end
 
   private

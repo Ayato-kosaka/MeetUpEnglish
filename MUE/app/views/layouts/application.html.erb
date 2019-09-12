@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Meet Up English</title>
+    <title><%= content_for?(:title) ? yield(:title) : "Meet Up English"%></title>
     <%= analytics_init if Rails.env.production? %>
     <%= favicon_link_tag('favicon.ico') %>
     <%= csrf_meta_tags %>
@@ -13,12 +13,13 @@
   </head>
 
   <body>
+    <div id="create_contact"></div>
 
     <header>
       <div id="header1-1"><div id="header1-2"><img id="header1-img" src="https://firebasestorage.googleapis.com/v0/b/test-8d0bf.appspot.com/o/images%2FS__5120002.jpg?alt=media&token=0d0a3277-931a-4822-a88c-9bed623c0c19"></div></div>
       <div id="header2"><p id="header2-p">Meet Up English</p></div>
       <% if session[:user].nil? %>
-      <div id="header3"><ul><li><a href="mailto:meetup_english-tokyo@yahoo.co.jp?subject=I want to be a teacher&body=【Name】%0D%0A【Nearest station】%0D%0A【type of visa】%0D%0A【Gender】%0D%0A【Age】%0D%0A">I want to be a teacher</a>
+      <div id="header3"><ul><li><a data-remote="true" href="/contacts/new?title=I want to be a teacher">I want to be a teacher</a>
       </li></ul></div>
       <% elsif %>
       <div id="header3"><ul><li>name:<%=session[:user]["name"]%></li><li>role:<%=session[:role]%></li><li><%= link_to "ログアウト", logout_url, method: :delete %></li></ul></div>
@@ -34,8 +35,8 @@
       <div id="sidebox1">
         <div id="sidebox2">
         <% unless session[:user].nil? %>
-        <p><%= link_to 'teacher', teachers_path, data: {"turbolinks"=>false} %></p>
-        <p><%= link_to 'cafe', caves_path %></p>
+        <p><%= link_to 'teacher', teachers_path %></p>
+        <p><%= link_to 'contact(' + Contact.where(checked: false).size.to_s + ')', contacts_path, data: {"turbolinks"=>false}, class: Contact.where(checked: false).size > 0 ? "text_orange_gradation" : '' %></p>
         <% end %>
 
         <%= link_to "カフェ開催スケジュール", root_path, class: "page_btn",style: "background-color: #179c17", data: {"turbolinks"=>false} %>
@@ -60,7 +61,7 @@
     </div>
 
     <div id="footer1" class="cmn-footer"><div class="pagetop"> <a>↑PAGETOP</a></div>
-    <div class="footer_contact_btn"><a class="contact_btn" href="mailto:meetup_english-tokyo@yahoo.co.jp"><i class="far fa-envelope"></i>Contact</a></div>
+    <div class="footer_contact_btn"><a class="contact_btn" data-remote="true" href="/contacts/new"><i class="far fa-envelope"></i>Contact</a></div>
     <div class="footer_page_btn"><a class="twitter_btn" href="https://twitter.com/meetup_english?ref_src=twsrc%5Etfw"><i class="fab fa-twitter"></i>Follow Twitter</a></div>
     <div class="footer_page_btn"><a class="insta_btn" href="https://www.instagram.com/meet_up_english?ref=badge"><i class="fab fa-instagram"></i>Follow Instagram</a></div>
     <div class="footer_page_btn"><a class="line_btn" href="http://nav.cx/alJd5yY"><i class="fab fa-line"></i>Follow Line</a></div>

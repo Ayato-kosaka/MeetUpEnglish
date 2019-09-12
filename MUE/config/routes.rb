@@ -1,16 +1,22 @@
 Rails.application.routes.draw do
+  resources :contacts, except: [:edit, :update]
+  get 'contacts/:id/join', to: 'contacts#join_new'
+  post 'contacts/:id/create' => 'contacts#join_create'
+
+
+
   get 'blogcomments/new'
   post 'blogcomments' => 'blogcomments#create'
 
   resources :sections
   resources :blogs
+  root 'homes#home'
   get 'overview', to: 'homes#overview'
   get 'schedule/:id', to: 'homes#schedule', as: 'schedule'
   get 'homes/showDetailSchedule'
+  resources :homes
   resources :caves
   resources :regions
-  resources :homes
-  root 'homes#home'
   resources :prefectures
   resources :cities
   controller :sessions do

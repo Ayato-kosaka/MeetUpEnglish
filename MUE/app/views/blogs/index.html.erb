@@ -15,9 +15,12 @@
     <% end %>
   </div>
   <h3><%= link_to blog.title, blog %></h3>
-  <div class="blog_cratedAt">
-    <% if session[:role]=="Admin" %><%= link_to 'Edit', edit_blog_path(blog)%> | <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %><%end%>
-    <%= blog.created_at.strftime("%Y.%m.%d") %>
+  <div>
+    <div class="blog_createdAt">
+      <% if session[:role]=="Admin" %><%= link_to 'Edit', edit_blog_path(blog)%> | <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %><%end%>
+      <%= blog.created_at.strftime("%Y.%m.%d") %>
+    </div>
+    <div class="commentnum_blog_index"><i class="fas fa-comments"></i><%= blog.comments.size %></div>
   </div>
 
 </article>

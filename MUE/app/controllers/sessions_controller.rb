@@ -11,11 +11,11 @@ class SessionsController < ApplicationController
 		if (user = Admin.find_by(email: params[:email])) && user.authenticate(params[:password])
 			session[:user] = user
 			session[:role]  = "Admin"
-			redirect_to homes_url, notice: 'ログイン成功'
+			redirect_to contacts_url, notice: 'ログイン成功'
 		elsif (user = Teacher.find_by(email: params[:email])) && user.authenticate(params[:password])
 			session[:user_id] = user
 			session[:role]  = "Teacher"
-			redirect_to homes_url, notice: 'ログイン成功'
+			redirect_to contacts_url, notice: 'ログイン成功'
 		else
   		flash[:alert] = 'emailかpasswordに誤りがあります'
   		redirect_to login_url
