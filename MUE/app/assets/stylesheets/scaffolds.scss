@@ -75,8 +75,7 @@ textarea {
 .insta_btn2 span {display:inline-block;position:relative;transition:.5s;font-size:13px;font-weight:500;top:-16px;left:-11px}
 .insta_btn2:hover span {-webkit-transform:rotateX(360deg);-ms-transform:rotateX(360deg);transform:rotateX(360deg)}
 
-.toc_container {padding:1em 2em 1em;margin:55px auto 55px auto;background:#fff !important;background:rgba(255,255,255,0.5) !important;border:1px solid #eee}
-.toc_container p {text-align:center;font-weight:700;margin:0;margin-bottom:0px;padding:0;margin-bottom:.7em}
+.toc_container {width: 100%;margin:55px auto;background:#fff !important;border:1px solid #eee; p{text-align:center;font-weight:700;} ul{padding: 0 0 1em 66px;}}
 .toc_container li a {display:block;padding:.5em 0;border-top:1px dotted #ddd;text-decoration:none;text-shadow:none;color:#0ba834f2;font-size:15px;background:0 0}
 #area_list_ul{display: block;}
 #area_list li {line-height:3;font-size:25px;list-style:none;border-bottom:1px solid gray;cursor: zoom-in;}

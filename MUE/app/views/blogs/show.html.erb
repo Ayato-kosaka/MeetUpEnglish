@@ -20,7 +20,7 @@
 
 
 <!-- メニュー -->
-<div class="toc_container" style="width: auto; display: table;">
+<div class="toc_container">
 <p >この記事の目次</p>
 <ul style="display: block;">
 <% Section.where(blogId: @blog.id).order(:index).each do |n| %>
