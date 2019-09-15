@@ -1,4 +1,4 @@
-<% set_meta_tags title: @blog.title, description: @blog.text,og: { image: @blog.image }%>
+<% set_meta_tags title: @blog.title, description: @blog.text,og: { image: @blog.image.attachment.service.send(:object_for, @blog.image.key).public_url }%>
 
 
 <p id="notice"><%= notice %></p>
