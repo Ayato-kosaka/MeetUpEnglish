@@ -65,5 +65,7 @@ gem 'aws-sdk-s3'
 
 gem 'google-analytics-rails'
 
+gem 'meta-tags'
+
 #gem 'will_paginate'
 #gem 'bootstrap-will_paginate'
