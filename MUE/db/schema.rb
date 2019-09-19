@@ -42,11 +42,14 @@ ActiveRecord::Schema.define(version: 2019_09_09_041404) do
   end
 
   create_table "blogcomments", force: :cascade do |t|
+    t.integer "blog_id"
     t.string "name"
     t.text "text"
     t.integer "blogId"
+    t.integer "test"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["blog_id"], name: "index_blogcomments_on_blog_id"
   end
 
   create_table "blogs", force: :cascade do |t|
