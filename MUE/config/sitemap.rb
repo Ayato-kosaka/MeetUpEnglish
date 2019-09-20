@@ -28,13 +28,11 @@ SitemapGenerator::Sitemap.create do
   add root_path, changefreq: 'daily'                       #  県スケジュール一覧ページ
   add overview_path, changefreq: 'daily'                       #  料金/すきま時間英会話とはページ
   Prefecture.find_each do |prefecture|                               # 県スケジュール詳細ページ
-    add schedule_path(prefecture.id), changefreq: 'daily',
-                               lastmod: prefecture.updated_at
+    add schedule_path(prefecture.id), changefreq: 'daily'
   end
 
   add blogs_path, changefreq: 'daily'                       # ブログ一覧ページ
   Blog.find_each do |blog|                               # ブログ詳細ページ
-    add blog_path(blog), changefreq: 'daily',
-                               lastmod: blog.updated_at
+    add blog_path(blog), changefreq: 'daily'
   end
 end
