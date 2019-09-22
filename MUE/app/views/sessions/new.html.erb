@@ -2,18 +2,18 @@
 <% if flash[:alert] %>
   <p><%= flash[:alert] %></p>
 <% end %>
-<%= form_tag do %>
+<%= form_for(:session, url: login_path) do |f| %>
   <div class="field">
-    <%= label_tag :email %>
-    <%= text_field_tag :email %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
   </div>
 
   <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
+    <%= f.label:password %>
+    <%= f.password_field :password %>
   </div>
 
   <div class="actions">
-    <%= submit_tag "Login" %>
+    <%= f.submit "Login" %>
   </div>
 <% end %>

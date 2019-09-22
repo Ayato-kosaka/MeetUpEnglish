@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :require_Admin
+  include SessionsHelper
 
   private
 
