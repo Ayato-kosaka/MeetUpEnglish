@@ -28,7 +28,7 @@
       <div id="header3"><ul><li><a data-remote="true" href="/contacts/new?title=I want to be a teacher">I want to be a teacher</a>
       </li></ul></div>
       <% elsif %>
-      <div id="header3"><ul><li>name:<%=session[:user]["name"]%></li><li>role:<%=session[:role]%></li><li><%= link_to "ログアウト", logout_url, method: :delete %></li></ul></div>
+      <div id="header3"><ul><li>name:<%=session[:user]["name"]%></li><li>role:<%=session[:role]%></li><li><%= link_to "Log out", logout_url, method: :delete %></li></ul></div>
       <% end %>
     </header>
 
