@@ -13,3 +13,8 @@ two:
   selfIntroduction: MyText
   email: MyString
   password_digest: <%= BCrypt::Password.create('secret') %>
+
+michael:
+  name: Michael Example
+  email: michael@example.com
+  password_digest: <%= User.digest('secret') %>
