@@ -24,11 +24,11 @@
     <header>
       <div id="header1-1"><div id="header1-2"><%= link_to image_tag("logo.jpg", alt: "logo", id: 'header1-img'), root_path %></div></div>
       <div id="header2"><p id="header2-p"><%= link_to 'Meet up English', root_path, data: {"turbolinks"=>false} %></p></div>
-      <% if session[:user].nil? %>
+      <% if !logged_in? %>
       <div id="header3"><ul><li><a data-remote="true" href="/contacts/new?title=I want to be a teacher">I want to be a teacher</a>
       </li></ul></div>
       <% elsif %>
-      <div id="header3"><ul><li>name:<%=session[:user]["name"]%></li><li>role:<%=session[:role]%></li><li><%= link_to "Log out", logout_url, method: :delete %></li></ul></div>
+      <div id="header3"><ul><li>name:<%=@current_user.name%></li><li>role:<%=session[:role]%></li><li><%= link_to "Log out", logout_path, method: :delete %></li></ul></div>
       <% end %>
     </header>
 

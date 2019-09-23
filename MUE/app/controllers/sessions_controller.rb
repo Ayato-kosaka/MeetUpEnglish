@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 			redirect_to contacts_url, notice: 'ログイン成功'
 		elsif (user = Teacher.find_by(email: params[:session][:email].downcase)) && user.authenticate(params[:session][:password])
 			log_in(user)
-			redirect_to contacts_url, notice: 'ログイン成功'
+			redirect_to root_url
 		else
   		flash.now[:alert] = 'emailかpasswordに誤りがあります'
   		render 'new'
@@ -21,7 +21,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-		reset_session
-		redirect_to login_url
+    logger.debug("\n\n\n\n\n\n\n\nif文の中に入りました")
+    log_out
+		redirect_to root_url
   end
 end

@@ -30,11 +30,11 @@ class TeachersController < ApplicationController
 
     respond_to do |format|
       if @teacher.save
-        format.html { redirect_to @teacher, notice: 'Teacher was successfully created.' }
-        format.json { render :show, status: :created, location: @teacher }
+        log_in @teacher
+        flash[:success] = "Welcome to the Sample App!"
+        redirect_to root_url
       else
-        format.html { render :new }
-        format.json { render json: @teacher.errors, status: :unprocessable_entity }
+        render :new
       end
     end
   end

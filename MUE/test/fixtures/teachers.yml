@@ -17,4 +17,4 @@ two:
 michael:
   name: Michael Example
   email: michael@example.com
-  password_digest: <%= User.digest('secret') %>
+  password_digest: <%= Teacher.digest('secret') %>
