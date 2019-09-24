@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :require_Admin ,only: [:new, :create]
+  skip_before_action :require_Admin
   def new
   end
 
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    logger.debug("\n\n\n\n\n\n\n\nif文の中に入りました")
+    logger.debug("if文の中に入りました")
     log_out
 		redirect_to root_url
   end

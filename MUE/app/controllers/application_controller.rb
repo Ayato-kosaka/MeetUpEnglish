@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def require_Admin
     unless session[:role] == "Admin"
-      flash[:alert] = "You must be logged in to access this section"
+      flash[:alert] = "You must be Admin in to access this section"
       redirect_to login_url # halts request cycle
     end
   end

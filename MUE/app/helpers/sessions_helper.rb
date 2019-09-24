@@ -18,7 +18,7 @@ module SessionsHelper
 
   # 現在のユーザーをログアウトする
   def log_out
-    session[:role] = "a"
+    reset_session
     @current_user = nil
   end
 end
