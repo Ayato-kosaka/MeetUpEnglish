@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
 			redirect_to contacts_url, notice: 'ログイン成功'
 		elsif (user = Teacher.find_by(email: params[:session][:email].downcase)) && user.authenticate(params[:session][:password])
 			log_in(user)
+      remember(user)
 			redirect_to root_url
 		else
   		flash.now[:alert] = 'emailかpasswordに誤りがあります'
