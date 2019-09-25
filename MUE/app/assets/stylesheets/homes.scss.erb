@@ -94,7 +94,7 @@ $widthSp: 934px; //スマートフォン
     }
   }
   #slide-top{
-    animation: infinity-loop 25s infinite linear 0s both;
+    animation: infinity-loop 25s infinite linear 4s both;
     display: flex;
     flex-flow: row nowrap;
     @include default-top(black);
@@ -160,7 +160,9 @@ $widthSp: 934px; //スマートフォン
   @include default-top(#f8f4f9,35%);
   .text-top{@include sp{top: 3%}}
 }
-
+#footer_top{
+  @include default-top(black);
+}
 
 
 
