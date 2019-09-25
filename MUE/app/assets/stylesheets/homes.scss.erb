@@ -5,7 +5,7 @@ $widthPC: 934px; //PC
 $widthTab: 934px; //タブレット
 $widthSp: 934px; //スマートフォン
 
-@mixin pc {
+@mixin pc ($widthPC: 934px){
   @media (min-width: ($widthPC)) {
     @content;
   }
@@ -15,7 +15,7 @@ $widthSp: 934px; //スマートフォン
     @content;
   }
 }
-@mixin sp {
+@mixin sp ($widthTab: 934px){
   @media (max-width: ($widthTab)) {
     @content;
   }
@@ -83,14 +83,14 @@ $widthSp: 934px; //スマートフォン
     h1{
       margin: 0;
       font-family: 'Parisienne','Tangerine','Cookie','Great Vibes','Dancing Script', cursive;
-      @include sp{font-size: 10.2vw;line-height: 10.2vw;}
-      @include pc{font-size: 19vh;line-height: 29vh}
+      @include sp(1200px){font-size: 10.2vw;line-height: 10.2vw;}
+      @include pc(1200px){font-size: 19vh;line-height: 29vh}
     }
     p{
       margin: 0;
       font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;
-      @include sp{font-size: 9vw;line-height: 15vw;}
-      @include pc{font-size: 6vh;line-height: 6vh;}
+      @include sp(1200px){font-size: 9vw;line-height: 15vw;}
+      @include pc(1200px){font-size: 6vh;line-height: 6vh;}
     }
   }
   #slide-top{
@@ -107,14 +107,11 @@ $widthSp: 934px; //スマートフォン
       height: 100vh;
     }
     .image-1{
-      background-image: url(<%= asset_url("top/scroll-1.jpg") %>)
-    }
+      background-image: url(<%= asset_url("top/scroll-1.jpg") %>)    }
     .image-2{
-      background-image: url(<%= asset_url("top/scroll-2.jpg") %>)
-    }
+      background-image: url(<%= asset_url("top/scroll-2.jpg") %>)    }
     .image-3{
-      background-image: url(<%= asset_url("top/scroll-3.jpg") %>)
-    }
+      background-image: url(<%= asset_url("top/scroll-3.jpg") %>)    }
   }
 }
 #transparent-top{
@@ -123,14 +120,22 @@ $widthSp: 934px; //スマートフォン
 .text-top{
   text-align: center;
   margin: auto;
+  @include sp {color: white!important;position: absolute;z-index: 1;left: 0;width: 100vw;}
   h2{border: none;font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;
     @include pc{color: black;};@include sp{color: white;}}
   p{font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;}
   a{text-decoration: underline;font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;
     @include sp{color: white;}}
-  @include sp {top: 12%;color: white!important;position: absolute;z-index: 1;}
 }
-.image-top{img{height: 100vh;
+.image-top{
+  @include pc{width: 70vw;overflow: hidden;}
+  img{height: 100vh;
+    @include pc{position: relative;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);}
     @include sp {position: absolute;
       top: 50%;
       left: 50%;
@@ -141,16 +146,19 @@ $widthSp: 934px; //スマートフォン
       height: 100%;}
   }
 }
+#transparent-top{cursor: auto}
 #about-top{
   @include default-top(#fefbff,30%);
+  .text-top{@include sp{top: 9%;}}
 }
 #schedule-top{
   @include default-top(#f8eefb,55%);
+  .text-top{@include sp{top: 9%;}}
   flex-direction: row-reverse;
 }
 #style-top{
   @include default-top(#f8f4f9,35%);
-
+  .text-top{@include sp{top: 3%}}
 }
 
 
