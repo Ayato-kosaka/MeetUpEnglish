@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render'layouts/head' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Cookie|Dancing+Script|Great+Vibes|Parisienne|Tangerine&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div id="top-top">
+      <div id="logo-top">
+        <%= image_tag("logo.jpg", id: "logo-image-top") %>
+        <p>Meet up English</p>
+      </div>
+    <% 2.times.each do %>
+      <div id="slide-top">
+        <div class="image image-1">
+        </div>
+        <div class="image image-2">
+        </div>
+        <div class="image image-3">
+        </div>
+      </div>
+    <% end %>
+      <span id="motion_text-top">
+        <h1>Location×English×Time</h1><p>日常に留学を</p>
+      </span>
+    </div>
+
+    <section id="transparent-top">
+
+    </section>
+
+    <section id="about-top">
+      <div class="text-top">
+        <h2>About 概要</h2>
+        <p>「英会話」に対するハードルが異様に高い日本。<br>
+          英語を話すことは、もっと自由でいい。<br>
+          もっと気軽でいい。<br>
+          もっと楽しくていい。</p>
+        <%= link_to '続き→', overview_path %>
+      </div>
+      <div class="image-top">
+        <%= image_tag("top/about.jpg", id: "about-image-top") %>
+      </div>
+    </section>
+
+    <section id="schedule-top">
+      <div class="text-top">
+        <h2>Schedule 今後のスケジュール</h2>
+        <p>「英会話」に対するハードルが異様に高い日本。<br>
+          英語を話すことは、もっと自由でいい。<br>
+          もっと気軽でいい。<br>
+          もっと楽しくていい。</p>
+        <%= link_to '続き→', root_path %>
+      </div>
+      <div class="image-top">
+        <%= image_tag("top/schedule.jpg", id: "schedule-image-top") %>
+      </div>
+    </section>
+
+    <section id="style-top">
+      <div class="text-top">
+        <h2>Blog 開催の様子</h2>
+        <p>「英会話」に対するハードルが異様に高い日本。<br>
+          英語を話すことは、もっと自由でいい。<br>
+          もっと気軽でいい。<br>
+          もっと楽しくていい。</p>
+        <%= link_to '続き→', blogs_path %>
+      </div>
+      <div class="image-top">
+        <%= image_tag("top/blog.jpg", id: "blog-image-top") %>
+      </div>
+    </section>
+
+  </body>
+</html>

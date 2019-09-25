@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :blogs
   root 'homes#home'
   get 'overview', to: 'homes#overview'
+  get 'top', to: 'homes#top'
   get 'schedule/:id', to: 'homes#schedule', as: 'schedule'
   get 'homes/showDetailSchedule'
   resources :homes
