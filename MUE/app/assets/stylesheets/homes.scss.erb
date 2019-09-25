@@ -40,6 +40,7 @@ $widthSp: 934px; //スマートフォン
   height: 100vh;
   display: flex;
   overflow: hidden;
+  cursor: pointer;
   .text-top{min-width: $percent;  font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;}
 }
 
@@ -89,7 +90,7 @@ $widthSp: 934px; //スマートフォン
       margin: 0;
       font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;
       @include sp{font-size: 9vw;line-height: 15vw;}
-      @include pc{font-size: 6vh;line-height: 6vh}
+      @include pc{font-size: 6vh;line-height: 6vh;}
     }
   }
   #slide-top{
@@ -122,10 +123,24 @@ $widthSp: 934px; //スマートフォン
 .text-top{
   text-align: center;
   margin: auto;
-  h2{border: none;color: black;}
-  a{text-decoration: underline;;}
+  h2{border: none;font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;
+    @include pc{color: black;};@include sp{color: white;}}
+  p{font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;}
+  a{text-decoration: underline;font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;
+    @include sp{color: white;}}
+  @include sp {top: 12%;color: white!important;position: absolute;z-index: 1;}
 }
-.image-top{img{height: 100vh;}}
+.image-top{img{height: 100vh;
+    @include sp {position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      width: auto;
+      height: 100%;}
+  }
+}
 #about-top{
   @include default-top(#fefbff,30%);
 }
