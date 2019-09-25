@@ -77,6 +77,10 @@ class HomesController < ApplicationController
   def schedule
   end
 
+  def top
+    render layout: false #application.html.erbを適用したくない
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_home

@@ -1,0 +1,179 @@
+// Place all the styles related to the homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$widthPC: 934px; //PC
+$widthTab: 934px; //タブレット
+$widthSp: 934px; //スマートフォン
+
+@mixin pc ($widthPC: 934px){
+  @media (min-width: ($widthPC)) {
+    @content;
+  }
+}
+@mixin tab {
+  @media (min-width: $widthTab) and (max-width: ($widthPC)) {
+    @content;
+  }
+}
+@mixin sp ($widthTab: 934px){
+  @media (max-width: ($widthTab)) {
+    @content;
+  }
+}
+
+
+//top
+
+/* 無限ループアニメーション */
+@keyframes infinity-loop {
+  from {
+    transform: translateX(0vw);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@mixin default-top($background-color: #fff,$percent: 20%) {
+  background-color: $background-color;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  cursor: pointer;
+  .text-top{min-width: $percent;  font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;}
+}
+
+#top-top{
+  position: fixed;
+  display: flex;
+  overflow: hidden;
+  #logo-top{
+    position: absolute;
+    top: 1.4vh;
+    z-index: 100;
+    left: 10px;
+    max-width: 44vw;
+    max-height: 14vh;
+    text-align: center;
+    #logo-image-top{
+      margin: 0 auto;
+      display: block;
+      max-width: 26.4vw;
+      max-height: 12vh;
+    }
+    p{
+      margin: 2px auto;
+      font-family: Helevetica;
+      font-weight: bold;
+      font-style: oblique;
+      @include sp {font-size: 5.2vw;}
+      @include pc {font-size: 5vh;}
+    }
+  }
+  #motion_text-top{
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50vw;
+    width: 100%;
+    text-align: center;
+    text-shadow: 4px 4px 4px #aaa;
+    transform: translateY(-50%) translateX(-50%);
+    h1{
+      margin: 0;
+      font-family: 'Parisienne','Tangerine','Cookie','Great Vibes','Dancing Script', cursive;
+      @include sp(1200px){font-size: 10.2vw;line-height: 10.2vw;}
+      @include pc(1200px){font-size: 19vh;line-height: 29vh}
+    }
+    p{
+      margin: 0;
+      font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;
+      @include sp(1200px){font-size: 9vw;line-height: 15vw;}
+      @include pc(1200px){font-size: 6vh;line-height: 6vh;}
+    }
+  }
+  #slide-top{
+    animation: infinity-loop 25s infinite linear 0s both;
+    display: flex;
+    flex-flow: row nowrap;
+    @include default-top(black);
+    .image{
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      @include sp {width: 220vw;}
+      @include pc {width: 100vw;}
+      height: 100vh;
+    }
+    .image-1{
+      background-image: url(<%= asset_url("top/scroll-1.jpg") %>)    }
+    .image-2{
+      background-image: url(<%= asset_url("top/scroll-2.jpg") %>)    }
+    .image-3{
+      background-image: url(<%= asset_url("top/scroll-3.jpg") %>)    }
+  }
+}
+#transparent-top{
+  @include default-top(rgba(255, 255, 255, 0));
+}
+.text-top{
+  text-align: center;
+  margin: auto;
+  @include sp {color: white!important;position: absolute;z-index: 1;left: 0;width: 100vw;}
+  h2{border: none;font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;
+    @include pc{color: black;};@include sp{color: white;}}
+  p{font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;}
+  a{text-decoration: underline;font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;
+    @include sp{color: white;}}
+}
+.image-top{
+  @include pc{width: 70vw;overflow: hidden;}
+  img{height: 100vh;
+    @include pc{position: relative;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);}
+    @include sp {position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      width: auto;
+      height: 100%;}
+  }
+}
+#transparent-top{cursor: auto}
+#about-top{
+  @include default-top(#fefbff,30%);
+  .text-top{@include sp{top: 9%;}}
+}
+#schedule-top{
+  @include default-top(#f8eefb,55%);
+  .text-top{@include sp{top: 9%;}}
+  flex-direction: row-reverse;
+}
+#style-top{
+  @include default-top(#f8f4f9,35%);
+  .text-top{@include sp{top: 3%}}
+}
+
+
+
+
+//overview
+#overview-1-img{
+  width: 100%;
+}
+#overview-2-img{
+  width: 100%
+}
+#overview-3-img{
+  width: 100%
+}
+#overview-4-img{
+  width: 100%
+}
