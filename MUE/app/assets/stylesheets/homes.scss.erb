@@ -162,12 +162,14 @@ $widthSp: 934px; //スマートフォン
   .text-top{@include sp{top: 3%}}
 }
 
+
 .footer-top{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background-color: rgb(240, 240, 240);
-  height: 300px;
+  @include pc{height: 300px;}
+  @include sp{height: 500px}
   color: #808080;
   font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;
   .footer1-top{
@@ -176,7 +178,7 @@ $widthSp: 934px; //スマートフォン
     .footer1-1-top{
       display: flex;
       flex-direction: column;
-      width: 1000px;
+      @include pc{width: 1000px;}
       align-items: center;
       .logo-footer-top{
         img{
