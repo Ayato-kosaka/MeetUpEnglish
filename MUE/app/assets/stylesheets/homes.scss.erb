@@ -160,8 +160,28 @@ $widthSp: 934px; //スマートフォン
   @include default-top(#f8f4f9,35%);
   .text-top{@include sp{top: 3%}}
 }
-#footer_top{
-  @include default-top(black);
+
+.footer-top{
+  display: flex;
+  flex-direction: column;
+  .footer1-top{
+    display: flex;
+    .footer1-1-top{
+      display: flex;
+      flex-direction: column;
+    }
+    .footer1-2-top{
+      display: flex;
+      align-items: center;
+    }
+  }
+  .footer2-top{
+    display: flex;
+    .footer2-2-top{
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
 }
 
 
