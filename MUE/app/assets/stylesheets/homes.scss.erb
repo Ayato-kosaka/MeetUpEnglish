@@ -165,17 +165,30 @@ $widthSp: 934px; //スマートフォン
 .footer-top{
   display: flex;
   flex-direction: column;
-  background-color: black;
+  justify-content: space-between;
+  background-color: rgb(240, 240, 240);
+  height: 600px;
+  color: #808080;
   .footer1-top{
     display: flex;
     @include sp{flex-direction: column;}
     .footer1-1-top{
       display: flex;
       flex-direction: column;
+      .logo-footer-top{
+        img{
+          height: 90px
+        }
+      }
     }
     .footer1-2-top{
       display: flex;
       align-items: center;
+      width: 100%;
+      justify-content: space-between;
+      margin: 0 calc(0.25*calc(100%-196px));
+      font-size: 20px
+
     }
   }
   .footer2-top{
@@ -184,6 +197,10 @@ $widthSp: 934px; //スマートフォン
       display: flex;
       justify-content: flex-end;
     }
+  }
+  .footer3-top{
+    display: flex;
+    justify-content: center;
   }
 }
 
