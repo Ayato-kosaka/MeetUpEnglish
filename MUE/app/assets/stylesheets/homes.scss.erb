@@ -167,7 +167,7 @@ $widthSp: 934px; //スマートフォン
   flex-direction: column;
   justify-content: space-between;
   background-color: rgb(240, 240, 240);
-  height: 600px;
+  height: 300px;
   color: #808080;
   font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;
   .footer1-top{
@@ -188,22 +188,33 @@ $widthSp: 934px; //スマートフォン
       width: 100%;
       justify-content: space-between;
       margin: 0 calc(0.25 * calc(100% - 196px));
-      font-size: 20px
-
+      font-size: 20px;
+      a{
+        color: #808080;
+      }
     }
   }
   .footer2-top{
     display: flex;
     justify-content: center;
     @include sp{flex-direction: column;}
+    font-size: 17px;
+    line-height: 23px;
+    .footer2-1-top{
+      text-align: center;
+    }
     .footer2-2-top{
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
+      width: 60px;
+      @include pc{margin: 0 15px;}
+      @include sp{margin: 0 auto;}
     }
   }
   .footer3-top{
     display: flex;
     justify-content: center;
+    margin: 20px 0;
   }
 }
 
