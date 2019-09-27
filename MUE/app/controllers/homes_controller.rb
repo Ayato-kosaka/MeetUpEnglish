@@ -67,7 +67,7 @@ class HomesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to schedule_path(@selectedPrefecture_id), notice: 'Home was successfully destroyed.' }
       format.json { head :no_content }
-    end
+    end 
   end
 
   def home
