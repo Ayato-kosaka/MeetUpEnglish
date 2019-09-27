@@ -24,6 +24,15 @@ $widthSp: 934px; //スマートフォン
 
 //top
 
+@mixin default-top($background-color: #fff,$percent: 20%) {
+  background-color: $background-color;
+  position: relative;
+  height: 100vh;
+  display: block;
+  overflow: hidden;
+  a{display: flex;}
+  .text-top{min-width: $percent;  font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;}
+}
 /* 無限ループアニメーション */
 @keyframes infinity-loop {
   from {
@@ -34,15 +43,6 @@ $widthSp: 934px; //スマートフォン
   }
 }
 
-@mixin default-top($background-color: #fff,$percent: 20%) {
-  background-color: $background-color;
-  position: relative;
-  height: 100vh;
-  display: flex;
-  overflow: hidden;
-  cursor: pointer;
-  .text-top{min-width: $percent;  font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;}
-}
 
 #top-top{
   z-index: -1;
@@ -129,9 +129,10 @@ $widthSp: 934px; //スマートフォン
     @include sp{color: white;}}
 }
 .image-top{
-  @include pc{width: 70vw;overflow: hidden;}
+  @include pc{max-width: 70vw;overflow: hidden;display: flex;}
   img{height: 100vh;
-    @include pc{position: relative;
+    @include pc{
+      position: relative;
       top: 50%;
       left: 50%;
       -webkit-transform: translate(-50%, -50%);
@@ -155,7 +156,7 @@ $widthSp: 934px; //スマートフォン
 #schedule-top{
   @include default-top(#f8eefb,55%);
   .text-top{@include sp{top: 9%;}}
-  flex-direction: row-reverse;
+  a{flex-direction: row-reverse;}
 }
 #style-top{
   @include default-top(#f8f4f9,35%);
