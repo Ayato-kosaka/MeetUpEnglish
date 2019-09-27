@@ -10,13 +10,12 @@ class BlogcommentsController < ApplicationController
   end
 
   def create
-    @blogcomment = Blogcomment.new(blogcomment_params)
-    respond_to do |format|
-      if @blogcomment.save
-        format.html { redirect_to Blog.find(@blogcomment.blogId) }
-      else
-        format.html { render 'new', { blogId: params[:blogId],blogcomment: @blogcomment} }
-      end
+    logger.debug("\n\n\n\n\n------------------------debug->#{params}\n\n\n\n")
+    @blogcomment = Blog.find(params[:blogId]).comments.new(blogcomment_params)
+    if @blogcomment.save
+      redirect_to Blog.find(@blogcomment.blogId)
+    else
+      render :new
     end
   end
 
@@ -25,6 +24,6 @@ class BlogcommentsController < ApplicationController
 
   private
     def blogcomment_params
-      params.permit(:name, :text, :blogId)
+      params.require(:blogcomment).permit(:name, :text)
     end
 end

@@ -4,13 +4,13 @@
 
 
       <h1>Blog Comment</h1>
-      <%= form_with(model: blogcomment, local: true) do |form| %>
+      <%= form_with(model: blogcomment,url: blogcomments_path(blogId: blogId), local: true) do |form| %>
 
 
         <table id="blog_comment"><tbody>
           <tr><th><%= form.label :name %></th></tr>
           <tr><td><%= form.text_field :name, style:"height: 30px;" %></td></tr>
-          <tr><th><%= form.label "comment" %></th></tr>
+          <tr><th><%= form.label :text, "comment" %></th></tr>
           <tr><td><%= form.text_area :text, style:"height: 100px" %></td></tr>
           <tr><td class="actions"><%= form.submit '投稿' ,:class=>'send'%></td></tr>
         </tbody></table>
