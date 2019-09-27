@@ -68,6 +68,51 @@
         <%= image_tag("top/blog.jpg", id: "blog-image-top") %>
       </div>
     </section>
-    
+
+    <footer class="footer-top">
+      <div class="footer1-top">
+        <div class="footer1-1-top">
+          <div class="logo-footer-top">
+            <%= image_tag("logo.jpg", id: "logo-image-top") %>
+          </div>
+          <div class="name-footer-top">
+            Meet Up English Gruop
+          </div>
+          <div class="name2-footer-top">
+            日常に留学を
+          </div>
+        </div>
+        <div class="footer1-2-top">
+          <div class="about-footer-top">
+            <%= link_to '概要', overview_path %>
+          </div>
+          <div class="schedule-footer-top">
+            <%= link_to '開催スケジュール', root_path %>
+          </div>
+          <div class="blog-footer-top">
+            <%= link_to 'ブログ', blogs_path %>
+          </div>
+        </div>
+      </div>
+      <div class="footer2-top">
+        <div class="footer2-1-top">
+          mail: meetup_english-tokyo@yahoo.co.jp
+        </div>
+        <div class="footer2-2-top">
+          <div class="facebook-footer">
+            <%= link_to simple_format('<i class="fab fa-facebook-f"></i>'), "https://www.facebook.com/Meet-Up-English-101228061233520/?modal=admin_todo_tour" %>
+          </div>
+          <div class="twitter-footer">
+            <%= link_to simple_format('<i class="fab fa-twitter"></i>'), "https://twitter.com/meetup_english?ref_src=twsrc%5Etfw" %>
+          </div>
+          <div class="instaglam-footer">
+            <%= link_to simple_format('<i class="fab fa-instagram"></i>'), "https://www.instagram.com/meet_up_english?ref=badge" %>
+          </div>
+        </div>
+      </div>
+      <div class="footer3-top">
+        © Meet Up English Group
+      </div>
+    </footer>
   </body>
 </html>

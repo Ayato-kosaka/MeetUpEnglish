@@ -45,6 +45,7 @@ $widthSp: 934px; //スマートフォン
 }
 
 #top-top{
+  z-index: -1;
   position: fixed;
   display: flex;
   overflow: hidden;
@@ -160,8 +161,77 @@ $widthSp: 934px; //スマートフォン
   @include default-top(#f8f4f9,35%);
   .text-top{@include sp{top: 3%}}
 }
-#footer_top{
-  @include default-top(black);
+
+
+.footer-top{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgb(240, 240, 240);
+  @include pc{height: 300px;}
+  @include sp{height: 500px}
+  color: #808080;
+  font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;
+  .footer1-top{
+    display: flex;
+    @include sp{flex-direction: column;}
+    .footer1-1-top{
+      display: flex;
+      flex-direction: column;
+      @include pc{width: 1000px;}
+      align-items: center;
+      margin: 10px 0 0 0;
+      .logo-footer-top{
+        img{
+          height: 70px;
+        }
+      }
+      .name-footer-top{
+        font-size: 20px;
+        line-height: 25px;
+      }
+      .name2-footer-top{
+        line-height: 17px;
+      }
+    }
+    .footer1-2-top{
+      display: flex;
+      align-items: center;
+      @include pc{width: 100%;}
+      justify-content: space-between;
+      margin: 0 calc(0.20 * calc(100% - 335px));
+      font-size: 20px;
+      a{
+        color: #808080;
+      }
+    }
+  }
+  .footer2-top{
+    display: flex;
+    justify-content: center;
+    @include sp{flex-direction: column;}
+    font-size: 17px;
+    line-height: 23px;
+    .footer2-1-top{
+      text-align: center;
+    }
+    .footer2-2-top{
+      display: flex;
+      justify-content: space-between;
+      width: 60px;
+      @include pc{margin: 0 15px;}
+      @include sp{margin: 0 auto;}
+      a{
+        color: #808080;
+        p{margin: 0;}
+      }
+    }
+  }
+  .footer3-top{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
 }
 
 
