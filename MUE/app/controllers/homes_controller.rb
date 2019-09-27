@@ -65,7 +65,7 @@ class HomesController < ApplicationController
     @selectedPrefecture_id =  City.find(@home.cityId).prefectureId
     @home.destroy
     respond_to do |format|
-      format.html { redirect_to homes_schedule_path(selected_prefecture: @selectedPrefecture_id), notice: 'Home was successfully destroyed.' }
+      format.html { redirect_to schedule_path( @selectedPrefecture_id), notice: 'Home was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
