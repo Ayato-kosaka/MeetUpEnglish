@@ -96,9 +96,9 @@ $widthSp: 934px; //スマートフォン
   }
   #slide-top{
     animation: infinity-loop 25s infinite linear 4s both;
-    display: flex;
     flex-flow: row nowrap;
     @include default-top(black);
+    display: flex;
     .image{
       background-size: cover;
       background-repeat: no-repeat;
@@ -170,7 +170,7 @@ $widthSp: 934px; //スマートフォン
   justify-content: space-between;
   background-color: rgb(240, 240, 240);
   @include pc{height: 300px;}
-  @include sp{height: 500px}
+  @include sp{height: 400px}
   color: #808080;
   font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;
   .footer1-top{
@@ -179,9 +179,9 @@ $widthSp: 934px; //スマートフォン
     .footer1-1-top{
       display: flex;
       flex-direction: column;
-      @include pc{width: 1000px;}
+      @include pc{width: 1000px;margin: 10px 0 0 0;}
+      @include sp{margin-top: 30px}
       align-items: center;
-      margin: 10px 0 0 0;
       .logo-footer-top{
         img{
           height: 70px;
@@ -198,9 +198,8 @@ $widthSp: 934px; //スマートフォン
     .footer1-2-top{
       display: flex;
       align-items: center;
-      @include pc{width: 100%;}
-      justify-content: space-between;
-      margin: 0 calc(0.20 * calc(100% - 335px));
+      @include pc{width: 100%;margin: 0 calc(0.20 * calc(100% - 335px));justify-content: space-between;}
+      @include sp{justify-content: space-around;margin: 40px 0;}
       font-size: 20px;
       a{
         color: #808080;

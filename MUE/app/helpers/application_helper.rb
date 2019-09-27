@@ -1,7 +1,7 @@
 module ApplicationHelper
   def default_meta_tags
   {
-    site: 'Meet Up English 日常にプチ留学を',
+    site: 'Meet Up English 日常に留学を~英会話マッチングアプリ~',
     reverse: true,
     separator: '|',
     og: defalut_og,
