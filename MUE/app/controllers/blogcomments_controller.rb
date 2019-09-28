@@ -10,7 +10,6 @@ class BlogcommentsController < ApplicationController
   end
 
   def create
-    logger.debug("\n\n\n\n\n------------------------debug->#{params}\n\n\n\n")
     @blogcomment = Blog.find(params[:blogId]).comments.new(blogcomment_params)
     if @blogcomment.save
       redirect_to Blog.find(@blogcomment.blogId)

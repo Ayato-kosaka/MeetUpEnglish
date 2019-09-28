@@ -42,7 +42,7 @@ class ContactsController < ApplicationController
     @home = Home.find(params[:id])
     @contact = @home.contacts.new
     @title_value = "I want to go to Meet Up English"
-    @message_value = "【日程】#{@home.date.strftime("%Y年 %m月 %d日")}\n【希望滞在時間】〇〇:〇〇～〇〇:〇〇\n【場所】#{City.find(@home.cityId).name}:#{Cafe.find(@home.cafeId).name}\n"
+    @message_value = "【希望滞在時間】〇〇:〇〇～〇〇:〇〇\n#{ @home.start.strftime("%H:%M") }～#{ @home.end.strftime("%H:%M") }の間で予定滞在時間を↑に記入してください\n\n 【日程】#{@home.date.strftime("%Y年 %m月 %d日")}\n【場所】#{City.find(@home.cityId).name}:#{Cafe.find(@home.cafeId).name}\n"
 
     render :new
   end
