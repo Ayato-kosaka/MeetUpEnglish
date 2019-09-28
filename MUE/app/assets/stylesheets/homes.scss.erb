@@ -163,6 +163,24 @@ $widthSp: 934px; //スマートフォン
   .text-top{@include sp{top: 3%}}
 }
 
+.contact-top{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  @include sp{width: 100%;}
+  @include pc{width: 20%;}
+  .contact_btn{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+    align-items: center;
+    background-color: rgb(121,121,121);
+    color: white;
+    font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;
+  }
+}
 
 .footer-top{
   display: flex;
@@ -170,7 +188,7 @@ $widthSp: 934px; //スマートフォン
   justify-content: space-between;
   background-color: rgb(240, 240, 240);
   @include pc{height: 300px;}
-  @include sp{height: 400px}
+  @include sp{height: 400px;margin: 0 0 50px 0;}
   color: #808080;
   font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;
   .footer1-top{
@@ -179,9 +197,10 @@ $widthSp: 934px; //スマートフォン
     .footer1-1-top{
       display: flex;
       flex-direction: column;
+      color: #808080;
+      align-items: center;
       @include pc{width: 1000px;margin: 10px 0 0 0;}
       @include sp{margin-top: 30px}
-      align-items: center;
       .logo-footer-top{
         img{
           height: 70px;

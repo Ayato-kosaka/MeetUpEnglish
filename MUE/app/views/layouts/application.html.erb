@@ -10,8 +10,8 @@
     <div id="create_contact"></div>
 
     <header>
-      <div id="header1-1"><div id="header1-2"><%= link_to image_tag("logo.jpg", alt: "logo", id: 'header1-img'), root_path %></div></div>
-      <div id="header2"><p id="header2-p"><%= link_to 'Meet up English', root_path, data: {"turbolinks"=>false} %></p></div>
+      <div id="header1-1"><div id="header1-2"><%= link_to image_tag("logo.jpg", alt: "logo", id: 'header1-img'), top_path %></div></div>
+      <div id="header2"><p id="header2-p"><%= link_to 'Meet up English', top_path, data: {"turbolinks"=>false} %></p></div>
       <% if session[:user].nil? %>
       <div id="header3"><ul><li><a data-remote="true" href="/contacts/new?title=I want to be a teacher">I want to be a teacher</a>
       </li></ul></div>
@@ -60,7 +60,7 @@
     <div class="footer_page_btn"><a class="insta_btn" href="https://www.instagram.com/meet_up_english?ref=badge"><i class="fab fa-instagram"></i>Follow Instagram</a></div>
     <div class="footer_page_btn"><a class="line_btn" href="http://nav.cx/alJd5yY"><i class="fab fa-line"></i>Follow Line</a></div>
     <div class="footer_page_btn"><a class="facebook_btn" href="https://www.facebook.com/Meet-Up-English-101228061233520/?modal=admin_todo_tour"><i class="fab fa-facebook-f"></i>Follow Facebook</a></div>
-    <p class="copyright">© Meet Up English Group</p>
+    <p class="copyright">© Meet up English Group</p>
   </div>
 
     <footer id="footer_aplication">
