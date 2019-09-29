@@ -71,5 +71,4 @@ gem 'sitemap_generator'
 
 gem 'whenever', :require => false
 
-#gem 'will_paginate'
-#gem 'bootstrap-will_paginate'
+gem 'pagy', '~> 3.5' # omit patch digit and use the latest if possible

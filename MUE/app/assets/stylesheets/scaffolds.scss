@@ -155,6 +155,9 @@ table {
   }
 }
 
+//jscroll
+.skill-list .pagination { display: none; } 
+
 //schedule
 .green_button{border-radius: 10px;width: 61px;padding: 0;background: linear-gradient(#00a23f,#39900a);box-shadow: 1px 1px 2px 0 #a1a1a1;transition: 0.9s;position: relative;
                 &:hover{background-color: #39900a;top: 2px;box-shadow: 1px 1px 1px 0 #a1a1a1;}}

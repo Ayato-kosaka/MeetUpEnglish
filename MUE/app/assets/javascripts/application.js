@@ -11,10 +11,12 @@
 // about supported directives.
 //
 //= require jquery3
+//= require jquery.jscroll.min.js
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
 $(function(){//prefectureを選ぶ画面のポチポチ + acgtive
 $("#display_show").parent().children("a").addClass("active");//のちに消す
 $(".region_a").click(function(){

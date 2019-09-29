@@ -7,26 +7,28 @@
 <%= if session[:role]=="Admin" then link_to 'New Blog', new_blog_path end%>
 
 
+<div class="skill-list jscroll">
+  <% if @blogs %>
+    <% @blogs.each do |blog| %>
 
-<% if @blogs %>
-<% @blogs.order(:id).reverse.each do |blog| %>
+    <article><a href="/blogs/<%= blog.id %>">
+      <div class="eyecatch">
+        <% if blog.image.attached? %>
+          <%= image_tag blog.image, :size=>"400x400" %>
+        <% end %>
+      </div>
+      <h3><%= link_to blog.title, blog %></h3>
+      <div>
+        <div class="blog_createdAt">
+          <% if session[:role]=="Admin" %><%= link_to 'Edit', edit_blog_path(blog)%> | <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %><%end%>
+          <%= blog.created_at.strftime("%Y.%m.%d") %>
+        </div>
+        <div class="commentnum_blog_index"><i class="fas fa-comments"></i><%= blog.comments.size %></div>
+      </div>
+    </a></article>
 
-<article data-href="/blogs/<%= blog.id %>">
-  <div class="eyecatch">
-    <% if blog.image.attached? %>
-    <%= image_tag blog.image, :size=>"400x400" %>
     <% end %>
-  </div>
-  <h3><%= link_to blog.title, blog %></h3>
-  <div>
-    <div class="blog_createdAt">
-      <% if session[:role]=="Admin" %><%= link_to 'Edit', edit_blog_path(blog)%> | <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %><%end%>
-      <%= blog.created_at.strftime("%Y.%m.%d") %>
-    </div>
-    <div class="commentnum_blog_index"><i class="fas fa-comments"></i><%= blog.comments.size %></div>
-  </div>
+  <% end %>
 
-</article>
-
-<% end %>
-<% end %>
+  <%== pagy_nav(@pagy) %>
+</div>

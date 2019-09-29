@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+  include Pagy::Backend
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
   skip_before_action :require_Admin,only:[:index, :show]
@@ -6,7 +7,7 @@ class BlogsController < ApplicationController
   # GET /blogs
   # GET /blogs.json
   def index
-    @blogs = Blog.all
+    @pagy, @blogs = pagy( Blog.all.order(id: "DESC"), items: 8 )
   end
 
   # GET /blogs/1
