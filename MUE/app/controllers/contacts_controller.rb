@@ -12,6 +12,7 @@ class ContactsController < ApplicationController
   # GET /contacts/1.json
   def show
     @contact.update(checked: true) if !@contact.checked
+    @home = @contact.home
   end
 
   # GET /contacts/new

@@ -28,9 +28,9 @@
 <% if @contact.home_id %>
 <p>
   <strong>from:</strong>
-  <%= link_to 'click', home_path(@contact.home_id) %>
+  <%= @home.date.strftime("%Y/%m/%d(#{%w(日 月 火 水 木 金 土)[@home.date.wday]})") %><br><%= @home.start.strftime("%H:%M") %>~<%= @home.end.strftime("%H:%M") %>
 </p>
 <% end %>
 
 
-<%= link_to 'Back', contacts_path %>
+<%= link_to 'Back', contacts_path, data: {"turbolinks"=>false} %>
