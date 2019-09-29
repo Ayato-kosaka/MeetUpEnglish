@@ -101,11 +101,11 @@
           <div class="about-footer-top">
             <%= link_to '概要', overview_path %>
           </div>
-          <div class="schedule-footer-top">
-            <%= link_to '開催スケジュール', root_path %>
+          <div class="schedule-footer-top" data-turbolinks="false">
+            <%= link_to '開催スケジュール', root_path, data: {"turbolinks"=>false} %>
           </div>
-          <div class="blog-footer-top">
-            <%= link_to 'ブログ', blogs_path %>
+          <div class="blog-footer-top" data-turbolinks="false">
+            <%= link_to 'ブログ', blogs_path, data: {"turbolinks"=>false} %>
           </div>
         </div>
       </div>
