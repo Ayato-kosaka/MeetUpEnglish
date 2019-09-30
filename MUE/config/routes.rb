@@ -8,8 +8,13 @@ Rails.application.routes.draw do
   get 'blogcomments/new'
   post 'blogcomments' => 'blogcomments#create'
 
-  resources :sections
+
+  get 'blogs/new_category'
+  post 'blogs/new_category' => 'blogs#create_category'
   resources :blogs
+
+
+  resources :sections
   root 'homes#home'
   get 'overview', to: 'homes#overview'
   get 'top', to: 'homes#top'

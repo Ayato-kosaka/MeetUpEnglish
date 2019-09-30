@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   include Pagy::Backend
+  protect_from_forgery
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
   skip_before_action :require_Admin,only:[:index, :show]
@@ -8,6 +9,7 @@ class BlogsController < ApplicationController
   # GET /blogs.json
   def index
     @pagy, @blogs = pagy( Blog.all.order(id: "DESC"), items: 8 )
+    @category = Blogcategory.all
   end
 
   # GET /blogs/1
@@ -27,32 +29,23 @@ class BlogsController < ApplicationController
   end
 
   # POST /blogs
-  # POST /blogs.json
   def create
     @blog = Blog.new(blog_params)
 
-    respond_to do |format|
-      if @blog.save
-        format.html { redirect_to @blog, notice: 'Blog was successfully created.' }
-        format.json { render :show, status: :created, location: @blog }
-      else
-        format.html { render :new }
-        format.json { render json: @blog.errors, status: :unprocessable_entity }
-      end
+    if @blog.save
+      redirect_to @blog
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /blogs/1
   # PATCH/PUT /blogs/1.json
   def update
-    respond_to do |format|
-      if @blog.update(blog_params)
-        format.html { redirect_to @blog, notice: 'Blog was successfully updated.' }
-        format.json { render :show, status: :ok, location: @blog }
-      else
-        format.html { render :edit }
-        format.json { render json: @blog.errors, status: :unprocessable_entity }
-      end
+    if @blog.update(blog_params)
+      redirect_to @blog
+    else
+      render :edit
     end
   end
 
@@ -62,9 +55,19 @@ class BlogsController < ApplicationController
     @blog.destroy
     Section.where(blogId: @blog.id).each{|n|n.destroy}
     Blogcomment.where(blogId: @blog.id).each{|n|n.destroy}
-    respond_to do |format|
-      format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed.' }
-      format.json { head :no_content }
+    redirect_to blogs_url
+  end
+
+  def new_category
+    @blogcategory = Blogcategory.new
+  end
+
+  def create_category
+    @blogcategory = Blogcategory.new(category_params)
+    if @blogcategory.save
+      redirect_to blogs_url
+    else
+      render:new_category
     end
   end
 
@@ -77,5 +80,9 @@ class BlogsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
       params.require(:blog).permit(:title, :text, :image)
+    end
+
+    def category_params
+      params.require(:blogcategory).permit(:name, :image)
     end
 end

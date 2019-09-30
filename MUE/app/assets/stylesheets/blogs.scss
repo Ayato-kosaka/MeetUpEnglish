@@ -1,3 +1,87 @@
 // Place all the styles related to the blogs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$widthPC: 934px; //PC
+$widthTab: 934px; //タブレット
+$widthSp: 934px; //スマートフォン
+
+@mixin pc ($widthPC: 934px){
+  @media (min-width: ($widthPC)) {
+    @content;
+  }
+}
+@mixin tab {
+  @media (min-width: $widthTab) and (max-width: ($widthPC)) {
+    @content;
+  }
+}
+@mixin sp ($widthTab: 934px){
+  @media (max-width: ($widthTab)) {
+    @content;
+  }
+}
+
+#category-name{
+  color: black;
+  border-bottom-style: none;
+}
+#category-blog{
+  @include sp{height: calc(14vw + 10px);overflow: hidden;}
+  .flex-blog{
+    display: flex;
+    @include pc{flex-wrap: wrap;}
+    @include sp{
+      overflow-x: scroll;
+    }
+    .item{
+      @include sp{margin: 0 3.5vw 6px;}
+      @include pc{margin: 3px 22px;}
+      img{
+        border-radius: calc(7vw + 3px);
+        border-width: 2px;
+        border-color: #bcbcb6;
+        border-style: solid;
+        padding: 3px;
+        @include sp{width: 14vw;}
+        @include pc{width: 96.9px;}
+        .active{
+          border-color: #ff89c0;
+        }
+      }
+    }
+  }
+}
+.blog_h3{padding: 16px 16px 0;margin: 0;font-size: 16px;}
+.blog_createdAt{font-size: .62rem;font-family: 'Poppins',sans-serif;letter-spacing: .03125rem;color: #adaaa5;padding: 8px 16px 16px;font-weight: 600;display: inline-block;}
+.commentnum_blog_index{display: inline-block;color: #adaaa5;}
+.around_blog{display: grid;grid-template-columns: 45% 10% 45%;border-top: 1px solid #eee;border-bottom: 1px solid #eee;margin: 40px 0;text-align: center;font-size: 0;}
+.around_blog a{color: #333333;display: block;box-sizing: border-box;line-height: 48px;font-size: 14px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;position: relative;}
+.around_blog i{position: absolute;font-size: 47px;top: -6px;overflow: hidden;width: 26px;}
+.left_blog i{left: 10px;}
+.left_blog{padding-left: 40px;padding-right: 25px;}
+.right_blog i{right: 10px;}
+.right_blog div{margin-left: -20px;}
+.right_blog{padding-left: 25px;padding-right: 40px;}
+.blogs_blog div{height: 18px;margin: 13px 0;line-height: 14px;border-left: 1px solid #eee;border-right: 1px solid #eee;padding: 2px 0;}
+.blog_image{width: 100%;
+}
+.section_image{
+  width: 80%;
+  margin: 0px auto 0px auto;
+  display: block;
+}
+#blog_index_comment{text-align: center;margin-top: 60px;
+  a{font-size: 16px;border-radius: 20px;display: inline-block;height: 50px;background-color: #179c17;width: 220px;line-height: 50px;color: white;}
+  i{position: relative;font-size: 22px;top: 2px;right: 4px;}}
+#blog_comment{max-width: 600px;margin: auto;
+  tr{text-align: left;}
+  input{width: 100%}
+  .send{margin:auto;}}
+#blog_comments{
+  th{text-align: left;}
+  td{text-align: left;}
+  .number_blog_comments{text-align: left;width: 80px;}
+  div{display: inline-block;font-size: 12px;}
+  .created_blog_comments{font-size: 12px;float: right;}
+}

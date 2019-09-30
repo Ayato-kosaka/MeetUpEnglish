@@ -2,9 +2,24 @@
 開催時の様子や、先生の紹介など、【毎日更新】を続けておりますので、ご覧ください。'%>
 
 <% if session[:role]=="Admin" %><p id="notice"><%= notice %></p><% end %>
-<h1>Meet Up English Blog</h1>
+
+<h1>Meet up English Blog</h1>
 
 <%= if session[:role]=="Admin" then link_to 'New Blog', new_blog_path end%>
+
+
+<h2 id="category-name">Category</h2>
+
+<div id="category-blog">
+  <div class="flex-blog">
+    <% @category.each_with_index do |category, index| %>
+
+      <a class="item" href="#">
+        <%= category.image ? image_tag(category.image) : category.name %>
+      </a>
+    <% end %>
+  </div>
+</div>
 
 
 <div class="skill-list jscroll">
