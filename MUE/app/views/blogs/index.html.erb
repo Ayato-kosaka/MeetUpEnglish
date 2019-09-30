@@ -12,9 +12,9 @@
 
 <div id="category-blog">
   <div class="flex-blog">
-    <% @category.each_with_index do |category, index| %>
+    <% @category.each do |category| %>
 
-      <a class="item <%= "active" if (index + 1) == @selected_category_id %>" href="/blogs?event_search=<%= category.name %>" data-turbolinks="false">
+      <a class="item <%= "active" if (category.id ) == @selected_category_id %>" href="/blogs?event_search=<%= category.name %>" data-turbolinks="false">
         <%= category.image ? image_tag(category.image) : category.name %>
       </a>
     <% end %>
