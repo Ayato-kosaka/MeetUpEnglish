@@ -8,8 +8,9 @@ class BlogsController < ApplicationController
   # GET /blogs
   # GET /blogs.json
   def index
-    @pagy, @blogs = pagy( Blog.all.order(id: "DESC"), items: 8 )
-    @category = Blogcategory.all
+    @category = Blogcategory.all.order(:id)
+    @selected_category_id = params[:event_search] ? Blogcategory.find_by(name: params[:event_search]).id : 1
+    @pagy, @blogs = pagy( (@selected_category_id == 1) ? Blog.all.order(id: "DESC") : Blog.where( category_id: @selected_category_id ).order(id: "DESC"), items: 8 )
   end
 
   # GET /blogs/1
@@ -79,10 +80,14 @@ class BlogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
-      params.require(:blog).permit(:title, :text, :image)
+      params.require(:blog).permit(:title, :text, :image, :category_id)
     end
 
     def category_params
       params.require(:blogcategory).permit(:name, :image)
+    end
+
+    def event_search_params
+      params.require(:event_search).permit(:keyword)
     end
 end

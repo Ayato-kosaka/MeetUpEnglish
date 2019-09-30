@@ -45,11 +45,9 @@ $widthSp: 934px; //スマートフォン
         padding: 3px;
         @include sp{width: 14vw;}
         @include pc{width: 96.9px;}
-        .active{
-          border-color: #ff89c0;
-        }
       }
     }
+    .active{img{border-color: #89f6ff;}}
   }
 }
 .blog_h3{padding: 16px 16px 0;margin: 0;font-size: 16px;}
