@@ -36,15 +36,17 @@
 
 
 <!-- セクション -->
-<%= if session[:role]=="Admin" then link_to 'NewSection', new_section_path(selected_blog:@blog.id) end %>
-<% Section.where(blogId: @blog.id).order(:index).each do |n| %>
-  <h2 id="blog_index_<%= n.id %>"><%= n.title %></h2>
-  <% if session[:role]=="Admin" %><%= link_to 'EditSection', edit_section_path(n.id,selected_blog:@blog.id) %> | <%= link_to 'DestroySection', n, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
-  <% if n.image.attached? %>
-  <%= image_tag n.image, class: "section_image"%>
-  <% end %>
-  <p><%= raw(n.text.gsub(/\n/, '<br>')) %></p>
+<section id="blog_section">
+  <%= if session[:role]=="Admin" then link_to 'NewSection', new_section_path(selected_blog:@blog.id) end %>
+  <% Section.where(blogId: @blog.id).order(:index).each do |n| %>
+    <h2 id="blog_index_<%= n.id %>"><%= n.title %></h2>
+    <% if session[:role]=="Admin" %><%= link_to 'EditSection', edit_section_path(n.id,selected_blog:@blog.id) %> | <%= link_to 'DestroySection', n, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
+    <% if n.image.attached? %>
+    <%= image_tag n.image, class: "section_image"%>
+    <% end %>
+    <p><%= raw(n.text.gsub(/\n/, '<br>')) %></p>
 <% end %>
+</section>
 
 <!-- 前後のブログ -->
 <div class="around_blog">
