@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/new'
   resources :contacts, except: [:edit, :update]
   get 'contacts/:id/join', to: 'contacts#join_new'
   post 'contacts/:id/create' => 'contacts#join_create'
