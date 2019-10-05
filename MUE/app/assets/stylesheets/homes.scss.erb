@@ -1,25 +1,16 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-$widthPC: 934px; //PC
-$widthTab: 934px; //タブレット
-$widthSp: 934px; //スマートフォン
+@import "header.scss";
 
-@mixin pc ($widthPC: 934px){
-  @media (min-width: ($widthPC)) {
-    @content;
-  }
-}
-@mixin tab {
-  @media (min-width: $widthTab) and (max-width: ($widthPC)) {
-    @content;
-  }
-}
-@mixin sp ($widthTab: 934px){
-  @media (max-width: ($widthTab)) {
-    @content;
-  }
-}
+
+
+
+
+
+
+
+
 
 
 //top
@@ -31,7 +22,9 @@ $widthSp: 934px; //スマートフォン
   display: block;
   overflow: hidden;
   a{display: flex;}
-  .text-top{min-width: $percent;  font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;}
+  .text-top{min-width: $percent;
+    font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;
+  }
 }
 /* 無限ループアニメーション */
 @keyframes infinity-loop {
@@ -252,6 +245,23 @@ $widthSp: 934px; //スマートフォン
     margin: 20px 0;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

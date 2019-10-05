@@ -1,0 +1,22 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$widthPC: 934px; //PC
+$widthTab: 934px; //タブレット
+$widthSp: 934px; //スマートフォン
+
+@mixin pc ($widthPC: 934px){
+  @media (min-width: ($widthPC)) {
+    @content;
+  }
+}
+@mixin tab {
+  @media (min-width: $widthTab) and (max-width: ($widthPC)) {
+    @content;
+  }
+}
+@mixin sp ($widthTab: 934px){
+  @media (max-width: ($widthTab)) {
+    @content;
+  }
+}

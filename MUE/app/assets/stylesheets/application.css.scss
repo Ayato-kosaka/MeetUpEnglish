@@ -1,0 +1,38 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
+
+
+
+ html{font-family:verdana, arial, helvetica, sans-serif;color:#333;line-height: 1.5;
+
+}
+h2 {border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#10081c;color:#0ba834f2;font-family:verdana, arial, helvetica, sans-serif;font-size:2.308rem;line-height:1.5;margin-top:30px;margin-bottom:23px;font-weight:inherit;}
+body {background-color:#fafafa;margin: 0;}
+h1{font-size:2.462rem;line-height:1.7;font-weight:inherit}
+@media screen and (max-width:934px) {
+  /*スマホ用のcssを記述*/
+  .onlypc{display: none;}
+  html{font-size: 11.7px;}
+}
+
+@media screen and (min-width:935px) {
+/*pc用のcssを記述*/
+  .onlymobile{display: none;}
+  html{font-size: 13px;}
+}
+ table{width: 100%;}

@@ -17,21 +17,6 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function(){//prefectureを選ぶ画面のポチポチ + acgtive
-  $("#display_show").parent().children("a").addClass("active");//のちに消す
-  $(".region_a").click(function(){
-    var region_childern_ul = $(this).parent().children("ul")
-    if($(this).hasClass("active")){
-      region_childern_ul.hide();
-      $(this).removeClass("active");
-    } else{
-      region_childern_ul.show();
-      $(this).addClass("active");
-    }
- });
-
-
-})
 
 
 var swi = 0;
