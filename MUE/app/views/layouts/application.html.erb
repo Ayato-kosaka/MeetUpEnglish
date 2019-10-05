@@ -33,8 +33,8 @@
         <p><%= link_to 'contact(' + Contact.where(checked: false).size.to_s + ')', contacts_path, data: {"turbolinks"=>false}, class: Contact.where(checked: false).size > 0 ? "text_orange_gradation" : '' %></p>
         <% end %>
 
-        <%= link_to "カフェ開催スケジュール", root_path, class: "page_btn",style: "background-color: #179c17", data: {"turbolinks"=>false} %>
-        <%= link_to "料金/すきま時間英会話とは", overview_path, class: "page_btn", style: "background-color: #da4f4f;", data: {"turbolinks"=>false} %>
+        <%= link_to "カフェ開催スケジュール", root_path, class: "page_btn",style: "background-color: #179c17" %>
+        <%= link_to "料金/すきま時間英会話とは", overview_path, class: "page_btn", style: "background-color: #da4f4f;" %>
         <%= link_to "Meet Up English のブログ", blogs_path, class: "page_btn", style: "background-color: #1b95e0;", data: {"turbolinks"=>false} %>
 
         <!-- LineWidget -->

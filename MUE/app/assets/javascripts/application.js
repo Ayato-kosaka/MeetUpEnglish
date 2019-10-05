@@ -17,26 +17,22 @@
 //= require turbolinks
 //= require_tree .
 
-$(function(){//prefectureを選ぶ画面のポチポチ + acgtive
-$("#display_show").parent().children("a").addClass("active");//のちに消す
-$(".region_a").click(function(){
-  var region_childern_ul = $(this).parent().children("ul")
-  if($(this).hasClass("active")){
-    region_childern_ul.hide();
-    $(this).removeClass("active");
-  } else{
-    region_childern_ul.show();
-    $(this).addClass("active");
-  }
+$(document).ready(function(){//prefectureを選ぶ画面のポチポチ + acgtive
+  $("#display_show").parent().children("a").addClass("active");//のちに消す
+  $(".region_a").click(function(){
+    var region_childern_ul = $(this).parent().children("ul")
+    if($(this).hasClass("active")){
+      region_childern_ul.hide();
+      $(this).removeClass("active");
+    } else{
+      region_childern_ul.show();
+      $(this).addClass("active");
+    }
  });
 
- $(".pagetop").click(function () {
-  $('body,html').animate({
-        scrollTop: 0
-    }, 500);
-    return false;
- });
+
 })
+
 
 var swi = 0;
 $(window).scroll(function() { //サイドボックスの固定 1=>固定状態 0=>固定されていない
@@ -59,6 +55,21 @@ $(window).scroll(function() { //サイドボックスの固定 1=>固定状態 0
   }
 
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 jQuery(function($) {//articleのどこをタッチしても飛ぶ
 
