@@ -1,19 +1,9 @@
 
 
-body {
- background-color:#fafafa;
- color:#333;
- margin: 0;
+
+p,ol,ul,td {
  font-family:verdana, arial, helvetica, sans-serif;
- font-size:13px;
- line-height:18px
-}
-p,
-ol,
-ul,
-td {
- font-family:verdana, arial, helvetica, sans-serif;
- font-size:14px;
+ font-size:1.197rem;
  line-height:1.75
 }
 li {
@@ -55,7 +45,6 @@ div.actions {
 #error_explanation {width:450px;border:2px solid red;padding:7px 7px 0;margin-bottom:20px;background-color:#f0f0f0}
 #error_explanation h2 {text-align:left;font-weight:bold;padding:5px 5px 5px 15px;font-size:12px;margin:-7px -7px 0;background-color:#c00;color:#fff}
 #error_explanation ul li {font-size:12px;list-style:square}
-h2 {border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#10081c;color:#0ba834f2;font-family:verdana, arial, helvetica, sans-serif;font-size:30px;line-height:45px;margin-top:30px;margin-bottom:23px;font-weight:inherit}
 label {display:block}
 textarea {
 	width: 100%;
@@ -65,10 +54,10 @@ textarea {
 .text_orange_gradation{font-weight: bold;color: #FF8C00;background: -webkit-linear-gradient(0deg, #40E0D0, #FF8C00, #FF0080);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
 .grid{display: grid;}
 #footer1.cmn-footer {background: -webkit-gradient(linear,left top,left bottom,color-stop(20%,rgba(226,255,222,0)),to(#179c17));background: -webkit-linear-gradient(rgba(226,255,222,0) 20%,#179c17 100%);background: -o-linear-gradient(rgba(226,255,222,0) 20%,#179c17 100%);background: linear-gradient(rgba(226,255,222,0) 20%,#179c17 100%);height: 300px; margin-top: 30px;}
-.pagetop {padding-top: 23px;text-align: center;font-size: .75rem;font-family: 'Poppins',sans-serif;letter-spacing: .03125rem;font-weight: 700;cursor: pointer;-webkit-tap-highlight-color: transparent;}
+.pagetop {padding-top: 23px;text-align: center;font-size: 0.923rem;font-family: 'Poppins',sans-serif;letter-spacing: .03125rem;font-weight: 700;cursor: pointer;-webkit-tap-highlight-color: transparent;}
 .pagetop a {text-decoration: none;color: #179c17;background-color: #fff;padding: 10px 20px;border-radius: 20px;display: block;width: 90px;margin: 40px auto 30px;
             &:hover{font-size: .8rem;}}
-.copyright {font-family: 'Poppins',sans-serif;letter-spacing: .03125rem;color: #179c17;font-size: .75rem;text-align: center;}
+.copyright {font-family: 'Poppins',sans-serif;letter-spacing: .03125rem;color: #179c17;font-size: 1.026rem;text-align: center;}
 .page_btn {color:#FFF !important;border-radius:7px;position:relative;display:inline-block;height:28px;width:187.183px;text-align:center;font-size:14px;line-height:26px;overflow:hidden;text-decoration:none;margin-bottom:10px}
 #twitter-widget-1 {overflow-y:scroll;height:430px}
 .insta_btn2 {color:#FFF !important;border-radius:7px;position:relative;display:inline-block;height:28px;width:187.183px;text-align:center;font-size:25px;line-height:50px;background:-webkit-linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;background:linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;overflow:hidden;text-decoration:none;margin-bottom:10px}.insta_btn2:before {content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:-webkit-lineargradient(15deg, #ffdb2c, #f9764c 25%, rgba(255,77,64,0) 50%) no-repeat;background:linear-gradient(15deg, #ffdb2c, #f9764c 25%, rgba(255,77,64,0) 50%) no-repeat}
@@ -99,9 +88,7 @@ article{width: 75%;height: 400px;margin: 35px auto 35px auto;overflow: hidden;po
 
 
 
-table {
- width:100%
-}
+
 
 
 
@@ -110,7 +97,7 @@ table {
   .modal-message-box {background: radial-gradient(#cae2b7 35%, #a0f58c 50%, #42a958bf 75%, #4dcf86 85%); padding: 10px 5px;overflow-y: auto;width: 100%;height: calc(100% - 60px);text-align: center;
     h1{font-size: 5.67rem;font-weight: inherit;font-family: Monotype Corsiva, fantasy;}
     img{max-width: 100%;height: auto;}
-    label{font-family: Monotype Corsiva, fantasy;font-size: 2.12em;font-weight: 400;}
+    label{font-family: Monotype Corsiva, fantasy;font-size: 2.154rem;font-weight: 400;line-height: 0.643;}
   }
 
   .modal-close-btn {
@@ -138,8 +125,7 @@ table {
 
   // aplication css
   body{margin: 0;}
-  h1{margin-block-start: 0.83em;margin-block-end: 0.83em;font-size: 1.8rem;font-weight: bold;margin: 22px 0;line-height: normal;}
-  p{font-size: 16px;}
+  h1{margin-block-start: 0.83em;margin-block-end: 0.83em;margin: 22px 0;}
   #sidebox1{display: none;}
   #main{background-color: white;padding: 10px 18px;margin: 10px 0 0 0; display: block;}
   header{
@@ -154,9 +140,9 @@ table {
   #header3{display: none;}
   #footer1.cmn-footer{margin-bottom: 60px;height: 450px; margin-top: -50px;}
   .pagetop{padding-top: 50px;}
-  .footer_page_btn, .footer_contact_btn{ text-align: center;font-size: 0.95rem;font-family: 'Poppins',sans-serif;letter-spacing: .03125rem;font-weight: 700;-webkit-tap-highlight-color: transparent;}
+  .footer_page_btn, .footer_contact_btn{ text-align: center;font-size: 1.169rem;font-family: 'Poppins',sans-serif;letter-spacing: .03125rem;font-weight: 700;-webkit-tap-highlight-color: transparent;}
   .footer_page_btn a{    text-decoration: none;color: #179c17;padding: 10px 0;display: block;width: 100%;}
-  .footer_contact_btn a{    text-decoration: none;color: #179c17;padding: 10px 0;display: block;width: 100%;font-weight: lighter;}
+  .footer_contact_btn a{    text-decoration: none;color: #179c17;padding: 10px 0;display: block;width: 100%;}
   .twitter_btn i{position: relative;font-size: 17px;top: 2px;right: 3px;}
   .insta_btn i{position: relative;font-size: 20px;top: 2px;right: 3px;}
   .line_btn i{position: relative;font-size: 20px;top: 2px;right: 4px;}
@@ -173,7 +159,7 @@ table {
     .grid{grid-template-rows: 80px 80px 80px 240px;max-width: 800px;margin: auto;}.grid1{grid-row: 1;}.grid2{grid-row: 2;}.grid3{grid-row: 3;}.grid4{grid-row: 4;}
     .field{text-align: left;margin: 10px 20px}label{display: inline-block;margin-bottom: 5px;text-align: left;}
     .grid input,textarea{width: calc(100% - 20px);border-radius: 5px;border: none;line-height: 1.8em;font-size: 1.3em;padding: 8px 10px;}textarea{height: 184px;}
-    .field_with_errors{display: block;}h1{font-size: 2.89em}p{font-size: 1.3em;font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;}
+    .field_with_errors{display: block;}h1{font-size: 2.89em}p{font-size: 1.923rem;font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;}
     #error_explanation{margin: 0 auto 20px;background-color: white;width: 100%;max-width: 450px;h2{background-color: red;color: black;text-align: center;}}
     .thanks{position: absolute;top: 50%;left: 50%;transform: translateY(-50%) translateX(-50%);-webkit-\ transform: translateY(-50%) translateX(-50%);width: 100%;}
   }
@@ -191,9 +177,8 @@ table {
 
 @media screen and (min-width:935px) {
 /*pc用のcssを記述*/
-  .onlymobile{display: none;}
 
-  h1{font-size:32px;line-height:70px;font-weight:inherit}
+
   #main{height: 100%;max-width: 935px;width: 100%;margin: 0 auto; display: flex;}
   #main1{margin-right: -280px;padding: 0px;width: 100%;float: left;  }
   #main2{width:614px;  background-color: white;  display: inline-block;  overflow-x: auto;padding: 10px 20px 80px 20px; min-height: 600px;}
@@ -207,7 +192,7 @@ table {
   #header2-p{font-family: Helevetica;font-weight: bold;font-style: oblique;margin: 0px;font-size: 50px;}
   #header3{float: right;margin-right: 50px;}
   .footer_page_btn{display: none;}
-  .footer_contact_btn{ text-align: center;font-size: 0.95rem;font-family: 'Poppins',sans-serif;letter-spacing: .03125rem;font-weight: 700;-webkit-tap-highlight-color: transparent;}
+  .footer_contact_btn{ text-align: center;font-size: 1.169rem;font-family: 'Poppins',sans-serif;letter-spacing: .03125rem;font-weight: 700;-webkit-tap-highlight-color: transparent;}
   .footer_contact_btn a{    text-decoration: none;color: #179c17;padding: 10px 0;display: block;width: 100%;font-weight: lighter;
   &:hover{font-size: 1rem;}}
   .contact_btn i{position: relative;font-size: 22px;top: 2px;right: 4px;}
