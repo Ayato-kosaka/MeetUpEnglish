@@ -1,3 +1,18 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "header.scss";
+
+#login{
+  @include flex;
+  @include align-items(center);
+  @include justify-content(center);
+  width: calc(100% - 36px);
+  @include sp{
+    height: calc(100vh - 80px);
+  }
+  @include pc{
+    height: calc(100vh - 20px);
+  }
+
+}
