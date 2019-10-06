@@ -1,21 +1,28 @@
 <div id="login">
-  <h1>LogIn</h1>
+  <h1>Meet up English</h1>
+  <p id="login_as_stu">生徒としてログイン</p>
   <% if flash[:alert] %>
     <p><%= flash[:alert] %></p>
   <% end %>
   <%= form_tag do %>
-    <div class="field">
-      <%= label_tag :email %>
-      <%= text_field_tag :email %>
-    </div>
-
-    <div class="field">
-      <%= label_tag :password %>
-      <%= password_field_tag :password %>
-    </div>
-
-    <div class="actions">
-      <%= submit_tag "Login" %>
-    </div>
+    <%= text_field_tag :email, '', {class: "email", placeholder: "メールアドレス"}  %>
+    <%= password_field_tag :password, '', {class: "password", placeholder: "パスワード"}  %>
+    <%= submit_tag "ログイン", {class: "submit"} %>
   <% end %>
+  <a href="#" id="sign_up">新規会員登録はこちら</a>
+  <a href="#" id="terms">利用規約</a>
+  <a href="#" id="login_as_teacher">
+    Login as a teacher
+  </a>
+
+
 </div>
+
+<footer id="as_guest">
+  <a href="#">ログインせずに利用する</a>
+</footer>
+
+
+<style>
+  body{overflow-y: hidden;}
+</style>

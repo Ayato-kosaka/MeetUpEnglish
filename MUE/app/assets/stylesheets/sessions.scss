@@ -4,15 +4,99 @@
 @import "header.scss";
 
 #login{
-  @include flex;
+  @include flexbox;
+  @include flex-direction(column);
   @include align-items(center);
   @include justify-content(center);
-  width: calc(100% - 36px);
-  @include sp{
-    height: calc(100vh - 80px);
+  position: fixed;
+  height: calc(100% - 50px);
+  width: 100%;
+  background: white;
+  top: 0px;
+  right: 0;
+  padding-right: 5px;
+  z-index: 100;
+  p{margin: 0;}
+  h1{
+    color: black;
+    margin: 0;
+    @include logofont(6.346vw);
+    text-shadow: 10px 10px 10px rgba(0,0,0,0.4);
   }
-  @include pc{
-    height: calc(100vh - 20px);
+  #login_as_stu{
+    width: 52vw;
+    text-align: right;
+    font-size: 2.887vw;
+    margin: -2vw 0 20px;
+    text-shadow: 5px 4px 5px rgba(0,0,0,0.4);
   }
+  form{
+    @include flexbox;
+    @include flex-direction(column);
+    width: 52.045vw;
+    input{
+      margin: 10px 0;
+      height: 35px;
+      border-radius: 15px;
+      border: none;
+      padding: 0 10px;
+      box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
+    }
+    .submit{
+      color: white;
+      background: linear-gradient(120deg,#3498db, #8e44ad,#3498db);
+      background-size: 200%;
+      font-size: 1.453rem;
+      cursor: pointer;
+    }
+  }
+  #sign_up{
+    text-decoration: revert;
+    margin-top: 10px;
+  }
+  #terms{
+    margin-top: 50px;
+    color: rgb(121,121,121);
+    text-decoration: revert;
+  }
+}
 
+#login_as_teacher{
+  width: 40vw;
+  height: 30px;
+  margin-top: 30px;
+  background: linear-gradient(120deg,#3498db, #8e44ad,#3498db);
+  background-size: 200%;
+  color: white;
+  font-size: 15px;
+  font-family: $busoan;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
+}
+
+footer#as_guest{
+  @include flexbox;
+  @include align-items(center);
+  width: 100%;
+  min-height: 50px;
+  background-color: #5b74c7;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 101;
+  font-family: "EB Garamond", "游明朝体", "YuMincho", "游明朝", "Yu Mincho", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN W3", HiraMinProN-W3, "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", "ヒラギノ明朝 Pro", "Hiragino Mincho Pro", "HGS明朝E", serif;
+  letter-spacing: -0.09em;
+  a{
+    width: 100%;
+    height: 100%;
+    color: white;
+    font-size: 4.2vw;
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(center);
+  }
 }
