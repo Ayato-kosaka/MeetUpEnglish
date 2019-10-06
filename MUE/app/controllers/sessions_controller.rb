@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :require_Admin ,only: [:new, :create]
+  skip_before_action :require_Admin
   def new
   end
 
@@ -8,22 +8,21 @@ class SessionsController < ApplicationController
 			reset_session
 		end
 
-		if (user = Admin.find_by(email: params[:email])) && user.authenticate(params[:password])
-			session[:user] = user
-			session[:role]  = "Admin"
+		if (user = Admin.find_by(email: params[:session][:email].downcase)) && user.authenticate(params[:session][:password])
+			log_in(user)
 			redirect_to contacts_url, notice: 'ログイン成功'
-		elsif (user = Teacher.find_by(email: params[:email])) && user.authenticate(params[:password])
-			session[:user_id] = user
-			session[:role]  = "Teacher"
-			redirect_to contacts_url, notice: 'ログイン成功'
+		elsif (user = Teacher.find_by(email: params[:session][:email].downcase)) && user.authenticate(params[:session][:password])
+			log_in(user)
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+			redirect_to root_url
 		else
-  		flash[:alert] = 'emailかpasswordに誤りがあります'
-  		redirect_to login_url
+  		flash.now[:alert] = 'emailかpasswordに誤りがあります'
+  		render 'new'
     end
   end
 
   def destroy
-		reset_session
-		redirect_to login_url
+    log_out if logged_in?
+		redirect_to root_url
   end
 end

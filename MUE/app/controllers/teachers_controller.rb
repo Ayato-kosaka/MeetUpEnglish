@@ -29,7 +29,9 @@ class TeachersController < ApplicationController
     @teacher = Teacher.new(teacher_params)
 
     if @teacher.save
-      redirect_to @teacher
+      log_in @teacher
+      flash[:success] = "Welcome to the Meet up English!"
+      redirect_to root_url
     else
       render :new
     end

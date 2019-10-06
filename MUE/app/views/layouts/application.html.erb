@@ -6,19 +6,27 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+
+
+
   <body>
     <div id="create_contact"></div>
+
+
+
 
     <header>
       <div id="header1-1"><div id="header1-2"><%= link_to image_tag("logo.jpg", alt: "logo", id: 'header1-img'), top_path %></div></div>
       <div id="header2"><p id="header2-p"><%= link_to 'Meet up English', top_path, data: {"turbolinks"=>false} %></p></div>
-      <% if session[:user].nil? %>
+      <% if !logged_in? %>
       <div id="header3"><ul><li><a data-remote="true" href="/contacts/new?title=I want to be a teacher">I want to be a teacher</a>
       </li></ul></div>
       <% elsif %>
-      <div id="header3"><ul><li>name:<%=session[:user]["name"]%></li><li>role:<%=session[:role]%></li><li><%= link_to "ログアウト", logout_url, method: :delete %></li></ul></div>
+      <div id="header3"><ul><li>name:<%=@current_user.name%></li><li>role:<%=session[:role]%></li><li><%= link_to "Log out", logout_path, method: :delete %></li></ul></div>
       <% end %>
     </header>
+
+
 
     <div id="main">
       <div id="main1">
@@ -26,9 +34,10 @@
           <%= yield %>
         </div>
       </div>
+
       <div id="sidebox1">
         <div id="sidebox2">
-        <% unless session[:user].nil? %>
+        <% unless !logged_in? %>
         <p><%= link_to 'teacher', teachers_path %></p>
         <p><%= link_to 'contact(' + Contact.where(checked: false).size.to_s + ')', contacts_path, data: {"turbolinks"=>false}, class: Contact.where(checked: false).size > 0 ? "text_orange_gradation" : '' %></p>
         <% end %>
@@ -52,6 +61,7 @@
         <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">【Meet Up English 】<br><br>•「スキマ時間」に駅周辺のCaffeで<br><br>「英会話」をする。という、気軽にス<br><br>キマ時間を利用して英会話をするサー<br><br>ビスの提供を目指しております。<br><br>•参加費1000円〜でネイティブ講師と<br><br>の英会話サービスです。<br><br>✅興味のある方は是非DMを下さい!!<a href="https://twitter.com/hashtag/%E3%82%B9%E3%82%AD%E3%83%9E?src=hash&amp;ref_src=twsrc%5Etfw">#スキマ</a> <a href="https://twitter.com/hashtag/%E8%8B%B1%E8%AA%9E?src=hash&amp;ref_src=twsrc%5Etfw">#英語</a> <a href="https://twitter.com/hashtag/%E8%8B%B1%E4%BC%9A%E8%A9%B1?src=hash&amp;ref_src=twsrc%5Etfw">#英会話</a></p>&mdash; Meet Up English Group (@meetup_english) <a href="https://twitter.com/meetup_english/status/1159399521744388096?ref_src=twsrc%5Etfw">August 8, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
       </div>
+
     </div>
 
     <div id="footer1" class="cmn-footer"><div class="pagetop"> <a>↑PAGETOP</a></div>
