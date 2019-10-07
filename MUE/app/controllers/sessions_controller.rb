@@ -4,14 +4,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-		if session[:user_id]
-			reset_session
-		end
+    log_out if logged_in?
 
-		if (user = Admin.find_by(email: params[:session][:email].downcase)) && user.authenticate(params[:session][:password])
-			log_in(user)
-			redirect_to contacts_url, notice: 'ログイン成功'
-		elsif (user = Teacher.find_by(email: params[:session][:email].downcase)) && user.authenticate(params[:session][:password])
+		if (user = Teacher.find_by(email: params[:session][:email].downcase)) && user.authenticate(params[:session][:password])
 			log_in(user)
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
 			redirect_to root_url
