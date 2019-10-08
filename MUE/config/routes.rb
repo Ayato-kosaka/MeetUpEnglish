@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  controller :sessions do
+    get 'login' => :new
+    get 'login/teacher' => :teacher
+    post 'login' => :create
+    post 'login/teacher' => :teacher
+    delete 'logout' => :destroy
+  end
   get 'users/new'
   resources :contacts, except: [:edit, :update]
   get 'contacts/:id/join', to: 'contacts#join_new'
@@ -26,11 +33,6 @@ Rails.application.routes.draw do
   resources :regions
   resources :prefectures
   resources :cities
-  controller :sessions do
-    get 'login' => :new
-    post 'login' => :create
-    delete 'logout' => :destroy
-  end
   resources :admins
   resources :teachers
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

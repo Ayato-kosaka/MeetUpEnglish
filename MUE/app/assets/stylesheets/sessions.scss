@@ -3,6 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "header.scss";
 
+$purple: #8e44ad;
+$blue: #3498db;
+@mixin gradient($color1: #3498db, $color2: #8e44ad) {
+  background: linear-gradient(120deg,$color1, $color2, $color1);
+  background-size: 200%;
+}
+
 #login{
   @include flexbox;
   @include flex-direction(column);
@@ -23,7 +30,7 @@
     @include logofont(6.346vw);
     text-shadow: 10px 10px 10px rgba(0,0,0,0.4);
   }
-  #login_as_stu{
+  #login_as_text{
     width: 52vw;
     text-align: right;
     font-size: 2.887vw;
@@ -38,36 +45,37 @@
       margin: 10px 0;
       height: 35px;
       border-radius: 15px;
-      border: none;
+      border: solid #8c8c8c 1px;
       padding: 0 10px;
       box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
     }
     .submit{
       color: white;
-      background: linear-gradient(120deg,#3498db, #8e44ad,#3498db);
-      background-size: 200%;
       font-size: 1.453rem;
+      border:none;
       cursor: pointer;
+      &.student{@include gradient($blue, $purple)}
+      &.teacher{ @include gradient($purple, $blue) }
     }
   }
   #sign_up{
-    text-decoration: revert;
+    text-decoration: underline;
     margin-top: 10px;
+    text-shadow: 10px 10px 10px rgba(0,0,0,0.4);
   }
   #terms{
     margin-top: 50px;
     color: rgb(121,121,121);
-    text-decoration: revert;
+    text-decoration: underline;
+    text-shadow: 10px 10px 10px rgba(0,0,0,0.4);
   }
 }
 
-#login_as_teacher{
+.login_as{
   width: 40vw;
   height: 30px;
   margin-top: 30px;
-  background: linear-gradient(120deg,#3498db, #8e44ad,#3498db);
-  background-size: 200%;
-  color: white;
+  color: white!important;
   font-size: 15px;
   font-family: $busoan;
   text-align: center;
@@ -76,20 +84,25 @@
   justify-content: center;
   border-radius: 50px;
   box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
+  &#login_as_teacher{@include gradient($blue, $purple)}
+  &#login_as_student{@include gradient($purple, $blue)}
 }
+
+
 
 footer#as_guest{
   @include flexbox;
   @include align-items(center);
   width: 100%;
   min-height: 50px;
-  background-color: #5b74c7;
   position: fixed;
   bottom: 0;
   left: 0;
   z-index: 101;
   font-family: "EB Garamond", "游明朝体", "YuMincho", "游明朝", "Yu Mincho", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN W3", HiraMinProN-W3, "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", "ヒラギノ明朝 Pro", "Hiragino Mincho Pro", "HGS明朝E", serif;
   letter-spacing: -0.09em;
+  &.student{background-color: #5b74c7;}
+  &.teacher{background-color: #5b74c7;}
   a{
     width: 100%;
     height: 100%;

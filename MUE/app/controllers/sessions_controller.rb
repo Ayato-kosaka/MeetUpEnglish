@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
 			redirect_to root_url
 		else
-  		flash.now[:alert] = 'emailかpasswordに誤りがあります'
+  		flash.now[:alert] = '*emailかpasswordに誤りがあります'
   		render 'new'
     end
   end
