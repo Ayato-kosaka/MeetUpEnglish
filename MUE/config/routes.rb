@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   controller :sessions do
     get 'login' => :new
-    get 'login/teacher' => :teacher
     post 'login' => :create
-    post 'login/teacher' => :create_teacher
+    get 'login/teacher' => :teacher
+    post 'login/teacher' => :signin_teacher
+    get 'signup/student' => :signup_student
+    post 'signup/student' => :create_student
+    get 'signup/teacher' => :signup_teacher
+    post 'signup/teacher' => :create_teacher
     delete 'logout' => :destroy
   end
   get 'users/new'
