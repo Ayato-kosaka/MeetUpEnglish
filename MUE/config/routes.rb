@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
-  controller :sessions do
-    get 'login' => :new
-    post 'login' => :create
-    get 'login/teacher' => :teacher
-    post 'login/teacher' => :signin_teacher
-    get 'signup/student' => :signup_student
-    post 'signup/student' => :create_student
-    get 'signup/teacher' => :signup_teacher
-    post 'signup/teacher' => :create_teacher
+  scope module: 'sessions' do
+    namespace :login do
+      get '' => :new
+      post '' => :create
+      get 'teacher' => :teacher
+      post 'teacher' => :signin_teacher
+    end
+    namespace :signup do
+      get 'student' => :signup_student
+      post 'student' => :create_student
+      get 'teacher' => :signup_teacher
+      post 'teacher' => :create_teacher
+    end
     delete 'logout' => :destroy
   end
   get 'users/new'
