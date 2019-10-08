@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     get 'login' => :new
     get 'login/teacher' => :teacher
     post 'login' => :create
-    post 'login/teacher' => :teacher
+    post 'login/teacher' => :create_teacher
     delete 'logout' => :destroy
   end
   get 'users/new'

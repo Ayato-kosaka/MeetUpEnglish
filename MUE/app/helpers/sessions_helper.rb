@@ -2,7 +2,7 @@ module SessionsHelper
   # 渡されたユーザーでログインする
   def log_in(user)
     session[:user_id] = user.id
-    session[:teacher]  = true if user.class.to_s == 'teacher'
+    #session[:teacher]  = true if user.class.to_s == 'teacher' #いらなくね？
   end
 
   # ユーザーのセッションを永続的にする
@@ -16,11 +16,14 @@ module SessionsHelper
   def current_user?(user)
     user == current_user
   end
+  def current_teacher?(user)
+    user == current_teacher
+  end
 
   # 記憶トークンcookieに対応するユーザーを返す
   def current_user
     if (user_id = session[:user_id])#Is session[:user_id] exsist?
-      @current_user ||= session[:teacher] ? User.find_by(id: user_id) : Teacher.find_by(id: user_id)
+      @current_user ||= User.find_by(id: user_id)
     elsif (user_id = cookies.signed[:user_id])
       user = User.find_by(id: user_id)
       if user && user.authenticated?(cookies[:remember_token])
@@ -29,10 +32,21 @@ module SessionsHelper
       end
     end
   end
+  def current_teacher
+    if (user_id = session[:user_id])#Is session[:user_id] exsist?
+      @current_teacher ||= Teacher.find_by(id: user_id)
+    elsif (user_id = cookies.signed[:user_id])
+      user = Teacher.find_by(id: user_id)
+      if user && user.authenticated?(cookies[:remember_token])
+        log_in user
+        @current_teacher = user
+      end
+    end
+  end
 
   # ユーザーがログインしていればtrue、その他ならfalseを返す
   def logged_in?
-    !current_user.nil?
+    !current_user.nil? || !current_teacher.nil?
   end
 
 
@@ -45,9 +59,10 @@ module SessionsHelper
 
   # 現在のユーザーをログアウトする
   def log_out
-    forget(current_user)
+    forget(current_user || current_teacher)
     reset_session
     @current_user = nil
+    @current_teacher = nil
   end
 
   # 記憶したURL (もしくはデフォルト値) にリダイレクト
