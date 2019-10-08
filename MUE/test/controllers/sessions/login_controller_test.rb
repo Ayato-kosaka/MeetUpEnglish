@@ -7,5 +7,7 @@ class Sessions::LoginControllerTest < ActionDispatch::IntegrationTest
   test "should get" do
     get login_path
     assert_response :success
+    get login_path
+    assert_response :success
   end
 end

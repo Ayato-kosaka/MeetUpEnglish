@@ -1,3 +1,30 @@
 // Place all the styles related to the sessions::signup controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "header.scss";
+
+#signup_student_path{
+  form{
+    *{
+    }
+    h1{
+      text-align: center;
+    }
+    input{
+      padding: 2px 2vw;
+    }
+    .field{
+      @include flexbox;
+      @include flex-direction(column);
+      @include align-items(center);
+      *{
+        width: 92vw;
+      }
+      label{
+        padding: 0;
+        margin-left: -4vw;
+      }
+
+    }
+  }
+}

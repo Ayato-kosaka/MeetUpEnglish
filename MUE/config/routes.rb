@@ -14,6 +14,13 @@ Rails.application.routes.draw do
     end
     delete 'logout' => :destroy
   end
+
+
+
+
+
+
+  
   get 'users/new'
   resources :contacts, except: [:edit, :update]
   get 'contacts/:id/join', to: 'contacts#join_new'

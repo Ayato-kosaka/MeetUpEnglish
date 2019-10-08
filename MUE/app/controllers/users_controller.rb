@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   private
     # Never trust parameters from the scary internet, only allow the white list through.
-    def teacher_params
+    def user_params
       params.require(:user).permit(:name, :man, :email, :password, :password_confirmation, :avatar)
     end
 end
