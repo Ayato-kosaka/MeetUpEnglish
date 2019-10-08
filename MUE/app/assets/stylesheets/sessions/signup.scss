@@ -11,7 +11,7 @@
       text-align: center;
     }
     input{
-      padding: 2px 2vw;
+      padding: 4px 2vw;
     }
     .field{
       @include flexbox;
@@ -24,7 +24,15 @@
         padding: 0;
         margin-left: -4vw;
       }
-
+      .span_with_error{
+        @include flexbox;
+        @include flex-direction(column);
+        @include align-items(center);
+        input{
+          background-color: #ffa8a859;
+          border: solid red 2px;
+        }
+      }
     }
   }
 }
