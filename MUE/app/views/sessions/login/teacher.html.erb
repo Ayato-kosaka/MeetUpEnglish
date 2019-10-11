@@ -9,14 +9,15 @@
     <%= f.password_field :password, {class: "password", placeholder: "password"}  %>
     <%= f.submit "LOGIN", {class: "submit teacher"} %>
   <% end %>
-  <a href="#" id="sign_up">sign up</a>
+  <a href=<%= signup_teacher_path(locale: "en") %> id="sign_up">sign up</a>
   <a href="#" id="terms">terms of service</a>
   <a href="/login" id="login_as_student" class="login_as">
     生徒としてログイン
   </a>
 
 
-</div
+</div>
+<footer id="as_guest" class="teacher"></footer>
 
 <style>
   body{overflow-y: hidden;}

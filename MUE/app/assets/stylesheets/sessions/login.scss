@@ -103,6 +103,7 @@ footer#as_guest{
   font-family: $busoan;
   letter-spacing: -0.09em;
   &.student{background-color: #5b74c7;}
+  &.teacher{background-color: white;}
   a{
     width: 100%;
     height: 100%;

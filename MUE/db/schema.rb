@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_10_075850) do
+ActiveRecord::Schema.define(version: 2019_10_11_051300) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -128,7 +128,7 @@ ActiveRecord::Schema.define(version: 2019_10_10_075850) do
 
   create_table "teachers", force: :cascade do |t|
     t.string "name"
-    t.boolean "man"
+    t.boolean "gender"
     t.text "selfIntroduction"
     t.string "email"
     t.string "password_digest"

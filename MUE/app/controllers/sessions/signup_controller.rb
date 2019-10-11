@@ -9,12 +9,12 @@ class Sessions::SignupController < SessionsController
   def create_student
     @user = User.new(user_params)
     if @user.save && params[:user][:gender]
-      @user.update(gender: gender_convert_to_boolean)
+      @user.update(gender: users_gender_convert_to_boolean)
       log_in @user
       flash[:success] = "Welcome to the Meet up English!"
       redirect_to root_url
     else
-      @user.gender = gender_convert_to_boolean
+      @user.gender = users_gender_convert_to_boolean
       @gender_errors = "性別を選択してください" if !params[:user][:gender]
       render :signup_student
     end
@@ -22,10 +22,25 @@ class Sessions::SignupController < SessionsController
 
   #signup_teacher_path 	GET 	/signup/teacher(.:format) 	sessions/signup_teacher
   def signup_teacher
+    @teacher = Teacher.new
   end
   #signup_teacher_path 	POST 	/signup/teacher(.:format) 	sessions/create_teacher
   def create_teacher
+    @teacher = Teacher.new(teacher_params)
+    if @teacher.save && params[:teacher][:gender]
+      @teacher.update(gender: teachers_gender_convert_to_boolean)
+      log_in @teacher
+      flash[:success] = "Welcome to the Meet up English!"
+      redirect_to root_url #I need to change this
+    else
+      @teacher.gender = teachers_gender_convert_to_boolean
+      @gender_errors = "Please select a gender" if !params[:teacher][:gender]
+      render :signup_teacher
+    end
   end
+
+
+
 
   private
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -33,10 +48,21 @@ class Sessions::SignupController < SessionsController
       params.require(:user).permit(:name, :gender, :email, :password, :password_confirmation)
     end
 
-    def gender_convert_to_boolean #output true if there is no gender error
+    def teacher_params
+      params.require(:teacher).permit(:name, :gender, :email, :password, :password_confirmation)
+    end
+
+    def users_gender_convert_to_boolean #output true if there is no gender error
       if params[:user][:gender] == "男"
         return 1
       elsif params[:user][:gender] == "女"
+        return 0
+      end
+    end
+    def teachers_gender_convert_to_boolean #output true if there is no gender error
+      if params[:teacher][:gender] == "男"
+        return 1
+      elsif params[:teacher][:gender] == "女"
         return 0
       end
     end

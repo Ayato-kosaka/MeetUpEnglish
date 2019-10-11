@@ -1,0 +1,42 @@
+<!-- We need to change the form of the content, such as adding a self-introduction -->
+
+<div id="signup_teacher_path">
+  <%= form_with(url: signup_teacher_path, model: @teacher, local: true, builder: WithErrorFormBuilder) do |form| %>
+    <h1>Sign Up</h1>
+
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :gender %>
+      <div class="gender">
+        <%= form.radio_button :gender, "男",class: "radio_input", id: "man", :checked=>('checked' if @teacher.gender)%><label for="man">man</label>
+        <%= form.radio_button :gender, "女",class: "radio_input", id: "woman", :checked=>('checked' if @teacher.errors.any? && !@gender_errors && !@teacher.gender) %> <!-- validation errorがある かつ gender errorがない -->
+        <label for="woman">woman</label>
+      </div>
+      <ul><li class="errors_gender <%= "list_style_none" if !@gender_errors %>"><%= @gender_errors %></li></ul>
+    </div>
+
+    <div class="field">
+      <%= form.label :email %>
+      <%= form.email_field :email %>
+    </div>
+
+    <div class="field">
+      <%= form.label :password %>
+      <%= form.password_field :password %>
+    </div>
+
+    <div class="field">
+      <%= form.label :password_confirmation %>
+      <%= form.password_field :password_confirmation %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit 'Sign Up' %>
+    </div>
+  <% end %>
+
+</div>
