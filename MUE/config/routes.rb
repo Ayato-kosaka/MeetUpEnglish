@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
 
 
-  scope module: 'sessions' do
+  scope module: 'sessions' do #controller folder name
     namespace :login do
       get '' => :new
       post '' => :create
@@ -20,6 +20,10 @@ Rails.application.routes.draw do
       end
     end
     delete 'logout' => :destroy
+  end
+
+  scope module: 'users' do
+    resources :account, only: [:index]
   end
 
 
