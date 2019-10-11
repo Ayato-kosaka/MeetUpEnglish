@@ -10,6 +10,9 @@
     }
     input{ // all input forms including a submit button
       padding: 4px 2vw;
+      height: 32px;
+      font-size: 20px;
+      font-weight: inherit;
     }
     li{
       list-style: disc;
@@ -25,6 +28,7 @@
       label{
         padding: 0;
         margin-left: -4vw;
+        font-size: 18px;
       }
       .gender{ //Check box to select gender
         @include flexbox;
@@ -83,6 +87,7 @@
       @include justify-content(center);
       input{
         width: 96vw;
+        border: none;
       }
     }
   }
