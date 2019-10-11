@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  skip_before_action :require_Admin ,only: [:new, :create]
+  skip_before_action :require_Admin
+  layout 'simple'
+
 
   def new
   end

@@ -8,6 +8,10 @@
     <%= f.email_field :email, {class: "email", placeholder: "mail adress"}  %>
     <%= f.password_field :password, {class: "password", placeholder: "password"}  %>
     <%= f.submit "LOGIN", {class: "submit teacher"} %>
+    <%= f.label :remember_me do %>
+    <%= f.check_box :remember_me %>
+    <span>Remember me on this computer</span>
+    <% end %>
   <% end %>
   <a href=<%= signup_teacher_path(locale: "en") %> id="sign_up">sign up</a>
   <a href="#" id="terms">terms of service</a>

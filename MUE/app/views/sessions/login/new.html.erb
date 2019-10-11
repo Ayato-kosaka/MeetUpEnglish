@@ -8,6 +8,10 @@
     <%= f.email_field :email, {class: "email", placeholder: "メールアドレス"}  %>
     <%= f.password_field :password, {class: "password", placeholder: "パスワード"}  %>
     <%= f.submit "ログイン", {class: "submit student"} %>
+    <%= f.label :remember_me do %>
+    <%= f.check_box :remember_me %>
+    <span>パスワードを保存</span>
+    <% end %>
   <% end %>
   <a href=<%= signup_student_path(locale: "ja") %> id="sign_up">新規会員登録はこちら</a>
   <a href="#" id="terms">利用規約</a>
