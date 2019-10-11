@@ -5,26 +5,67 @@
 
 #signup_student_path{
   form{
-    *{
-    }
     h1{
       text-align: center;
     }
-    input{
+    input{ // all input forms including a submit button
       padding: 4px 2vw;
+    }
+    li{
+      list-style: disc;
+      color: red;
     }
     .field{
       @include flexbox;
       @include flex-direction(column);
       @include align-items(center);
-      *{
+      *{ // label and input box
         width: 92vw;
       }
       label{
         padding: 0;
         margin-left: -4vw;
       }
-      .span_with_error{
+      .gender{ //Check box to select gender
+        @include flexbox;
+        width:96vw;
+        .radio_input{
+          display: none;
+          &+label{// Label style when not cheked
+            width: auto;
+            margin: 0;
+            padding-left: 20px;
+            position:relative;
+            margin-right: 20px;
+            &::before{ // outer style of Radio box
+              content: "";
+              display: block;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 15px;
+              height: 15px;
+              border: 1px solid #999;
+              border-radius: 50%;
+            }
+          }
+          &:checked+label{// Label style when checked
+            //color: #009a9a;//for example
+            &::after{// inner style of radio box
+              content: "";
+              display: block;
+              position: absolute;
+              top: 3px;
+              left: 3px;
+              width: 11px;
+              height: 11px;
+              background: #009a9a;
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+      .span_with_error{ // when errors occurs from the form
         @include flexbox;
         @include flex-direction(column);
         @include align-items(center);
@@ -32,6 +73,16 @@
           background-color: #ffa8a859;
           border: solid red 2px;
         }
+      }
+      .list_style_none{
+        list-style: none;
+      }
+    }
+    .actions{
+      @include flexbox;
+      @include justify-content(center);
+      input{
+        width: 96vw;
       }
     }
   }
