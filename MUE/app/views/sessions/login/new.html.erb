@@ -9,7 +9,7 @@
     <%= f.password_field :password, {class: "password", placeholder: "パスワード"}  %>
     <%= f.submit "ログイン", {class: "submit student"} %>
   <% end %>
-  <a href=<%= signup_student_path %> id="sign_up">新規会員登録はこちら</a>
+  <a href=<%= signup_student_path(locale: "ja") %> id="sign_up">新規会員登録はこちら</a>
   <a href="#" id="terms">利用規約</a>
   <a href="/login/teacher" id="login_as_teacher" class="login_as">
     Login as a teacher

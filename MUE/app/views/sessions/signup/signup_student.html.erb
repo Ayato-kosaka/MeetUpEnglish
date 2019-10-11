@@ -3,12 +3,12 @@
     <h1>新規会員登録</h1>
 
     <div class="field">
-      <%= form.label :name, 'ユーザー名' %>
+      <%= form.label :name %>
       <%= form.text_field :name %>
     </div>
 
     <div class="field">
-      <%= form.label :gender, '性別' %>
+      <%= form.label :gender %>
       <div class="gender">
         <%= form.radio_button :gender, "男",class: "radio_input", id: "man", :checked=>('checked' if @user.gender)%><label for="man">男</label>
         <%= form.radio_button :gender, "女",class: "radio_input", id: "woman", :checked=>('checked' if @user.errors.any? && !@gender_errors && !@user.gender) %> <!-- validation errorがある かつ gender errorがない -->
@@ -18,17 +18,17 @@
     </div>
 
     <div class="field">
-      <%= form.label :email, 'メールアドレス' %>
+      <%= form.label :email %>
       <%= form.email_field :email %>
     </div>
 
     <div class="field">
-      <%= form.label :password, 'パスワード' %>
+      <%= form.label :password %>
       <%= form.password_field :password %>
     </div>
 
     <div class="field">
-      <%= form.label :password_confirmation, 'パスワード(再入力)' %>
+      <%= form.label :password_confirmation %>
       <%= form.password_field :password_confirmation %>
     </div>
 

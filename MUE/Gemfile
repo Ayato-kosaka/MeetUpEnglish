@@ -74,3 +74,5 @@ gem 'whenever', :require => false
 gem 'pagy', '~> 3.5' # omit patch digit and use the latest if possible
 
 gem 'font-awesome-sass', '~> 5.11.2'
+
+gem 'rails-i18n'

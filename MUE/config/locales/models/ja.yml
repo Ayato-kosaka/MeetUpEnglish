@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      user: イベント
+    attributes:
+      user:
+        name: ユーザー名
+        gender: 性別
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード(再入力)

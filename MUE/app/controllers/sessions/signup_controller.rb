@@ -1,4 +1,5 @@
 class Sessions::SignupController < SessionsController
+  before_action :set_locale
 
   #signup_student_path 	GET 	/signup/student(.:format) 	sessions/signup_student
   def signup_student
@@ -14,7 +15,7 @@ class Sessions::SignupController < SessionsController
       redirect_to root_url
     else
       @user.gender = gender_convert_to_boolean
-      @gender_errors = "geneder is invalied" if !params[:user][:gender]
+      @gender_errors = "性別を選択してください" if !params[:user][:gender]
       render :signup_student
     end
   end

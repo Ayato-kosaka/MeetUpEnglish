@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+
+
+
+
   scope module: 'sessions' do
     namespace :login do
       get '' => :new
@@ -6,21 +11,19 @@ Rails.application.routes.draw do
       get 'teacher' => :teacher
       post 'teacher' => :signin_teacher
     end
-    namespace :signup do
-      get 'student' => :signup_student
-      post 'student' => :create_student
-      get 'teacher' => :signup_teacher
-      post 'teacher' => :create_teacher
+    scope '(:locale)', locale: /#{I18n.available_locales.map(&:to_s).join('|')}/ do
+      namespace :signup do
+        get 'student' => :signup_student
+        post 'student' => :create_student
+        get 'teacher' => :signup_teacher
+        post 'teacher' => :create_teacher
+      end
     end
     delete 'logout' => :destroy
   end
 
 
 
-
-
-
-  
   get 'users/new'
   resources :contacts, except: [:edit, :update]
   get 'contacts/:id/join', to: 'contacts#join_new'
