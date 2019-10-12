@@ -22,10 +22,10 @@
         <i class="fas fa-search"></i>
       </a>
       <a id="">
-        <i class="fas fa-calendar-week <%= "active" if request.fullpath == overview_path %>"></i>
+        <i class="fas fa-calendar-week "></i>
       </a>
-      <a id="">
-        <i class="fas fa-smile"></i>
+      <a href="/account">
+        <i class="fas fa-smile <%= "active" if session[:at] == "account" %>"></i>
       </a>
     </footer>
   </body>

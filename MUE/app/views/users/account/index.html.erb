@@ -1,1 +1,10 @@
-<%= @current_user.name %>
+
+<div id="account_index">
+  <div class="image">
+    <%= image_tag (@current_user.avatar.attached? ? @current_user.avatar : "users/atom-logo.jpg")  %>
+  </div>
+  <div class="name"><%= @current_user.name %></div>
+  <div class="edit"><%= link_to 'プロフィール編集', '#' %></div>
+  <div class="follow"><%= link_to '###', '#' %><span class="text">お気に入りの先生</span></div>
+  <div class="history"<%= link_to '###', '#' %><span class="text">参加数</span></div>
+</div>

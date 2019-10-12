@@ -2,14 +2,14 @@
 
 one:
   name: MyString
-  man: false
+  gender: false
   selfIntroduction: MyText
   email: MyString
   password_digest: <%= BCrypt::Password.create('secret') %>
 
 two:
   name: MyString
-  man: false
+  gender: false
   selfIntroduction: MyText
   email: MyString
   password_digest: <%= BCrypt::Password.create('secret') %>
