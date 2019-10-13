@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   private
 
     def require_login_as_student
-      !current_user.nil?
+      redirect_to login_url if current_user.nil?
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params

@@ -1,15 +1,16 @@
 module SessionsHelper
   # 渡されたユーザーでログインする
-  def log_in(user)
+  def log_in(user, stu)
     session[:user_id] = user.id
-    #session[:teacher]  = true if user.class.to_s == 'teacher' #いらなくね？
+    session[:student] =  stu
   end
 
   # ユーザーのセッションを永続的にする
-  def remember(user)
+  def remember(user, stu)
     user.remember
     cookies.permanent.signed[:user_id] = user.id
     cookies.permanent[:remember_token] = user.remember_token
+    cookies.permanent[:student] = stu
   end
 
   # 渡されたユーザーがログイン済みユーザーであればtrueを返す
@@ -22,23 +23,23 @@ module SessionsHelper
 
   # 記憶トークンcookieに対応するユーザーを返す
   def current_user
-    if (user_id = session[:user_id])#Is session[:user_id] exsist?
+    if ((user_id = session[:user_id]) && session[:student] )#Is session[:user_id] exsist?
       @current_user ||= User.find_by(id: user_id)
-    elsif (user_id = cookies.signed[:user_id])
+    elsif ((user_id = cookies.signed[:user_id]) && cookies[:student])
       user = User.find_by(id: user_id)
       if user && user.authenticated?(cookies[:remember_token])
-        log_in user
+        log_in(user,true)
         @current_user = user
       end
     end
   end
   def current_teacher
-    if (user_id = session[:user_id])#Is session[:user_id] exsist?
+    if ((user_id = session[:user_id]) && !session[:student])#Is session[:user_id] exsist?
       @current_teacher ||= Teacher.find_by(id: user_id)
-    elsif (user_id = cookies.signed[:user_id])
+    elsif ((user_id = cookies.signed[:user_id]) && !cookies[:student])
       user = Teacher.find_by(id: user_id)
       if user && user.authenticated?(cookies[:remember_token])
-        log_in user
+        log_in(user,false)
         @current_teacher = user
       end
     end
