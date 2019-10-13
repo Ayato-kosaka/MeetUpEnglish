@@ -74,9 +74,7 @@ textarea {
 .prefecture_list li {border-top:1px solid gray;border-bottom:none !important}
 .prefecture_list li a {color:#588563 !important}
 
-article{width: 75%;height: 400px;margin: 35px auto 35px auto;overflow: hidden;position: relative;cursor: pointer;padding: 25px;background: #e8e8e7;}
-.eyecatch{height: 300px;overflow: hidden;}
-.eyecatch img{width: 100%;height: auto;}
+
 
 .send {border: none;background: -moz-linear-gradient(45deg, #B7CF4F, #298520);background: -webkit-linear-gradient(45deg, #B7CF4F, #298520);background: linear-gradient(45deg, #B7CF4F, #298520);background-position-x: 0%;background-position-y: 0%;background-size: auto;display: inline-block;font-size: 24px;border-radius: 3px;color: white;text-decoration: none;box-shadow: 0px 2px 10px #999;cursor: pointer;transition: all 0.3s ease;margin: 20px;padding: 15px 25px;background-size: 250% 100% !important;background-position: 100% 0% !important;
 &:active {transform: translateY(0);background-position: 50% !important;}&:hover {background-position: 0% !important;box-shadow: 0 0px 12px #BBB;transition: all 0.3s ease;transform: translateY(-1px);}
