@@ -8,7 +8,7 @@ class Sessions::LoginController < SessionsController
 		if (user = User.find_by(email: params[:session][:email].downcase)) && user.authenticate(params[:session][:password])
 			log_in(user, true)
       params[:session][:remember_me] == '1' ? remember(user,true) : forget(user)
-			redirect_to root_url
+			redirect_to account_index_url
 		else
   		flash.now[:alert] = '*emailかpasswordに誤りがあります'
   		render 'new'

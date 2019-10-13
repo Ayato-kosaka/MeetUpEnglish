@@ -1,5 +1,4 @@
 class TeacherController < ApplicationController
-  skip_before_action :require_Admin
   before_action :require_login_as_teacher
   layout 'teacher'
 
@@ -8,7 +7,10 @@ class TeacherController < ApplicationController
   private
 
     def require_login_as_teacher
-      redirect_to login_url if current_teacher.nil?
+      if current_teacher.nil?
+        flash[:alert] = "You must be Teacher in to access this section"
+        redirect_to login_teacher_url
+      end
     end
 
 end

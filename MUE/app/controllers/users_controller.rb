@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  skip_before_action :require_Admin
   before_action :require_login_as_student
   layout 'student'
 
@@ -8,7 +7,9 @@ class UsersController < ApplicationController
   private
 
     def require_login_as_student
-      redirect_to login_url if current_user.nil?
+      if current_user.nil?
+        redirect_to login_url if current_user.nil?
+      end
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
