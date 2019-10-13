@@ -18,8 +18,8 @@
 
 
     <footer id="footer_teacher_app">
-      <a id="">
-        <i class="fas fa-calendar-week <%= "active" if request.fullpath == overview_path %>"></i>
+      <a href=<%= teacher_schedule_index_path %> id="">
+        <i class="fas fa-calendar-week <%= "active" if @at == "schedule" %>"></i>
       </a>
       <a id="">
         <i class="fab fa-blogger-b"></i>
@@ -31,7 +31,7 @@
         <i class="fas fa-bell"></i>
       </a>
       <a href=<%= teacher_account_index_path %> id="">
-        <i class="fas fa-smile"></i>
+        <i class="fas fa-smile <%= "active" if @at == "account" %>"></i>
       </a>
     </footer>
 

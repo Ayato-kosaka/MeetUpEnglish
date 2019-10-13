@@ -7,6 +7,6 @@ class Users::AccountController < UsersController
 
   private
     def at_account
-      session[:at] = "account"
+      @at = "account"
     end
 end

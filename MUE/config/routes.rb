@@ -3,10 +3,6 @@ Rails.application.routes.draw do
 
 
 
-
-  namespace :teacher do
-    get 'schedule/index'
-  end
   scope module: 'sessions' do #controller folder name
     namespace :login do
       get '' => :new
@@ -31,6 +27,7 @@ Rails.application.routes.draw do
 
   namespace 'teacher' do
     resources :account, only: [:index]
+    get 'schedule/index'
   end
 
 
