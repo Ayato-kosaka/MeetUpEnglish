@@ -11,11 +11,30 @@
 // about supported directives.
 //
 //= require jquery3
+//= require moment
+//= require fullcalendar
 //= require jquery.jscroll.min.js
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+
+
+
+
+
+//fullcalendar
+$(document).ready(function(){
+  $('#calendar').fullCalendar({
+  });
+});
+
+
+
+
+
+
 
 
 
