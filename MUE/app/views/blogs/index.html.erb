@@ -24,26 +24,56 @@
 
 <div class="skill-list jscroll">
   <% if @blogs %>
+
     <% @blogs.each do |blog| %>
 
-    <article><a href="/blogs/<%= blog.id %>">
-      <div class="eyecatch">
-        <% if blog.image.attached? %>
-          <%= image_tag blog.image, :size=>"400x400" %>
-        <% end %>
-      </div>
-      <h3><%= link_to blog.title, blog %></h3>
-      <div>
-        <div class="blog_createdAt">
-          <% if session[:role]=="Admin" %><%= link_to 'Edit', edit_blog_path(blog)%> | <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %><%end%>
-          <%= blog.created_at.strftime("%Y.%m.%d") %>
-        </div>
-        <div class="commentnum_blog_index"><i class="fas fa-comments"></i><%= blog.comments.size %></div>
-      </div>
-    </a></article>
+      <% if !blog.youtube? %>
+        <article id="blog"><a href="/blogs/<%= blog.id %>">
+          <div class="eyecatch">
+            <% if blog.image.attached? %>
+              <%= image_tag blog.image, :size=>"400x400" %>
+            <% end %>
+          </div>
+          <h3><%= blog.title %></h3>
+          <div>
+            <div class="blog_createdAt">
+              <% if session[:role]=="Admin" %><%= link_to 'Edit', edit_blog_path(blog)%> | <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %><%end%>
+              <%= blog.created_at.strftime("%Y.%m.%d") %>
+            </div>
+            <div class="commentnum_blog_index"><i class="fas fa-comments"></i><%= blog.comments.count %></div>
+          </div>
+        </a></article>
+
+      <% else %>
+
+        <article id="blog" class="youtube"><a href="https://www.youtube.com/watch?v=<%= blog.text %>">
+          <div class="eyecatch">
+            <iframe width="560" height="315" src="" data-src="https://www.youtube.com/embed/<%= blog.text %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <h3><%= blog.title%></h3>
+          <div>
+            <div class="blog_createdAt">
+              <% if session[:role]=="Admin" %><%= link_to 'Edit', edit_blog_path(blog)%> | <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %><%end%>
+              <%= blog.created_at.strftime("%Y.%m.%d") %>
+            </div>
+          </div>
+        </a></article>
+
+      <% end %>
 
     <% end %>
   <% end %>
 
   <%== pagy_nav(@pagy) %>
 </div>
+
+
+<script>
+function init() {
+var vidDefer = document.getElementsByTagName('iframe');
+for (var i=0; i<vidDefer.length; i++) {
+if(vidDefer[i].getAttribute('data-src')) {
+vidDefer[i].setAttribute('src',vidDefer[i].getAttribute('data-src'));
+} } }
+window.onload = init;
+</script>
