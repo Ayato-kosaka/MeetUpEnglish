@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).on 'turbolinks:load', ->
-  $('#calendar').fullCalendar {
+  $('#calendar-ts').fullCalendar {
     # カレンダー上部を年月で表示させる
     titleFormat: 'YYYY年 M月',
     # 曜日を日本語表示
@@ -10,14 +10,12 @@ $(document).on 'turbolinks:load', ->
     header: {
       left: '',
       center: 'title',
-      right: 'today prev,next'
+      right: 'prev today next'
     },
     buttonText: {
-                    prev: '前',
-                    next: '次',
                     prevYear: '前年',
                     nextYear: '翌年',
-                    today: '今日',
+                    today: 'today',
                     month: '月',
                     week: '週',
                     day: '日'
@@ -31,7 +29,7 @@ $(document).on 'turbolinks:load', ->
   }
   return
 $(document).on 'turbolinks:before-cache', ->
-  $('#calendar').empty()
+  $('#calendar-ts').empty()
   return
 
 

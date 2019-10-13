@@ -26,7 +26,7 @@
 
 //fullcalendar
 $(document).ready(function(){
-  $('#calendar').fullCalendar({
+  $('#calendar-ts').fullCalendar({
   });
 });
 

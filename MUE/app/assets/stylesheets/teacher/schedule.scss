@@ -7,3 +7,49 @@
 #teacher_schedule_index{
   margin-bottom: 44px;
 }
+
+
+
+
+
+
+
+// fullCalendar
+$title_color: #ff9e00;
+#calendar-ts{
+  .fc-right{ //タイトル右の月選択ボタン
+    @include flexbox;
+    width: 40%;
+    .fc-button{ //タイトルのボタンのスタイル
+      border: none;
+      background: #f5deb300;
+      color: $title_color;
+      box-shadow: none;
+      padding: 0;
+      @include flex-grow(1);
+    }
+  }
+  .fc-view-container{ //タイトル以外
+    border-top: solid #bfbfbf 1px;
+    .fc-day-header{
+      font-weight: 100;
+    }
+    .fc-week{
+      min-height: 42px;
+      @include flexbox;
+      @include align-items(center);
+      .fc-day-number{ //日付のスタイル
+        float: none;
+      }
+    }
+  }
+  h2{
+    color: $title_color;
+  }
+  td,th{border-color: #ddd0!important;}
+  button{
+    font-size: 20px;
+    line-height: 1;
+    height: 20px;
+  }
+}
