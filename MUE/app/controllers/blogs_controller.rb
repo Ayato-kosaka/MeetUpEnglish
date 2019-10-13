@@ -32,9 +32,8 @@ class BlogsController < ApplicationController
   # POST /blogs
   def create
     @blog = Blog.new(blog_params)
-
     if @blog.save
-      redirect_to @blog
+      redirect_to (@blog.youtube ? blogs_url : @blog)
     else
       render :new
     end
@@ -44,7 +43,7 @@ class BlogsController < ApplicationController
   # PATCH/PUT /blogs/1.json
   def update
     if @blog.update(blog_params)
-      redirect_to @blog
+      redirect_to (@blog.youtube ? blogs_url : @blog)
     else
       render :edit
     end
@@ -80,7 +79,7 @@ class BlogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
-      params.require(:blog).permit(:title, :text, :image, :category_id)
+      params.require(:blog).permit(:title, :text, :image, :category_id, :youtube)
     end
 
     def category_params

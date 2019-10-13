@@ -12,17 +12,22 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :youtube %>youtubeを投稿する場合はcheck!->
+    <%= form.check_box :youtube %>
+  </div>
+
+  <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :text %>
+    <%= form.label :text %>youtubeを投稿する場合はurlをの'v='以降<br>例)https://www.youtube.com/watch?v=eSPs9a2qpIw のとき eSPs9a2qpIw<br>
     <%= form.text_area :text%>
   </div>
 
   <div class="field">
-    <%= form.label :image %>
+    <%= form.label :image %>youtubeを投稿する場合は指定なし<br>
     <%= form.file_field :image %>
   </div>
 

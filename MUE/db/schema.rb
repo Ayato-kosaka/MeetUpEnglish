@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_29_172826) do
+ActiveRecord::Schema.define(version: 2019_10_13_102458) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2019_09_29_172826) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "category_id"
+    t.boolean "youtube"
     t.index ["category_id"], name: "index_blogs_on_category_id"
   end
 
@@ -128,13 +129,32 @@ ActiveRecord::Schema.define(version: 2019_09_29_172826) do
 
   create_table "teachers", force: :cascade do |t|
     t.string "name"
-    t.boolean "man"
+    t.boolean "gender"
     t.text "selfIntroduction"
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "remember_digest"
+    t.string "activation_digest"
+    t.boolean "activated", default: false
+    t.datetime "activated_at"
+    t.boolean "admin", default: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.string "remember_digest"
+    t.string "activation_digest"
+    t.boolean "activated", default: false
+    t.datetime "activated_at"
+    t.boolean "admin", default: false
+    t.boolean "gender"
+    t.text "selfIntroduction"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
