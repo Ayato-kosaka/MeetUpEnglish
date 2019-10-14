@@ -3,6 +3,7 @@ class Teacher::ScheduleController < TeacherController
   def index
   end
 
+
   private
     def at_schedule
       @at = "schedule"
