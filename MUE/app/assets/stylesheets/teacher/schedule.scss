@@ -4,8 +4,36 @@
 
 @import 'header.scss';
 
+$plan_color: red;
 #teacher_schedule_index{
-  margin-bottom: 44px;
+  padding: 44px 0;
+  background-color: #fff5e6;
+  // The calendar style is described below
+  #explanation{
+    background-color: white;
+    font-size: 1.197rem;
+    padding: 10px 0;
+    @include flexbox;
+    span{
+      width: 50%;
+      @include flexbox;
+      @include align-items(center);
+      &::before{
+        content: '';
+        width: 1.197rem;
+        height: 1.197rem;
+        display: block;
+        border-radius: 50%;
+        margin: 0 0.855rem;
+      }
+      &#performed:before{
+        background-color: blue;
+      }
+      &#plan:before{
+        background-color: $plan_color;
+      }
+    }
+  }
 }
 
 
@@ -17,6 +45,7 @@
 // fullCalendar
 $title_color: #ff9e00;
 #calendar-ts{
+  background-color: white;
   .fc-right{ //タイトル右の月選択ボタン
     @include flexbox;
     width: 40%;
@@ -29,7 +58,7 @@ $title_color: #ff9e00;
       @include flex-grow(1);
     }
   }
-  .fc-view-container{ //タイトル以外
+  .fc-month-view{ //月表記のスタイル
     border-top: solid #bfbfbf 1px;
     .fc-day-header{
       font-weight: 100;
@@ -40,13 +69,27 @@ $title_color: #ff9e00;
       @include align-items(center);
       .fc-day-number{ //日付のスタイル
         float: none;
-      }
+        }
+    }
+    td,th{border-color: #ddd0!important;}
+  }
+  .fc-agendaWeek-view{ //日表記のスタイル
+    .fc-day-grid{ //日表記のalldayってやつ
+      display: none;
+    }
+  }
+  .event_plan{
+    span{
+      background-color: $plan_color;
+      color: white;
+      width: 23px;
+      height: 23px;
+      border-radius: 50%;
     }
   }
   h2{
     color: $title_color;
   }
-  td,th{border-color: #ddd0!important;}
   button{
     font-size: 20px;
     line-height: 1;

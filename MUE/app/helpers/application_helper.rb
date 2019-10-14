@@ -1,13 +1,19 @@
 module ApplicationHelper
   def default_meta_tags
-  {
-    site: 'Meet Up English 日常に留学を~英会話マッチングアプリ~',
-    reverse: true,
-    separator: '|',
-    og: defalut_og,
-    twitter: default_twitter_card
-  }
-end
+    {
+      site: 'Meet Up English 日常に留学を~英会話マッチングアプリ~',
+      reverse: true,
+      separator: '|',
+      og: defalut_og,
+      twitter: default_twitter_card
+    }
+  end
+
+
+
+    def admin?
+      true if session[:role] == "Admin" || current_user&.admin || current_teacher&.admin
+    end
 
   private
 

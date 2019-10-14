@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   namespace 'teacher' do
     resources :account, only: [:index]
-    get 'schedule/index'
+    resources :schedule, only: [:index]
   end
 
 
