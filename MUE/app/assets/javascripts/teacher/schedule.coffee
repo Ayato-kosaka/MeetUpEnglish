@@ -29,7 +29,7 @@ $(document).on 'turbolinks:load', ->
     events: '/homes.json',
     dayClick: (date, jsEvent, view) ->
       console.log(date)
-      window.location.href = '/teacher/schedule/new?' +  String(moment(date).format("YYYY-MM-DD"));
+      window.location.href = '/teacher/schedule/new?date=' +  String(moment(date).format("YYYY-MM-DD"));
     ,
     # カレンダー上部を年月で表示させる
     titleFormat: 'YYYY/M' ,

@@ -2,7 +2,7 @@ module SessionsHelper
   # 渡されたユーザーでログインする
   def log_in(user, stu)
     session[:user_id] = user.id
-    session[:student] =  stu
+    stu ? (session[:student] = true) : (session[:teacher] = true)
   end
 
   # ユーザーのセッションを永続的にする
@@ -10,7 +10,7 @@ module SessionsHelper
     user.remember
     cookies.permanent.signed[:user_id] = user.id
     cookies.permanent[:remember_token] = user.remember_token
-    cookies.permanent[:student] = stu
+    stu ? (cookies.permanent[:student] = true) : (cookies.permanent[:teacher] = true)
   end
 
   # 渡されたユーザーがログイン済みユーザーであればtrueを返す
@@ -34,9 +34,9 @@ module SessionsHelper
     end
   end
   def current_teacher
-    if ((user_id = session[:user_id]) && !session[:student])#Is session[:user_id] exsist?
+    if ((user_id = session[:user_id]) && session[:teacher])
       @current_teacher ||= Teacher.find_by(id: user_id)
-    elsif ((user_id = cookies.signed[:user_id]) && !cookies[:student])
+    elsif ((user_id = cookies.signed[:user_id]) && cookies[:teacher])
       user = Teacher.find_by(id: user_id)
       if user && user.authenticated?(cookies[:remember_token])
         log_in(user,false)

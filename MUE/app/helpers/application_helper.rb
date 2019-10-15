@@ -12,7 +12,7 @@ module ApplicationHelper
 
 
     def admin?
-      true if session[:role] == "Admin" || current_user&.admin || current_teacher&.admin
+      true if session[:role] == "Admin" || session[:student] || session[:teacher]
     end
 
   private

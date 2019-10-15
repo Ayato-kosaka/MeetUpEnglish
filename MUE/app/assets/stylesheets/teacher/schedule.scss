@@ -4,6 +4,8 @@
 
 @import 'header.scss';
 
+
+//index
 $plan_color: red;
 #teacher_schedule_index{
   padding: 44px 0;
@@ -94,5 +96,42 @@ $title_color: #ff9e00;
     font-size: 20px;
     line-height: 1;
     height: 20px;
+  }
+}
+
+
+
+
+
+
+//new
+#new_teacher_schedule{
+  #event{
+    @include flexbox;
+    @include flex-direction(column);
+    @include flex-direction(center);
+    padding: 20px 10px;
+    border: solid 1px #9d9d9d;
+    margin: 10px;
+    border-radius: 20px;
+    #A{
+      @include flexbox;
+      @include justify-content(space-between);
+    }
+    #title{
+      @include flexbox;
+      @include justify-content(center);
+    }
+    #C{
+      @include flexbox;
+      @include justify-content(space-between);
+    }
+  }
+
+  form{
+    margin-top: 20px;
+    h2{
+      font-weight: 100;
+    }
   }
 }

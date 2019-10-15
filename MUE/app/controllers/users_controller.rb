@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   private
 
     def require_login_as_student
-      if current_user.nil?
+      unless session[:student]
         flash[:alert] = "You must be Student in to access this section"
         redirect_to login_url if current_user.nil?
       end

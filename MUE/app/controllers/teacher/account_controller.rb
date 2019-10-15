@@ -1,4 +1,5 @@
 class Teacher::AccountController < TeacherController
+  before_action :current_teacher
   before_action :at_account
 
   def index

@@ -10,6 +10,8 @@ class Teacher < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 
 
+  has_many :homes, class_name: 'Home', foreign_key: 'teacherId'
+
   class << self
     # 渡された文字列のハッシュ値を返す
     def digest(string)
