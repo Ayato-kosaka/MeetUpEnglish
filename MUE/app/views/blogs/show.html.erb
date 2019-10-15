@@ -15,10 +15,7 @@
 <%= image_tag @blog.image, class: "blog_image"%>
 
 <!-- タイトル本文 -->
-<%=  if session[:role]=="Admin" then link_to 'EditBlog', edit_blog_path(@blog) end %>
-<p class="text">
-  <%= simple_format(@blog.text) %>
-</p
+<p class="text"><%= raw(@blog.text.gsub(/\n/, '<br>')) %></p>
 
 
 
