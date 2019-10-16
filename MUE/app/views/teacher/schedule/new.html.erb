@@ -3,7 +3,7 @@
 
 
   <% @events.each do |event| %>
-    <a id="event" href="/teacher/schedule/<%= Base64.encode64(event.id.to_s) %>">
+    <a id="event" href="/teacher/schedule/<%= Base64.encode64(event.id.to_s) %>/edit">
       <div id="A">
         <div id="time"><%= event.start.strftime("%H:%M") %>~<%= event.end.strftime("%H:%M") %></div>
         <div id="price">￥100/5min</div>
@@ -20,17 +20,6 @@
 
   <%= form_with(url: teacher_schedule_index_path(date: params[:date]),model: @schedule, local: true) do |form| %>
     <h2>Create New Schedule</h2>
-    <% if @schedule.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
-
-        <ul>
-        <% @schedule.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
 
     <div class="field">
       <%= form.label :start, "Please specify the opening time" %>
@@ -39,9 +28,6 @@
         <span>~</span>
         <%= form.time_select :end,default: {:hour => '11', :minute => '00'} %>
       </div>
-    </div>
-
-    <div class="field">
     </div>
 
     <div class="field">
