@@ -1,6 +1,7 @@
 class Teacher::ScheduleController < TeacherController
   before_action :current_teacher
   before_action :at_schedule
+  before_action :set_home, only: [:show, :edit, :update, :destroy]
   def index
   end
 
@@ -12,8 +13,6 @@ class Teacher::ScheduleController < TeacherController
   def create
     @schedule = @current_teacher.homes.new(home_params)
     @schedule.date = Date.parse(params[:date])
-
-    logger.debug("-------------#{@schedule.inspect}----------")
     # if @blog.save
     #   redirect_to (@blog.youtube ? blogs_url : @blog)
     # else
@@ -21,7 +20,15 @@ class Teacher::ScheduleController < TeacherController
     # end
   end
 
+  def show
+
+  end
+
   private
+    def set_home
+      @schedule = Home.find(Base64.decode64(params[:encoded_id]))
+    end
+
     def at_schedule
       @at = "schedule"
     end

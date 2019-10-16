@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   namespace 'teacher' do
     resources :account, only: [:index]
-    resources :schedule, only: [:index, :new, :create]
+    resources :schedule, param: :encoded_id
   end
 
 

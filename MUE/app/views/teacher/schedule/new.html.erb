@@ -3,7 +3,7 @@
 
 
   <% @events.each do |event| %>
-    <a id="event">
+    <a id="event" href="/teacher/schedule/<%= Base64.encode64(event.id.to_s) %>">
       <div id="A">
         <div id="time"><%= event.start.strftime("%H:%M") %>~<%= event.end.strftime("%H:%M") %></div>
         <div id="price">￥100/5min</div>
