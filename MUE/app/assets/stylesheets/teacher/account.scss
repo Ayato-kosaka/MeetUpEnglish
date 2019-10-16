@@ -1,3 +1,99 @@
 // Place all the styles related to the teacher::account controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "header.scss";
+
+
+#teacher_account_index{
+  @include flexbox;
+  @include flex-direction(column);
+  @include align-items(center);
+  min-height: 100vh;
+  margin-bottom: 45px;
+  .profile{
+    @include flexbox;
+    @include flex-direction(column);
+    @include align-items(center);
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: white;
+    .num_top{
+      @include flexbox;
+      padding: 10px;
+      .num_event1{
+        @include flexbox;
+        @include flex-direction(column);
+        @include align-items(center);
+        padding-right: 20px;
+        border-right: 1px solid #989898;
+      }
+      .num_follow1{
+        @include flexbox;
+        @include flex-direction(column);
+        @include align-items(center);
+        padding-left: 10px;
+      }
+    }
+    .review_top{
+      @include flexbox;
+      @include justify-content(center);
+      border-top: 1px solid #989898;
+      padding: 10px;
+      width: 100%;
+    }
+    .edit{
+      @include flexbox;
+      @include justify-content(center);
+      border-top: 1px solid #989898;
+      border-bottom: 1px solid #989898;
+      padding: 10px;
+      width: 100%;
+    }
+  }
+  .exhibit-top{
+    @include flexbox;
+    @include flex-direction(column);
+    @include align-items(center);
+    width: 100%;
+    margin: 20px;
+    background-color: white;
+    .exhibit-doing{
+      @include flexbox;
+      @include justify-content(center);
+      border-top: 1px solid #989898;
+      border-bottom: 1px solid #989898;
+      padding: 10px;
+      width: 100%;
+    }
+    .exhibit-draft{
+      @include flexbox;
+      @include justify-content(center);
+      border-bottom: 1px solid #989898;
+      padding: 10px;
+      width: 100%;
+    }
+  }
+  .other-top{
+    @include flexbox;
+    @include flex-direction(column);
+    @include align-items(center);
+    width: 100%;
+    margin: 20px;
+    background-color: white;
+    .other-personal{
+      @include flexbox;
+      @include justify-content(center);
+      border-top: 1px solid #989898;
+      border-bottom: 1px solid #989898;
+      padding: 10px;
+      width: 100%;
+    }
+    .other-notification{
+      @include flexbox;
+      @include justify-content(center);
+      border-bottom: 1px solid #989898;
+      padding: 10px;
+      width: 100%;
+    }
+  }
+}
