@@ -48,7 +48,12 @@ $plan_color: red;
 $title_color: #ff9e00;
 #calendar-ts{
   background-color: white;
-  .fc-right{ //タイトル右の月選択ボタン
+  .fc-left{ //タイトル右の月、週選択ボタン
+    .fc-agendaWeek-button{
+      background-image: none;
+    }
+  }
+  .fc-right{ //タイトル右の月移動ボタン
     @include flexbox;
     width: 40%;
     .fc-button{ //タイトルのボタンのスタイル
