@@ -3,7 +3,7 @@
     <div class="modal-message-box">
 
       <h1>イベントの詳細</h1>
-      <% teacher = Teacher.find(teacherid) %>
+      <% teacher = Teacher.find(teacher_id) %>
       <h2>
         <%= teacher.name+"先生" %>
       </h2>
@@ -18,7 +18,7 @@
 
       <br><br><br>
 
-      <% cafe = Cafe.find(cafeid) %>
+      <% cafe = Cafe.find(cafe_id) %>
       <h2>
         <%= cafe.name %>
       </h2>

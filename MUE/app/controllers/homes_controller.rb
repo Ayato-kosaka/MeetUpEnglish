@@ -20,7 +20,7 @@ class HomesController < ApplicationController
   # GET /homes/new
   def new
     @home = Home.new
-    @home.cityId = params[:selected_city]
+    @home.city_id = params[:selected_city]
   end
 
   # GET /homes/1/edit
@@ -31,7 +31,7 @@ class HomesController < ApplicationController
   # POST /homes.json
   def create
     @home = Home.new(home_params)
-    @selectedPrefecture_id =  City.find(@home.cityId).prefectureId
+    @selectedPrefecture_id =  City.find(@home.city_id).prefecture_id
 
     respond_to do |format|
       if @home.save
@@ -47,7 +47,7 @@ class HomesController < ApplicationController
   # PATCH/PUT /homes/1
   # PATCH/PUT /homes/1.json
   def update
-    @selectedPrefecture_id =  City.find(@home.cityId).prefectureId
+    @selectedPrefecture_id =  City.find(@home.city_id).prefecture_id
     respond_to do |format|
       if @home.update(home_params)
         format.html { redirect_to schedule_path(@selectedPrefecture_id), notice: 'Home was successfully updated.' }
@@ -62,12 +62,12 @@ class HomesController < ApplicationController
   # DELETE /homes/1
   # DELETE /homes/1.json
   def destroy
-    @selectedPrefecture_id =  City.find(@home.cityId).prefectureId
+    @selectedPrefecture_id =  City.find(@home.city_id).prefecture_id
     @home.destroy
     respond_to do |format|
       format.html { redirect_to schedule_path(@selectedPrefecture_id), notice: 'Home was successfully destroyed.' }
       format.json { head :no_content }
-    end 
+    end
   end
 
   def home
@@ -93,6 +93,6 @@ class HomesController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def home_params
-      params.require(:home).permit(:cityId, :date, :start, :end, :peopleNum, :teacherId, :cafeId)
+      params.require(:home).permit(:city_id, :date, :start, :end, :peopleNum, :teacher_id, :cafe_id)
     end
 end
