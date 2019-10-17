@@ -6,9 +6,9 @@
     <a id="event" href="/teacher/schedule/<%= Base64.encode64(event.id.to_s) %>/edit">
       <div id="A">
         <div id="time"><%= event.start.strftime("%H:%M") %>~<%= event.end.strftime("%H:%M") %></div>
-        <div id="price">￥100/5min</div>
+        <div id="price">￥<%= event.fee %>/5min</div>
       </div>
-      <div id="title">Free conversation</div>
+      <div id="title"><%= event.title %></div>
       <div id="C">
         <div id="reservation">2 people booked</div>
         <div id="cafe"><%= event.cafe.name %></div>
@@ -22,6 +22,11 @@
     <h2>Create New Schedule</h2>
 
     <div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </div>
+
+    <div class="field">
       <%= form.label :start, "Please specify the opening time" %>
       <div id="time_select">
         <%= form.time_select :start,default: {:hour => '10', :minute => '00'}%>
@@ -33,6 +38,11 @@
     <div class="field">
       <%= form.label :peopleNum, "Please specify the maximum number of people" %>
       <%= form.number_field :peopleNum, value: 3 %>
+    </div>
+
+    <div class="field">
+      <%= form.label :fee, "Please specify the fee" %>
+      ￥<%= form.number_field :fee %>/5min
     </div>
 
 

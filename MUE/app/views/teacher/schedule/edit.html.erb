@@ -1,14 +1,14 @@
 <div id="teacher_schedule_path">
 
   <%= form_with(url: teacher_schedule_path(@schedule),model: @schedule, local: true) do |form| %>
-    <h1>Free conversation</h1>
-
+    <h1><%= @schedule.title %></h1>
     <div id="teacher">
       <div class="image">
         <%= image_tag (@current_teacher.avatar.attached? ? @current_teacher.avatar : "users/atom-logo.jpg")  %>
       </div>
       <div class="name"><%= @current_teacher.name %></div>
     </div>
+    <%= form.label :title, 'Edit title' %><%= form.text_field :title %>
 
     <div id="when">
       <div id="day">

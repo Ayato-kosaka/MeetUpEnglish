@@ -111,6 +111,7 @@ $title_color: #ff9e00;
 
 //new
 #new_teacher_schedule{
+  margin-bottom: 45px;
   #event{
     @include flexbox;
     @include flex-direction(column);

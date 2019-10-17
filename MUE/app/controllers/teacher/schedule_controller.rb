@@ -49,6 +49,6 @@ class Teacher::ScheduleController < TeacherController
     end
 
     def home_params
-      params.require(:home).permit(:cityId, :start, :end, :peopleNum, :teacherId, :cafeId)
+      params.require(:home).permit(:title, :start, :end, :peopleNum, :fee, :teacherId, :cafeId)
     end
 end
