@@ -1,7 +1,7 @@
 class Teacher::ScheduleController < TeacherController
   before_action :current_teacher
   before_action :at_schedule
-  before_action :set_home, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   # teacher_schedule_index_path 	GET 	/teacher/schedule(.:format) 	teacher/schedule#index
   def index
@@ -9,7 +9,7 @@ class Teacher::ScheduleController < TeacherController
 
   # teacher_schedule_index_path 	POST 	/teacher/schedule(.:format) 	teacher/schedule#create
   def create
-    @schedule = @current_teacher.homes.new(home_params)
+    @schedule = @current_teacher.events.new(event_params)
     @schedule.date = Date.parse(params[:date])
     # if @blog.save
     #   redirect_to (@blog.youtube ? blogs_url : @blog)
@@ -20,8 +20,8 @@ class Teacher::ScheduleController < TeacherController
 
   # new_teacher_schedule_path 	GET 	/teacher/schedule/new(.:format) 	teacher/schedule#new
   def new
-    @schedule = Home.new
-    @events = @current_teacher.homes.where(date:  Date.parse(params[:date])).order(:start)
+    @schedule = Event.new
+    @events = @current_teacher.events.where(date:  Date.parse(params[:date])).order(:start)
   end
 
   # edit_teacher_schedule_path 	GET 	/teacher/schedule/:encoded_id/edit(.:format)   teacher/schedule#edit
@@ -40,15 +40,15 @@ class Teacher::ScheduleController < TeacherController
   end
 
   private
-    def set_home
-      @schedule = Home.find(Base64.decode64(params[:encoded_id]))
+    def set_event
+      @schedule = Event.find(Base64.decode64(params[:encoded_id]))
     end
 
     def at_schedule
       @at = "schedule"
     end
 
-    def home_params
-      params.require(:home).permit(:title, :start, :end, :peopleNum, :fee, :teacherId, :cafeId)
+    def event_params
+      params.require(:event).permit(:title, :start, :end, :peopleNum, :fee, :cafeId)
     end
 end

@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
-  before_action :set_home, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :set_selectedPrefecture, only: [:schedule]
 
   skip_before_action :require_Admin, except: [:index, :show, :edit, :new]
@@ -9,7 +9,7 @@ class HomesController < ApplicationController
   # GET /homes
   # GET /homes.json
   def index
-    @homes = Home.all
+    @homes = Event.all
   end
 
   # GET /homes/1
@@ -19,7 +19,7 @@ class HomesController < ApplicationController
 
   # GET /homes/new
   def new
-    @home = Home.new
+    @home = Event.new
     @home.city_id = params[:selected_city]
   end
 
@@ -30,12 +30,12 @@ class HomesController < ApplicationController
   # POST /homes
   # POST /homes.json
   def create
-    @home = Home.new(home_params)
+    @home = Event.new(event_params)
     @selectedPrefecture_id =  City.find(@home.city_id).prefecture_id
 
     respond_to do |format|
       if @home.save
-        format.html { redirect_to schedule_path(@selectedPrefecture_id), notice: 'Home was successfully created.' }
+        format.html { redirect_to schedule_path(@selectedPrefecture_id), notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @home }
       else
         format.html { render :new }
@@ -49,8 +49,8 @@ class HomesController < ApplicationController
   def update
     @selectedPrefecture_id =  City.find(@home.city_id).prefecture_id
     respond_to do |format|
-      if @home.update(home_params)
-        format.html { redirect_to schedule_path(@selectedPrefecture_id), notice: 'Home was successfully updated.' }
+      if @home.update(event_params)
+        format.html { redirect_to schedule_path(@selectedPrefecture_id), notice: 'Event. was successfully updated.' }
         format.json { render :show, status: :ok, location: @home }
       else
         format.html { render :edit }
@@ -65,7 +65,7 @@ class HomesController < ApplicationController
     @selectedPrefecture_id =  City.find(@home.city_id).prefecture_id
     @home.destroy
     respond_to do |format|
-      format.html { redirect_to schedule_path(@selectedPrefecture_id), notice: 'Home was successfully destroyed.' }
+      format.html { redirect_to schedule_path(@selectedPrefecture_id), notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -84,7 +84,7 @@ class HomesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_home
-      @home = Home.find(params[:id])
+      @home = Event.find(params[:id])
     end
 
     def set_selectedPrefecture
@@ -92,7 +92,7 @@ class HomesController < ApplicationController
       @selectedPrefecture_id = params[:id]
     end
     # Never trust parameters from the scary internet, only allow the white list through.
-    def home_params
-      params.require(:home).permit(:city_id, :date, :start, :end, :peopleNum, :teacher_id, :cafe_id)
+    def event_params
+      params.require(:event).permit(:city_id, :date, :start, :end, :peopleNum, :teacher_id, :cafe_id)
     end
 end

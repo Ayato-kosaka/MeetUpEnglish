@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   has_many :contacts
   belongs_to :cafe
+  belongs_to :teacher
 
 
   after_find do |event|
