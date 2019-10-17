@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 2019_10_17_072558) do
     t.datetime "updated_at", null: false
     t.string "title"
     t.integer "fee"
+    t.boolean "finished", default: false
   end
 
   create_table "prefectures", force: :cascade do |t|
