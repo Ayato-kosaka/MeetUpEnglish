@@ -3,17 +3,13 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 #index
-$ ->
+$(document).on 'turbolinks:load', ->
   $('#future_events').click ->
-    ul = $(@).children("ul")
-    if $(@).hasClass('active')
-      $(@).removeClass ('active')
-    else
-      $(@).addClass ('active')
-    unless ul.hasClass('ajax')
+    $(@).toggleClass('active')
+    unless $('#future_events_ul').hasClass('ajax')
       $.ajax
         type: "get",
-        url: "/homes.json",
+        url: "/teacher/schedule.json",
         # data: {name: 'chara'},
         dataType: "json"
       .done (data) ->
@@ -21,7 +17,15 @@ $ ->
           .addClass ('ajax')
         for value, index in data
           $('#future_events_ul')
-            .append ("<li><a href='/" + value.id + "'>" + value.id + "</a></li>")
+            .append ("<li class='future_events_uli'><a href='/" + value.id + "'>" + value.id + "</a></li>")
+        $('#future_events_ul')
+          .hide()
+          .slideDown(300);
+
+
+
+
+
 
 
 

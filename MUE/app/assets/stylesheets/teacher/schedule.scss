@@ -41,10 +41,12 @@ $plan_color: red;
   .event-box{
     @include flexbox;
     @include flex-direction(column);
+    cursor: pointer;
     padding: 3.2vw 8vw;
     background-color: white;
     margin: 2.667vw;
     border-radius: 2.667vw;
+    transition: height 0.5s ease 0s;
     .title{
       @include flexbox;
       @include align-items(center);
@@ -77,21 +79,33 @@ $plan_color: red;
       }
     }
     ul{
-      display: none;
+      margin: 0;
+      a{
+        display: block;
+        width: 100%;
+        border-radius: 5px;
+        border: 0px solid black;
+        /* 閉じるための状態 */
+        line-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        /* 閉じるアニメーション */
+        transition:  line-height .3s ease-out, opacity .1s linear, visibility .1s linear;
+      }
     }
     &.active{
       .title::after{
         transform: translate(-50%, -25%) rotate3d(0,0,-1,135deg);
       }
       ul{
-        display: block;
-        margin: 0;
         li{
           a{
-            display: block;
-            width: 100%;
             border: 1px solid black;
-            border-radius: 5px;
+            line-height: 1.5;
+            opacity: 1;
+            visibility: visible;
+            /* 開くアニメーション */
+            transition: line-height .3s ease-out, opacity .1s linear .1s, visibility .1s linear .1s;
           }
         }
       }
