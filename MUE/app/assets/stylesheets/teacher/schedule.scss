@@ -36,6 +36,67 @@ $plan_color: red;
       }
     }
   }
+  #future_events .num{background-color: green;}
+  #finished_events .num{background-color: red;}
+  .event-box{
+    @include flexbox;
+    @include flex-direction(column);
+    padding: 3.2vw 8vw;
+    background-color: white;
+    margin: 2.667vw;
+    border-radius: 2.667vw;
+    .title{
+      @include flexbox;
+      @include align-items(center);
+      position: relative;
+      .num{
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(center);
+        color: white;
+        width: 18%;
+        height: 6.133vw;
+        border-radius: 4.8vw;
+        font-size: 3.2vw;
+      }
+      .text{
+        font-size: 4vw;
+        padding-left: 7%;
+      }
+      &::after{
+        content: '';
+        width: 2.667vw;
+        height: 2.667vw;
+        border-bottom: 0.8vw solid;
+        border-right: 0.8vw solid;
+        transform: translate(-50%, -75%) rotate3d(0,0,1,45deg);
+        transition: transform 0.5s ease 0s;
+        position: absolute;
+        top: 50%;
+        right: 1.946vw;
+      }
+    }
+    ul{
+      display: none;
+    }
+    &.active{
+      .title::after{
+        transform: translate(-50%, -25%) rotate3d(0,0,-1,135deg);
+      }
+      ul{
+        display: block;
+        margin: 0;
+        li{
+          a{
+            display: block;
+            width: 100%;
+            border: 1px solid black;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+  }
 }
 
 
@@ -115,7 +176,6 @@ $title_color: #ff9e00;
   #event{
     @include flexbox;
     @include flex-direction(column);
-    @include flex-direction(center);
     padding: 20px 10px;
     border: solid 1px #9d9d9d;
     margin: 10px;

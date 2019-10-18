@@ -1,11 +1,26 @@
 <div id="teacher_schedule_index">
   <h1>Teacher::Schedule#index</h1>
   <p>Find me in app/views/teacher/schedule/index.html.erb</p>
+
   <div id="my_calendar">
     <div id="calendar-ts"></div>
     <div id="explanation">
       <span id="performed">performed</span>
       <span id="plan">plan</span>
+    </div>
+  </div>
+
+  <a id="future_events" class="event-box" data-remote="true" href="#">
+    <div class="title">
+      <div class="num"><%= @schedule.where(finished: false).count %></div>
+      <div class="text">future events</div>
+    </div>
+    <ul id="future_events_ul"></ul>
+  </a>
+  <div id="finished_events" class="event-box">
+    <div class="title">
+      <div class="num"><%= @schedule.where(finished: true).count %></div>
+      <div class="text">finished events</div>
     </div>
   </div>
 

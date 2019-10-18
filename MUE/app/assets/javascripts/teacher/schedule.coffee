@@ -2,11 +2,30 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+#index
+$ ->
+  $('#future_events').click ->
+    ul = $(@).children("ul")
+    if $(@).hasClass('active')
+      $(@).removeClass ('active')
+    else
+      $(@).addClass ('active')
+    unless ul.hasClass('ajax')
+      $.ajax
+        type: "get",
+        url: "/homes.json",
+        # data: {name: 'chara'},
+        dataType: "json"
+      .done (data) ->
+        $('#future_events_ul')
+          .addClass ('ajax')
+        for value, index in data
+          $('#future_events_ul')
+            .append ("<li><a href='/" + value.id + "'>" + value.id + "</a></li>")
 
 
 
-
-
+#calendar
 ###
 初期画面は月表記で、dateのみのjsonを参照する
 週ボタンを押したら、詳細まであるjsonを参照するようにeventを変更し

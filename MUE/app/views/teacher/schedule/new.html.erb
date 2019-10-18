@@ -2,7 +2,7 @@
   <h1>Schedule for <%= Date.parse(params[:date]).strftime("%A, %B %d, %Y") %></h1>
 
 
-  <% @events.each do |event| %>
+  <% @events.find_each do |event| %>
     <a id="event" href="/teacher/schedule/<%= Base64.encode64(event.id.to_s) %>/edit">
       <div id="A">
         <div id="time"><%= event.start.strftime("%H:%M") %>~<%= event.end.strftime("%H:%M") %></div>

@@ -5,17 +5,18 @@ class Teacher::ScheduleController < TeacherController
 
   # teacher_schedule_index_path 	GET 	/teacher/schedule(.:format) 	teacher/schedule#index
   def index
+    @schedule = @current_teacher.events
   end
 
   # teacher_schedule_index_path 	POST 	/teacher/schedule(.:format) 	teacher/schedule#create
   def create
     @schedule = @current_teacher.events.new(event_params)
     @schedule.date = Date.parse(params[:date])
-    # if @blog.save
-    #   redirect_to (@blog.youtube ? blogs_url : @blog)
-    # else
+    if @schedule.save
+      redirect_to teacher_schedule_index_path
+    else
       render :new
-    # end
+    end
   end
 
   # new_teacher_schedule_path 	GET 	/teacher/schedule/new(.:format) 	teacher/schedule#new
@@ -49,6 +50,6 @@ class Teacher::ScheduleController < TeacherController
     end
 
     def event_params
-      params.require(:event).permit(:title, :start, :end, :peopleNum, :fee, :cafeId)
+      params.require(:event).permit(:title, :start, :end, :peopleNum, :fee, :cafe_id)
     end
 end
