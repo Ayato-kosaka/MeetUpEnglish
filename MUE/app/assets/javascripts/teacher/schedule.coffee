@@ -10,14 +10,14 @@ $(document).on 'turbolinks:load', ->
       $.ajax
         type: "get",
         url: "/teacher/schedule.json",
-        # data: {name: 'chara'},
+        data: {name: 'future'},
         dataType: "json"
       .done (data) ->
         $('#future_events_ul')
           .addClass ('ajax')
         for value, index in data
           $('#future_events_ul')
-            .append ("<li class='future_events_uli'><a href='/" + value.id + "'>" + value.id + "</a></li>")
+            .append ("<li><a href='/" + value.id + "'>" + value.id + "</a></li>")
         $('#future_events_ul')
           .hide()
           .slideDown(300);
