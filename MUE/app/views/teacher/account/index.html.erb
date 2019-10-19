@@ -1,8 +1,53 @@
 
 <div id="teacher_account_index">
-  <div class="image">
-    <%= image_tag (@current_teacher.avatar.attached? ? @current_teacher.avatar : "users/atom-logo.jpg")  %>
+  <div class="profile">
+    <div class="image">
+      <%= image_tag (@current_teacher.avatar.attached? ? @current_teacher.avatar : "users/atom-logo.jpg")  %>
+    </div>
+    <div class="name"><%= @current_teacher.name %></div>
+    <div class="num_top">
+      <div class="num_event1">
+          <a>イベント数</a>
+          <a href="#">15</a>
+      </div>
+      <div class="num_follow1">
+          <a href="#">フォロワー数</a>
+          <a href="#">30</a>
+      </div>
+    </div>
+    <div class="review_top">
+      <a href="#">☆☆☆☆☆(30)</a>
+    </div>
+    <div class="edit"><%= link_to 'プロフィール編集', '#' %></div>
   </div>
-  <div class="name"><%= @current_teacher.name %></div>
-  <div class="edit"><%= link_to 'プロフィール編集', '#' %></div>
+  <div class="exhibit-top">
+    <div class="exhibit-doing">
+      <a href="#">出品中のサービス</a>
+    </div>
+    <div class="exhibit-draft">
+      <a href="#">下書き一覧</a>
+    </div>
+  </div>
+  <div class="other-top">
+    <div class="other-personal">
+      <a href="#">個人情報設定</a>
+    </div>
+    <div class="other-notification">
+      <a href="#">通知の設定</a>
+    </div>
+  </div>
+  <div class="home-top">
+    <div class="home-page">
+      <a href="#">homepage</a>
+    </div>
+    <div class="home-blog">
+      <a href="#">blog</a>
+    </div>
+    <div class="home-twitter">
+      <a href="#">twitter</a>
+    </div>
+    <div class="home-instagram">
+      <a href="#">instagram</a>
+    </div>
+  </div>
 </div>

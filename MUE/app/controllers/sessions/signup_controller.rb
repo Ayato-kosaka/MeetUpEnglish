@@ -29,7 +29,7 @@ class Sessions::SignupController < SessionsController
     @teacher = Teacher.new(teacher_params)
     if @teacher.save && params[:teacher][:gender]
       @teacher.update(gender: teachers_gender_convert_to_boolean)
-      log_in @teacher
+      log_in @teacher,false
       flash[:success] = "Welcome to the Meet up English!"
       redirect_to root_url #I need to change this
     else
