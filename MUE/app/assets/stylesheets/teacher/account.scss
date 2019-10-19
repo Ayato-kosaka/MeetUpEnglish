@@ -17,6 +17,19 @@
     width: 100%;
     margin-bottom: 20px;
     background-color: white;
+    .image{
+      width: 150px;
+      height: 150px;
+      overflow: hidden;
+      @include flexbox;
+      @include justify-content(center);
+      @include align-items(center);
+      border-radius: 50%;
+      margin: 20px 0;
+      img{
+        height: 150px;//縦長に対応してないので要改善
+      }
+    }
     .num_top{
       @include flexbox;
       padding: 10px;
@@ -89,6 +102,43 @@
       width: 100%;
     }
     .other-notification{
+      @include flexbox;
+      @include justify-content(center);
+      border-bottom: 1px solid #989898;
+      padding: 10px;
+      width: 100%;
+    }
+  }
+  .home-top{
+    @include flexbox;
+    @include flex-direction(column);
+    @include align-items(center);
+    width: 100%;
+    margin: 20px;
+    background-color: white;
+    .home-page{
+      @include flexbox;
+      @include justify-content(center);
+      border-top: 1px solid #989898;
+      border-bottom: 1px solid #989898;
+      padding: 10px;
+      width: 100%;
+    }
+    .home-blog{
+      @include flexbox;
+      @include justify-content(center);
+      border-bottom: 1px solid #989898;
+      padding: 10px;
+      width: 100%;
+    }
+    .home-twitter{
+      @include flexbox;
+      @include justify-content(center);
+      border-bottom: 1px solid #989898;
+      padding: 10px;
+      width: 100%;
+    }
+    .home-instagram{
       @include flexbox;
       @include justify-content(center);
       border-bottom: 1px solid #989898;
