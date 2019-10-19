@@ -8,12 +8,11 @@
 <%= if session[:role]=="Admin" then link_to 'New Blog', new_blog_path end%>
 
 
-<h2 id="category-name">Category</h2>
-
+<h2 id="category-title">カテゴリー</h2>
+<p id="category-name"><%= Blogcategory.find(@selected_category_id).name %></p>
 <div id="category-blog">
   <div class="flex-blog">
     <% @category.each do |category| %>
-
       <a class="item <%= "active" if (category.id ) == @selected_category_id %>" href="/blogs?event_search=<%= category.name %>" data-turbolinks="false">
         <%= category.image ? image_tag(category.image) : category.name %>
       </a>
@@ -35,10 +34,15 @@
             <% end %>
           </div>
           <h3><%= blog.title %></h3>
-          <div>
-            <div class="blog_createdAt">
-              <% if session[:role]=="Admin" %><%= link_to 'Edit', edit_blog_path(blog)%> | <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %><%end%>
-              <%= blog.created_at.strftime("%Y.%m.%d") %>
+          <div class="explain">
+            <div class="explain-1">
+              <div class="category">
+                カテゴリー:<%= blog.category&.name %>
+              </div>
+              <div class="blog_createdAt">
+                <% if session[:role]=="Admin" %><%= link_to 'Edit', edit_blog_path(blog)%> | <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %><%end%>
+                <%= blog.created_at.strftime("%Y.%m.%d") %>
+              </div>
             </div>
             <div class="commentnum_blog_index"><i class="fas fa-comments"></i><%= blog.comments.count %></div>
           </div>
@@ -51,10 +55,15 @@
             <iframe width="560" height="315" src="" data-src="https://www.youtube.com/embed/<%= blog.text %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <h3><%= blog.title%></h3>
-          <div>
-            <div class="blog_createdAt">
-              <% if session[:role]=="Admin" %><%= link_to 'Edit', edit_blog_path(blog)%> | <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %><%end%>
-              <%= blog.created_at.strftime("%Y.%m.%d") %>
+          <div class="explain">
+            <div class="explain-1">
+              <div class="category">
+                カテゴリー:<%= blog.category&.name %>
+              </div>
+              <div class="blog_createdAt">
+                <% if session[:role]=="Admin" %><%= link_to 'Edit', edit_blog_path(blog)%> | <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %><%end%>
+                <%= blog.created_at.strftime("%Y.%m.%d") %>
+              </div>
             </div>
           </div>
         </a></article>
