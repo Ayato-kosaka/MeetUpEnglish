@@ -19,7 +19,7 @@
   <tbody>
     <% @homes.each do |home| %>
       <tr>
-        <td><%= City.find_by(id: home.city_id)&.name %></td>
+        <td><%= home.city&.name %></td>
         <td><%= home.date %></td>
         <td><%= home.start.strftime("%H:%M") %></td>
         <td><%= home.end.strftime("%H:%M") %></td>

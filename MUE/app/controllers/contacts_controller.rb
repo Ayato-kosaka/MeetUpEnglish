@@ -12,7 +12,7 @@ class ContactsController < ApplicationController
   # GET /contacts/1.json
   def show
     @contact.toggle!(:checked) if !@contact.checked
-    @home = @contact.home
+    @home = @contact.event
   end
 
   # GET /contacts/new
@@ -40,10 +40,10 @@ class ContactsController < ApplicationController
 
   # GET /contacts/1/join
   def join_new
-    @home = Home.find(params[:id])
+    @home = Event.find(params[:id])
     @contact = @home.contacts.new
     @title_value = "I want to go to Meet Up English"
-    @message_value = "【希望滞在時間】〇〇:〇〇～〇〇:〇〇\n*#{ @home.start.strftime("%H:%M") }～#{ @home.end.strftime("%H:%M") }の間で予定滞在時間を↑に記入してください\n\n 【日程】#{@home.date.strftime("%Y年 %m月 %d日")}\n【場所】#{City.find(@home.cityId).name}:#{Cafe.find(@home.cafeId).name}\n"
+    @message_value = "【希望滞在時間】〇〇:〇〇～〇〇:〇〇\n*#{ @home.start.strftime("%H:%M") }～#{ @home.end.strftime("%H:%M") }の間で予定滞在時間を↑に記入してください\n\n 【日程】#{@home.date.strftime("%Y年 %m月 %d日")}\n【場所】#{@home.city.name}:#{@home.cafe.name}\n"
 
     render :new
   end
@@ -52,7 +52,7 @@ class ContactsController < ApplicationController
 
   # PUSH contacts/:id/create
   def join_create
-    @contact = Home.find(params[:id]).contacts.new
+    @contact = Event.find(params[:id]).contacts.new
     @content = 'reservation'
     @content_ja = 'ご予約'
     if @contact.update(contact_params)
