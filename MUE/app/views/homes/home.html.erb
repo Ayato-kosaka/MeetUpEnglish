@@ -4,24 +4,25 @@
 <h1>開催スケジュール</h1>
 <div id="area_list" style="width: 100%; display: table;">
   <ul id="area_list_ul">
-    <% Region.all.each_with_index do |a,i| %>
+    <% Region.all.each_with_index do |region,index| %>
     <li
-      <% if i==0 %>
+      <% if index==0 %>
       style="border-top: 1px solid gray;"
       <% end %>>
-      <a class="region_a"><%=a.name%></a>
+      <a class="region_a"><%=region.name%></a>
 
       <ul class="prefecture_list"
-      <% if i==2 %>
+      <% if index==2 %>
       style="display: block;" id="display_show"
       <% else %> style="display: none;" <% end %>>
-        <% if Prefecture.find_by(regionId: a.id).nil? %>
-        <li><a>準備中</a></li>
-        <% end %>
-        <% Prefecture.where(regionId: a.id).each do |b| %>
-        <li>
-          <%= link_to b.name, schedule_path(b.id), data: {"turbolinks"=>false}  %>
-        </li>
+        <% if region.prefectures.empty? %>
+          <li><a>準備中</a></li>
+        <% else %>
+          <% region.prefectures.each do |prefecure| %>
+          <li>
+            <%= link_to prefecure.name, schedule_path(prefecure.id), data: {"turbolinks"=>false}  %>
+          </li>
+          <% end %>
         <% end %>
       </ul>
 
