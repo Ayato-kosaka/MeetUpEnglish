@@ -6,21 +6,21 @@
 $(document).on 'turbolinks:load', ->
   $('#future_events').click ->
     $(@).toggleClass('active')
-    unless $('#future_events_ul').hasClass('ajax')
-      $.ajax
-        type: "get",
-        url: "/teacher/schedule.json",
-        data: {name: 'future'},
-        dataType: "json"
-      .done (data) ->
-        $('#future_events_ul')
-          .addClass ('ajax')
-        for value, index in data
-          $('#future_events_ul')
-            .append ("<li><a href='/" + value.id + "'>" + value.id + "</a></li>")
-        $('#future_events_ul')
-          .hide()
-          .slideDown(300);
+    # unless $('#future_events_ul').hasClass('ajax')
+    #   $.ajax
+    #     type: "get",
+    #     url: "/teacher/schedule.json",
+    #     data: {name: 'future'},
+    #     dataType: "json"
+    #   .done (data) ->
+    #     $('#future_events_ul')
+    #       .addClass ('ajax')
+    #     for value, index in data
+    #       $('#future_events_ul')
+    #         .append ("<li><a href='/" + value.id + "'>" + value.id + "</a></li>")
+    #     $('#future_events_ul')
+    #       .hide()
+    #       .slideDown(300);
 
 
 

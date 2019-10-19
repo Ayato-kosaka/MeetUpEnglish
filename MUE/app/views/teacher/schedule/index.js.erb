@@ -1,0 +1,10 @@
+if ($('#future_events_ul').hasClass('ajax') == false){
+  $('#future_events_ul').hide()
+  <% @schedule.where(finished: false).each do |value| %>
+    $('#future_events_ul')
+      .append ("<li><a href='/<%= value.id %>'><%= value.id %></a></li>");
+  <% end %>
+  $('#future_events_ul').addClass('ajax');
+  $('#future_events_ul').slideDown(300);
+  $('#future_events').attr('a', 'div')
+}
