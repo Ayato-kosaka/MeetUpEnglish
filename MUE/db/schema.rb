@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_13_102458) do
+ActiveRecord::Schema.define(version: 2019_10_19_172532) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -51,8 +51,7 @@ ActiveRecord::Schema.define(version: 2019_10_13_102458) do
     t.integer "blog_id"
     t.string "name"
     t.text "text"
-    t.integer "blogId"
-    t.integer "test"
+    t.integer "blog_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["blog_id"], name: "index_blogcomments_on_blog_id"
@@ -71,7 +70,7 @@ ActiveRecord::Schema.define(version: 2019_10_13_102458) do
   create_table "caves", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.integer "cityId"
+    t.integer "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "url"
@@ -79,7 +78,7 @@ ActiveRecord::Schema.define(version: 2019_10_13_102458) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
-    t.integer "prefectureId"
+    t.integer "prefecture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -90,27 +89,31 @@ ActiveRecord::Schema.define(version: 2019_10_13_102458) do
     t.string "title"
     t.text "message"
     t.boolean "checked", default: false
-    t.integer "home_id"
+    t.integer "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["home_id"], name: "index_contacts_on_home_id"
+    t.index ["event_id"], name: "index_contacts_on_event_id"
   end
 
-  create_table "homes", force: :cascade do |t|
-    t.integer "cityId"
+  create_table "events", force: :cascade do |t|
+    t.integer "city_id"
     t.date "date"
     t.time "start"
     t.time "end"
     t.integer "peopleNum"
-    t.integer "teacherId"
-    t.integer "cafeId"
+    t.integer "teacher_id"
+    t.integer "cafe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
+    t.integer "fee"
+    t.boolean "finished", default: false
+    t.boolean "realtime", default: false
   end
 
   create_table "prefectures", force: :cascade do |t|
     t.string "name"
-    t.integer "regionId"
+    t.integer "region_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -126,7 +129,7 @@ ActiveRecord::Schema.define(version: 2019_10_13_102458) do
     t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "blogId"
+    t.integer "blog_id"
     t.integer "index"
   end
 
