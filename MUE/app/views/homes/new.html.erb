@@ -1,5 +1,5 @@
 <h1>Create new Meet Up English</h1>
 
-<%= render 'form', home: @home %>
+<%= render 'form', {home: @home, url: homes_path} %>
 
 <%= link_to 'Back', schedule_path(@home.city.prefecture), data: {"turbolinks"=>false}  %>

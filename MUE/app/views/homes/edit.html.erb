@@ -1,6 +1,6 @@
 <h1>Editing Event</h1>
 
-<%= render 'form', home: @home %>
+<%= render 'form', {home: @home, url: home_path} %>
 
 
 <%= link_to 'Back', schedule_path(@home.city.prefecture), data: {"turbolinks"=>false}  %> |
