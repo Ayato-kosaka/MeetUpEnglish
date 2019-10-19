@@ -10,7 +10,7 @@ class Sessions::SignupController < SessionsController
     @user = User.new(user_params)
     if @user.save && params[:user][:gender]
       @user.update(gender: users_gender_convert_to_boolean)
-      log_in @user
+      log_in @user,true
       flash[:success] = "Welcome to the Meet up English!"
       redirect_to root_url
     else
