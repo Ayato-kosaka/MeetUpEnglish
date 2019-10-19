@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  has_many :contacts
+  has_many :contacts, dependent: :nullify
   belongs_to :cafe
   belongs_to :teacher
   belongs_to :city

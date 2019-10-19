@@ -35,7 +35,7 @@
     <tr>
       <td><%= m.date.strftime("%Y/%m/%d(#{%w(日 月 火 水 木 金 土)[m.date.wday]})") %><br><%= m.start.strftime("%H:%M") %>~<%= m.end.strftime("%H:%M") %></td>
       <td class="onlypc"><%= link_to teacher_path(m.teacher_id), data: {"turbolinks"=>false} do %><%= Teacher.find(m.teacher_id).name %> <br>先生<%end%></td>
-      <td><p class="onlypc" style="margin:0px;"><%= link_to Cafe.find(m.cafe_id).name,Cafe.find(m.cafe_id).url ? Cafe.find(m.cafe_id).url: cafe_path(m.cafe_id) %></p>
+      <td><p class="onlypc" style="margin:0px;"><%= link_to m.cafe.name,m.cafe.url ? m.cafe.url: cafe_path(m.cafe) %></p>
         <p style="margin:0px;">残席:<%= m.peopleNum %></p></td>
       <td class="onlymobile green_button" style="background: linear-gradient(#15ab4f, #0dff07);width:70px">
           <%= link_to '詳細', homes_showDetailSchedule_path(selected_cafe_id: m.cafe_id,selected_teacher_id: m.teacher_id), remote: true,style: "line-height: 4em;"%></td>
