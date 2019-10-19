@@ -63,11 +63,12 @@ class HomesController < ApplicationController
   # DELETE /homes/1.json
   def destroy
     @selectedPrefecture_id =  City.find(@home.cityId).prefectureId
+    @home.contacts.each{|n|n.update(home_id: nil)}
     @home.destroy
     respond_to do |format|
       format.html { redirect_to schedule_path(@selectedPrefecture_id), notice: 'Home was successfully destroyed.' }
       format.json { head :no_content }
-    end 
+    end
   end
 
   def home
