@@ -9,15 +9,10 @@ $(document).on 'turbolinks:load', ->
     unless $('#future_events_ul').hasClass('ajax')
       $.ajax
         type: "get",
-        url: "/teacher/schedule.json",
-        data: {name: 'future'},
-        dataType: "json"
+        url: "/teacher/schedule.js",
       .done (data) ->
         $('#future_events_ul')
           .addClass ('ajax')
-        for value, index in data
-          $('#future_events_ul')
-            .append ("<li><a href='/" + value.id + "'>" + value.id + "</a></li>")
         $('#future_events_ul')
           .hide()
           .slideDown(300);
