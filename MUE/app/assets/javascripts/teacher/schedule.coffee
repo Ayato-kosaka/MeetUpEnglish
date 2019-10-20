@@ -9,11 +9,23 @@ $(document).on 'turbolinks:load', ->
     unless $('#future_events_ul').hasClass('ajax')
       $.ajax
         type: "get",
-        url: "/teacher/schedule.js",
+        url: "/teacher/schedule.js?role=future",
       .done (data) ->
         $('#future_events_ul')
           .addClass ('ajax')
         $('#future_events_ul')
+          .hide()
+          .slideDown(300);
+  $('#finished_events').click ->
+    $(@).toggleClass('active')
+    unless $('#finished_events_ul').hasClass('ajax')
+      $.ajax
+        type: "get",
+        url: "/teacher/schedule.js?role=finished",
+      .done (data) ->
+        $('#finished_events_ul')
+          .addClass ('ajax')
+        $('#finished_events_ul')
           .hide()
           .slideDown(300);
 
