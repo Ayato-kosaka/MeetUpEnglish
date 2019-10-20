@@ -53,8 +53,8 @@ class BlogsController < ApplicationController
   # DELETE /blogs/1.json
   def destroy
     @blog.destroy
-    Section.where(blogId: @blog.id).each{|n|n.destroy}
-    Blogcomment.where(blogId: @blog.id).each{|n|n.destroy}
+    Section.where(blog_id: @blog.id).each{|n|n.destroy}
+    Blogcomment.where(blog_id: @blog.id).each{|n|n.destroy}
     redirect_to blogs_url
   end
 

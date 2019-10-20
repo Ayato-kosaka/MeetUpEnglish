@@ -24,7 +24,7 @@
 <div class="toc_container">
 <p >この記事の目次</p>
 <ul style="display: block;">
-<% Section.where(blogId: @blog.id).order(:index).each do |n| %>
+<% @blog.sections.order(:index).each do |n| %>
     <li><a href="#blog_index_<%= n.id %>"><%= n.title %></a></li>
 <% end %>
 <li><a href="#blog_index_comment">コメント</a></li>
@@ -36,7 +36,7 @@
 <!-- セクション -->
 <section id="blog_section">
   <%= if session[:role]=="Admin" then link_to 'NewSection', new_section_path(selected_blog:@blog.id) end %>
-  <% Section.where(blogId: @blog.id).order(:index).each do |n| %>
+  <% @blog.sections.order(:index).each do |n| %>
     <h2 id="blog_index_<%= n.id %>"><%= n.title %></h2>
     <% if session[:role]=="Admin" %><%= link_to 'EditSection', edit_section_path(n.id,selected_blog:@blog.id) %> | <%= link_to 'DestroySection', n, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
     <% if n.image.attached? %>
