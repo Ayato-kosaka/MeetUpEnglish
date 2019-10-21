@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+  <div id="how_to_last_event"><p class="how_to_last_event_style">前回の開催の様子のツイッターカードの作り方</p></div>
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
@@ -40,3 +41,15 @@
     <%= form.submit %>
   </div>
 <% end %>
+<script type="text/javascript">
+  $('#how_to_last_event').one('click',function(e){
+    console.log("hello")
+    $(this).append("</p><p>Title　＝＞　前回の開催の様子<br>で作ったときにカードのhtmlコードがtextの最後に挿入されるっていう仕組み<br>注意:　editするときは、textの末尾のhtmlコードを消さないとダブる</p>");
+  });
+</script>
+<style media="screen">
+  .how_to_last_event_style{
+    cursor: default;
+    text-decoration: underline;
+  }
+</style>

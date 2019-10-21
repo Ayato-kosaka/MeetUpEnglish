@@ -60,9 +60,9 @@ ActiveRecord::Schema.define(version: 2019_10_19_172532) do
     t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "category_id"
+    t.integer "blogcategory_id"
     t.boolean "youtube"
-    t.index ["category_id"], name: "index_blogs_on_category_id"
+    t.index ["blogcategory_id"], name: "index_blogs_on_blogcategory_id"
   end
 
   create_table "caves", force: :cascade do |t|
