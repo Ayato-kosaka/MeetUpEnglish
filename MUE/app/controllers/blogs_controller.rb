@@ -10,7 +10,7 @@ class BlogsController < ApplicationController
   def index
     @category = Blogcategory.all.order(:id)
     @selected_category_id = params[:event_search] ? Blogcategory.find_by(name: params[:event_search]).id : 1
-    @pagy, @blogs = pagy( (@selected_category_id == 1) ? Blog.all.order(id: "DESC") : Blog.where( category_id: @selected_category_id ).order(id: "DESC"), items: 8 )
+    @pagy, @blogs = pagy( (@selected_category_id == 1) ? Blog.all.order(id: "DESC") : Blog.where( blogcategory_id: @selected_category_id ).order(id: "DESC"), items: 8 )
   end
 
   # GET /blogs/1
@@ -53,8 +53,8 @@ class BlogsController < ApplicationController
   # DELETE /blogs/1.json
   def destroy
     @blog.destroy
-    Section.where(blogId: @blog.id).each{|n|n.destroy}
-    Blogcomment.where(blogId: @blog.id).each{|n|n.destroy}
+    Section.where(blog_id: @blog.id).each{|n|n.destroy}
+    Blogcomment.where(blog_id: @blog.id).each{|n|n.destroy}
     redirect_to blogs_url
   end
 
@@ -79,7 +79,7 @@ class BlogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
-      params.require(:blog).permit(:title, :text, :image, :category_id, :youtube)
+      params.require(:blog).permit(:title, :text, :image, :blogcategory_id, :youtube)
     end
 
     def category_params

@@ -32,8 +32,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :category_id %>
-    <%= form.select :category_id, Blogcategory.all.map{|m| [m.name,m.id]} %>
+    <%= form.label :blogcategory_id %>
+    <%= form.select :blogcategory_id, Blogcategory.all.map{|m| [m.name,m.id]} %>
   </div>
 
   <%= link_to 'Click here to create new category', blogs_new_category_path %>
