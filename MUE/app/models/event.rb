@@ -1,7 +1,8 @@
 class Event < ApplicationRecord
-  has_many :contacts
+  has_many :contacts, dependent: :nullify
   belongs_to :cafe
   belongs_to :teacher
+  belongs_to :city
 
 
   after_find do |event|
@@ -10,7 +11,7 @@ class Event < ApplicationRecord
       if Time.zone.parse(event.date.strftime("%Y%m%d")+event.end.strftime("%H%M")) < current
         event.update(finished: true, realtime: false)
       elsif !event.realtime
-        event.update(finished: flase, realtime: true)
+        event.update(finished: false, realtime: true)
       end
     end
   end

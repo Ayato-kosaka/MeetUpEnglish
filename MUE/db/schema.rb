@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_17_105606) do
+ActiveRecord::Schema.define(version: 2019_10_19_172532) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -48,13 +48,11 @@ ActiveRecord::Schema.define(version: 2019_10_17_105606) do
   end
 
   create_table "blogcomments", force: :cascade do |t|
-    t.integer "blog_id"
     t.string "name"
     t.text "text"
-    t.integer "test"
+    t.integer "blog_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["blog_id"], name: "index_blogcomments_on_blog_id"
   end
 
   create_table "blogs", force: :cascade do |t|
@@ -89,10 +87,10 @@ ActiveRecord::Schema.define(version: 2019_10_17_105606) do
     t.string "title"
     t.text "message"
     t.boolean "checked", default: false
-    t.integer "home_id"
+    t.integer "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["home_id"], name: "index_contacts_on_home_id"
+    t.index ["event_id"], name: "index_contacts_on_event_id"
   end
 
   create_table "events", force: :cascade do |t|

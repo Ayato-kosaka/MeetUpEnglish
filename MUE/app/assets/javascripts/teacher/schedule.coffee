@@ -6,21 +6,28 @@
 $(document).on 'turbolinks:load', ->
   $('#future_events').click ->
     $(@).toggleClass('active')
-    # unless $('#future_events_ul').hasClass('ajax')
-    #   $.ajax
-    #     type: "get",
-    #     url: "/teacher/schedule.json",
-    #     data: {name: 'future'},
-    #     dataType: "json"
-    #   .done (data) ->
-    #     $('#future_events_ul')
-    #       .addClass ('ajax')
-    #     for value, index in data
-    #       $('#future_events_ul')
-    #         .append ("<li><a href='/" + value.id + "'>" + value.id + "</a></li>")
-    #     $('#future_events_ul')
-    #       .hide()
-    #       .slideDown(300);
+    unless $('#future_events_ul').hasClass('ajax')
+      $.ajax
+        type: "get",
+        url: "/teacher/schedule.js?role=future",
+      .done (data) ->
+        $('#future_events_ul')
+          .addClass ('ajax')
+        $('#future_events_ul')
+          .hide()
+          .slideDown(300);
+  $('#finished_events').click ->
+    $(@).toggleClass('active')
+    unless $('#finished_events_ul').hasClass('ajax')
+      $.ajax
+        type: "get",
+        url: "/teacher/schedule.js?role=finished",
+      .done (data) ->
+        $('#finished_events_ul')
+          .addClass ('ajax')
+        $('#finished_events_ul')
+          .hide()
+          .slideDown(300);
 
 
 
@@ -36,6 +43,23 @@ $(document).on 'turbolinks:load', ->
 月ボタンを押したら、dateのみのjsonを参照する
 ###
 $(document).on 'turbolinks:load', ->
+
+  lowerThanDateOnly = (date1, date2) ->
+    year1 = date1.getFullYear()
+    month1 = date1.getMonth() + 1
+    day1 = date1.getDate()
+    year2 = date2.getFullYear()
+    month2= date2.getMonth() + 1
+    day2 = date2.getDate()
+    if year1 == year2
+      if month1 == month2
+        return day1 < day2
+      else
+        return month1 < month2
+    else
+      return year1 < year2
+
+
   $('#calendar-ts').fullCalendar {
     # dayClick: (date, allDay, jsEvent, view) ->
     #   $("#calendar-ts").fullCalendar("clientEvents",  (e) -> #This method will return an array of Event Objects that FullCalendar has stored in client-side memory.
@@ -51,8 +75,10 @@ $(document).on 'turbolinks:load', ->
     ,
     events: '/homes.json',
     dayClick: (date, jsEvent, view) ->
-      console.log(date)
-      window.location.href = '/teacher/schedule/new?date=' +  String(moment(date).format("YYYY-MM-DD"));
+      if lowerThanDateOnly(date._d, moment()._d)
+        # show_shecule_path if date has event
+      else
+        window.location.href = '/teacher/schedule/new?date=' +  String(moment(date).format("YYYY-MM-DD"));
     ,
     # カレンダー上部を年月で表示させる
     titleFormat: 'YYYY/M' ,
@@ -64,12 +90,12 @@ $(document).on 'turbolinks:load', ->
       right: 'prev today next'
     },
     buttonText: {
-                  prevYear: '前年',
-                  nextYear: '翌年',
-                  today: 'today',
-                  month: '月',
-                  week: '週',
-                  day: '日'
+      prevYear: '前年',
+      nextYear: '翌年',
+      today: 'today',
+      month: '月',
+      week: '週',
+      day: '日'
     },
     # height: 960, //高さをピクセルで指定
   	# defaultView: 'agendaDay', //初めの表示内容を指定　内容はこちらを参照→ http://fullcalendar.io/docs/views/Available_Views/
