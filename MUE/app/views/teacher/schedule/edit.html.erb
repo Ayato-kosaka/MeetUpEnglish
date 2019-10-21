@@ -1,0 +1,46 @@
+<div id="teacher_schedule_path">
+
+  <%= form_with(url: teacher_schedule_path(@schedule),model: @schedule, local: true) do |form| %>
+    <h1><%= @schedule.title %></h1>
+    <div id="teacher">
+      <div class="image">
+        <%= image_tag (@current_teacher.avatar.attached? ? @current_teacher.avatar : "users/atom-logo.jpg")  %>
+      </div>
+      <div class="name"><%= @current_teacher.name %></div>
+    </div>
+    <%= form.label :title, 'Edit title' %><%= form.text_field :title %>
+
+    <div id="when">
+      <div id="day">
+        <h2><%= @schedule.date.strftime("%A, %B %d, %Y") %></h2>
+      </div>
+      <div id="time_select">
+        <%= form.label :start, "Edit specify the opening time" %>
+        <%= form.time_select :start %>
+        <span>~</span>
+        <%= form.time_select :end %>
+      </div>
+    </div>
+    <div id="fee"></div>
+    <div id="cafe">
+      <%= form.label :cafe_id, 'Select Cafe from my_cafe' %> <%= link_to "edit new my_cafe", new_cafe_path %><br>
+      <%= form.select :cafe_id,Cafe.all.map{|n|[n.name,n.id]} %> <!-- @current_teacher.caves.map{|cafe|[cafe.name,cafe.id]} -->
+    </div>
+    <div id="sheet">
+      <%= form.label :peopleNum, "Edit specify the maximum number of people" %>
+      <%= form.number_field :peopleNum %>
+    </div>
+    <div id="term">
+      <a href="#" id="terms">terms of service</a>
+    </div>
+
+
+    <div class="actions">
+      <%= form.submit 'Agree and send' %>
+    </div>
+  <% end %>
+
+
+
+
+</div>

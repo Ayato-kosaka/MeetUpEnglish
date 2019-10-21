@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :require_Admin
+  skip_before_action :require_Admin # This should be commentted out during production
   layout 'simple'
 
 

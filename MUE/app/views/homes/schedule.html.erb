@@ -3,7 +3,7 @@
 
 <!-- タイトル本文 -->
 <h1><%= @selectedPrefecture.name %>での開催スケジュール</h1>
-<%= if session[:role]  == "Admin" then link_to 'create new city', new_city_path(selected_prefecture:@selectedPrefecture_id), data: {"turbolinks"=>false} end %>
+<%= if admin? then link_to 'create new city', new_city_path(selected_prefecture:@selectedPrefecture_id), data: {"turbolinks"=>false} end %>
 <p>参加したい方は、参加申し込みボタン又はTwitter,Instagram,Facebook,公式Lineにてご連絡ください。<br>
   もちろん、アポなし参加でも大丈夫です。</p>
 
@@ -22,7 +22,7 @@
 
 <% City.where(prefecture_id: @selectedPrefecture_id).each do |n| %>
   <h2 id="#schedule_index_<%= n.id %>"><%= n.name %>
-    <% if (session[:role]  == "Admin") %>
+    <% if admin? %>
       <%= link_to 'create new event', new_home_path(selected_city:n.id), data: {"turbolinks"=>false} %>
     <% end %></h2>
   <table>

@@ -1,0 +1,4 @@
+<% @schedule.where(finished: params[:role]=='finished').each do |value| %>
+  $('#<%= params[:role] %>_events_ul')
+    .append ("<li><a href='/<%= value.id %>'><%= value.id %></a></li>");
+<% end %>

@@ -1,0 +1,60 @@
+<div id="new_teacher_schedule">
+  <h1>Schedule for <%= Date.parse(params[:date]).strftime("%A, %B %d, %Y") %></h1>
+
+
+  <% @events.find_each do |event| %>
+    <a id="event" href="/teacher/schedule/<%= Base64.encode64(event.id.to_s) %>/edit">
+      <div id="A">
+        <div id="time"><%= event.start.strftime("%H:%M") %>~<%= event.end.strftime("%H:%M") %></div>
+        <div id="price">￥<%= event.fee %>/5min</div>
+      </div>
+      <div id="title"><%= event.title %></div>
+      <div id="C">
+        <div id="reservation">2 people booked</div>
+        <div id="cafe"><%= event.cafe.name %></div>
+      </div>
+    </a>
+  <% end %>
+
+
+
+  <%= form_with(url: teacher_schedule_index_path(date: params[:date]),model: @schedule, local: true) do |form| %>
+    <h2>Create New Schedule</h2>
+
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= form.label :start, "Please specify the opening time" %>
+      <div id="time_select">
+        <%= form.time_select :start,default: {:hour => '10', :minute => '00'}%>
+        <span>~</span>
+        <%= form.time_select :end,default: {:hour => '11', :minute => '00'} %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= form.label :peopleNum, "Please specify the maximum number of people" %>
+      <%= form.number_field :peopleNum, value: 3 %>
+    </div>
+
+    <div class="field">
+      <%= form.label :fee, "Please specify the fee" %>
+      ￥<%= form.number_field :fee %>/5min
+    </div>
+
+
+    <div class="field">
+      <%= form.label :cafe_id, 'Select Cafe from my_cafe' %> <%= link_to "edit new my_cafe", new_cafe_path %><br>
+      <%= form.select :cafe_id,Cafe.all.map{|n|[n.name,n.id]} %> <!-- @current_teacher.caves.map{|cafe|[cafe.name,cafe.id]} -->
+    </div>
+    <a href="#" id="terms">terms of service</a>
+
+    <div class="actions">
+      <%= form.submit 'Agree and send' %>
+    </div>
+  <% end %>
+
+</div>

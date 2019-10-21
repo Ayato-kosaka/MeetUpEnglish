@@ -1,6 +1,7 @@
 class Teacher < ApplicationRecord
   attr_accessor :remember_token
   has_many :events
+
   before_save { self.email = email.downcase }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6}
@@ -9,6 +10,8 @@ class Teacher < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 
+
+  has_many :events
 
   class << self
     # 渡された文字列のハッシュ値を返す

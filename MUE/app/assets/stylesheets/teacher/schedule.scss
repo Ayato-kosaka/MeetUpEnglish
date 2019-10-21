@@ -1,3 +1,217 @@
 // Place all the styles related to the teacher::schedule controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'header.scss';
+
+
+//index
+$plan_color: red;
+#teacher_schedule_index{
+  padding: 44px 0;
+  background-color: #fff5e6;
+  // The calendar style is described below
+  #explanation{
+    background-color: white;
+    font-size: 1.197rem;
+    padding: 10px 0;
+    @include flexbox;
+    span{
+      width: 50%;
+      @include flexbox;
+      @include align-items(center);
+      &::before{
+        content: '';
+        width: 1.197rem;
+        height: 1.197rem;
+        display: block;
+        border-radius: 50%;
+        margin: 0 0.855rem;
+      }
+      &#performed:before{
+        background-color: blue;
+      }
+      &#plan:before{
+        background-color: $plan_color;
+      }
+    }
+  }
+  #future_events .num{background-color: green;}
+  #finished_events .num{background-color: red;}
+  .event-box{
+    @include flexbox;
+    @include flex-direction(column);
+    cursor: pointer;
+    padding: 3.2vw 8vw;
+    background-color: white;
+    margin: 2.667vw;
+    border-radius: 2.667vw;
+    transition: height 0.5s ease 0s;
+    .title{
+      @include flexbox;
+      @include align-items(center);
+      position: relative;
+      .num{
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(center);
+        color: white;
+        width: 18%;
+        height: 6.133vw;
+        border-radius: 4.8vw;
+        font-size: 3.2vw;
+      }
+      .text{
+        font-size: 4vw;
+        padding-left: 7%;
+      }
+      &::after{
+        content: '';
+        width: 2.667vw;
+        height: 2.667vw;
+        border-bottom: 0.8vw solid;
+        border-right: 0.8vw solid;
+        transform: translate(-50%, -75%) rotate3d(0,0,1,45deg);
+        transition: transform 0.5s ease 0s;
+        position: absolute;
+        top: 50%;
+        right: 1.946vw;
+      }
+    }
+    ul{
+      margin: 0;
+      a{
+        display: block;
+        width: 100%;
+        border-radius: 5px;
+        border: 0px solid black;
+        /* 閉じるための状態 */
+        line-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        /* 閉じるアニメーション */
+        transition:  line-height .3s ease-out, opacity .1s linear, visibility .1s linear;
+      }
+    }
+    &.active{
+      .title::after{
+        transform: translate(-50%, -25%) rotate3d(0,0,-1,135deg);
+      }
+      ul{
+        li{
+          a{
+            border: 1px solid black;
+            line-height: 1.5;
+            opacity: 1;
+            visibility: visible;
+            /* 開くアニメーション */
+            transition: line-height .3s ease-out, opacity .1s linear .1s, visibility .1s linear .1s;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+// fullCalendar
+$title_color: #ff9e00;
+#calendar-ts{
+  background-color: white;
+  .fc-left{ //タイトル右の月、週選択ボタン
+    .fc-agendaWeek-button{
+      background-image: none;
+    }
+  }
+  .fc-right{ //タイトル右の月移動ボタン
+    @include flexbox;
+    width: 40%;
+    .fc-button{ //タイトルのボタンのスタイル
+      border: none;
+      background: #f5deb300;
+      color: $title_color;
+      box-shadow: none;
+      padding: 0;
+      @include flex-grow(1);
+    }
+  }
+  .fc-month-view{ //月表記のスタイル
+    border-top: solid #bfbfbf 1px;
+    .fc-day-header{
+      font-weight: 100;
+    }
+    .fc-week{
+      min-height: 42px;
+      @include flexbox;
+      @include align-items(center);
+      .fc-day-number{ //日付のスタイル
+        float: none;
+        }
+    }
+    td,th{border-color: #ddd0!important;}
+  }
+  .fc-agendaWeek-view{ //日表記のスタイル
+    .fc-day-grid{ //日表記のalldayってやつ
+      display: none;
+    }
+  }
+  .event_plan{
+    span{
+      background-color: $plan_color;
+      color: white;
+      width: 23px;
+      height: 23px;
+      border-radius: 50%;
+    }
+  }
+  h2{
+    color: $title_color;
+  }
+  button{
+    font-size: 20px;
+    line-height: 1;
+    height: 20px;
+  }
+}
+
+
+
+
+
+
+//new
+#new_teacher_schedule{
+  margin-bottom: 45px;
+  #event{
+    @include flexbox;
+    @include flex-direction(column);
+    padding: 20px 10px;
+    border: solid 1px #9d9d9d;
+    margin: 10px;
+    border-radius: 20px;
+    #A{
+      @include flexbox;
+      @include justify-content(space-between);
+    }
+    #title{
+      @include flexbox;
+      @include justify-content(center);
+    }
+    #C{
+      @include flexbox;
+      @include justify-content(space-between);
+    }
+  }
+
+  form{
+    margin-top: 20px;
+    h2{
+      font-weight: 100;
+    }
+  }
+}
