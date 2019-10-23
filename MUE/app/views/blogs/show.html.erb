@@ -1,66 +1,68 @@
 <% set_meta_tags title: @blog.title, description: @blog.text,og: { image: @blog.image.attachment.service.send(:object_for, @blog.image.key).public_url }%>
 
-
-<p id="notice"><%= notice %></p>
-<div id="create_comment">
-</div>
-<div class="around_blog">
-  <a class="left_blog" href="/blogs/<%=@next_blog? @next_blog.id: ""%>" data-turbolinks="false"><% if @next_blog then %><i>←</i><%= @next_blog.title %><% end %></a>
-  <a class="blogs_blog" href="/blogs/" data-turbolinks="false"><div>一覧</div></a>
-  <a class="right_blog" href="/blogs/<%=@before_blog? @before_blog.id: ""%>" data-turbolinks="false"><% if @before_blog then %><i><div>→</div></i><%=@before_blog.title%><% end %></a>
-</div>
-
-
-<h1><%= @blog.title %></h1>
-<%= image_tag @blog.image, class: "blog_image"%>
-
-<!-- タイトル本文 -->
-<%=  if session[:role]=="Admin" then link_to 'EditBlog', edit_blog_path(@blog) end %>
-<p class="text"><%= raw(@blog.text.gsub(/\n/, '<br>')) %></p>
+<div id="blog_paht">
+  
+  <p id="notice"><%= notice %></p>
+  <div id="create_comment">
+  </div>
+  <div class="around_blog">
+    <a class="left_blog" href="/blogs/<%=@next_blog? @next_blog.id: ""%>" data-turbolinks="false"><% if @next_blog then %><i>←</i><%= @next_blog.title %><% end %></a>
+    <a class="blogs_blog" href="/blogs/" data-turbolinks="false"><div>一覧</div></a>
+    <a class="right_blog" href="/blogs/<%=@before_blog? @before_blog.id: ""%>" data-turbolinks="false"><% if @before_blog then %><i><div>→</div></i><%=@before_blog.title%><% end %></a>
+  </div>
 
 
+  <h1><%= @blog.title %></h1>
+  <%= image_tag @blog.image, class: "blog_image"%>
 
-<!-- メニュー -->
-<div class="toc_container">
-<p >この記事の目次</p>
-<ul style="display: block;">
-<% @blog.sections.order(:index).each do |n| %>
-    <li><a href="#blog_index_<%= n.id %>"><%= n.title %></a></li>
-<% end %>
-<li><a href="#blog_index_comment">コメント</a></li>
-</ul>
-</div>
+  <!-- タイトル本文 -->
+  <%=  if session[:role]=="Admin" then link_to 'EditBlog', edit_blog_path(@blog) end %>
+  <p class="text"><%= raw(@blog.text.gsub(/\n/, '<br>')) %></p>
 
 
 
-<!-- セクション -->
-<section id="blog_section">
-  <%= if session[:role]=="Admin" then link_to 'NewSection', new_section_path(selected_blog:@blog.id) end %>
+  <!-- メニュー -->
+  <div class="toc_container">
+  <p >この記事の目次</p>
+  <ul style="display: block;">
   <% @blog.sections.order(:index).each do |n| %>
-    <h2 id="blog_index_<%= n.id %>"><%= n.title %></h2>
-    <% if session[:role]=="Admin" %><%= link_to 'EditSection', edit_section_path(n.id,selected_blog:@blog.id) %> | <%= link_to 'DestroySection', n, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
-    <% if n.image.attached? %>
-    <%= image_tag n.image, class: "section_image"%>
+      <li><a href="#blog_index_<%= n.id %>"><%= n.title %></a></li>
+  <% end %>
+  <li><a href="#blog_index_comment">コメント</a></li>
+  </ul>
+  </div>
+
+
+
+  <!-- セクション -->
+  <section id="blog_section">
+    <%= if session[:role]=="Admin" then link_to 'NewSection', new_section_path(selected_blog:@blog.id) end %>
+    <% @blog.sections.order(:index).each do |n| %>
+      <h2 id="blog_index_<%= n.id %>"><%= n.title %></h2>
+      <% if session[:role]=="Admin" %><%= link_to 'EditSection', edit_section_path(n.id,selected_blog:@blog.id) %> | <%= link_to 'DestroySection', n, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
+      <% if n.image.attached? %>
+      <%= image_tag n.image, class: "section_image"%>
+      <% end %>
+      <p><%= raw(n.text.gsub(/\n/, '<br>')) %></p>
     <% end %>
-    <p><%= raw(n.text.gsub(/\n/, '<br>')) %></p>
-  <% end %>
-</section>
+  </section>
 
-<!-- 前後のブログ -->
-<div class="around_blog">
-  <a class="left_blog" href="/blogs/<%=@next_blog? @next_blog.id: ""%>" data-turbolinks="false"><% if @next_blog then %><i>←</i><%= @next_blog.title %><% end %></a>
-  <a class="blogs_blog" href="/blogs/" data-turbolinks="false"><div>一覧</div></a>
-  <a class="right_blog" href="/blogs/<%=@before_blog? @before_blog.id: ""%>" data-turbolinks="false"><% if @before_blog then %><i><div>→</div></i><%=@before_blog.title%><% end %></a>
+  <!-- 前後のブログ -->
+  <div class="around_blog">
+    <a class="left_blog" href="/blogs/<%=@next_blog? @next_blog.id: ""%>" data-turbolinks="false"><% if @next_blog then %><i>←</i><%= @next_blog.title %><% end %></a>
+    <a class="blogs_blog" href="/blogs/" data-turbolinks="false"><div>一覧</div></a>
+    <a class="right_blog" href="/blogs/<%=@before_blog? @before_blog.id: ""%>" data-turbolinks="false"><% if @before_blog then %><i><div>→</div></i><%=@before_blog.title%><% end %></a>
+  </div>
+
+
+  <!-- コメント -->
+  <div id="blog_index_comment">
+    <a data-remote="true" href="/blogcomments/new?blogId=<%= @blog.id %> "> <i class="fas fa-comments"></i>コメントする</a></div>
+
+  <table id="blog_comments"><tbody>
+    <tr><th>コメント(<%= @blog.comments.size %>)</th></tr>
+    <% @blog.comments.to_enum.with_index.reverse_each do |n, index| %><!-- .to_enum.with_index => index付与 -->
+    <tr><td class="number_blog_comments"><%= index+1 %></td><td><%= simple_format(n.text) %><div><%= n.name %></div><div class="created_blog_comments"><%= n.created_at.strftime("%Y/%m/%d %H:%M:%S") %></div></td></tr>
+    <% end %>
+  </tbody></table>
 </div>
-
-
-<!-- コメント -->
-<div id="blog_index_comment">
-  <a data-remote="true" href="/blogcomments/new?blogId=<%= @blog.id %> "> <i class="fas fa-comments"></i>コメントする</a></div>
-
-<table id="blog_comments"><tbody>
-  <tr><th>コメント(<%= @blog.comments.size %>)</th></tr>
-  <% @blog.comments.to_enum.with_index.reverse_each do |n, index| %><!-- .to_enum.with_index => index付与 -->
-  <tr><td class="number_blog_comments"><%= index+1 %></td><td><%= simple_format(n.text) %><div><%= n.name %></div><div class="created_blog_comments"><%= n.created_at.strftime("%Y/%m/%d %H:%M:%S") %></div></td></tr>
-  <% end %>
-</tbody></table>
