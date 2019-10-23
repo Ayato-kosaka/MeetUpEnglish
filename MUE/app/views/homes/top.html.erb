@@ -64,7 +64,7 @@
     </section>
 
     <section id="style-top">
-      <a href="/blogs">
+      <a href="/blogs?event_search=開催の様子">
         <div class="text-top">
           <h2>Blog 開催の様子</h2>
           <p>Meet Up English の公式ブログです。<br>
@@ -108,7 +108,7 @@
             <%= link_to '開催スケジュール', root_path, data: {"turbolinks"=>false} %>
           </div>
           <div class="blog-footer-top" data-turbolinks="false">
-            <%= link_to 'ブログ', blogs_path, data: {"turbolinks"=>false} %>
+            <%= link_to 'ブログ', blogs_path(event_search: "開催の様子"), data: {"turbolinks"=>false} %>
           </div>
         </div>
       </div>
