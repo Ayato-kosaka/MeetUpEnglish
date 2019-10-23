@@ -15,6 +15,7 @@
  */
  @import "font-awesome-sprockets";
  @import "font-awesome";
+ @import "header.scss";
 
 
 
@@ -24,15 +25,101 @@
 h2 {border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#10081c;color:#0ba834f2;font-family:verdana, arial, helvetica, sans-serif;font-size:2.308rem;line-height:1.5;margin-top:30px;margin-bottom:23px;font-weight:inherit;}
 body {background-color:#fafafa;margin: 0;}
 h1{font-size:2.462rem;line-height:1.7;font-weight:inherit}
+
+
+
+//ページトップへ、コンタクトのフッター
+#footer1.cmn-footer {background: -webkit-gradient(linear,left top,left bottom,color-stop(20%,rgba(226,255,222,0)),to(#179c17));background: -webkit-linear-gradient(rgba(226,255,222,0) 20%,#179c17 100%);background: -o-linear-gradient(rgba(226,255,222,0) 20%,#179c17 100%);background: linear-gradient(rgba(226,255,222,0) 20%,#179c17 100%);height: 300px; margin-top: 30px;
+  .pagetop {padding-top: 23px;text-align: center;font-size: 0.923rem;font-family: 'Poppins',sans-serif;letter-spacing: .03125rem;font-weight: 700;cursor: pointer;-webkit-tap-highlight-color: transparent;}
+  .pagetop a {text-decoration: none;color: #179c17;background-color: #fff;padding: 10px 20px;border-radius: 20px;display: block;width: 90px;margin: 40px auto 30px;
+              &:hover{font-size: .8rem;}}
+  .copyright {font-family: 'Poppins',sans-serif;letter-spacing: .03125rem;color: #179c17;font-size: 1.026rem;text-align: center;}
+}
+
+
 @media screen and (max-width:934px) {
   /*スマホ用のcssを記述*/
   .onlypc{display: none;}
   html{font-size: 11.7px;}
+
+  //ページトップへ、コンタクトのフッター
+  #footer1.cmn-footer{
+    margin-bottom: 60px;height: 530px; margin-top: -50px;
+    .pagetop{padding-top: 50px;}
+    .footer_page_btn, .footer_contact_btn{ text-align: center;font-size: 1.169rem;font-family: 'Poppins',sans-serif;letter-spacing: .03125rem;font-weight: 700;-webkit-tap-highlight-color: transparent;
+    text-decoration: none;color: #179c17;padding: 10px 0;display: block;width: 100%;}
+    .twitter_btn i{position: relative;font-size: 17px;top: 2px;right: 3px;}
+    .insta_btn i{position: relative;font-size: 20px;top: 2px;right: 3px;}
+    .line_btn i{position: relative;font-size: 20px;top: 2px;right: 4px;}
+    .youtube_btn i{position: relative;font-size: 20px;top: 2px;right: 4px;}
+    .facebook_btn i{position: relative;font-size: 19px;top: 2px;right: 4px;}
+    .contact_btn i{position: relative;font-size: 22px;top: 2px;right: 4px;}
+  }
+
+
+  //spにだけ表示される、ブログとかのページに行ける下に固定しているフッター
+  #footer_application{
+    display: grid;grid-template-columns: 33% 33% 33%;grid-template-rows: 60px;background-color: #179c17;
+    font-size: 24px;position: fixed;bottom: 0px;left: 0px;width: 100%;height: 60px;font-family: 'Script';
+    a{
+      color:white;&:visited{color:white;}
+      @include flexbox;
+      @include align-items(center);
+      @include justify-content(center);
+    }
+    #footer_center{border: 2px solid white;border-width: 0px 2px;}
+  }
 }
 
 @media screen and (min-width:935px) {
 /*pc用のcssを記述*/
-  .onlymobile{display: none;}
+  .onlysp{display: none;}
   html{font-size: 13px;}
+
+
+  #sidebox1{width: 270px;  float: right;  margin-left: 10px;
+    #sidebox2{width:270px;}
+  }
+
+  //pcにだけ表示される、ブログとかのページに行けるサイドボックスのボタン
+  .page_btn {
+    color:#FFF !important;border-radius:7px;position:relative; display:inline-block;height:28px;width:187.183px;text-align:center;font-size:14px;
+    line-height:26px;overflow:hidden;text-decoration:none;margin-bottom:10px;
+    i{padding-right: 4px;}
+    span{font-size: 13px;}
+  }
+
+  //pcにだけ表示される、直近のイベントブログ
+  #latest_event{
+    overflow: hidden;
+    .text{
+      text-align: center;
+      width: 100%;
+      transform: translateX(50%);
+      p{
+        width: 300%;
+        transform: translateX(-50%);
+      }
+    }
+    .eye_catch{
+      @include flexbox;
+      @include flex-direction(column);
+      border: 4px solid #acacac;
+      img{
+        width: 100%;
+      }
+      .title{
+        text-align: center;
+        font-size: 17px;
+        padding: 10px;
+      }
+    }
+  }
+
+  //ページトップへ、コンタクトのフッター
+  .footer_page_btn{display: none}
+  .footer_contact_btn{ text-align: center;font-size: 1.169rem;font-family: 'Poppins',sans-serif;letter-spacing: .03125rem;font-weight: 700;-webkit-tap-highlight-color: transparent; text-decoration: none;color: #179c17;padding: 10px 0;display: block;width: 100%;font-weight: lighter;
+  &:hover{font-size: 1rem;}}
+  .contact_btn i{position: relative;font-size: 22px;top: 2px;right: 4px;}
 }
  table{width: 100%;}

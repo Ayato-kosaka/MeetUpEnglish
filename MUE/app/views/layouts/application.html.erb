@@ -26,47 +26,70 @@
           <%= yield %>
         </div>
       </div>
-      <div id="sidebox1">
+      <div id="sidebox1" class="onlypc">
         <div id="sidebox2">
-        <% unless session[:user].nil? %>
-        <p><%= link_to 'teacher', teachers_path %></p>
-        <p><%= link_to 'contact(' + Contact.where(checked: false).size.to_s + ')', contacts_path, data: {"turbolinks"=>false}, class: Contact.where(checked: false).size > 0 ? "text_orange_gradation" : '' %></p>
-        <% end %>
+          <% unless session[:user].nil? %>
+          <p><%= link_to 'teacher', teachers_path %></p>
+          <p><%= link_to 'contact(' + Contact.where(checked: false).size.to_s + ')', contacts_path, data: {"turbolinks"=>false}, class: Contact.where(checked: false).size > 0 ? "text_orange_gradation" : '' %></p>
+          <% end %>
 
-        <%= link_to "カフェ開催スケジュール", root_path, class: "page_btn",style: "background-color: #179c17"%>
-        <%= link_to "料金/すきま時間英会話とは", overview_path, class: "page_btn", style: "background-color: #da4f4f;"%>
-        <%= link_to "Meet Up English のブログ", blogs_path, class: "page_btn", style: "background-color: #1b95e0;", data: {"turbolinks"=>false} %>
+          <%= link_to "カフェ開催スケジュール", root_path, class: "page_btn",style: "background-color: #179c17"%>
+          <%= link_to "料金/すきま時間英会話とは", overview_path, class: "page_btn", style: "background-color: #da4f4f;"%>
+          <%= link_to "Meet Up English のブログ", blogs_path(event_search: "開催の様子"), class: "page_btn", style: "background-color: #1b95e0;", data: {"turbolinks"=>false} %>
 
-        <!-- LineWidget -->
-        <a class="page_btn" style="height: 28px;width: 187px;background-color: #00b900;" href="http://nav.cx/alJd5yY">
-          <img alt="友達追加" border="0" height="28" src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png"></a>
+          <!-- LineWidget -->
+          <a class="page_btn" style="background-color: #00b900;" href="http://nav.cx/alJd5yY">
+            <img alt="友達追加" border="0" height="28" src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png"></a>
 
 
-        <!-- InstaWidget -->
-        <a href="https://www.instagram.com/meet_up_english?ref=badge" class="insta_btn2">
-          <i class="fab fa-instagram"></i> <span>@meet_up_english</span>
-        </a>
+          <!-- InstaWidget -->
+          <a href="https://www.instagram.com/meet_up_english?ref=badge" class="insta_btn2">
+            <i class="fab fa-instagram"></i> <span>@meet_up_english</span>
+          </a>
 
-        <!-- TwitterWidget -->
-        <a href="https://twitter.com/meetup_english?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @meetup_english</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">【Meet Up English 】<br><br>•「スキマ時間」に駅周辺のCaffeで<br><br>「英会話」をする。という、気軽にス<br><br>キマ時間を利用して英会話をするサー<br><br>ビスの提供を目指しております。<br><br>•参加費1000円〜でネイティブ講師と<br><br>の英会話サービスです。<br><br>✅興味のある方は是非DMを下さい!!<a href="https://twitter.com/hashtag/%E3%82%B9%E3%82%AD%E3%83%9E?src=hash&amp;ref_src=twsrc%5Etfw">#スキマ</a> <a href="https://twitter.com/hashtag/%E8%8B%B1%E8%AA%9E?src=hash&amp;ref_src=twsrc%5Etfw">#英語</a> <a href="https://twitter.com/hashtag/%E8%8B%B1%E4%BC%9A%E8%A9%B1?src=hash&amp;ref_src=twsrc%5Etfw">#英会話</a></p>&mdash; Meet Up English Group (@meetup_english) <a href="https://twitter.com/meetup_english/status/1159399521744388096?ref_src=twsrc%5Etfw">August 8, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <!-- TwitterWidget -->
+          <a class="page_btn" style="background-color: #1b95e0;" href="https://twitter.com/meetup_english?ref_src=twsrc%5Etfw">
+            <i class="fab fa-twitter"></i><span style="font: normal normal normal 11px/18px 'Helvetica Neue',Arial,sans-serif; font-size: 13px;">Follow @meetup_english</span>
+          </a>
+
+          <!-- YoutubeWidget -->
+          <a class="page_btn" style="background-color: #da4f4f;" href="https://www.youtube.com/channel/UC1OTguN4K5GNf8I5ZeJZkGg">
+            <i class="fab fa-youtube"></i><span>Subscribe Youtube</span>
+          </a>
+
+          <!-- latest event -->
+          <div id="latest_event">
+            <div class="text">
+              <p>-----------------前回の開催-----------------</p>
+            </div>
+            <a href="blogs/<%= @latest_event_blog&.id %>" class="eye_catch">
+              <img src='<%= @latest_event_blog.image.attachment.service.send(:object_for, @latest_event_blog.image.key).public_url if @latest_event_blog %>'>
+              <div class='title'><%= @latest_event_blog&.title %></div>
+            </a>
+          </div>
+
         </div>
       </div>
     </div>
 
-    <div id="footer1" class="cmn-footer"><div class="pagetop"> <a>↑PAGETOP</a></div>
-    <div class="footer_contact_btn"><a class="contact_btn" data-remote="true" href="/contacts/new"><i class="far fa-envelope"></i>Contact</a></div>
-    <div class="footer_page_btn"><a class="twitter_btn" href="https://twitter.com/meetup_english?ref_src=twsrc%5Etfw"><i class="fab fa-twitter"></i>Follow Twitter</a></div>
-    <div class="footer_page_btn"><a class="insta_btn" href="https://www.instagram.com/meet_up_english?ref=badge"><i class="fab fa-instagram"></i>Follow Instagram</a></div>
-    <div class="footer_page_btn"><a class="line_btn" href="http://nav.cx/alJd5yY"><i class="fab fa-line"></i>Follow Line</a></div>
-    <div class="footer_page_btn"><a class="facebook_btn" href="https://www.facebook.com/Meet-Up-English-101228061233520/?modal=admin_todo_tour"><i class="fab fa-facebook-f"></i>Follow Facebook</a></div>
-    <p class="copyright">© Meet up English Group</p>
-  </div>
 
-    <footer id="footer_aplication">
-      <div data-href="/"><%= link_to "Schedule", root_path,data: {"turbolinks"=>false} %></div>
-      <div id="footer_center_div" data-href="/overview"><%= link_to "Overview", overview_path,data: {"turbolinks"=>false} %></div>
-      <div data-href="/blogs"><%= link_to "Blog", blogs_path, data: {"turbolinks"=>false} %></div>
+    <div id="footer1" class="cmn-footer">
+      <div class="pagetop"> <a>↑PAGETOP</a></div>
+      <a class="footer_contact_btn contact_btn" data-remote="true" href="/contacts/new"><i class="far fa-envelope"></i>Contact</a>
+      <a class="footer_page_btn twitter_btn" href="https://twitter.com/meetup_english?ref_src=twsrc%5Etfw"><i class="fab fa-twitter"></i>Follow Twitter</a>
+      <a class="footer_page_btn insta_btn" href="https://www.instagram.com/meet_up_english?ref=badge"><i class="fab fa-instagram"></i>Follow Instagram</a>
+      <a class="footer_page_btn line_btn" href="http://nav.cx/alJd5yY"><i class="fab fa-line"></i>Follow Line</a>
+      <a class="footer_page_btn youtube_btn" href="https://www.youtube.com/channel/UC1OTguN4K5GNf8I5ZeJZkGg"><i class="fab fa-youtube"></i>Subscribe Youtube</a>
+      <a class="footer_page_btn facebook_btn" href="https://www.facebook.com/Meet-Up-English-101228061233520/?modal=admin_todo_tour"><i class="fab fa-facebook-f"></i>Follow Facebook</a>
+      <p class="copyright">© Meet up English Group</p>
+    </div>
+
+
+    <!-- spにだけ表示される、ブログとかのページに行ける下に固定しているフッター -->
+    <footer id="footer_application" class="onlysp">
+      <a href="/" data-turbolinks="false">Schedule</a>
+      <a id="footer_center" data-href="/overview">Overview</a>
+      <a href="/blogs?event_search=開催の様子" data-turbolinks="false">Blog</a>
     </footer>
 
     <%# debug(params) if Rails.env.development? %>

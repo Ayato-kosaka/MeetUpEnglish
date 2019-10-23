@@ -2,6 +2,8 @@ class BlogsController < ApplicationController
   include Pagy::Backend
   protect_from_forgery
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :set_last_event_blog
+
 
   skip_before_action :require_Admin,only:[:index, :show]
 

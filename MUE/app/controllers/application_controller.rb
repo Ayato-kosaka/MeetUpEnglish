@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
       redirect_to login_url # halts request cycle
     end
   end
+
+  def set_last_event_blog #only blog and home controller
+    @latest_event_blog = Blog.where(blogcategory_id: 8).last
+  end
 end
