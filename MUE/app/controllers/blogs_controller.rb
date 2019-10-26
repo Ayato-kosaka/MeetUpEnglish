@@ -12,14 +12,14 @@ class BlogsController < ApplicationController
   def index
     @category = Blogcategory.all.order(:id)
     @selected_category_id = params[:event_search] ? Blogcategory.find_by(name: params[:event_search]).id : 1
-    @pagy, @blogs = pagy( (@selected_category_id == 1) ? Blog.all.order(id: "DESC") : Blog.where( blogcategory_id: @selected_category_id ).order(id: "DESC"), items: 8 )
+    @pagy, @blogs = pagy( (@selected_category_id == 1) ? Blog.all.order('created_at desc, id desc') : Blog.where( blogcategory_id: @selected_category_id ).order('created_at desc, id desc'), items: 8 )
   end
 
   # GET /blogs/1
   # GET /blogs/1.json
   def show
-    @next_blog =  Blog.where("id > "+@blog.id.to_s).order(:id).limit(1)[0]
-    @before_blog =  Blog.where("id < "+@blog.id.to_s).order(:id)[-1]
+    @next_blog =  Blog.order('created_at desc, id desc').where(youtube: false).where('created_at >= ? and id > ?', @blog.created_at, @blog.id).reverse.first
+    @before_blog =  Blog.order('created_at desc, id desc').where(youtube: false).where('created_at <= ? and id < ?', @blog.created_at, @blog.id).first
   end
 
   # GET /blogs/new
