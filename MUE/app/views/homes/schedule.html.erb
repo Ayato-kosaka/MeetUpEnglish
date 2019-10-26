@@ -28,7 +28,7 @@
   <table>
   <% Event.where(city_id: n.id).sort_by{|a|Time.zone.parse(a.date.strftime("%Y%m%d")+a.start.strftime("%H%M"))}.each do |m| %>
     <% if Time.zone.parse(m.date.strftime("%Y%m%d")+m.end.strftime("%H%M"))<Time.current %>
-      <% m.contacts.each{|n|n.update(home_id: nil)} %>
+      <% m.contacts.each{|n|n.update(event_id: nil)} %>
       <% m.destroy %>
       <% next %>
     <% end %>
