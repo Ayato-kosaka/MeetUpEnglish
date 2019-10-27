@@ -11,7 +11,7 @@ class Event < ApplicationRecord
       if Time.zone.parse(event.date.strftime("%Y%m%d")+event.end.strftime("%H%M")) < current
         event.update(finished: true, realtime: false)
       elsif !event.realtime
-        event.update(finished: flase, realtime: true)
+        event.update(finished: false, realtime: true)
       end
     end
   end
