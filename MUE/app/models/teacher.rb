@@ -2,6 +2,9 @@ class Teacher < ApplicationRecord
   attr_accessor :remember_token
   has_many :events
 
+  has_many :teacher_places
+  has_many :places, through: :teacher_places
+
   before_save { self.email = email.downcase }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6}

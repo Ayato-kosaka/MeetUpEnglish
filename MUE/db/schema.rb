@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_01_161425) do
+ActiveRecord::Schema.define(version: 2019_11_01_164033) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -140,6 +140,15 @@ ActiveRecord::Schema.define(version: 2019_11_01_161425) do
     t.datetime "updated_at", null: false
     t.integer "blog_id"
     t.integer "index"
+  end
+
+  create_table "teacher_places", force: :cascade do |t|
+    t.integer "teacher_id"
+    t.integer "place_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_teacher_places_on_place_id"
+    t.index ["teacher_id"], name: "index_teacher_places_on_teacher_id"
   end
 
   create_table "teachers", force: :cascade do |t|
