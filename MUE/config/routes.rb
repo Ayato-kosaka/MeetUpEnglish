@@ -29,7 +29,8 @@ Rails.application.routes.draw do
     resources :account, only: [:index]
     resources :schedule, param: :encoded_id
     scope module: 'other' do
-      get 'new_my_cafe' => :newCafe, as: 'newCafe_other'
+      get 'new_my_place' => :newPlace, as: 'newPlace_other'
+      post 'create_my_place' => :createPlace, as: 'createPlace_other'
     end
   end
 
