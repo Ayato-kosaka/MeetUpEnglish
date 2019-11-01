@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  en_name: MyString
+  ja_name: MyString
+  placeId: MyString
+  website: MyString
+
+two:
+  en_name: MyString
+  ja_name: MyString
+  placeId: MyString
+  website: MyString
