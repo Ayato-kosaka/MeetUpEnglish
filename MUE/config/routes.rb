@@ -28,6 +28,9 @@ Rails.application.routes.draw do
   namespace 'teacher' do
     resources :account, only: [:index]
     resources :schedule, param: :encoded_id
+    scope module: 'other' do
+      get 'new_my_cafe' => :newCafe, as: 'newCafe_other'
+    end
   end
 
 
