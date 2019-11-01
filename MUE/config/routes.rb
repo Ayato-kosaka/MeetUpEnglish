@@ -31,8 +31,14 @@ Rails.application.routes.draw do
     scope module: 'other' do
       get 'new_my_place' => :newPlace, as: 'newPlace_other'
       post 'create_my_place' => :createPlace, as: 'createPlace_other'
+      get 'ja_place_name' => :jaPlaceName, as: 'jaPlaceName_other'
     end
   end
+
+
+
+
+
 
 
 

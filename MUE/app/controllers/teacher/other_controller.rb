@@ -5,7 +5,11 @@ class Teacher::OtherController < TeacherController
   end
 
   def createPlace
-    human = {name: 'Tom', age: 20}
-    render :json => human
+  end
+
+  def jaPlaceName
+    logger.debug("-------------#{"sss"}----------")
+    @flagment = true
+    @english_place_name = params[:english_place_name]
   end
 end

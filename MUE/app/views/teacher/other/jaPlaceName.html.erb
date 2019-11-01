@@ -1,0 +1,55 @@
+<input id="address" type="textbox">
+<div id="map2"></div>
+<script>
+  var placeId;
+  var lat;
+  var lng;
+  var japanese_place_name;
+  var english_place_name = "<%= @english_place_name %>";
+  var website;
+  var service;
+  var geocoder;
+  var map;
+  function initMap2(){
+    geocoder = new google.maps.Geocoder()
+    map = new google.maps.Map(document.getElementById('map2'), {
+      center: {lat: 35.566733, lng: 139.40289},
+      zoom: 14,
+    });
+    service = new google.maps.places.PlacesService(map);
+    geocoder.geocode( { 'address': english_place_name}, function(results, status) {
+      if (status == 'OK') {
+        placeId = results[0].place_id;
+        lat = results[0].geometry.location.lat()
+        lng = results[0].geometry.location.lng()
+        service.getDetails({placeId: placeId, fields: ['name', 'website']}, function (place, status) {
+          if (status == google.maps.places.PlacesServiceStatus.OK) {
+            japanese_place_name = place.name
+            website = place.website;
+            var json = {
+              "placeId": placeId,
+              "lat": lat,
+              "lng": lng,
+              "english_place_name": english_place_name,
+              "japanese_place_name": japanese_place_name,
+              "website": website
+            }
+            var url = '/teacher/create_my_place';
+            $.ajax({
+              url: url,
+              type: 'POST',
+              data: json,
+              dataType: 'json',
+            })
+          }
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
+
+
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyAI1LzbpC5PZqv-0m6ciWAlSKMMJplLRYo&sensor=false&callback=initMap2&libraries=places&&region=JP&language=ja" async defer></script>
