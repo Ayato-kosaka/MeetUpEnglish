@@ -11,7 +11,7 @@
       <div id="title"><%= event.title %></div>
       <div id="C">
         <div id="reservation">2 people booked</div>
-        <div id="cafe"><%= event.cafe.name %></div>
+        <div id="place"><%= event.place.en_name %></div>
       </div>
     </a>
   <% end %>
@@ -47,8 +47,8 @@
 
 
     <div class="field">
-      <%= form.label :cafe_id, 'Select Cafe from my_cafe' %> <%= link_to "edit new my_cafe", new_cafe_path %><br>
-      <%= form.select :cafe_id,Cafe.all.map{|n|[n.name,n.id]} %> <!-- @current_teacher.caves.map{|cafe|[cafe.name,cafe.id]} -->
+      <%= form.label :place_id, 'Select Place from my_place' %> <%= link_to "edit new my_place", teacher_newPlace_other_path, data: {"turbolinks"=>false} %><br>
+      <%= form.select :place_id,@current_teacher.places.map{|place|[place.en_name,place.id]} %>
     </div>
     <a href="#" id="terms">terms of service</a>
 

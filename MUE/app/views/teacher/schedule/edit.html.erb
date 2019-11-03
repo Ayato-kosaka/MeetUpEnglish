@@ -22,9 +22,9 @@
       </div>
     </div>
     <div id="fee"></div>
-    <div id="cafe">
-      <%= form.label :cafe_id, 'Select Cafe from my_cafe' %> <%= link_to "edit new my_cafe", new_cafe_path %><br>
-      <%= form.select :cafe_id,Cafe.all.map{|n|[n.name,n.id]} %> <!-- @current_teacher.caves.map{|cafe|[cafe.name,cafe.id]} -->
+    <div id="place">
+      <%= form.label :place_id, 'Select Place from my_place' %> <%= link_to "edit new my_place", new_place_path %><br>
+      <%= form.select :place_id,@current_teacher.places.map{|place|[place.en_name,place.id]} %>
     </div>
     <div id="sheet">
       <%= form.label :peopleNum, "Edit specify the maximum number of people" %>

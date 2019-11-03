@@ -50,6 +50,6 @@ class Teacher::ScheduleController < TeacherController
     end
 
     def event_params
-      params.require(:event).permit(:title, :start, :end, :peopleNum, :fee, :cafe_id)
+      params.require(:event).permit(:title, :start, :end, :peopleNum, :fee, :place_id)
     end
 end

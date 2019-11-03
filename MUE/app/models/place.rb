@@ -1,6 +1,7 @@
 class Place < ApplicationRecord
   has_many :teacher_places
   has_many :teachers, through: :teacher_places
+  has_many :events, dependent: :destroy
 
   reverse_geocoded_by :latitude, :longitude
   class << self
