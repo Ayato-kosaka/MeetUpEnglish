@@ -15,7 +15,7 @@ class Teacher::OtherController < TeacherController
     if place.placeId != placeId
       if place.new_record?
         geo_http = Net::HTTP.get(URI.parse("https://maps.googleapis.com/maps/api/geocode/json?latlng=#{latitude},#{longitude}&key=AIzaSyBxj9aDYTbBYilvyaYugd9J5zisCodO9kQ"))
-        geo_json = JSON.parse(geo_http)["results"]["placeId"]
+        geo_json = JSON.parse(geo_http)["results"][0]["place_id"]
         # placeId = geo_json["place_id"]
         logger.debug("debug#{geo_json}\n")
       end
