@@ -52,7 +52,7 @@
 
         <article id="blog" class="youtube"><a href="https://www.youtube.com/watch?v=<%= blog.text %>">
           <div class="eyecatch">
-            <iframe width="560" height="315" src="" data-src="https://www.youtube.com/embed/<%= blog.text %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= blog.text %>" data-src="https://www.youtube.com/embed/<%= blog.text %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <h3><%= blog.title%></h3>
           <div class="explain">
@@ -75,14 +75,3 @@
 
   <%== pagy_nav(@pagy) %>
 </div>
-
-
-<script>
-function init() {
-var vidDefer = document.getElementsByTagName('iframe');
-for (var i=0; i<vidDefer.length; i++) {
-if(vidDefer[i].getAttribute('data-src')) {
-vidDefer[i].setAttribute('src',vidDefer[i].getAttribute('data-src'));
-} } }
-window.onload = init;
-</script>
