@@ -4,8 +4,15 @@
 <!-- タイトル本文 -->
 <h1><%= @selectedPrefecture.name %>での開催スケジュール</h1>
 <%= if session[:role]  == "Admin" then link_to 'create new city', new_city_path(selected_prefecture:@selectedPrefecture_id), data: {"turbolinks"=>false} end %>
-<p>参加したい方は、参加申し込みボタン又はTwitter,Instagram,Facebook,公式Lineにてご連絡ください。<br>
-  もちろん、アポなし参加でも大丈夫です。</p>
+<p style="margin: 0;">【参加方法】</p>
+<p style="margin: 0;">参加申し込みボタン又はTwitter,Instagram,Facebook,公式Lineにてご連絡ください。<br>初心者から上級者まで対応可能です。</p>
+<p style="margin-bottom: 0;">【料金説明】<br>[Meet up English Group の運営するイベント]</p>
+<a href=<%= schedule_path("1#schedule_index_1") %>><p style="margin: 0;text-decoration: underline;color: #616161;">町田:武相庵 での開催</p></a>
+<p style="margin: 0 1em;">料金　　：1000円（カフェにつき、ワンオーダーあり）<br>形態　　：１対3（最大）</p>
+<p style="margin: 0;">その他の開催</p>
+<p style="margin: 0 1em;">料金　　：1700円（カフェにつき、ワンオーダーあり）<br>形態　　：１対１（マンツーマン英会話）</p>
+<p style="margin-bottom: 0;">[Meet up English Group × <a href="https://www.cg-k.com/" style="text-decoration: underline;color: #616161;">町田コンディショニングジム健介</a> でのイベント]</p>
+<p style="margin: 0 1em;">近日公開</p>
 
 
 <!-- メニュー -->
@@ -26,22 +33,28 @@
       <%= link_to 'create new event', new_home_path(selected_city:n.id), data: {"turbolinks"=>false} %>
     <% end %></h2>
   <table>
-  <% Event.where(city_id: n.id).sort_by{|a|Time.zone.parse(a.date.strftime("%Y%m%d")+a.start.strftime("%H%M"))}.each do |m| %>
-    <% if Time.zone.parse(m.date.strftime("%Y%m%d")+m.end.strftime("%H%M"))<Time.current %>
-      <% m.contacts.each{|n|n.update(event_id: nil)} %>
-      <% m.destroy %>
+  <% Event.where(city_id: n.id).sort_by{|a|Time.zone.parse(a.date.strftime("%Y%m%d")+a.start.strftime("%H%M"))}.each do |event| %>
+    <% if Time.zone.parse(event.date.strftime("%Y%m%d")+event.end.strftime("%H%M"))<Time.current %>
+      <% event.contacts.each{|n|n.update(event_id: nil)} %>
+      <% event.destroy %>
       <% next %>
     <% end %>
     <tr>
-      <td><%= m.date.strftime("%Y/%m/%d(#{%w(日 月 火 水 木 金 土)[m.date.wday]})") %><br><%= m.start.strftime("%H:%M") %>~<%= m.end.strftime("%H:%M") %></td>
-      <td class="onlypc"><%= link_to teacher_path(m.teacher_id), data: {"turbolinks"=>false} do %><%= Teacher.find(m.teacher_id).name %> <br>先生<%end%></td>
-      <td><p class="onlypc" style="margin:0px;"><%= link_to m.cafe.name,m.cafe.url ? m.cafe.url: cafe_path(m.cafe) %></p>
-        <p style="margin:0px;">残席:<%= m.peopleNum %></p></td>
-      <td class="onlymobile green_button" style="background: linear-gradient(#15ab4f, #0dff07);width:70px">
-          <%= link_to '詳細', homes_showDetailSchedule_path(selected_cafe_id: m.cafe_id,selected_teacher_id: m.teacher_id), remote: true,style: "line-height: 4em;"%></td>
-      <td class="green_button">
-          <a <%if session[:role]!="Admin"%>data-remote="true"<% end %> href="<%if session[:role]!="Admin"%>/contacts/<%= m.id %>/join <% else %> /homes/<%= m.id %>/edit<%end%>"><% if session[:role] == "Admin" %>edit<% else %> 参加<br>申し込み <% end %></td>
-    </tr>
+      <td><%= event.date.strftime("%Y/%m/%d(#{%w(日 月 火 水 木 金 土)[event.date.wday]})") %><br><%= event.start.strftime("%H:%M") %>~<%= event.end.strftime("%H:%M") %></td>
+      <td class="onlypc"><%= link_to teacher_path(event.teacher_id), data: {"turbolinks"=>false} do %><%= Teacher.find(event.teacher_id).name %> <br>先生<%end%></td>
+      <td><p class="onlypc" style="margin:0px;"><%= link_to event.cafe.name, event.cafe.url ? event.cafe.url : cafe_path(event.cafe) %></p>
+        <p style="margin:0px;">残席:<%= event.peopleNum %></p></td>
+      <td class="onlysp green_button" style="background: linear-gradient(#15ab4f, #0dff07);width:70px">
+          <%= link_to '詳細', homes_showDetailSchedule_path(selected_cafe_id: event.cafe_id,selected_teacher_id: event.teacher_id), remote: true,style: "line-height: 4em;"%></td>
+      <td class="green_button"  <%= "style= background:linear-gradient(#9e9e9e,#535353);" if event.peopleNum == 0 %>>
+        <% if session[:role] == "Admin" %>
+          <a href="/homes/<%= event.id %>/edit">edit
+        <% elsif event.peopleNum != 0 %>
+          <a data-remote="true" href="/contacts/<%= event.id %>/join ">参加<br>申し込み
+        <% else %>
+          <a>参加<br>申し込み
+        <% end %>
+    </td></tr>
   <% end %>
   </table>
 <% end %>
