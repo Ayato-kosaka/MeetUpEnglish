@@ -62,7 +62,7 @@
             <div class="text">
               <p>-----------------前回の開催-----------------</p>
             </div>
-            <a href="blogs/<%= @latest_event_blog&.id %>" class="eye_catch">
+            <a href="/blogs/<%= @latest_event_blog&.id %>" class="eye_catch">
               <img src='<%= @latest_event_blog.image.attachment.service.send(:object_for, @latest_event_blog.image.key).public_url if @latest_event_blog %>'>
               <div class='title'><%= @latest_event_blog&.title %></div>
             </a>
