@@ -9,7 +9,7 @@ function initMap(){
     zoom: 14,
   });
   google.maps.event.addListener(map, 'click', function(e){// if map is clicked
-    alert(!!e.placeId);
+    markAndMove(e.placeId, e.latLng);
   });
   // placeAIPを初期化
   service = new google.maps.places.PlacesService(map);
@@ -52,21 +52,9 @@ function codeAddress(arg){
       // map.setCenterで地図が移動
       let placeId = results[0].place_id;
       let location = results[0].geometry.location;
-      map.setCenter(location);
-      map.setZoom(17);
-      // google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
-      var marker = new google.maps.Marker({
-        map: map,
-        place: {
-          placeId: placeId,
-          location: location
-        }
-      });
-      service.getDetails({placeId: placeId, fields: ['name', 'website']}, function (place, status) {
+      markAndMove(placeId, location);
+      service.getDetails({placeId: placeId, fields: ['name']}, function (place, status) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-          arg_post_create =  "post_to_create_new_place(" + [location.lat(),location.lng()] + ",\"" + placeId + "\")"
-          $('#selected_place').append("<div><div><p>" + place.name + "</p>" + "<p>" + results[0].formatted_address
-            + "</p></div><input type='button' value='create' onclick='" + arg_post_create +"'></div>")
         }
       });
     } else {
@@ -75,11 +63,25 @@ function codeAddress(arg){
   });
 }
 
-function post_to_create_new_place(lat, lng, placeId){
+function markAndMove(placeId, location){
+  map.setCenter(location);
+  map.setZoom(17);
+  // google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
+  var marker = new google.maps.Marker({
+    map: map,
+    place: {
+      placeId: placeId,
+      location: location
+    }
+  });
+  arg_post_create =  "post_to_create_new_place(" + "\"" + placeId + "\")"
+  $('#selected_place').html("<input type='button' value='create' onclick='" + arg_post_create +"'>")
+}
+
+
+function post_to_create_new_place(placeId){
   var json = {
-    "placeId": placeId,
-    "lat": lat,
-    "lng": lng
+    "placeId": placeId
   }
   $.ajax({
     url: '/teacher/create_my_place',

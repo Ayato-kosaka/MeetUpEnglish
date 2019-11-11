@@ -47,7 +47,7 @@
 
 
     <div class="field">
-      <%= form.label :place_id, 'Select Place from my_place' %> <%= link_to "edit new my_place", teacher_newPlace_other_path, data: {"turbolinks"=>false} %><br>
+      <%= form.label :place_id, 'Select Place from my_place' %> <%= link_to "create new my_place", teacher_newPlace_other_path, data: {"turbolinks"=>false} %><br>
       <%= form.select :place_id,@current_teacher.places.map{|place|[place.en_name,place.id]} %>
     </div>
     <a href="#" id="terms">terms of service</a>
