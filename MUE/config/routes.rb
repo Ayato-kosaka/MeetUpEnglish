@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
 
 
+
   scope module: 'sessions' do #controller folder name
     namespace :login do
       get '' => :new
@@ -23,6 +24,11 @@ Rails.application.routes.draw do
 
   scope module: 'users' do
     resources :account, only: [:index]
+    namespace :search do
+      get '' => :index
+      get 'prefecture'
+      get 'city'
+    end
   end
 
   namespace 'teacher' do
