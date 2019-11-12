@@ -31,7 +31,7 @@
   <%= @home.date.strftime("%Y/%m/%d(#{%w(日 月 火 水 木 金 土)[@home.date.wday]})") %><br><%= @home.start.strftime("%H:%M") %>~<%= @home.end.strftime("%H:%M") %><br>
   <% @home.contacts.each do |contact|%>
     <br><br><p><%= contact.name %><br>
-    <%= contsct.message.split("\n")[0] %></p>
+    <%= contact.message.split("\n")[0] %></p>
   <% end %>
 </p>
 <% end %>
