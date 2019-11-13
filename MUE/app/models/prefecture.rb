@@ -1,4 +1,4 @@
 class Prefecture < ApplicationRecord
-  belongs_to :region
+  # belongs_to :region
   has_many :cities, dependent: :destroy
 end
