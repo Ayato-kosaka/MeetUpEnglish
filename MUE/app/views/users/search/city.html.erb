@@ -1,2 +1,19 @@
 <h1>Users::Search#city</h1>
 <p>Find me in app/views/users/search/city.html.erb</p>
+<% @cities.each do |city| %>
+  <% next if city.double==@flag_double %>
+  <% if !city.double.empty? %>
+    <% @flag_double = city.double %>
+    <div class="double">
+      <a><%= @flag_double %></a>
+      <% @cities.where(double: @flag_double) do |double_city| %>
+      <a href=<%= search_path(city: double_city.id) %> >
+        <%= double_city.name %>
+      </a>
+      <% end %>
+    </div>
+  <% end %>
+  <a href=<%= search_path(city: city.id) %> >
+    <%= city.name %>
+  </a>
+<% end %>

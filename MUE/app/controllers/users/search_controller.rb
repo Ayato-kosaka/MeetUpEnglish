@@ -15,6 +15,9 @@ class Users::SearchController < UsersController
 
   #search_city_path 	GET 	/search/city(.:format) 	users/search#city
   def city
+    @prefecture = Prefecture.find(params[:id])
+    @cities = @prefecture.cities.sort_by(:kana)
+    @flag_double
   end
 
 

@@ -2,6 +2,9 @@ class Place < ApplicationRecord
   has_many :teacher_places
   has_many :teachers, through: :teacher_places
   has_many :events, dependent: :destroy
+  belongs_to :city
+
+  validates :en_name, :ja_name, :placeId, :website, :latitude, :longitude, :city_id, presence: true
 
   reverse_geocoded_by :latitude, :longitude
   class << self

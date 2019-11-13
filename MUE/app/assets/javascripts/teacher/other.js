@@ -2,6 +2,7 @@
 //google map
 function initMap(){
   // geocoderを初期化
+  var marker
   geocoder = new google.maps.Geocoder()
 
   map = new google.maps.Map(document.getElementById('map'), {
@@ -67,7 +68,8 @@ function markAndMove(placeId, location){
   map.setCenter(location);
   map.setZoom(17);
   // google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
-  var marker = new google.maps.Marker({
+  if(typeof marker !== 'undefined') marker.setMap(null);
+  marker = new google.maps.Marker({
     map: map,
     place: {
       placeId: placeId,

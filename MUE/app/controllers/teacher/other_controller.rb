@@ -8,8 +8,9 @@ class Teacher::OtherController < TeacherController
   end
 
   #teacher_createPlace_other_path 	POST 	/teacher/create_my_place(.:format) 	teacher/other#createPlace
-  def createPlace #外国の対策が未実施
-    place = Place.find_or_initialize_by(placeId: params[:placeId])
+  def createPlace
+    placeId = params[:placeId]
+    place = Place.find_or_initialize_by(placeId: placeId)
     #placeId 例 ChIJDTc9GIv7GGAR0wyzbYIBuQ8
     if place.new_record?
                                         en_http = Net::HTTP.get(URI.parse("https://maps.googleapis.com/maps/api/place/details/json?place_id=#{placeId}&fields=name&language=en&key=AIzaSyBxj9aDYTbBYilvyaYugd9J5zisCodO9kQ"))
@@ -30,11 +31,13 @@ class Teacher::OtherController < TeacherController
           str = address[3..num].join
           break if city = prefecture.cities.find_by(name: str)
         end
-        place.city_id = city.id #city_idをつくらないといけない
-        unless place.save
-          flash.now[:alert] = place.errors
-          render :newPlace
-        end
+        logger.debug("---#{address[3...address.length]}")
+        logger.debug("---#{place.inspect}")
+        place.city_id = city.id
+        # unless place.save
+        #   flash.now[:alert] = place.errors
+        #   render :newPlace
+        # end
       else
         redirect_to teacher_newPlace_other_path
       end
