@@ -1,0 +1,9 @@
+
+<div id="search_prefecture_path">
+  <% @regions.each do |region| %>
+    <a style="color: red;"><%= region[0] %></a>
+    <% Prefecture.where(region_id: region[1]).each do |prefecture| %>
+      <a><%= prefecture.name %></a>
+    <% end %>
+  <% end %>
+</div>
