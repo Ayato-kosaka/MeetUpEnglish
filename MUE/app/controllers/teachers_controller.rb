@@ -1,5 +1,6 @@
 class TeachersController < ApplicationController
   before_action :set_teacher, only: [:show, :edit, :update, :destroy]
+  before_action :set_last_event_blog
 
   skip_before_action :require_Admin, only: [:show]
 
