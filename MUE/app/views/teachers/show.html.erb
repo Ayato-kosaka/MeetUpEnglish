@@ -6,7 +6,7 @@
 <% end %>
 
   <h2>Selfintroduction</h2><br>
-  <p><%= @teacher.selfIntroduction %></p>
+  <p><%= simple_format(teacher.selfIntroduction) %></p>
 
 <%  if session[:role]=="Admin"%>
 <p>
