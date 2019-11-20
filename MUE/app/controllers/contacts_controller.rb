@@ -24,7 +24,7 @@ class ContactsController < ApplicationController
     end
     if params[:title] == "Meet up English Group × 町田コンディショニングジム健介"
       @title_value = params[:title]
-      @message_value = "【日程】11/30 16:00~17:30\n【料金】1500円\n【場所】\n町田コンディションニングジム健介\n町田市根岸2丁目1-20TMビル3F"
+      @message_value = "【日程】11/30 16:00~17:30\n【料金】1500円\n【場所】町田コンディションニングジム健介\n町田市根岸2丁目1-20TMビル3F"
     end
   end
 
