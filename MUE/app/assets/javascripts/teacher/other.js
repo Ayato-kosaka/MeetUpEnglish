@@ -85,10 +85,5 @@ function post_to_create_new_place(placeId){
   var json = {
     "placeId": placeId
   }
-  $.ajax({
-    url: '/teacher/create_my_place',
-    type: 'POST',
-    data: json,
-    dataType: 'json',
-  })
+  $.post( '/teacher/create_my_place', json )
 }
