@@ -9,18 +9,14 @@ end
 class Event < ApplicationRecord
   include ActiveModel::Validations
   has_many :contacts, dependent: :nullify
-  has_many :user_event
+  has_many :user_events
   has_many :users, through: :user_events
   #belongs_to :cafe
   belongs_to :place
   belongs_to :teacher
-  belongs_to :city
+  #belongs_to :city
 
   validates_with CorrectTimeValidator
-
-  after_create do |event|
-    event.sheet_num.times{event.user_events.create}
-  end
 
   after_find do |event|
     #スタート時間を過ぎてて、終了チェックがついてない
@@ -42,8 +38,24 @@ class Event < ApplicationRecord
 			t_event.update(sheet: num) while (t_event = events.delete(events.find{|n|n.start>=t_event.end}))
     end
   end
-  def space? user_event
-    
+  def no_space? user_event
+    sheets_num = self.peopleNum
+    start = self.start
+    time_num = (self.end - start)/60
+    sheets_mat = [0...sheets_num].map do |sheet_num| #(sheets_num*time_num):bool
+      event_bool = Array.new(time_num,false)
+      self.user_events.where(sheet: sheet_num).each do |n_user_event| #make sheet space on bool
+    		((n_user_event.start-start)/60...(n_user_event.end-start)/60).each do |n|
+    			event_bool[n] = true
+    		end
+      end
+    end
+    space = sheets_mat.transpose.map{ |m|m.inject(true){|ans,ret|ans && ret} }
+    user_event_bool = Array.new(time_num,false)
+    ((user_event.start-start)/60...(user_event.end-start)/60).each do |n|
+      user_event_bool[n] = true
+    end
+    space.map.with_index { |m, index| m&&user_event_bool[index] }.inject(false){|ans,ret|ans || ret}
   end
 
   def to_key

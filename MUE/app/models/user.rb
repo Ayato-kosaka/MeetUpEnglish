@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
 
-  has_many :user_event
+  has_many :user_eventsse
   has_many :events, through: :user_events
 
   before_save { self.email = email.downcase }

@@ -1,8 +1,8 @@
 class HasSapceValidator < ActiveModel::Validator
   def validate(record)
-    # unless record.event.space? record
-    #   record.errors[:cafe] << 'ただいま、その時間は空いておりません。'
-    # end
+    if record.new_record? && (record.event.no_space? record)
+      record.errors[:cafe] << 'ただいま、その時間は空いておりません。'
+    end
   end
 end
 
