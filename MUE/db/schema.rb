@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_19_103031) do
+ActiveRecord::Schema.define(version: 2019_11_22_113832) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -113,6 +113,23 @@ ActiveRecord::Schema.define(version: 2019_11_19_103031) do
     t.index ["place_id"], name: "index_events_on_place_id"
   end
 
+  create_table "line_stations", force: :cascade do |t|
+    t.integer "line_id"
+    t.integer "station_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["line_id"], name: "index_line_stations_on_line_id"
+    t.index ["station_id"], name: "index_line_stations_on_station_id"
+  end
+
+  create_table "lines", force: :cascade do |t|
+    t.string "name"
+    t.string "kana"
+    t.integer "cd"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "places", force: :cascade do |t|
     t.string "en_name"
     t.string "ja_name"
@@ -124,6 +141,15 @@ ActiveRecord::Schema.define(version: 2019_11_19_103031) do
     t.datetime "updated_at", null: false
     t.integer "city_id"
     t.index ["city_id"], name: "index_places_on_city_id"
+  end
+
+  create_table "prefecture_lines", force: :cascade do |t|
+    t.integer "prefecture_id"
+    t.integer "line_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["line_id"], name: "index_prefecture_lines_on_line_id"
+    t.index ["prefecture_id"], name: "index_prefecture_lines_on_prefecture_id"
   end
 
   create_table "prefectures", force: :cascade do |t|
@@ -147,6 +173,14 @@ ActiveRecord::Schema.define(version: 2019_11_19_103031) do
     t.datetime "updated_at", null: false
     t.integer "blog_id"
     t.integer "index"
+  end
+
+  create_table "stations", force: :cascade do |t|
+    t.string "name"
+    t.decimal "latitude", precision: 15, scale: 12
+    t.decimal "longitude", precision: 15, scale: 12
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "teacher_places", force: :cascade do |t|

@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-# require 'csv'
-# savePath = 'D:\Profile\Downloads\ken_all\KEN_ALL.CSV'
+require 'csv'
+# savePath = 'public/KEN_ALL.CSV'
 # CSVROW_PREFKANA = 3
 # CSVROW_CITYKANA = 4
 # CSVROW_PREFNAME = 6
@@ -20,6 +20,34 @@
 #   cityKana = row[CSVROW_CITYKANA]
 #   pref = Prefecture.find_or_create_by(:name => prefName, :kana => prefKana)
 #   pref.cities.find_or_create_by(:name => cityName, :kana => cityKana)
+# end
+#
+# savePath = 'public/line20190928free.csv'
+# CSVROW_CD = 0
+# CSVROW_KANA = 3
+# CSVROW_L_NAME = 4
+# CSV.foreach(savePath) do |row|
+# 	lineCd = row[CSVROW_CD]
+#   lineKana = row[CSVROW_KANA]
+# 	lineName = row[CSVROW_L_NAME]
+#   Line.create(:cd => lineCd, :kana => lineKana, :name => lineName)
+# end
+#
+# savePath = 'public/station20190928free.csv'
+# CSVROW_NAME = 2
+# CSVROW_LON = 9
+# CSVROW_LAT = 10
+# CSVROW_LINE = 5
+# CSVROW_PRE = 6
+# CSV.foreach(savePath) do |row|
+# 	sta_name = row[CSVROW_NAME]
+#   sta_latitude = row[CSVROW_LAT]
+# 	sta_longitude = row[CSVROW_LON]
+#   puts row[CSVROW_LINE] unless (line = Line.find_by(cd: row[CSVROW_LINE]))
+#   next unless (line = Line.find_by(cd: row[CSVROW_LINE]))
+#   station = Station.find_or_create_by(:name => sta_name, :latitude => sta_latitude, :longitude => sta_longitude)
+#   line.line_stations.create(station_id: station.id)
+#   line.prefecture_lines.find_or_create_by(prefecture_id: row[CSVROW_PRE])
 # end
 #
 # class String
