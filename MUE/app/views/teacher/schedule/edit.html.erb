@@ -1,18 +1,18 @@
 <div id="teacher_schedule_path">
 
-  <%= form_with(url: teacher_schedule_path(@schedule),model: @schedule, local: true) do |form| %>
-    <h1><%= @schedule.title %></h1>
-    <div id="teacher">
-      <div class="image">
-        <%= image_tag (@current_teacher.avatar.attached? ? @current_teacher.avatar : "users/atom-logo.jpg")  %>
-      </div>
-      <div class="name"><%= @current_teacher.name %></div>
+  <h1><%= @event.title %></h1>
+  <div id="teacher">
+    <div class="image">
+      <%= image_tag (@current_teacher.avatar.attached? ? @current_teacher.avatar : "users/atom-logo.jpg")  %>
     </div>
+    <div class="name"><%= @current_teacher.name %></div>
+  </div>
+  <%= form_with(url: teacher_schedule_path(@event),model: @event, local: true) do |form| %>
     <%= form.label :title, 'Edit title' %><%= form.text_field :title %>
 
     <div id="when">
       <div id="day">
-        <h2><%= @schedule.date.strftime("%A, %B %d, %Y") %></h2>
+        <h2><%= @event.date.strftime("%A, %B %d, %Y") %></h2>
       </div>
       <div id="time_select">
         <%= form.label :start, "Edit specify the opening time" %>
@@ -21,9 +21,13 @@
         <%= form.time_select :end %>
       </div>
     </div>
-    <div id="fee"></div>
+
+    <div id="fee">
+      <%= form.label :fee, "Please specify the fee" %>
+      ￥<%= form.number_field :fee %>/5min
+    </div>
     <div id="place">
-      <%= form.label :place_id, 'Select Place from my_place' %> <%= link_to "edit new my_place", teacher_createPlace_other_path %><br>
+      <%= form.label :place_id, 'Select Place from my_place' %> <%= link_to "new my_place", teacher_createPlace_other_path %><br>
       <%= form.select :place_id,@current_teacher.places.map{|place|[place.en_name,place.id]} %>
     </div>
     <div id="sheet">
@@ -39,7 +43,7 @@
       <%= form.submit 'Agree and send' %>
     </div>
   <% end %>
-
+  <%= link_to 'Destroy',  teacher_schedule_path(@event), method: :delete, data: { confirm: 'Are you sure?' } %>
 
 
 

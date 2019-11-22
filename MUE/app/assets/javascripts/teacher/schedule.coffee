@@ -73,7 +73,7 @@ $(document).on 'turbolinks:load', ->
         $('.fc-day-top[data-date=' + String(moment(event.start).format("YYYY-MM-DD")) + ']').addClass('event_plan')
         element.hide();
     ,
-    events: '/homes.json',
+    events: '/teacher/schedule.json',
     dayClick: (date, jsEvent, view) ->
       if lowerThanDateOnly(date._d, moment()._d)
         # show_shecule_path if date has event
@@ -148,7 +148,7 @@ $(document).on 'turbolinks:load', ->
 
   $('.fc-month-button').click ->
     $('#calendar-ts').fullCalendar( 'removeEvents' );
-    $('#calendar-ts').fullCalendar( 'addEventSource','/homes.json' );
+    $('#calendar-ts').fullCalendar( 'addEventSource','/teacher/schedule.json' );
     $('#calendar-ts').fullCalendar( 'rerenderEvents' );
   return
 

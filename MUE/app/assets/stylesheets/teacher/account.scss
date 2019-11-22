@@ -9,7 +9,6 @@
   @include flex-direction(column);
   @include align-items(center);
   min-height: 100vh;
-  margin-bottom: 45px;
   .profile{
     @include flexbox;
     @include flex-direction(column);

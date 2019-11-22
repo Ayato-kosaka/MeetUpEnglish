@@ -3,14 +3,14 @@
 
 
   <% @events.find_each do |event| %>
-    <a id="event" href="/teacher/schedule/<%= Base64.encode64(event.id.to_s) %>/edit">
+    <a id="event" href=<%= (reserved_count=event.user_events.count)==0 ? edit_teacher_schedule_path( Base64.encode64(event.id.to_s)) : teacher_schedule_path( Base64.encode64(event.id.to_s)) %>>
       <div id="A">
         <div id="time"><%= event.start.strftime("%H:%M") %>~<%= event.end.strftime("%H:%M") %></div>
         <div id="price">￥<%= event.fee %>/5min</div>
       </div>
       <div id="title"><%= event.title %></div>
       <div id="C">
-        <div id="reservation">2 people booked</div>
+        <div id="reservation"><%= reserved_count %> people reserved</div>
         <div id="place"><%= event.place.en_name %></div>
       </div>
     </a>

@@ -186,7 +186,6 @@ $title_color: #ff9e00;
 
 //new
 #new_teacher_schedule{
-  margin-bottom: 45px;
   #event{
     @include flexbox;
     @include flex-direction(column);
@@ -212,6 +211,23 @@ $title_color: #ff9e00;
     margin-top: 20px;
     h2{
       font-weight: 100;
+    }
+  }
+}
+
+
+//show
+#teacher_schedule{
+  #schedule{
+    display: grid;
+    .sheet{
+      @include flexbox;
+      @include justify-content(center);
+      @include align-items(center);
+      background-color: #DDD;
+    }
+    .reserved{
+      background-color: #ff9f9f;
     }
   }
 }

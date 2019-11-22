@@ -12,14 +12,14 @@
 
   <div id="future_events" class="event-box" >
     <div class="title">
-      <div class="num"><%= @schedule.where(finished: false).count %></div>
+      <div class="num"><%= @events.where(finished: false).count %></div>
       <div class="text">future events</div>
     </div>
     <ul id="future_events_ul"></ul>
   </div>
   <div id="finished_events" class="event-box">
     <div class="title">
-      <div class="num"><%= @schedule.where(finished: true).count %></div>
+      <div class="num"><%= @events.where(finished: true).count %></div>
       <div class="text">finished events</div>
     </div>
     <ul id="finished_events_ul"></ul>

@@ -1,8 +1,8 @@
 class CorrectTimeValidator < ActiveModel::Validator
   def validate(record)
-    # if record.start > record.end
-    #   record.errors[:cafe] << 'start time is before finish time'
-    # end
+    if record.start > record.end
+      record.errors[:cafe] << 'start time is before finish time'
+    end
   end
 end
 
@@ -31,7 +31,7 @@ class Event < ApplicationRecord
 
   def resort_user_events_to_sheet
     events = self.user_events.sort{|x,y|x.start<=>y.start}
-    [0...self.peopleNum].each do |num|
+    self.peopleNum.times do |num|
       break if events.empty?
       t_event = events.shift
       t_event.update(sheet: num)
@@ -41,18 +41,18 @@ class Event < ApplicationRecord
   def no_space? user_event
     sheets_num = self.peopleNum
     start = self.start
-    time_num = (self.end - start)/60
+    time_num = ((self.end - start)/60).to_i
     sheets_mat = [0...sheets_num].map do |sheet_num| #(sheets_num*time_num):bool
       event_bool = Array.new(time_num,false)
       self.user_events.where(sheet: sheet_num).each do |n_user_event| #make sheet space on bool
-    		((n_user_event.start-start)/60...(n_user_event.end-start)/60).each do |n|
+    		(((n_user_event.start-start)/60).to_i...((n_user_event.end-start)/60).to_i).each do |n|
     			event_bool[n] = true
     		end
       end
     end
     space = sheets_mat.transpose.map{ |m|m.inject(true){|ans,ret|ans && ret} }
     user_event_bool = Array.new(time_num,false)
-    ((user_event.start-start)/60...(user_event.end-start)/60).each do |n|
+    (((user_event.start-start)/60).to_i...((user_event.end-start)/60).to_i).each do |n|
       user_event_bool[n] = true
     end
     space.map.with_index { |m, index| m&&user_event_bool[index] }.inject(false){|ans,ret|ans || ret}
@@ -68,7 +68,6 @@ class Event < ApplicationRecord
 end
 
 __END__
-
 t.integer "city_id"
 t.date "date"
 t.time "start"
@@ -82,3 +81,5 @@ t.string "title"
 t.integer "fee"
 t.boolean "finished", default: false
 t.boolean "realtime", default: false
+t.integer "place_id"
+t.index ["place_id"], name: "index_events_on_place_id"
