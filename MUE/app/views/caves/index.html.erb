@@ -19,7 +19,7 @@
     <% @caves.each do |cafe| %>
       <tr>
         <td><%= cafe.id %></td>
-        <td><%= City.find(cafe.cityId).name %></td>
+        <td><%= City.find(cafe.city_id).name %></td>
         <td><%= cafe.name %></td>
         <td><%= cafe.url? %></td>
         <td><%= cafe.description %></td>
