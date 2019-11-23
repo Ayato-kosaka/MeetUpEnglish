@@ -2,7 +2,7 @@
 <p>Find me in app/views/users/search/city.html.erb</p>
 <% @cities.each do |city| %>
   <% next if city.double==@flag_double %>
-  <% if !city.double.empty? %>
+  <% if !city.double.nil? %>
     <% @flag_double = city.double %>
     <div class="double">
       <a><%= @flag_double %></a>

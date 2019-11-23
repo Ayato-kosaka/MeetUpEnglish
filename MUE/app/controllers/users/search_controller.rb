@@ -3,9 +3,14 @@ class Users::SearchController < UsersController
 
   #search_path 	GET 	/search(.:format) 	users/search#index
   def index
-    if session[:prefecture].nil?
+    unless params[:city] || params[:station]
       redirect_to search_prefecture_path
     end
+     @events = Event.where(place: City.find(params[:city]).places) if params[:city]
+     if params[:station]
+       station = Station.find(params[:station])
+       @events = Event.where(place: Place.within_box(2, station.latitude, station.longitude))
+     end
   end
 
   #search_prefecture_path 	GET 	/search/prefecture(.:format) 	users/search#prefecture
@@ -15,11 +20,17 @@ class Users::SearchController < UsersController
 
   #search_city_path 	GET 	/search/city(.:format) 	users/search#city
   def city
+    session[:prefecture] = params[:id]
     @prefecture = Prefecture.find(params[:id])
-    @cities = @prefecture.cities.sort_by(:kana)
+    @cities = @prefecture.cities.order(:kana)
     @flag_double
   end
 
+  #search_station_path 	GET 	/search/station(.:format) 	users/search#station
+  def station
+    session[:prefecture] = params[:id]
+    @lines = Prefecture.find(params[:id]).lines.all
+  end
 
   private
     def at_search

@@ -1,0 +1,10 @@
+<div id="search_station_path">
+  <% @lines.each do |line| %>
+    <p><%= line.name %></p>
+    <% line.stations.each do |station| %>
+      <a href=<%= search_path(station: station.id) %> >
+        <%= station.name %>
+      </a>
+    <% end %>
+  <% end %>
+</div>

@@ -3,7 +3,7 @@
   <% @regions.each do |region| %>
     <a style="color: red;"><%= region[0] %></a>
     <% Prefecture.where(region_id: region[1]).each do |prefecture| %>
-      <a><%= prefecture.name %></a>
+      <a href=<%= search_station_path(id: prefecture.id) %>><%= prefecture.name %></a>
     <% end %>
   <% end %>
 </div>

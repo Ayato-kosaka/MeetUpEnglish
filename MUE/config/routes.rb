@@ -27,7 +27,8 @@ Rails.application.routes.draw do
     namespace :search do
       get '' => :index
       get 'prefecture'
-      get 'city'
+      get 'city/:id' => :city, as: 'city'
+      get 'station/:id' => :station, as: 'station'
     end
   end
 
