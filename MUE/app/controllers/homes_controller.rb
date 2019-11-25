@@ -77,6 +77,7 @@ class HomesController < ApplicationController
   end
 
   def schedule
+    @cities = City.where(prefecture_id: @selectedPrefecture_id)
   end
 
   def top

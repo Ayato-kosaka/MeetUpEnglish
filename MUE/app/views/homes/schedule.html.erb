@@ -3,7 +3,7 @@
 
 <!-- タイトル本文 -->
 <h1><%= @selectedPrefecture.name %>での開催スケジュール</h1>
-<%= if session[:role]  == "Admin" then link_to 'create new city', new_city_path(selected_prefecture:@selectedPrefecture_id), data: {"turbolinks"=>false} end %>
+<%= if session[:role]  == "Admin" then link_to 'create new city', new_city_path(selected_prefecture: @selectedPrefecture_id), data: {"turbolinks"=>false} end %>
 <p style="margin: 0;">【参加方法】</p>
 <p style="margin: 0;">参加申し込みボタン又はTwitter,Instagram,Facebook,公式Lineにてご連絡ください。<br>初心者から上級者まで対応可能です。</p>
 <p style="margin-bottom: 0;">【料金説明】<br>[Meet up English Group の運営するイベント]</p>
@@ -20,16 +20,16 @@
 <div class="toc_container">
 <p >この記事の目次</p>
 <ul style="display: block;">
-<% City.where(prefecture_id: @selectedPrefecture_id).each do |n| %>
-    <li><a href="#schedule_index_<%= n.id %>"><%= n.name %></a></li>
+<% @cities.each do |n| %>
+    <li><a href="#shceduleIndex<%= n.id %>"><%= n.name %></a></li>
 <% end %>
 </ul>
 </div>
 
 
 
-<% City.where(prefecture_id: @selectedPrefecture_id).each do |n| %>
-  <h2 id="#schedule_index_<%= n.id %>"><%= n.name %>
+<% @cities.each do |n| %>
+  <h2 id="#shceduleIndex<%= n.id %>"><%= n.name %>
     <% if (session[:role]  == "Admin") %>
       <%= link_to 'create new event', new_home_path(selected_city:n.id), data: {"turbolinks"=>false} %>
     <% end %></h2>

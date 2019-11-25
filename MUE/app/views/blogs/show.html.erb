@@ -1,7 +1,7 @@
 <% set_meta_tags title: @blog.title, description: @blog.text,og: { image: @blog.image.attachment.service.send(:object_for, @blog.image.key).public_url }%>
 
 <div id="blog_paht">
-  
+
   <p id="notice"><%= notice %></p>
   <div id="create_comment">
   </div>
@@ -26,7 +26,7 @@
   <p >この記事の目次</p>
   <ul style="display: block;">
   <% @blog.sections.order(:index).each do |n| %>
-      <li><a href="#blog_index_<%= n.id %>"><%= n.title %></a></li>
+      <li><a href="#blogIndex<%= n.id %>"><%= n.title %></a></li>
   <% end %>
   <li><a href="#blog_index_comment">コメント</a></li>
   </ul>
@@ -38,7 +38,7 @@
   <section id="blog_section">
     <%= if session[:role]=="Admin" then link_to 'NewSection', new_section_path(selected_blog:@blog.id) end %>
     <% @blog.sections.order(:index).each do |n| %>
-      <h2 id="blog_index_<%= n.id %>"><%= n.title %></h2>
+      <h2 id="blogIndex<%= n.id %>"><%= n.title %></h2>
       <% if session[:role]=="Admin" %><%= link_to 'EditSection', edit_section_path(n.id,selected_blog:@blog.id) %> | <%= link_to 'DestroySection', n, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
       <% if n.image.attached? %>
       <%= image_tag n.image, class: "section_image"%>
