@@ -29,3 +29,9 @@ $(document).on 'turbolinks:load', ->
       $(@).addClass("active")
 
   $("#display_show").parent().children("a").addClass "active" #のちに消す
+
+#homes/about
+  $(".more").hide()
+  $(".grad-btn").click ->
+    $(@).prev(".more").show()
+    $(@).hide()

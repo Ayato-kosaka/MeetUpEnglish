@@ -254,6 +254,82 @@ p.read_more{
 
 
 
+//about
+#about{
+  @include pc{text-align: center;}
+  line-height: 2;
+  h1{
+  }
+  h2{
+    border: none;color: black;
+  }
+  h3{
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 2.1rem;
+    line-height: 1.5;
+    margin-top: 30px;
+    margin-bottom: 22px;
+    font-weight: inherit;
+  }
+  span.blue{
+    color: blue;
+  }
+  img{
+    display: block;
+    width: 100%;
+    max-width: 613px;
+    margin: auto;
+  }
+  .more{
+    margin-top: 60px;
+  }
+  .grad-btn {
+    z-index: 2;
+    width: 220px;
+    padding: .5em 0;
+    border-radius: 2px;
+    background:     #44aefb;
+    color:    #fff;
+    font-size: 1.3rem;
+    text-align: center;
+    cursor: pointer;
+    transition: .2s ease;
+    box-shadow: 0 0 3px
+        rgba(0,0,0,.3);
+    @include pc{margin: auto;}
+    .fa{
+      margin-right: .5em;
+    }
+  }
+  & > *{
+    position: relative;
+    margin: 90px 0px;
+    .text{
+      margin: 0px 20px;
+    }
+  }
+  #about_mue{
+    background-color: rgb(53, 71, 83);
+    color: white;
+    margin: 0px 20px;
+    padding: 20px;
+    img{
+      max-width: 783px;
+    }
+  }
+  #vision{
+    & .more img{
+      max-width: 570px;
+      margin: 0;
+    @include pc{margin: auto;}
+    }
+  }
+  #value{
+  }
+  #activity{
+  }
+}
+
 
 
 
