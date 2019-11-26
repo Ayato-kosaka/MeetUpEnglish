@@ -256,7 +256,6 @@ p.read_more{
 
 //about
 #about{
-  @include pc{text-align: center;}
   line-height: 2;
   h1{
   }
@@ -310,6 +309,11 @@ p.read_more{
   & > *{
     position: relative;
     margin: 90px 0px;
+    @include pc{
+      @include flexbox;
+      @include align-items(center);
+      @include justify-content(space-around);
+    }
     .text{
       margin: 0px 20px;
       @include pc{
@@ -319,6 +323,10 @@ p.read_more{
     }
   }
   #about_mue{
+    @include pc{
+      text-align: center;
+      @include flex-direction(column);
+    }
     background-color: rgb(53, 71, 83);
     color: white;
     margin: 0px;
@@ -329,14 +337,12 @@ p.read_more{
       margin: auto;
     }
     .text{
+      max-width: 1000px;
       width: auto;
     }
   }
   #vision{
     @include pc{
-      @include flexbox;
-      @include align-items(center);
-      @include justify-content(space-around);
     }
     & .more img{
       max-width: 570px;
@@ -346,17 +352,11 @@ p.read_more{
   }
   #value{
     @include pc{
-      @include flexbox;
       @include flex-direction(row-reverse);
-      @include align-items(center);
-      @include justify-content(space-around);
     }
   }
   #activity{
     @include pc{
-      @include flexbox;
-      @include align-items(center);
-      @include justify-content(space-around);
     }
   }
 }
