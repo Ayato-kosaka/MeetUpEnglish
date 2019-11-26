@@ -262,6 +262,7 @@ p.read_more{
   }
   h2{
     border: none;color: black;
+    @include pc{margin-top: 0;}
   }
   h3{
     font-family: verdana, arial, helvetica, sans-serif;
@@ -276,9 +277,14 @@ p.read_more{
   }
   img{
     display: block;
-    width: 100%;
-    max-width: 613px;
-    margin: auto;
+    @include sp{
+      width: 100%;
+      max-width: 613px;
+      margin: auto;
+    }
+    @include pc{
+      width: 45%;
+    }
   }
   .more{
     margin-top: 60px;
@@ -306,27 +312,52 @@ p.read_more{
     margin: 90px 0px;
     .text{
       margin: 0px 20px;
+      @include pc{
+        margin: 0;
+        width: 45%;
+      }
     }
   }
   #about_mue{
     background-color: rgb(53, 71, 83);
     color: white;
-    margin: 0px 20px;
+    margin: 0px;
     padding: 20px;
     img{
       max-width: 783px;
+      width: 100%;
+      margin: auto;
+    }
+    .text{
+      width: auto;
     }
   }
   #vision{
+    @include pc{
+      @include flexbox;
+      @include align-items(center);
+      @include justify-content(space-around);
+    }
     & .more img{
       max-width: 570px;
       margin: 0;
-    @include pc{margin: auto;}
+      @include pc{margin: auto;}
     }
   }
   #value{
+    @include pc{
+      @include flexbox;
+      @include flex-direction(row-reverse);
+      @include align-items(center);
+      @include justify-content(space-around);
+    }
   }
   #activity{
+    @include pc{
+      @include flexbox;
+      @include align-items(center);
+      @include justify-content(space-around);
+    }
   }
 }
 
