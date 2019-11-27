@@ -1,3 +1,4 @@
+<% set_meta_tags title: 'About', description: ''%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -27,8 +28,8 @@
       <div id="items">
         <a href=<%= top_path %> id="to_top">TOP<span></span></a>
         <a href=<%= about_path %>>ABOUT<span></span></a>
-        <a href=<%= root_path %>>SHCEDULE<span></span></a>
-        <a href=<%= blogs_path %>>BLOG<span></span></a>
+        <a href=<%= root_path %> data-turbolinks="false">SHCEDULE<span></span></a>
+        <a href=<%= blogs_path(event_search: "開催の様子") %> data-turbolinks="false">BLOG<span></span></a>
       </div>
     </menu>
 
@@ -49,7 +50,7 @@
           <%= image_tag("about/vision.jpg", alt: "vision of MeetupEnglish") %>
           <div class="text">
             <h2>将来への取り組み</h2>
-            <p>全ての国の人と英語を通して意思疎通をする。それを可能にする最高のサービスをアプリやウェブサイトを通して築き上げる。
+            <p>世界中の人と英語を通して意思疎通をする。それを可能にする最高のサービスをアプリやウェブサイトを通して築き上げる。
               それに伴い、英語だけでなく海外旅行、留学にブームを起こすべく、インフルエンス力向上に取り組んでいます。</p>
             <div class="more">
               <h3>創造するアプリケーション</h3>
@@ -111,7 +112,7 @@
           </div>
         </div>
         <div id="links" class="onlysp">
-          <%= link_to '概要', overview_path %>
+          <%= link_to '概要', about_path %>
           <%= link_to '開催スケジュール', root_path, data: {"turbolinks"=>false} %>
           <%= link_to 'ブログ', blogs_path(event_search: "開催の様子"), data: {"turbolinks"=>false} %>
         </div>

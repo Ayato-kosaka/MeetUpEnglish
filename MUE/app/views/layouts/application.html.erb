@@ -34,7 +34,7 @@
           <% end %>
 
           <%= link_to "カフェ開催スケジュール", root_path, class: "page_btn",style: "background-color: #179c17"%>
-          <%= link_to "Group紹介", overview_path, class: "page_btn", style: "background-color: #da4f4f;"%>
+          <%= link_to "Group紹介", about_path, class: "page_btn", style: "background-color: #da4f4f;"%>
           <%= link_to "Meet Up English のブログ", blogs_path(event_search: "開催の様子"), class: "page_btn", style: "background-color: #1b95e0;", data: {"turbolinks"=>false} %>
 
           <!-- LineWidget -->
@@ -88,7 +88,7 @@
     <!-- spにだけ表示される、ブログとかのページに行ける下に固定しているフッター -->
     <footer id="footer_application" class="onlysp">
       <a href="/" data-turbolinks="false">Schedule</a>
-      <a id="footer_center" href="/overview">Overview</a>
+      <a id="footer_center" href="/about">About</a>
       <a href="/blogs?event_search=開催の様子" data-turbolinks="false">Blog</a>
     </footer>
 
