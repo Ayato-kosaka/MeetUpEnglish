@@ -188,8 +188,7 @@ p.read_more{
 //about
 #about{
   line-height: 2;
-  h1{
-  }
+  h1{line-height: 1.5;}
   h2{
     border: none;color: black;
     @include pc{margin-top: 0;}
@@ -324,12 +323,30 @@ menu{
   }
   @include sp{
     width: 100%;
-    background-color: #0000114d;
+  }
+
+  #menu_button_input{display: none;}
+  .my_times{display: none;}
+  #menu_button_input:checked{
+    &+#head{
+      #menu_button{
+        #humberger{
+          display: none;}
+        .my_times{
+          display: inline-block;;}
+      }
+    }
+    &~#items{
+      display: block;
+    }
   }
 
   #head{
     @include sp{
       border-bottom: 1px solid #e6e6e6;
+      background-color: white;
+      @include flexbox;
+      @include justify-content(space-between);
     }
     #logo{
       @include flexbox;
@@ -339,15 +356,12 @@ menu{
         @include flex-direction(column);
         margin: 15px 0 30px 0;
       }
-      @include sp{
-        background-color: white;
-      }
       img{
         @include pc{
           width: 12.253vw;
         }
         @include sp{
-          margin: 4px 0;
+          margin: 4px 8px;
           height: 40px;
         }
       }
@@ -372,6 +386,56 @@ menu{
         }
       }
     }
+    #menu_button{
+      @include pc{display: none}
+      height: 40px;
+      margin: auto 20px auto 0;
+      cursor: pointer;
+      .my_times {
+        width: 34px;
+        height: 34px;
+        padding: 3px;
+        position: relative;
+         & span::before, & span::after {
+          display: block;
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 84%;
+          height: 3%;
+          margin: -8% 0 0 -42%;
+          background: rgb(128, 128, 128);
+        }
+        & span::before {
+          transform: rotate(-45deg);
+        }
+        & span::after {
+          transform: rotate(45deg);
+        }
+      }
+      #humberger {
+        position: relative;
+        height: 40px;
+        width: 40px;
+        & div {
+          position: absolute;
+          left: 0;
+          height: 1px;
+          width: 80%;
+          background-color:  #808080;
+          &:nth-of-type(1) {
+            top: 25%;
+          }
+          &:nth-of-type(2) {
+            top: 50%;
+          }
+          &:nth-of-type(3) {
+            bottom: 25%;
+          }
+        }
+      }
+    }
   }
 
   #items{
@@ -379,27 +443,52 @@ menu{
     @include flex-direction(column);
     @include sp{
       display: none;
-      background-color: white;
+      background-color: #0000114d;
+      top: 48.76px;//変更の可能性あり
+      bottom: 0;
+      right: 0;
+      left: 0;
+      position: fixed;
     }
-    *{
+    a{
       @include flex-grow(1);
       @include flexbox;
       @include align-items(center);
+      &:hover{
+        color: #0004ff;
+      }
       @include pc{
         color: #808080;
         font-size: calc(11.5px + 1.01vw);
         padding: 30px 0 30px 0;
         @include justify-content(center);
-        &:hover{
-          color: #0004ff;
-        }
       }
       @include sp{
+        @include justify-content(space-between);
+        width: 96%;
         background-color: #fafafa;
         border-top: 1px solid #e6e6e6;
         padding: 22px 4%;
-        width: 100%;
         font-size: 18px;
+        span{
+          position: relative;
+          width: 25px;
+          height: 25px;
+          margin: 0 35px;
+          border-radius: 50%;
+          background-color: #a8a8a8;
+          &::before{
+            content: '';
+            border-top: 2px solid white;
+            border-right: 2px solid white;
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-75%, -50%) rotate3d(0,0,1,45deg);
+          }
+        }
       }
     }
     #to_top{
@@ -450,9 +539,10 @@ menu{
       color: #808080;
     }
   }
-  .footer2-top{
+  #mail{
     display: flex;
     justify-content: center;
+    margin-bottom: 30px;
     @include sp{flex-direction: column;}
     font-size: 17px;
     line-height: 23px;

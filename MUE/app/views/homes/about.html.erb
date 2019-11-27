@@ -9,8 +9,9 @@
 
   <body>
     <menu>
+      <input id="menu_button_input" type="checkbox">
       <div id="head">
-        <a href="/top" id="logo">
+        <div id="logo">
           <%= image_tag("top/logo.png", id: "logo-image-top") %>
           <span id="name">
             <span class="name1">
@@ -20,13 +21,14 @@
               日常に留学を
             </span>
           </span>
-        </a>
+        </div>
+        <label id="menu_button" for="menu_button_input"><div id="humberger"> <div></div><div></div><div></div></div><div class="my_times"><span></span></div></label>
       </div>
       <div id="items">
-        <a href=<%= top_path %> id="to_top">TOP</a>
-        <a href=<%= about_path %>>ABOUT</a>
-        <a href=<%= root_path %>>SHCEDULE</a>
-        <a href=<%= blogs_path %>>BLOG</a>
+        <a href=<%= top_path %> id="to_top">TOP<span></span></a>
+        <a href=<%= about_path %>>ABOUT<span></span></a>
+        <a href=<%= root_path %>>SHCEDULE<span></span></a>
+        <a href=<%= blogs_path %>>BLOG<span></span></a>
       </div>
     </menu>
 
@@ -38,8 +40,8 @@
             <h1>Meet up English Groupについて</h1>
             <p>日本の英語力の低さ、英語を何年も学んでいるのにコミュニケーションが取れない人が過半数を占めるという現状に疑問を感じ、青山学院大学の学生により令和元年８月に結成。起業のリアルやこの事業に対する思いもSNS、YouTubeにて発信。</p>
             <p class="more">国際化がますます進む中、英語が話せるというステータスの価値は急速に上昇していると感じます。
-              これを踏まえ、私ども Meet up English Group は英語力向上の最善策を「圧倒的便利さと教育形態の良さとブーム」であると考え、
-              大学生ならではのSNSのセンスをもとに、ご利用くださる方々と共にブームを起こせられればなと思っております。</p>
+              これを踏まえ、Meet up English Group は英語力向上の最善策を「圧倒的便利さと教育形態の良さとブーム」であると考え、
+              大学生ならではのSNSのセンスをもとに、ご利用してくださる方々と共にブームを起こせられればなと思っております。</p>
             <div class="grad-btn"><span class="fa fa-chevron-down"></span>もっと詳しく</div>
           </div>
         </div>
@@ -48,7 +50,7 @@
           <div class="text">
             <h2>将来への取り組み</h2>
             <p>全ての国の人と英語を通して意思疎通をする。それを可能にする最高のサービスをアプリやウェブサイトを通して築き上げる。
-              それに伴い、英語だけでなく海外旅行、留学にブームを起こしたく、インフルエンス力向上に取り組んでいます。</p>
+              それに伴い、英語だけでなく海外旅行、留学にブームを起こすべく、インフルエンス力向上に取り組んでいます。</p>
             <div class="more">
               <h3>創造するアプリケーション</h3>
               <%= image_tag("about/application.jpg", alt: "application image of MeetupEnglish") %>
@@ -68,7 +70,7 @@
               私たちはそうは思いません。
               あなたは自転車に乗りたいと思った時、自転車の乗り方を調べて足の動かし方をシュミレーションしていましたか？
               ほとんどの方が何度うまくいかないことがあっても、気にせず乗り続けていくうちに乗れるようになったと思います。
-              英会話学習も同様で、苦手意識や間違えることへの羞恥心を捨て、何度もフリーカンバセーションをすることで話せるようると考えます。</p>
+              英会話学習も同様で、苦手意識や間違えることへの羞恥心を捨て、何度もフリーカンバセーションをすることで話せるようになると考えます。</p>
             <div class="grad-btn"><span class="fa fa-chevron-down"></span>もっと詳しく</div>
           </div>
         </div>
@@ -100,7 +102,7 @@
 
       <footer class="footer-top">
         <div id="SNS">
-          <span id="title">OFFICIAL ACCOUNT</span>
+          <span id="title">OFFICIAL&nbsp;&nbsp;&nbsp;&nbsp;ACCOUNT</span>
           <div id="button">
               <%= link_to simple_format('<i class="fab fa-youtube"></i>'), "https://www.youtube.com/channel/UC1OTguN4K5GNf8I5ZeJZkGg", class: 'youtube-footer' %>
               <%= link_to simple_format('<i class="fab fa-twitter"></i>'), "https://twitter.com/meetup_english?ref_src=twsrc%5Etfw", class: 'twitter' %>
@@ -108,7 +110,7 @@
               <%= link_to simple_format('<i class="fab fa-facebook-square"></i>'), "https://www.facebook.com/Meet-Up-English-101228061233520/?modal=admin_todo_tour", class: 'facebbok' %>
           </div>
         </div>
-        <span class="footer2-top">mail: meetup_english-tokyo@yahoo.co.jp</span>
+        <span id="mail">mail: meetup_english-tokyo@yahoo.co.jp</span>
         <span class="footer3-top">© Meet up English Group</span>
       </footer>
     </main>
