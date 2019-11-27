@@ -110,6 +110,11 @@
               <%= link_to simple_format('<i class="fab fa-facebook-square"></i>'), "https://www.facebook.com/Meet-Up-English-101228061233520/?modal=admin_todo_tour", class: 'facebbok' %>
           </div>
         </div>
+        <div id="links" class="onlysp">
+          <%= link_to '概要', overview_path %>
+          <%= link_to '開催スケジュール', root_path, data: {"turbolinks"=>false} %>
+          <%= link_to 'ブログ', blogs_path(event_search: "開催の様子"), data: {"turbolinks"=>false} %>
+        </div>
         <span id="mail">mail: meetup_english-tokyo@yahoo.co.jp</span>
         <span class="footer3-top">© Meet up English Group</span>
       </footer>
