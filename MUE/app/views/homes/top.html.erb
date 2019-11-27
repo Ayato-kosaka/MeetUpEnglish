@@ -88,49 +88,22 @@
     </div>
 
     <footer class="footer-top">
-      <div class="footer1-top">
-        <a href="#transparent-top" class="footer1-1-top">
-          <div class="logo-footer-top">
-            <%= image_tag("top/logo.png", id: "logo-image-top") %>
-          </div>
-          <span class="name-footer-top">
-            Meet Up English Gruop
-          </span>
-          <span class="name2-footer-top">
-            日常に留学を
-          </span>
-        </a>
-        <div class="footer1-2-top">
-          <div class="about-footer-top">
-            <%= link_to '概要', overview_path %>
-          </div>
-          <div class="schedule-footer-top" data-turbolinks="false">
-            <%= link_to '開催スケジュール', root_path, data: {"turbolinks"=>false} %>
-          </div>
-          <div class="blog-footer-top" data-turbolinks="false">
-            <%= link_to 'ブログ', blogs_path(event_search: "開催の様子"), data: {"turbolinks"=>false} %>
-          </div>
+      <div id="SNS">
+        <span id="title">OFFICIAL ACCOUNT</span>
+        <div id="button">
+            <%= link_to simple_format('<i class="fab fa-youtube"></i>'), "https://www.youtube.com/channel/UC1OTguN4K5GNf8I5ZeJZkGg", class: 'youtube-footer' %>
+            <%= link_to simple_format('<i class="fab fa-twitter"></i>'), "https://twitter.com/meetup_english?ref_src=twsrc%5Etfw", class: 'twitter' %>
+            <%= link_to simple_format('<i class="fab fa-instagram"></i>'), "https://www.instagram.com/meet_up_english?ref=badge", class: 'instagram' %>
+            <%= link_to simple_format('<i class="fab fa-facebook-square"></i>'), "https://www.facebook.com/Meet-Up-English-101228061233520/?modal=admin_todo_tour", class: 'facebbok' %>
         </div>
       </div>
-      <div class="footer2-top">
-        <span class="footer2-1-top">
-          mail: meetup_english-tokyo@yahoo.co.jp
-        </span>
-        <div class="footer2-2-top">
-          <div class="facebook-footer">
-            <%= link_to simple_format('<i class="fab fa-facebook-f"></i>'), "https://www.facebook.com/Meet-Up-English-101228061233520/?modal=admin_todo_tour" %>
-          </div>
-          <div class="twitter-footer">
-            <%= link_to simple_format('<i class="fab fa-twitter"></i>'), "https://twitter.com/meetup_english?ref_src=twsrc%5Etfw" %>
-          </div>
-          <div class="instaglam-footer">
-            <%= link_to simple_format('<i class="fab fa-instagram"></i>'), "https://www.instagram.com/meet_up_english?ref=badge" %>
-          </div>
-        </div>
+      <div id="links">
+        <%= link_to '概要', overview_path %>
+        <%= link_to '開催スケジュール', root_path, data: {"turbolinks"=>false} %>
+        <%= link_to 'ブログ', blogs_path(event_search: "開催の様子"), data: {"turbolinks"=>false} %>
       </div>
-      <span class="footer3-top">
-        © Meet up English Group
-      </span>
+      <span class="footer2-top">mail: meetup_english-tokyo@yahoo.co.jp</span>
+      <span class="footer3-top">© Meet up English Group</span>
     </footer>
   </body>
 </html>

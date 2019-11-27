@@ -88,7 +88,7 @@
     }
   }
   #slide-top{
-    animation: infinity-loop 25s infinite linear 4s both;
+    animation: infinity-loop 25s infinite linear 2s both;
     flex-flow: row nowrap;
     @include default-top(black);
     display: flex;
@@ -162,10 +162,10 @@ p.read_more{
 .contact-top{
   position: fixed;
   bottom: 0;
-  right: 0;
+  left: 0;
   z-index: 2;
   @include sp{width: 100%;}
-  @include pc{width: 20%;}
+  @include pc{width: 18%;}
   .contact_btn{
     display: flex;
     justify-content: center;
@@ -178,76 +178,7 @@ p.read_more{
   }
 }
 
-.footer-top{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: rgb(240, 240, 240);
-  @include pc{height: 300px;}
-  @include sp{height: 400px;margin: 0 0 50px 0;}
-  color: #808080;
-  font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;
-  .footer1-top{
-    display: flex;
-    @include sp{flex-direction: column;}
-    .footer1-1-top{
-      display: flex;
-      flex-direction: column;
-      color: #808080;
-      align-items: center;
-      @include pc{width: 1000px;margin: 10px 0 0 0;}
-      @include sp{margin-top: 30px}
-      .logo-footer-top{
-        img{
-          height: 70px;
-        }
-      }
-      .name-footer-top{
-        font-size: 20px;
-        line-height: 25px;
-      }
-      .name2-footer-top{
-        line-height: 17px;
-      }
-    }
-    .footer1-2-top{
-      display: flex;
-      align-items: center;
-      @include pc{width: 100%;margin: 0 calc(0.20 * calc(100% - 335px));justify-content: space-between;}
-      @include sp{justify-content: space-around;margin: 40px 0;}
-      font-size: 20px;
-      a{
-        color: #808080;
-      }
-    }
-  }
-  .footer2-top{
-    display: flex;
-    justify-content: center;
-    @include sp{flex-direction: column;}
-    font-size: 17px;
-    line-height: 23px;
-    .footer2-1-top{
-      text-align: center;
-    }
-    .footer2-2-top{
-      display: flex;
-      justify-content: space-between;
-      width: 60px;
-      @include pc{margin: 0 15px;}
-      @include sp{margin: 0 auto;}
-      a{
-        color: #808080;
-        p{margin: 0;}
-      }
-    }
-  }
-  .footer3-top{
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-  }
-}
+
 
 
 
@@ -363,10 +294,176 @@ p.read_more{
 
 
 
+//main
+main{
+  @include pc{
+    width: 82%;
+    float: right;
+  }
+  @include sp{
+    position: absolute;
+    top: 48px;
+  }
+}
+
+
+
+// menu
+menu{
+  font-family: $busoan;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  @include pc{
+    background-color: #e8f5ff;
+    width: 18%;
+    left: 0;
+    bottom: 0;
+  }
+  @include sp{
+    width: 100%;
+    background-color: #0000114d;
+  }
+
+  #head{
+    @include sp{
+      border-bottom: 1px solid #e6e6e6;
+    }
+    #logo{
+      @include flexbox;
+      @include align-items(center);
+      color: #808080;
+      @include pc{
+        @include flex-direction(column);
+        margin: 15px 0 30px 0;
+      }
+      @include sp{
+        background-color: white;
+      }
+      img{
+        @include pc{
+          width: 12.253vw;
+        }
+        @include sp{
+          margin: 4px 0;
+          height: 40px;
+        }
+      }
+      #name{
+        @include flexbox;
+        @include flex-direction(column);
+        @include align-items(center);
+        .name1{
+          line-height: 1.25;
+          @include pc{
+            font-size: 1.88vw;
+          }
+          @include sp{
+            font-size: 20px;
+          }
+        }
+        .name2{
+          line-height: 17px;
+          @include pc{
+            font-size: 1.377vw;
+          }
+        }
+      }
+    }
+  }
+
+  #items{
+    @include flexbox;
+    @include flex-direction(column);
+    @include sp{
+      display: none;
+      background-color: white;
+    }
+    *{
+      @include flex-grow(1);
+      @include flexbox;
+      @include align-items(center);
+      @include pc{
+        color: #808080;
+        font-size: calc(11.5px + 1.01vw);
+        padding: 30px 0 30px 0;
+        @include justify-content(center);
+        &:hover{
+          color: #0004ff;
+        }
+      }
+      @include sp{
+        background-color: #fafafa;
+        border-top: 1px solid #e6e6e6;
+        padding: 22px 4%;
+        width: 100%;
+        font-size: 18px;
+      }
+    }
+    #to_top{
+      border-top: none;
+    }
+  }
+}
 
 
 
 
+
+//footer
+.footer-top{
+  @include flexbox;
+  @include flex-direction(column);
+  background-color: rgb(240, 240, 240);
+  @include sp{margin: 0 0 50px 0;}
+  color: #808080;
+  font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;
+
+  #SNS{
+    @include flexbox;
+    @include flex-direction(column);
+    @include align-items(center);
+    margin: 50px 0;
+    #title{
+      color: #666;
+    }
+    #button{
+      @include flexbox;
+      @include justify-content(space-between);
+      p{
+        color: #666;
+        font-size: 40px;
+        margin: 0 20px;}
+    }
+  }
+  #links{
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(space-around);
+    margin: 0 0 50px 0;
+    @include pc{
+      width: 100%; }
+    font-size: 20px;
+    a{
+      color: #808080;
+    }
+  }
+  .footer2-top{
+    display: flex;
+    justify-content: center;
+    @include sp{flex-direction: column;}
+    font-size: 17px;
+    line-height: 23px;
+      text-align: center;
+  }
+  .footer3-top{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+}
 
 
 

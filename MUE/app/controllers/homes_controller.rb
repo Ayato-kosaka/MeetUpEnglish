@@ -1,7 +1,7 @@
 class HomesController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :set_selectedPrefecture, only: [:schedule]
-  before_action :set_last_event_blog
+  before_action :set_last_event_blog, except: [:about, :top]
 
   skip_before_action :require_Admin, except: [:index, :show, :edit, :new]
 
