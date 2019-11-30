@@ -29,7 +29,7 @@
 
 
 <% @cities.each do |n| %>
-  <h2 id="#shceduleIndex<%= n.id %>"><%= n.name %>
+  <h2 id="shceduleIndex<%= n.id %>"><%= n.name %>
     <% if (session[:role]  == "Admin") %>
       <%= link_to 'create new event', new_home_path(selected_city:n.id), data: {"turbolinks"=>false} %>
     <% end %></h2>
