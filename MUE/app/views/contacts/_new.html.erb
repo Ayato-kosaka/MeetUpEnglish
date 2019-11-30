@@ -44,7 +44,7 @@
 
         </div>
 
-        <p style="text-align: center;"><%= form.submit :value=>"送信", :onClick=>"ga('send','event','submit','click','CreateNewContact');", :class=>'send', data: { disable_with: "送信中..." } %></p>
+        <p style="text-align: center;"><%= form.submit :value=>"送信", :onClick=>"ga('send','event','submit','click',#{@title_value.gsub(' ','')});", :class=>'send', data: { disable_with: "送信中..." } %></p>
       <% end %>
 
 

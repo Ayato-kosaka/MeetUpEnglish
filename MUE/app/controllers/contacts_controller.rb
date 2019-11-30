@@ -46,7 +46,7 @@ class ContactsController < ApplicationController
   def join_new
     @event = Event.find(params[:id])
     @contact = @event.contacts.new
-    @title_value = "I want to go to Meet Up English"
+    @title_value = "I want to go to Meet up English"
     @message_value =
       if @event.cafe.id == 2 #カフェが武相庵なら、
         "【希望滞在時間】〇〇:〇〇～〇〇:〇〇\n*#{ @event.start.strftime("%H:%M") }～#{ @event.end.strftime("%H:%M") }の間で予定滞在時間を↑に記入してください\n\n【形態】1:3(最大)\n【日程】#{@event.date.strftime("%Y年 %m月 %d日")}\n【場所】#{@event.city.name}:#{@event.cafe.name}\n【料金】1000円/h\n*カフェにつき、ワンオーダーあり"
