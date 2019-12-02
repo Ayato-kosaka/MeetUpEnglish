@@ -1,126 +1,58 @@
 <% set_meta_tags title: 'About', description: ''%>
-<!DOCTYPE html>
-<html>
-  <head>
-    <%= render'layouts/head' %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css?family=Cookie|Dancing+Script|Great+Vibes|Parisienne|Tangerine&display=swap" rel="stylesheet">
-  </head>
-
-  <body>
-    <menu>
-      <input id="menu_button_input" type="checkbox">
-      <div id="head">
-        <div id="logo">
-          <%= image_tag("top/logo.png", id: "logo-image-top") %>
-          <span id="name">
-            <span class="name1">
-              Meet up English
-            </span>
-            <span class="name2">
-              日常に留学を
-            </span>
-          </span>
-        </div>
-        <label id="menu_button" for="menu_button_input"><div id="humberger"> <div></div><div></div><div></div></div><div class="my_times"><span></span></div></label>
-      </div>
-      <div id="items">
-        <a href=<%= top_path %> id="to_top">TOP<span></span></a>
-        <a href=<%= about_path %>>ABOUT<span></span></a>
-        <a href=<%= root_path %> data-turbolinks="false">SHCEDULE<span></span></a>
-        <a href=<%= blogs_path(event_search: "開催の様子") %> data-turbolinks="false">BLOG<span></span></a>
-      </div>
-    </menu>
-
-    <main>
-      <div id="about">
-        <div id="about_mue">
-          <%= image_tag("about/about.jpg", alt: "image of MeetupEnglishGroup") %>
-          <div class="text">
-            <h1>Meet up English Groupについて</h1>
-            <p>日本の英語力の低さ、英語を何年も学んでいるのにコミュニケーションが取れない人が過半数を占めるという現状に疑問を感じ、青山学院大学の学生により令和元年８月に結成。起業のリアルやこの事業に対する思いもSNS、YouTubeにて発信。</p>
-            <p class="more">国際化がますます進む中、英語が話せるというステータスの価値は急速に上昇していると感じます。
-              これを踏まえ、Meet up English Group は英語力向上の最善策を「圧倒的便利さと教育形態の良さとブーム」であると考え、
-              大学生ならではのSNSのセンスをもとに、ご利用してくださる方々と共にブームを起こせられればなと思っております。</p>
-            <div class="grad-btn"><span class="fa fa-chevron-down"></span>もっと詳しく</div>
-          </div>
-        </div>
-        <div id="vision">
-          <%= image_tag("about/vision.jpg", alt: "vision of MeetupEnglish") %>
-          <div class="text">
-            <h2>将来への取り組み</h2>
-            <p>世界中の人と英語を通して意思疎通をする。それを可能にする最高のサービスをアプリやウェブサイトを通して築き上げる。
-              それに伴い、英語だけでなく海外旅行、留学にブームを起こすべく、インフルエンス力向上に取り組んでいます。</p>
-            <div class="more">
-              <h3>創造するアプリケーション</h3>
-              <%= image_tag("about/application.jpg", alt: "application image of MeetupEnglish") %>
-              <p>本当の意味での「いつでもどこでも英会話を」目標とする、講師を雇わない英会話マッチングアプリです。
-              仕組みとしては、講師となる外国人又は、英語力のある日本人が、場所と時間、料金をアプリに投稿し、それを閲覧した利用者が、自分の行きたい場所を予約するというものです。</p></div>
-            <div class="grad-btn"><span class="fa fa-chevron-down"></span>アプリについて詳しく</div>
-          </div>
-        </div>
-        <div id="value">
-          <%= image_tag("about/value.jpg", alt: "value of MeetupEnglish") %>
-          <div class="text">
-            <h2>バリュー</h2>
-            <p>私たちは、<span class="blue">“話せれば伝わる”</span>ではなく<span class="blue">“話したいから伝える”</span>という方針を持って英会話力向上を目指しています。
-              そのため、教科書の使用、レベル分け一切なしのフリーカンバセーション形式で、“英語を話せる”ではなく“自然とコミュニケーションが取れる”という形を提供します。
-              また、私達のサービスは、 <span class="blue">#プチ留学</span> というキャッチフレーズを掲げ、海外旅行や留学に行く感覚を彷彿させます。そのため、自発的に話す楽しさを経験できます。</p>
-            <p class="more">英単語を覚えてから。参考書等で勉強をしてから。英会話の授業を受けてから。そうでないと英語で意思疎通なんて無理だと思っていませんか。
-              私たちはそうは思いません。
-              あなたは自転車に乗りたいと思った時、自転車の乗り方を調べて足の動かし方をシュミレーションしていましたか？
-              ほとんどの方が何度うまくいかないことがあっても、気にせず乗り続けていくうちに乗れるようになったと思います。
-              英会話学習も同様で、苦手意識や間違えることへの羞恥心を捨て、何度もフリーカンバセーションをすることで話せるようになると考えます。</p>
-            <div class="grad-btn"><span class="fa fa-chevron-down"></span>もっと詳しく</div>
-          </div>
-        </div>
-        <div id="activity">
-          <%= image_tag("about/activity.jpg", alt: "activity of MeetupEnglishGroup") %>
-          <div class="text">
-            <h2>アクティビティ</h2>
-            <p>アプリ開発と並行し、より良い英語教育、利便性の模索をすべく、町田駅付近のカフェ「武相庵」での定期開催、他社とコラボをして英会話イベントを行っています。
-              また、認知度向上のため、首都圏で、マンツーマン英会話を非営利で行っています。
-              加えて、インフルエンス力向上のため、SNS・YouTube活動を行っています。</p>
-            <p class="more">あなたと一緒に日本に英語ブームを起こしたいと考えています。
-              日本一インスタ映えする英会話を目標にデザインにも力を入れSNSに発信し、SNSユーザーと一丸となって英会話を盛り上げています。
-              また、youtubeでは「起業」という言葉にこれほど敏感な世の中なのにも関わらず、やる人はほとんどいないことに目をつけ、
-              実際に起業している風景、活動を投稿することで多くの方にアプローチしたいと考え、活動のリアルを動画としても発信。
-              加えて、ブログでは開催の実際の様子を写真を用いて説明しています。</p>
-            <div class="grad-btn"><span class="fa fa-chevron-down"></span>広報活動をもっと詳しく</div>
-          </div>
-        </div>
-      </div>
-
-      <div id="create_contact"></div>
-      <div class="contact-top">
-          <a class="contact_btn" data-remote="true" href="/contacts/new">
-            <span class="">
-              お問い合わせはこちら
-            </span>
-          </a>
-      </div>
-
-      <footer class="footer-top">
-        <div id="SNS">
-          <span id="title">OFFICIAL&nbsp;&nbsp;&nbsp;&nbsp;ACCOUNT</span>
-          <div id="button">
-              <%= link_to simple_format('<i class="fab fa-youtube"></i>'), "https://www.youtube.com/channel/UC1OTguN4K5GNf8I5ZeJZkGg", class: 'youtube-footer' %>
-              <%= link_to simple_format('<i class="fab fa-twitter"></i>'), "https://twitter.com/meetup_english?ref_src=twsrc%5Etfw", class: 'twitter' %>
-              <%= link_to simple_format('<i class="fab fa-instagram"></i>'), "https://www.instagram.com/meet_up_english?ref=badge", class: 'instagram' %>
-              <%= link_to simple_format('<i class="fab fa-facebook-square"></i>'), "https://www.facebook.com/Meet-Up-English-101228061233520/?modal=admin_todo_tour", class: 'facebbok' %>
-          </div>
-        </div>
-        <div id="links" class="onlysp">
-          <%= link_to '概要', about_path %>
-          <%= link_to '開催スケジュール', root_path, data: {"turbolinks"=>false} %>
-          <%= link_to 'ブログ', blogs_path(event_search: "開催の様子"), data: {"turbolinks"=>false} %>
-        </div>
-        <span id="mail">mail: meetup_english-tokyo@yahoo.co.jp</span>
-        <span class="footer3-top">© Meet up English Group</span>
-      </footer>
-    </main>
-
-
-  </body>
-</html>
+<div id="about">
+  <div id="about_mue">
+    <%= image_tag("about/about.jpg", alt: "image of MeetupEnglishGroup") %>
+    <div class="text">
+      <h1>Meet up English Groupについて</h1>
+      <p>日本の英語力の低さ、英語を何年も学んでいるのにコミュニケーションが取れない人が過半数を占めるという現状に疑問を感じ、青山学院大学の学生により令和元年８月に結成。起業のリアルやこの事業に対する思いもSNS、YouTubeにて発信。</p>
+      <p class="more">国際化がますます進む中、英語が話せるというステータスの価値は急速に上昇していると感じます。
+        これを踏まえ、Meet up English Group は英語力向上の最善策を「圧倒的便利さと教育形態の良さとブーム」であると考え、
+        大学生ならではのSNSのセンスをもとに、ご利用してくださる方々と共にブームを起こせられればなと思っております。</p>
+      <div class="grad-btn"><span class="fa fa-chevron-down"></span>もっと詳しく</div>
+    </div>
+  </div>
+  <div id="vision">
+    <%= image_tag("about/vision.jpg", alt: "vision of MeetupEnglish") %>
+    <div class="text">
+      <h2>将来への取り組み</h2>
+      <p>世界中の人と英語を通して意思疎通をする。それを可能にする最高のサービスをアプリやウェブサイトを通して築き上げる。
+        それに伴い、英語だけでなく海外旅行、留学にブームを起こすべく、インフルエンス力向上に取り組んでいます。</p>
+      <div class="more">
+        <h3>創造するアプリケーション</h3>
+        <%= image_tag("about/application.jpg", alt: "application image of MeetupEnglish") %>
+        <p>本当の意味での「いつでもどこでも英会話を」目標とする、講師を雇わない英会話マッチングアプリです。
+        仕組みとしては、講師となる外国人又は、英語力のある日本人が、場所と時間、料金をアプリに投稿し、それを閲覧した利用者が、自分の行きたい場所を予約するというものです。</p></div>
+      <div class="grad-btn"><span class="fa fa-chevron-down"></span>アプリについて詳しく</div>
+    </div>
+  </div>
+  <div id="value">
+    <%= image_tag("about/value.jpg", alt: "value of MeetupEnglish") %>
+    <div class="text">
+      <h2>バリュー</h2>
+      <p>私たちは、<span class="blue">“話せれば伝わる”</span>ではなく<span class="blue">“話したいから伝える”</span>という方針を持って英会話力向上を目指しています。
+        そのため、教科書の使用、レベル分け一切なしのフリーカンバセーション形式で、“英語を話せる”ではなく“自然とコミュニケーションが取れる”という形を提供します。
+        また、私達のサービスは、 <span class="blue">#プチ留学</span> というキャッチフレーズを掲げ、海外旅行や留学に行く感覚を彷彿させます。そのため、自発的に話す楽しさを経験できます。</p>
+      <p class="more">英単語を覚えてから。参考書等で勉強をしてから。英会話の授業を受けてから。そうでないと英語で意思疎通なんて無理だと思っていませんか。
+        私たちはそうは思いません。
+        あなたは自転車に乗りたいと思った時、自転車の乗り方を調べて足の動かし方をシュミレーションしていましたか？
+        ほとんどの方が何度うまくいかないことがあっても、気にせず乗り続けていくうちに乗れるようになったと思います。
+        英会話学習も同様で、苦手意識や間違えることへの羞恥心を捨て、何度もフリーカンバセーションをすることで話せるようになると考えます。</p>
+      <div class="grad-btn"><span class="fa fa-chevron-down"></span>もっと詳しく</div>
+    </div>
+  </div>
+  <div id="activity">
+    <%= image_tag("about/activity.jpg", alt: "activity of MeetupEnglishGroup") %>
+    <div class="text">
+      <h2>アクティビティ</h2>
+      <p>アプリ開発と並行し、より良い英語教育、利便性の模索をすべく、町田駅付近のカフェ「武相庵」での定期開催、他社とコラボをして英会話イベントを行っています。
+        また、認知度向上のため、首都圏で、マンツーマン英会話を非営利で行っています。
+        加えて、インフルエンス力向上のため、SNS・YouTube活動を行っています。</p>
+      <p class="more">あなたと一緒に日本に英語ブームを起こしたいと考えています。
+        日本一インスタ映えする英会話を目標にデザインにも力を入れSNSに発信し、SNSユーザーと一丸となって英会話を盛り上げています。
+        また、youtubeでは「起業」という言葉にこれほど敏感な世の中なのにも関わらず、やる人はほとんどいないことに目をつけ、
+        実際に起業している風景、活動を投稿することで多くの方にアプローチしたいと考え、活動のリアルを動画としても発信。
+        加えて、ブログでは開催の実際の様子を写真を用いて説明しています。</p>
+      <div class="grad-btn"><span class="fa fa-chevron-down"></span>広報活動をもっと詳しく</div>
+    </div>
+  </div>
+</div>

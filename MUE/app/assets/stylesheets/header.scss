@@ -9,8 +9,8 @@ $widthSp: 934px; //スマートフォン
     @content;
   }
 }
-@mixin tab {
-  @media (min-width: $widthTab) and (max-width: ($widthPC)) {
+@mixin tab($minTab, $maxTab) {
+  @media (min-width: $minTab) and (max-width: ($maxTab)) {
     @content;
   }
 }

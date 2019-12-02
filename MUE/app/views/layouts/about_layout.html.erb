@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= analytics_init if Rails.env.production? %>
+    <%= favicon_link_tag('favicon.ico') %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0", viewport-fit=cover">
+    <%= display_meta_tags(default_meta_tags) %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Cookie|Dancing+Script|Great+Vibes|Parisienne|Tangerine&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <menu>
+      <input id="menu_button_input" type="checkbox">
+      <div id="head">
+        <div id="logo">
+          <%= image_tag("top/logo.png", id: "logo-image-top") %>
+          <span id="name">
+            <span class="name1">
+              Meet up English
+            </span>
+            <span class="name2">
+              日常に留学を
+            </span>
+          </span>
+        </div>
+        <label id="menu_button" for="menu_button_input"><div id="humberger"> <div></div><div></div><div></div></div><div class="my_times"><span></span></div></label>
+      </div>
+      <div id="items">
+        <a href=<%= top_path %> id="to_top">TOP<span></span></a>
+        <a href=<%= about_path %>>ABOUT<span></span></a>
+        <a href=<%= root_path %> data-turbolinks="false">SHCEDULE<span></span></a>
+        <a href=<%= blogs_path(event_search: "開催の様子") %> data-turbolinks="false">BLOG<span></span></a>
+      </div>
+    </menu>
+
+    <main>
+      <%= yield %>
+
+      <div id="create_contact"></div>
+      <div class="contact-top">
+          <a class="contact_btn" data-remote="true" href="/contacts/new">
+            <span class="">
+              お問い合わせはこちら
+            </span>
+          </a>
+      </div>
+
+      <footer class="footer-top">
+        <div id="SNS">
+          <span id="title">OFFICIAL&nbsp;&nbsp;&nbsp;&nbsp;ACCOUNT</span>
+          <div id="button">
+              <%= link_to simple_format('<i class="fab fa-youtube"></i>'), "https://www.youtube.com/channel/UC1OTguN4K5GNf8I5ZeJZkGg", class: 'youtube-footer' %>
+              <%= link_to simple_format('<i class="fab fa-twitter"></i>'), "https://twitter.com/meetup_english?ref_src=twsrc%5Etfw", class: 'twitter' %>
+              <%= link_to simple_format('<i class="fab fa-instagram"></i>'), "https://www.instagram.com/meet_up_english?ref=badge", class: 'instagram' %>
+              <%= link_to simple_format('<i class="fab fa-facebook-square"></i>'), "https://www.facebook.com/Meet-Up-English-101228061233520/?modal=admin_todo_tour", class: 'facebbok' %>
+          </div>
+        </div>
+        <div id="links" class="onlysp">
+          <%= link_to '概要', about_path %>
+          <%= link_to '開催スケジュール', root_path, data: {"turbolinks"=>false} %>
+          <%= link_to 'ブログ', blogs_path(event_search: "開催の様子"), data: {"turbolinks"=>false} %>
+        </div>
+        <span id="mail">mail: meetup_english-tokyo@yahoo.co.jp</span>
+        <span class="footer3-top">© Meet up English Group</span>
+      </footer>
+    </main>
+
+
+  </body>
+</html>

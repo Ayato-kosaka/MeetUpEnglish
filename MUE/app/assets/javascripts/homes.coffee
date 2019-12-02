@@ -32,6 +32,6 @@ $(document).on 'turbolinks:load', ->
 
 #homes/about
   $(".more").hide()
-  $(".grad-btn").click ->
+  $("#about .grad-btn").click ->
     $(@).prev(".more").show()
     $(@).hide()

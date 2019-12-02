@@ -3,10 +3,7 @@
     <div class="modal-message-box">
 
 
-
-      <h1>Contact</h1>
       <p>Meet Up English のホームページにご訪問していただきありがとうございます。</p>
-      <%= form_with( model: contact, url: contact.event ? '/contacts/'+contact.event_id.to_s+'/create' : '/contacts', remote: true ) do |form| %>
 
 
         <% if contact.errors.any? %>
@@ -20,37 +17,37 @@
             </ul>
           </div>
         <% end %>
-        <div class="grid">
+      <%= form_with( model: contact, url: contact.event ? '/contacts/'+contact.event_id.to_s+'/create' : '/contacts', remote: true ) do |form| %>
 
-        <div class="field grid1">
-          <%= form.label :name %>
-          <%= form.text_field :name %>
+        <div class="field">
+          <div id="label"><%= form.label :name %></div>
+          <div id="input"><%= form.text_field :name %></div>
         </div>
 
-        <div class="field grid2">
-          <%= form.label :email %>
-          <%= form.text_field :email %>
+        <div class="field">
+          <div id="label"><%= form.label :email %></div>
+          <div id="input"><%= form.text_field :email %></div>
         </div>
 
-        <div class="field grid3">
-          <%= form.label :title %>
-          <%= form.text_field :title, value: (@title_value ? @title_value : (contact.title ? contact.title : '')) %>
+        <div class="field">
+          <div id="label"><%= form.label :title %></div>
+          <div id="input"><%= form.text_field :title, value: (@title_value ? @title_value : (contact.title ? contact.title : '')) %></div>
         </div>
 
-        <div class="field grid4">
-          <%= form.label :message %>
-          <%= form.text_area :message, value: (@message_value ? @message_value : (contact.message ? contact.message : ''))  %>
+        <div class="field">
+          <div id="label"><%= form.label :message %></div>
+          <div id="input"><%= form.text_area :message, value: (@message_value ? @message_value : (contact.message ? contact.message : ''))  %></div>
         </div>
+        <button type="submit" name="commit" onclick="ga('send','event','submit','click',);" class="send" data-disable-with="Sending...">
+          Send <i class="fas fa-arrow-circle-right"></i>
+        </button>
 
-        </div>
-
-        <p style="text-align: center;"><%= form.submit :value=>"送信", :onClick=>"ga('send','event','submit','click',#{@title_value&.gsub(' ','')});", :class=>'send', data: { disable_with: "送信中..." } %></p>
       <% end %>
 
 
 
 
     </div>
-    <button class="modal-close-btn">close</button>
+    <button class="modal-close-btn">閉じる</button>
   </div>
 </div>

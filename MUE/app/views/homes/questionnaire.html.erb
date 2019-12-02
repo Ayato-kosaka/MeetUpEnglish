@@ -1,0 +1,41 @@
+<div id="questionnaire">
+  <div id="image"><span class="a">Meet up Enlgish にご参加ありがとうございます<br></span>
+    <span class="b">より良い英会話を開催するため<br>アンケートにご協力お願いします</span></div>
+  <form action=<%= questionnaire_create_path %> method="post" id="letter_body">
+    <div class="q">１.　英会話にご満足いただけましたか？</div>
+    <div class="a">
+      <input type="radio" name="one" value="1">満足
+      <input type="radio" name="one" value="2">やや満足
+      <input type="radio" name="one" value="3">普通
+      <input type="radio" name="one" value="4">やや不満
+      <input type="radio" name="one" value="5">不満</div>
+    <div class="q">２.　担当の先生にご満足いただけましたか？</div>
+    <div class="a">
+      <input type="radio" name="two" value="1">満足
+      <input type="radio" name="two" value="2">やや満足
+      <input type="radio" name="two" value="3">普通
+      <input type="radio" name="two" value="4">やや不満
+      <input type="radio" name="two" value="5">不満</div>
+    <div class="q">３.　英会話を習ったことはありますか？</div>
+    <div class="a">
+      <input type="radio" name="three" value="1">習っていた
+      <input type="radio" name="three" value="2">習っている
+      <input type="radio" name="three" value="3">習っていない</div>
+    <div class="q">４.　一番都合のいい時間帯を教えてください。</div>
+    <div class="a">
+      <input type="radio" name="four" value="1">午前中
+      <input type="radio" name="four" value="2">12時～15時
+      <input type="radio" name="four" value="3">16時～20時</div>
+    <div class="q">５.　人数設定はいかがでしたでしょうか。</div>
+    <div class="a">
+      <input type="radio" name="five" value="1">丁度良い
+      <input type="radio" name="five" value="2">多く感じた
+      <input type="radio" name="five" value="3">少なく感じ</div>
+    <div class="q">６.　お写真はブログ等で使用させていただいてもよろしいですか？</div>
+    <div class="a">
+      <input type="radio" name="six" value="1">はい
+      <input type="radio" name="six" value="2">顔を出さないなら
+      <input type="radio" name="six" value="3">いいえ</div>
+    <input type="submit" value="送信する" class="grad-btn" data-disable-with="送信中...">
+  </form>
+</div>

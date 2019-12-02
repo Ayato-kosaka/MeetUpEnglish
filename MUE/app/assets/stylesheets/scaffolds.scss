@@ -45,11 +45,6 @@ div.actions {
 #error_explanation {width:450px;border:2px solid red;padding:7px 7px 0;margin-bottom:20px;background-color:#f0f0f0}
 #error_explanation h2 {text-align:left;font-weight:bold;padding:5px 5px 5px 15px;font-size:12px;margin:-7px -7px 0;background-color:#c00;color:#fff}
 #error_explanation ul li {font-size:12px;list-style:square}
-label {display:block}
-textarea {
-	width: 100%;
-	height: 60vh;
-}
 
 .text_orange_gradation{font-weight: bold;color: #FF8C00;background: -webkit-linear-gradient(0deg, #40E0D0, #FF8C00, #FF0080);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
 .grid{display: grid;}
@@ -70,10 +65,11 @@ textarea {
 
 
 
-.send {border: none;background: -moz-linear-gradient(45deg, #B7CF4F, #298520);background: -webkit-linear-gradient(45deg, #B7CF4F, #298520);background: linear-gradient(45deg, #B7CF4F, #298520);background-position-x: 0%;background-position-y: 0%;background-size: auto;display: inline-block;font-size: 24px;border-radius: 3px;color: white;text-decoration: none;box-shadow: 0px 2px 10px #999;cursor: pointer;transition: all 0.3s ease;margin: 20px;padding: 15px 25px;background-size: 250% 100% !important;background-position: 100% 0% !important;
-&:active {transform: translateY(0);background-position: 50% !important;}&:hover {background-position: 0% !important;box-shadow: 0 0px 12px #BBB;transition: all 0.3s ease;transform: translateY(-1px);}
-}
+// .send {border: none;background: -moz-linear-gradient(45deg, #B7CF4F, #298520);background: -webkit-linear-gradient(45deg, #B7CF4F, #298520);background: linear-gradient(45deg, #B7CF4F, #298520);background-position-x: 0%;background-position-y: 0%;background-size: auto;display: inline-block;font-size: 24px;border-radius: 3px;color: white;text-decoration: none;box-shadow: 0px 2px 10px #999;cursor: pointer;transition: all 0.3s ease;margin: 20px;padding: 15px 25px;background-size: 250% 100% !important;background-position: 100% 0% !important;
+// &:active {transform: translateY(0);background-position: 50% !important;}&:hover {background-position: 0% !important;box-shadow: 0 0px 12px #BBB;transition: all 0.3s ease;transform: translateY(-1px);}
+// }
 
+@import 'header.scss';
 
 #show_detail #modalWindow{ .modal-message-box{text-align: left !important;background: white!important;}}
 
@@ -84,20 +80,17 @@ textarea {
 
 
 
-#overlay {width: 100%;height: 100%;position: fixed;top: 0;left: 0;background: rgba(0, 0, 0, 0.3);z-index: 1;}
-#modalWindow {width: 90%;height: 80%;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);background-color: white;z-index: 2;display: flex;flex-wrap: wrap;justify-content: space-between;
-  .modal-message-box {background: radial-gradient(#cae2b7 35%, #a0f58c 50%, #42a958bf 75%, #4dcf86 85%); padding: 10px 5px;overflow-y: auto;width: 100%;height: calc(100% - 60px);text-align: center;
-    h1{font-size: 5.67rem;font-weight: inherit;font-family: Monotype Corsiva, fantasy;}
+#overlay {width: 100%;height: 100%;position: fixed;top: 0;left: 0;background: rgba(0, 0, 0, 0.3);z-index: 100;}
+#modalWindow {width: 90%;height: 80%;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);background-color: white;z-index: 2;@include flexbox;@include flex-direction(column);@include justify-content(space-between);
+  .modal-message-box {color: rgb(128, 128, 128);overflow-y: auto;width: 100%;
+    h1{font-size: 5.67rem;font-weight: inherit;}
     img{max-width: 100%;height: auto;}
-    label{font-family: Monotype Corsiva, fantasy;font-size: 2.154rem;font-weight: 400;line-height: 0.643;}
   }
 
   .modal-close-btn {
-    font-size: 30px;
-    line-height: 30px;
+    font-size: 20px;
     width: 100%;
-    height: 60px;
-    color: white;background: #179c17;box-shadow: 0 1px 4px rgba(0,0,0,0.3);cursor: pointer;border: none;top: 0px;
+    color: white;background: rgb(128, 128, 128);cursor: pointer;border: none;top: 0px;
   }
 }
 
@@ -134,11 +127,6 @@ textarea {
 
   //contact
   #create_contact{
-    .grid{grid-template-rows: 80px 80px 80px 240px;max-width: 800px;margin: auto;}.grid1{grid-row: 1;}.grid2{grid-row: 2;}.grid3{grid-row: 3;}.grid4{grid-row: 4;}
-    .field{text-align: left;margin: 10px 20px}label{display: inline-block;margin-bottom: 5px;text-align: left;}
-    .grid input,textarea{width: calc(100% - 20px);border-radius: 5px;border: none;line-height: 1.8em;font-size: 1.3em;padding: 8px 10px;}textarea{height: 184px;}
-    .field_with_errors{display: block;}h1{font-size: 2.89em}p{font-size: 1.923rem;font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;}
-    #error_explanation{margin: 0 auto 20px;background-color: white;width: 100%;max-width: 450px;h2{background-color: red;color: black;text-align: center;}}
     .thanks{position: absolute;top: 50%;left: 50%;transform: translateY(-50%) translateX(-50%);-webkit-\ transform: translateY(-50%) translateX(-50%);width: 100%;}
   }
 
@@ -171,11 +159,6 @@ textarea {
 
   //contact
   #create_contact{
-    .grid{grid-template-rows: 80px 80px 80px;grid-template-columns: 320px 1fr;max-width: 800px;margin: auto;}.grid1{grid-column: 1;grid-row: 1;}.grid2{grid-column: 1;grid-row: 2;}.grid3{grid-column: 1;grid-row: 3;}.grid4{grid-column: 2;grid-row: 1/4;}
-    .field{text-align: left;margin: 10px 20px}label{display: inline-block;margin-bottom: 5px;text-align: left;}
-    .grid input,textarea{width: calc(100% - 20px);border-radius: 5px;border: none;line-height: 1.8em;font-size: 1.3em;padding: 8px 10px;}textarea{height: 184px;}
-    .field_with_errors{display: block;}p{font-size: 1.9em;font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;}
-    #error_explanation{margin: 0 auto 20px;background-color: white;h2{background-color: red;color: black;}}
     .thanks{position: absolute;top: 50%;left: 50%;transform: translateY(-50%) translateX(-50%);-webkit-\ transform: translateY(-50%) translateX(-50%);width: 100%;}
   }
 

@@ -184,6 +184,25 @@ p.read_more{
 
 
 
+.grad-btn {
+  z-index: 2;
+  width: 220px;
+  padding: .5em 0;
+  border-radius: 2px;
+  background:     #44aefb;
+  color:    #fff;
+  font-size: 1.3rem;
+  text-align: center;
+  cursor: pointer;
+  transition: .2s ease;
+  box-shadow: 0 0 3px
+      rgba(0,0,0,.3);
+  border: none;
+  @include pc{margin: auto;}
+  .fa{
+    margin-right: .5em;
+  }
+}
 
 
 
@@ -220,24 +239,6 @@ p.read_more{
   }
   .more{
     margin-top: 60px;
-  }
-  .grad-btn {
-    z-index: 2;
-    width: 220px;
-    padding: .5em 0;
-    border-radius: 2px;
-    background:     #44aefb;
-    color:    #fff;
-    font-size: 1.3rem;
-    text-align: center;
-    cursor: pointer;
-    transition: .2s ease;
-    box-shadow: 0 0 3px
-        rgba(0,0,0,.3);
-    @include pc{margin: auto;}
-    .fa{
-      margin-right: .5em;
-    }
   }
   & > *{
     position: relative;
@@ -303,6 +304,7 @@ main{
     float: right;
   }
   @include sp{
+    width: 100%;
     position: absolute;
     top: 48px;
   }
@@ -560,10 +562,133 @@ menu{
 }
 
 
+//contact
+#create_contact{
+  font-family: "メイリオ", sans-serif;
+  font-size: 1.368rem;
+  color: rgb(128, 128, 128);
+  p{background-color:#f6f6f6;
+    color:black;
+    margin-bottom: 60px;
+    padding: 10px 10px;}
+  form{
+    text-align: center;
+    .field{
+      @include flexbox;
+      @include justify-content(center);
+      #label{
+        width: 67px;
+        margin-right: 5%;
+      }
+      #label{
+        text-align: right;
+        padding: 9px 0;
+      }
+      #input{
+        @include sp{width: 60%;}
+        @include pc{width: 35%;}
+      }
+      input,textarea{
+        width: calc(100% - 18px);
+        border: 1px solid rgb(191, 191, 191);
+        border-radius: 10px;
+        padding: 9px;
+      }
+      textarea{
+        height: 100px;
+      }
+    }
+    .send{
+      font-size: 24px;
+      cursor: pointer;
+      color: gray;
+      background-color:white;
+      font-weight: 200;
+      border: none;
+      margin-top: 6px;
+      .fa-arrow-circle-right{
+        background: gray;
+        color: white;
+        border-radius: 50%;
+        border: 1px solid gray;
+        @include sp{padding: 0 0 1px 0.38px;}
+        @include pc{padding: 0 0 1.1px 0.38px;}
+      }
+      &:hover{
+        .fa-arrow-circle-right{
+          background:white;
+          color: gray;
+          border: none;
+        }
+      }
+    }
+  }
+  #error_explanation{
+    h2{display: none;}
+    border: none;
+    background-color: white;
+    width: 100%;
+    padding: 0px;
+    color: #ff6161;
+    ul{@include sp{margin-left: 10vw;};@include pc{margin-left: 18vw;};}
+  }
+  .field_with_errors{
+    width: 100%;display: block;padding: 0;background-color: white;
+    input,textarea{
+      border: 1px solid red!important;
+      background-color: #ffd7d7;
+    }
+  }
+}
 
 
-
-
+//アンケート
+#questionnaire{
+  font-family: $busoan;
+  #image{
+    @include flexbox;
+    @include flex-direction(column);
+    background-image: url(<%= asset_url("homes/questionnaire.jpg") %>);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    color: white;
+    width: 65%;
+    max-height: 270px;
+    padding: 0 27% 0 8%;
+    @include sp(571px){
+      height: 47.29vw;
+      font-size: 4.101vw;
+    }
+    @include tab(571px, 934px){
+      font-size: 23px;
+      height: 270px;
+      width: 361.483px;
+      padding: 0 calc( 0.771 * calc(100% - 361.483px)) 0 calc( 0.229 * calc(100% - 361.483px));
+    }
+    @include pc{
+      height: 38.78vw;
+      font-size: 1.962vw;
+    }
+    .a{
+      margin: 4% 0 4% 0;
+    }
+  }
+  #letter_body{
+    width: 84%;
+    padding: 30px 8%;
+    @include sp(571px){
+      font-size: 3.733vw;
+      .q{margin-bottom: 8px;}
+      .a{margin-bottom: 36px;}
+    }
+    @include pc(571px){
+      font-size: 19px;
+      .q{margin-bottom: 18px;}
+      .a{margin-bottom: 65px;}
+    }
+  }
+}
 
 
 //overview
