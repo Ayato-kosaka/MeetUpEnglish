@@ -26,6 +26,11 @@
     <%= form.label :city_id %>
     <%= form.number_field :city_id, value:params[:selected_city] %>
   </div>
+  <% elsif %>
+  <div class="field">
+    <%= form.label :city_id %>
+    <%= form.select :city_id,City.all.map{|n|[n.name,n.id]} %>
+  </div>
   <% end %>
 
   <div class="field">
