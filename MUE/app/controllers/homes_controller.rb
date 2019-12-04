@@ -82,6 +82,10 @@ class HomesController < ApplicationController
     @cities = City.where(prefecture_id: @selectedPrefecture_id)
   end
 
+  def overview
+    redirect_to about_path
+  end
+
   def top
     render layout: false #application.html.erbを適用したくない
   end
