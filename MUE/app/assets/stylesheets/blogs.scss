@@ -5,42 +5,65 @@
 @import 'header.scss';
 
 //index
-#category-title{
-  color: black;
-  border-bottom-style: none;
-}
-#category-name{
-  margin-left: 3.419rem;
-  font-size: 2.051rem;
-}
-#category-blog{
-  @include sp{height: calc(14vw + 10px);overflow: hidden;}
-  .flex-blog{
-    display: flex;
-    @include pc{flex-wrap: wrap;}
-    @include sp{
-      overflow-x: scroll;
+$blog_index_image_width: 600px;
+#blog_index{
+  font-family: "メイリオ", sans-serif;
+  #eyecatch{
+    @include flexbox;
+    @include justify-content(center);
+    @include pc{margin: 30px 0 80px 0;}
+    img{
+      width: 100%;
+      max-width: $blog_index_image_width;
     }
-    .item{
-      @include sp{margin: 0 3.5vw 6px;}
-      @include pc{margin: 3px 22px;}
-      img{
-        border-radius: calc(7vw + 3px);
-        border-width: 2px;
-        border-color: #bcbcb6;
-        border-style: solid;
-        padding: 3px;
-        @include sp{width: 14vw;}
-        @include pc{width: 96.9px;}
+  }
+  #other{
+    @include pc{
+      @include flexbox;
+      @include flex-direction(row-reverse);
+    }
+    #category{
+      color: gray;
+      width: calc(75% + 50px);
+      margin: 0 auto;
+      #category-title{
+        font-size: calc(27px + 1.8vw);
+        font-weight: 100;
+        text-shadow: 1px 2px 3px gray;
+        margin-bottom: 20px;
+      }
+      #name{
+        @include flexbox;
+        @include pc{
+          @include flex-direction(column);
+        }
+        @include sp{
+          @include flex-wrap(wrap);
+        }
+        padding: 0 25px;
+        .item{
+          font-size: calc(11px + 0.6vw);
+          color: gray;
+          @include sp{width: 33%;}
+        }
+        .active{
+          color: #44aefb;
+        }
       }
     }
-    .active{img{border-color: #89f6ff;}}
+    #articles{
+      @include pc{margin: 16.7667px 20px;}
+    }
   }
 }
 
+
 article#blog{
-  width: 75%;
-  margin: 35px auto 35px auto;
+  @include pc{margin: 35px 0;}
+  @include sp{
+    width: 75%;
+    margin: 35px auto 35px auto;
+  }
   overflow: hidden;
   position: relative;
   cursor: pointer;
@@ -78,6 +101,8 @@ article#blog{
     }
   }
 }
+
+
 .blog_h3{padding: 16px 16px 0;margin: 0;font-size: 16px;}
 .around_blog{display: grid;grid-template-columns: 45% 10% 45%;border-top: 1px solid #eee;border-bottom: 1px solid #eee;margin: 40px 0;text-align: center;font-size: 0;}
 .around_blog a{color: #333333;display: block;box-sizing: border-box;line-height: 48px;font-size: 14px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;position: relative;}
@@ -176,5 +201,14 @@ article#blog{
         }
       }
     }
+  }
+}
+
+
+
+#blog_form, #section_form{
+  textarea{
+    width: 50%;
+    height: 500px;
   }
 }

@@ -1,46 +1,49 @@
-<%= form_with(model: section, local: true) do |form| %>
-  <% if section.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(section.errors.count, "error") %> prohibited this section from being saved:</h2>
+<div id="section_form">
+  <%= form_with(model: section, local: true) do |form| %>
+    <% if section.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(section.errors.count, "error") %> prohibited this section from being saved:</h2>
 
-      <ul>
-      <% section.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% section.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div id="how_to_last_event"><p class="how_to_last_event_style">前回の開催の様子のツイッターカードの作り方</p></div>
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :title %>
     </div>
-  <% end %>
 
-  <div id="how_to_last_event"><p class="how_to_last_event_style">前回の開催の様子のツイッターカードの作り方</p></div>
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+    <div class="field">
+      <%= form.label :text %>
+      <%= form.text_area :text %>
+    </div>
 
-  <div class="field">
-    <%= form.label :text %>
-    <%= form.text_area :text %>
-  </div>
+    <div class="field">
+      <%= form.label :image %>
+      <%= form.file_field :image %>
+    </div>
 
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
+    <div class="field" <% if params[:selected_blog] %> style="display:none" <% end %>>
+      <%= form.label :blog_id %>
+      <%= form.number_field :blog_id , value:params[:selected_blog]?params[:selected_blog]:0%>
+    </div>
 
-  <div class="field" <% if params[:selected_blog] %> style="display:none" <% end %>>
-    <%= form.label :blog_id %>
-    <%= form.number_field :blog_id , value:params[:selected_blog]?params[:selected_blog]:0%>
-  </div>
+    <div class="field">
+      <%= form.label :index %>
+      <%= form.number_field :index , value:@section.index ? @section.index : Section.all.size%>
+    </div>
 
-  <div class="field">
-    <%= form.label :index %>
-    <%= form.number_field :index , value:@section.index ? @section.index : Section.all.size%>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
 <% end %>
+</div>
+
 <script type="text/javascript">
   $('#how_to_last_event').one('click',function(e){
     console.log("hello")
