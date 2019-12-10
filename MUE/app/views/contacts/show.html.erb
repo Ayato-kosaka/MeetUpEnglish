@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<% if @contact.name ~= /^[0-9]+$/ %>
+<% if @contact.name =~ /^[0-9]+$/ %>
   <%= form_with(model: @contact, url: contact_path(@contact.id), local: true) do |form| %>
     <%= form.label :name %>
     <%= form.text_field :name %>
