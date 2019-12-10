@@ -70,6 +70,11 @@ class ContactsController < ApplicationController
     end
   end
 
+  def update
+    @contact.update(name: params[name])
+    redirect_to contacts_path
+  end
+
   # DELETE /contacts/1
   # DELETE /contacts/1.json
   def destroy

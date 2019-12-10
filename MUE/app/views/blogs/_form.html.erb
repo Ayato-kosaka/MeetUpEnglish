@@ -1,45 +1,46 @@
-<div id="blog_form"><%= form_with(model: blog, local: true) do |form| %>
-  <% if blog.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
+<div id="blog_form">
+  <%= form_with(model: blog, local: true) do |form| %>
+    <% if blog.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
 
-      <ul>
-      <% blog.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% blog.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :youtube %>youtubeを投稿する場合はcheck!->
+      <%= form.check_box :youtube %>
+    </div>
+
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= form.label :text %>youtubeを投稿する場合はurlをの'v='以降<br>例)https://www.youtube.com/watch?v=eSPs9a2qpIw のとき eSPs9a2qpIw<br>
+      <%= form.text_area :text%>
+    </div>
+
+    <div class="field">
+      <%= form.label :image %>youtubeを投稿する場合は指定なし<br>
+      <%= form.file_field :image %>
+    </div>
+
+    <div class="field">
+      <%= form.label :blogcategory_id %>
+      <%= form.select :blogcategory_id, Blogcategory.all.map{|m| [m.name,m.id]} %>
+    </div>
+
+    <%= link_to 'Click here to create new category', blogs_new_category_path %>
+
+    <div class="actions">
+      <%= form.submit %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :youtube %>youtubeを投稿する場合はcheck!->
-    <%= form.check_box :youtube %>
-  </div>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :text %>youtubeを投稿する場合はurlをの'v='以降<br>例)https://www.youtube.com/watch?v=eSPs9a2qpIw のとき eSPs9a2qpIw<br>
-    <%= form.text_area :text%>
-  </div>
-
-  <div class="field">
-    <%= form.label :image %>youtubeを投稿する場合は指定なし<br>
-    <%= form.file_field :image %>
-  </div>
-
-  <div class="field">
-    <%= form.label :blogcategory_id %>
-    <%= form.select :blogcategory_id, Blogcategory.all.map{|m| [m.name,m.id]} %>
-  </div>
-
-  <%= link_to 'Click here to create new category', blogs_new_category_path %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
 </div>
