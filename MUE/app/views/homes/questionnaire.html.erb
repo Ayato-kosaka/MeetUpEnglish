@@ -1,7 +1,7 @@
 <div id="questionnaire">
   <div id="image"><span class="a">Meet up Enlgish にご参加ありがとうございます<br></span>
     <span class="b">より良い英会話を開催するため<br>アンケートにご協力お願いします</span></div>
-  <form action=<%= questionnaire_create_path %> method="post" id="letter_body">
+  <form action=<%= questionnaire_create_path(params[:id]) %> method="post" id="letter_body">
     <div class="q">１.　英会話にご満足いただけましたか？</div>
     <div class="a">
       <input type="radio" name="one" value="1">満足

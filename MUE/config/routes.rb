@@ -19,8 +19,8 @@ Rails.application.routes.draw do
   get 'overview', to: 'homes#overview'
   get 'about', to: 'homes#about'
   get 'top', to: 'homes#top'
-  get 'questionnaire', to: 'homes#questionnaire', as: 'questionnaire'
-  post 'questionnaire_create', to: 'homes#questionnaire_create', as: 'questionnaire_create'
+  get 'questionnaire/:id', to: 'homes#questionnaire', as: 'questionnaire'
+  post 'questionnaire_create/:id', to: 'homes#questionnaire_create', as: 'questionnaire_create'
   get 'schedule/:id', to: 'homes#schedule', as: 'schedule'
   get 'homes/showDetailSchedule'
   resources :homes

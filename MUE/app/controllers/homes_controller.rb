@@ -100,8 +100,8 @@ class HomesController < ApplicationController
   def questionnaire_create
     message = "　英会話にご満足いただけましたか？→#{['満足','やや満足','普通','やや不満','不満'][params['one'].to_i-1]}\n　担当の先生にご満足いただけましたか？→#{['満足','やや満足','普通','やや不満','不満'][params['two'].to_i-1]}
       　英会話を習ったことはありますか？→#{['習っていた','習っている','習っていない'][params['three'].to_i-1]}\n　一番都合のいい時間帯を教えてください。→#{['午前中','12時～15時','16時～20時'][params['for'].to_i-1]}
-      　人数設定はいかがでしたでしょうか。→#{['丁度良い','多く感じた','少なく感じ'][params['five'].to_i-1]}\n　お写真はブログ等で使用させていただいてもよろしいですか？→#{['はい','顔を出さないなら','いいえ'][params['six'].to_i-1]}"
-    Contact.create(title: "アンケート", name: (Contact.last.id+1).to_s, message: message, email: "")
+      　人数設定はいかがでしたでしょうか。→#{['丁度良い','多く感じた','少なく感じた'][params['five'].to_i-1]}\n　お写真はブログ等で使用させていただいてもよろしいですか？→#{['はい','顔を出さないなら','いいえ'][params['six'].to_i-1]}"
+    Contact.create(title: "アンケート with " + Teacher.find(params[:id]).name, name: (Contact.last.id+1).to_s, message: message, email: "")
     redirect_to top_path
   end
 
