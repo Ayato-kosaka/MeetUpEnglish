@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-  before_action :set_contact, only: [:show, :destroy]
+  before_action :set_contact, only: [:show, :destroy, :update]
   skip_before_action :require_Admin,only: [:new, :create,:join_new,:join_create]
 
   # GET /contacts
@@ -71,7 +71,7 @@ class ContactsController < ApplicationController
   end
 
   def update
-    @contact.update(name: params[name])
+    @contact.update(name: params[:contact][:name])
     redirect_to contacts_path
   end
 
