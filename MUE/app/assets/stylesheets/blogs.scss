@@ -178,3 +178,11 @@ article#blog{
     }
   }
 }
+
+
+#blog_form, #section_form{
+  textarea{
+    width: 50%;
+    height: 500px;
+  }
+}
