@@ -1,28 +1,44 @@
 <% set_meta_tags title: @blog.title, description: @blog.text,og: { image: @blog.image.attachment.service.send(:object_for, @blog.image.key).public_url }%>
 
+<div id="create_comment"></div>
+
 <div id="blog_paht">
 
-  <p id="notice"><%= notice %></p>
-  <div id="create_comment">
+
+  <div id="header">
+    <%= image_tag 'homes/officialblog.png' %>
+    <div id="categories"><% Blogcategory.all.each do |category| %>
+      <a href="/blogs?event_search=<%= category.name %>"><%= category.name %></a>
+    <% end %></div>
   </div>
+
+  <div id="pankuzu">
+    <a href="/top">TOP</a><i class="fas fa-chevron-right"></i>
+    <a href=<%= blogs_path(event_search: @blog.category.name) %>>BLOG(<%= @blog.category.name %>)</a><i class="fas fa-chevron-right"></i>
+    <span><%= @blog.title.truncate(20) %></span>
+  </div>
+
   <div class="around_blog">
-    <a class="left_blog" href="/blogs/<%=@next_blog? @next_blog.id: ""%>" data-turbolinks="false"><% if @next_blog then %><i>←</i><%= @next_blog.title %><% end %></a>
-    <a class="blogs_blog" href="/blogs/" data-turbolinks="false"><div>一覧</div></a>
-    <a class="right_blog" href="/blogs/<%=@before_blog? @before_blog.id: ""%>" data-turbolinks="false"><% if @before_blog then %><i><div>→</div></i><%=@before_blog.title%><% end %></a>
+    <a class="left_blog" href="/blogs/<%= @next_blog&.id %>"><i></i><span><%= @next_blog&.title %></span></a>
+    <a class="right_blog" href="/blogs/<%=  @before_blog&.id %>"><span><%= @before_blog&.title %></span><i></i></a>
   </div>
-
-
-  <h1><%= @blog.title %></h1>
-  <%= image_tag @blog.image, class: "blog_image"%>
 
   <!-- タイトル本文 -->
-  <%=  if session[:role]=="Admin" then link_to 'EditBlog', edit_blog_path(@blog) end %>
-  <p class="text"><%= raw(@blog.text.gsub(/\n/, '<br>')) %></p>
+  <div id="title">
+    <h1><%= @blog.title %></h1>
+    <p id="date" ><%= @blog.created_at.strftime("%Y年%m月%d日") %></p>
+  </div>
+  <div id="title_text">
+    <%= image_tag @blog.image, class: "blog_image"%>
+    <%=  if session[:role]=="Admin" then link_to 'EditBlog', edit_blog_path(@blog) end %>
+    <p class="text"><%= raw(@blog.text.gsub(/\n/, '<br>')) %></p>
+  </div>
 
 
 
-  <!-- メニュー -->
-  <div class="toc_container">
+
+  <!-- 目次 -->
+  <!-- <div class="toc_container">
   <p >この記事の目次</p>
   <ul style="display: block;">
   <% @blog.sections.order(:index).each do |n| %>
@@ -30,28 +46,32 @@
   <% end %>
   <li><a href="#blog_index_comment">コメント</a></li>
   </ul>
-  </div>
+  </div> -->
 
 
 
   <!-- セクション -->
-  <section id="blog_section">
-    <%= if session[:role]=="Admin" then link_to 'NewSection', new_section_path(selected_blog:@blog.id) end %>
-    <% @blog.sections.order(:index).each do |n| %>
-      <h2 id="blogIndex<%= n.id %>"><%= n.title %></h2>
-      <% if session[:role]=="Admin" %><%= link_to 'EditSection', edit_section_path(n.id,selected_blog:@blog.id) %> | <%= link_to 'DestroySection', n, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
-      <% if n.image.attached? %>
-      <%= image_tag n.image, class: "section_image"%>
+  <div id="sections">
+    <section id="blog_section">
+      <%= if session[:role]=="Admin" then link_to 'NewSection', new_section_path(selected_blog:@blog.id) end %>
+      <% @blog.sections.order(:index).each do |n| %>
+        <h2 id="blogIndex<%= n.id %>"><%= n.title %></h2>
+        <% if session[:role]=="Admin" %><%= link_to 'EditSection', edit_section_path(n.id,selected_blog:@blog.id) %> | <%= link_to 'DestroySection', n, method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
+        <% if n.image.attached? %>
+        <%= image_tag n.image, class: "section_image"%>
+        <% end %>
+        <p><%= raw(n.text.gsub(/\n/, '<br>')) %></p>
       <% end %>
-      <p><%= raw(n.text.gsub(/\n/, '<br>')) %></p>
-    <% end %>
-  </section>
+    </section>
+  </div>
+
+
+  <p id="posted_on">Posted on <%= @blog.created_at.strftime("%Y年%m月%d日") %></p>
 
   <!-- 前後のブログ -->
   <div class="around_blog">
-    <a class="left_blog" href="/blogs/<%=@next_blog? @next_blog.id: ""%>" data-turbolinks="false"><% if @next_blog then %><i>←</i><%= @next_blog.title %><% end %></a>
-    <a class="blogs_blog" href="/blogs/" data-turbolinks="false"><div>一覧</div></a>
-    <a class="right_blog" href="/blogs/<%=@before_blog? @before_blog.id: ""%>" data-turbolinks="false"><% if @before_blog then %><i><div>→</div></i><%=@before_blog.title%><% end %></a>
+    <a class="left_blog" href="/blogs/<%= @next_blog&.id %>" data-turbolinks="false"><i></i><span><%= @next_blog&.title %></span></a>
+    <a class="right_blog" href="/blogs/<%=  @before_blog&.id %>" data-turbolinks="false"><span><%= @before_blog&.title %></span><i></i></a>
   </div>
 
 

@@ -6,7 +6,7 @@ class CavesController < ApplicationController
   # GET /caves
   # GET /caves.json
   def index
-    @caves = Cafe.all
+    @caves = Cafe.all.order(:id)
   end
 
   # GET /caves/1

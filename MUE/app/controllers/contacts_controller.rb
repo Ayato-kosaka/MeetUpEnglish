@@ -26,6 +26,7 @@ class ContactsController < ApplicationController
       @title_value = params[:title]
       @message_value = "【日程】11/30 16:00~17:30\n【料金】1500円\n【場所】町田コンディションニングジム健介\n町田市根岸2丁目1-20TMビル3F"
     end
+    @send_value = "send"
   end
 
   # POST /contacts
@@ -53,6 +54,8 @@ class ContactsController < ApplicationController
       else
         "【形態】マンツーマン\n【時間】#{ @event.start.strftime("%H:%M") }～#{ @event.end.strftime("%H:%M") }\n【日程】#{@event.date.strftime("%Y年 %m月 %d日")}\n【場所】#{@event.city.name}:#{@event.cafe.name}\n【料金】1700円/h\n*カフェにつき、ワンオーダーあり"
       end
+    @send_value = "agree and send"
+    @google_analytics = "ga('send','event','submit','click',);"
     render :new
   end
 

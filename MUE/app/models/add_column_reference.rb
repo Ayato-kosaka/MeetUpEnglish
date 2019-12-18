@@ -1,0 +1,2 @@
+class AddColumnReference < ApplicationRecord
+end

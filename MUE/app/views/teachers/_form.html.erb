@@ -27,6 +27,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :city_id %>
+    <%= form.select :city_id,City.all.map{|n|[n.name,n.id]} %>
+  </div>
+
+  <div class="field">
     <%= form.label :email %>
     <%= form.email_field :email %>
   </div>

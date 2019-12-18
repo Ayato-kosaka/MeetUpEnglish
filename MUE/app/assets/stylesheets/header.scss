@@ -26,6 +26,9 @@ $busoan: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', '�
 
 @mixin logofont($size: 50px){font-family: Helevetica;font-weight: bold;font-style: oblique;font-size: $size}
 
+
+@mixin ellipsis($wid) {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: $wid}
+
 @mixin flexbox {display: -webkit-box;  display: -moz-box;  display: -webkit-flex;  display: -ms-flexbox;  display: flex;}
 @mixin inline-flex {  display: -webkit-inline-box;  display: -moz-inline-box;  display: -webkit-inline-flex;  display: -ms-inline-flexbox;  display: inline-flex;}
 //row row-reverse column column-reverse

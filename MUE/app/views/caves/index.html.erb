@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Caves</h1>
+<%= link_to 'New Cafe', new_cafe_path %>
 
 <table>
   <thead>
@@ -22,7 +23,7 @@
         <td><%= City.find(cafe.city_id).name if cafe.city_id %></td>
         <td><%= cafe.name %></td>
         <td><%= cafe.url? %></td>
-        <td><%= cafe.description %></td>
+        <td><%= cafe.description.truncate(20) %></td>
         <td><%= cafe.images.size %></td>
         <td><%= link_to 'Show', cafe %></td>
         <td><%= link_to 'Edit', edit_cafe_path(cafe) %></td>
@@ -33,5 +34,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Cafe', new_cafe_path %>

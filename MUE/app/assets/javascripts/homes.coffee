@@ -18,20 +18,25 @@ $(document).on 'turbolinks:load', ->
     return false;
 
 
-# homes#home script
-  $(".region_a").click -> #prefectureを選ぶ画面のポチポチ + acgtive
-    region_childern_ul = $(@).parent().children("ul")
-    if $(@).hasClass("active")
-      region_childern_ul.hide()
-      $(@).removeClass("active")
-    else
-      region_childern_ul.show()
-      $(@).addClass("active")
-
-  $("#display_show").parent().children("a").addClass "active" #のちに消す
 
 #homes/about
   $(".more").hide()
   $("#about .grad-btn").click ->
     $(@).prev(".more").show()
     $(@).hide()
+
+
+  $('.slider').slick({
+      autoplay:true,
+      autoplaySpeed:5000,
+      dots:true,
+    })
+
+
+#contact
+  $(".modal-close-btn").click ->
+    $("#overlay").hide()
+
+#schedule
+  $(".toggle_active").click ->
+    $(@).toggleClass('active')

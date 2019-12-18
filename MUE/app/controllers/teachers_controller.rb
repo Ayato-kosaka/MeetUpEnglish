@@ -1,6 +1,5 @@
 class TeachersController < ApplicationController
   before_action :set_teacher, only: [:show, :edit, :update, :destroy]
-  before_action :set_last_event_blog
 
   skip_before_action :require_Admin, only: [:show]
 
@@ -61,6 +60,6 @@ class TeachersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def teacher_params
-      params.require(:teacher).permit(:name, :gender, :selfIntroduction, :email, :password, :password_confirmation, :avatar)
+      params.require(:teacher).permit(:name, :gender, :selfIntroduction, :email, :password, :password_confirmation, :avatar, :city_id_id)
     end
 end

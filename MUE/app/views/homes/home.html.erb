@@ -1,32 +1,75 @@
 <% set_meta_tags title: '駅近カフェですきま時間英会話', description: '日本全国で開催されている「スキマ時間英会話」のスケジュールを掲載しております。
 お住いの都道府県を選択し、お近くのカフェで開催している中からお好きな時間帯を選んで「参加申し込み」からお申し込みください'%>
 
-<h1>開催スケジュール</h1>
-<div id="area_list" style="width: 100%; display: table;">
-  <ul id="area_list_ul">
-    <% Region.all.each_with_index do |region,index| %>
-    <li
-      <% if index==0 %>
-      style="border-top: 1px solid gray;"
-      <% end %>>
-      <a class="region_a"><%=region.name%></a>
+<div id="home">
+  <h1>Meet up English スケジュール</h1>
 
-      <ul class="prefecture_list"
-      <% if index==2 %>
-      style="display: block;" id="display_show"
-      <% else %> style="display: none;" <% end %>>
-        <% if region.prefectures.empty? %>
-          <li><a>準備中</a></li>
-        <% else %>
-          <% region.prefectures.each do |prefecure| %>
-          <li>
-            <%= link_to prefecure.name, schedule_path(prefecure.id), data: {"turbolinks"=>false}  %>
-          </li>
-          <% end %>
-        <% end %>
-      </ul>
+  <div id="pankuzu">
+    <a href="/top">TOP</a><i class="fas fa-chevron-right"></i>
+    <span>SCHEDULE</span>
+  </div>
 
-    </li>
-    <% end %>
-  </ul>
+  <div id="title">
+    <p>英語習得に高額を書けるなんて無駄だ</p>
+    <p>気軽におしゃれなカフェで英会話をしませんか？</p>
+    <p>Meet up English は首都圏の駅近カフェで格安英会話を開催しまいます。</p>
+    <p>授業形態は、全てフリーカンバセーションとなっています。</p>
+    <p>初心者から上級者まで対応可能ですので、お気軽に参加ください。</p>
+  </div>
+
+  <div id="index">
+    <p>このページの目次</p>
+    <div id="box">
+      <a href="#area">エリア選択</a>
+      <a href="#fee">料金説明</a>
+      <a href="#term">参加規約</a>
+    </div>
+  </div>
+
+  <p id="area" class="inner_link"></p>
+
+  <h2>エリア選択</h2>
+  <div id="area_list" style="width: 100%;">
+    <ul class="prefectures">
+      <% @prefectures.each do |prefecture| %>
+        <li>
+          <div class="prefecture_a"><%= prefecture[1] %></div>
+          <ul class="cities">
+            <% @cities.find_all{|n| n[2]==prefecture[0] }.each do |city| %>
+              <%# <% next if city.events==0 %>
+              <%= link_to city[1], schedule_path(city[0]), data: {"turbolinks"=>false}  %>
+            <% end %>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <p id="fee" class="inner_link"></p>
+
+  <h2>料金説明</h2>
+  <div id="fee_explanation">
+    <h3>Meet up English Group の運営するイベント</h3>
+    <a href=<%= schedule_path(1) %>><p style="margin: 0;text-decoration: underline;color: #616161;">町田:武相庵 での開催</p></a>
+    <p class="detail"><span>料金　：</span><span>1000円（カフェにつき、ワンオーダーあり）</span></p>
+    <p class="detail"><span>形態　：</span><span>１対3（最大）</span></p>
+    <p style="margin: 0;">その他の開催</p>
+    <p class="detail"><span>料金　：</span><span>1700円（カフェにつき、ワンオーダーあり）</span></p>
+    <p class="detail"><span>形態　：</span><span>１対１（マンツーマン英会話）</span></p>
+    <!-- <h3>Meet up English Group × <a href="https://www.cg-k.com/" style="text-decoration: underline;color: #616161;">町田コンディショニングジム健介</a> でのイベント</h3>
+    <p style="margin: 0 1em;">日程　　：11/30 16:00~17:30<br>料金　　：90分1500円<br>ご予約は
+      <a href="/contacts/new?title=Meet up English Group × 町田コンディショニングジム健介" style="text-decoration: underline;color: #616161;" data-remote="true">こちら</a></p> -->
+  </div>
+
+  <p id="term" class="inner_link"></p>
+
+  <h2>参加規約</h2>
+  <div id="terms">
+    <p>1  参加申し込み後、数日以内にこちらからメールを差し上げます。<br>メールの受信確認のメールをよろしくお願い致します。</p>
+    <p>2 申し込み後のキャンセルは、開催日の前日の24時までと致します。<br>それ以降のキャンセルは受け付けませんので、ご了承ください。</p>
+    <p>4 お客様が英会話開始時間に遅れる場合などでも、料金割引などは致しかねます。ご了承ください。</p>
+    <p>その他、ご質問等はお問い合わせください。</p>
+  </div>
+
+
 </div>

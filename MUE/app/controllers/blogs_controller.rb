@@ -2,7 +2,6 @@ class BlogsController < ApplicationController
   include Pagy::Backend
   protect_from_forgery
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
-  before_action :set_last_event_blog
 
 
   skip_before_action :require_Admin,only:[:index, :show]
@@ -10,9 +9,10 @@ class BlogsController < ApplicationController
   # GET /blogs
   # GET /blogs.json
   def index
-    @category = Blogcategory.all.order(:id)
+    @categories = Blogcategory.all.order(:id)
     @selected_category_id = params[:event_search] ? Blogcategory.find_by(name: params[:event_search]).id : 1
     @pagy, @blogs = pagy( (@selected_category_id == 1) ? Blog.all.order('created_at desc, id desc') : Blog.where( blogcategory_id: @selected_category_id ).order('created_at desc, id desc'), items: 8 )
+    render layout: 'about_layout.html.erb'
   end
 
   # GET /blogs/1
@@ -20,6 +20,7 @@ class BlogsController < ApplicationController
   def show
     @next_blog =  Blog.order('created_at desc, id desc').where(youtube: false).where('created_at >= ? and id > ?', @blog.created_at, @blog.id).reverse.first
     @before_blog =  Blog.order('created_at desc, id desc').where(youtube: false).where('created_at <= ? and id < ?', @blog.created_at, @blog.id).first
+    render layout: 'about_layout.html.erb'
   end
 
   # GET /blogs/new

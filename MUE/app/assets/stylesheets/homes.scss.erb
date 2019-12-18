@@ -3,6 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "header.scss";
 
+@import "slick-theme";
+@import "slick";
+
 
 
 
@@ -116,7 +119,12 @@
   margin: auto;
   @include sp {color: white!important;position: absolute;z-index: 1;left: 0;width: 100vw;}
   h2{border: none;font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;
-    @include pc{color: black;};@include sp{color: white;}}
+    font-size: 2.308rem;
+    line-height: 1.5;
+    margin-top: 30px;
+    margin-bottom: 23px;
+    font-weight: inherit;
+    @include sp{color: white;}}
   p{font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;}
   a{text-decoration: underline;font-family: 'EB Garamond', '游明朝体', 'YuMincho', '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN W3', HiraMinProN-W3, 'ヒラギノ明朝 ProN', 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'HGS明朝E', serif;
     @include sp{color: white;}}
@@ -185,7 +193,6 @@ p.read_more{
 
 
 .grad-btn {
-  z-index: 2;
   width: 220px;
   padding: .5em 0;
   border-radius: 2px;
@@ -212,7 +219,11 @@ p.read_more{
   line-height: 2;
   h1{line-height: 1.5;}
   h2{
-    border: none;color: black;
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 2.308rem;
+    line-height: 1.5;
+    margin-bottom: 23px;
+    font-weight: inherit;
     @include pc{margin-top: 0;}
   }
   h3{
@@ -297,6 +308,257 @@ p.read_more{
 
 
 
+//home
+#home{
+  padding: 0 20px;
+  font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  a{font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;}
+  p{font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;}
+  .inner_link{
+    @include flexbox;
+    margin: 12px 0 48px 0;
+  }
+  #title{
+    margin: 0 0 0 20px;
+    p{
+      font-size: 1.3rem;
+    }
+  }
+  #index{
+    max-width: 600px;
+    background-color: #44aefb;
+    padding: 2px;
+    margin-top: 60px;
+    p{
+      color: white;
+      text-align: center;
+      font-size: 1.7rem;
+      line-height: 2;
+      margin: 0;
+    }
+    #box{
+      background-color: #f0f0f0;
+      padding: 1rem 3rem;
+      a{
+        display: block;
+        font-size: 1.3rem;
+        padding: 1rem 0;
+        font-weight: 500;
+      }
+    }
+  }
+  .prefectures{
+    &>li{
+      list-style:none;
+      margin: 40px 0;
+    }
+    .prefecture_a{
+      border-bottom: 4px solid;
+      display:block;
+      font-size: 1.8rem;
+      color:#44aefb;
+    }
+    .cities{
+      @include flexbox;
+      @include flex-wrap(wrap);
+      a{
+        margin: 0 3%;
+        line-height:3;
+        font-size: 1.5rem;
+        color: #808080;
+        text-decoration: underline;
+        &:hover{
+          color: #0004ff;
+        }
+      }
+    }
+  }
+  #fee_explanation{
+    padding-left: 40px;
+    p,a{
+      font-size: 1.3rem;
+      line-height: 2;
+    }
+    .detail{
+      @include flexbox;
+      margin: 0 0 0 1em;
+      *{
+        min-width: 65px;
+      }
+    }
+  }
+  h2{
+    font-weight: 600;
+    background-color: #44aefb;
+    color: white;
+    padding: 10px 15px;
+    font-size: 2.2rem;
+    border-radius: 5px;
+    // margin-top: 60px;
+  }
+  h3{
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 10px -8px 10px; color:#494949;
+    background-color: #4f9cff1a;
+    border-left: solid 8px #4f9cff;
+    padding: 10px 15px;
+    a{font-size: 1.4rem;}
+  }
+}
+#terms{
+  padding-left: 40px;
+  p{font-size: 1.3rem;text-indent: -1em;}
+}
+
+
+//schedule
+#schedule{
+  padding: 0 20px;
+  font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  a{font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;}
+  p{font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;}
+  .dates{display: none;}
+  h2{
+    border-bottom: 4px solid;
+    display: block;
+    font-size: 1.8rem;
+    color: #44aefb;
+    margin: 3rem 0;
+  }
+  h3{
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 10px 0px;
+    color:#494949;
+    background-color: #4f9cff1a;
+    border-left: solid 8px #4f9cff;
+    padding: 10px 15px;
+    a{font-size: 1.4rem;}
+  }
+  #teachers{
+    margin-left: 10px;
+    .eyecatch{
+      @include flexbox;
+      margin: 3rem 0;
+      border: 2px solid #797979;
+      .teacher_profile{display: none}
+      img{
+        @include flex-shrink(0);
+        border-right: 2px solid #797979;
+        width: 30%;
+        object-fit: contain;
+        object-position: 0 0;
+      }
+      .text{
+        @include flexbox;
+        @include flex-direction(column);
+        @include align-items(center);
+        width: 100%;
+        padding: 10px;
+        .teacher_name{
+          margin: 0;
+          font-size: 2rem;
+        }
+        .grad-btn{
+          width: 100%;
+          max-width: 220px;
+          padding: .1em 0;
+          margin: auto;
+          &.active{
+            display: none;
+            &+.teacher_profile{
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+  #schedules{
+    h3{
+      @include flexbox;
+      @include justify-content(space-between);
+      cursor: pointer;
+      margin: 10px 0px 10px 10px;
+      border-left: solid 8px #0000;
+      &::after{
+        content: '';
+        display: block;
+        width: 15px;
+        height: 15px;
+        border-top: 2px solid;
+        border-left: 2px solid;
+        transform: rotate(-135deg);
+        transition: .5s ease;
+      }
+      &.active{
+        border-left: solid 8px #4f9cff;
+        color: black;
+        &::after{
+          transform: rotate(45deg);
+          margin-top: 0.5em;
+        }
+        &+.dates{display: block;margin-left: 20px;}
+      }
+    }
+    .details{
+      @include flexbox;
+      @include justify-content(space-between);
+      .de_c{
+        @include flexbox;
+        width: 100%;
+        max-width: calc(100% - 6em);
+        *{
+          width: 50%;
+          p{width: 100%;}
+        }
+        .de_c_1{
+          margin-right: 1rem;
+          a{
+            @include flexbox;
+            width: 100%;
+            span{
+              display: block;
+              width: 100%;
+              @include ellipsis(calc(100% - 2em));
+            }
+          }
+        }
+        .de_c_2{
+          a{
+            display: block;
+            width: 100%;
+            @include ellipsis(calc(100% - 2em));
+          }
+        }
+      }
+      .join{
+        @include flexbox;
+        @include align-items(center);
+        @include flex-shrink(0);
+        color: #0004ff;
+        text-decoration: underline;
+        &.full{
+          color: #797979;
+          text-decoration: none;
+          cursor: default;
+        }
+      }
+    }
+  }
+  #caves{
+    margin-left: 10px;
+    .description{
+      @include pc{
+        margin: 0 10%;
+      }
+    }
+  }
+}
+
+
+
 //main
 main{
   @include pc{
@@ -321,7 +583,7 @@ menu{
   margin: 0;
   padding: 0;
   @include pc{
-    background-color: #e8f5ff;
+    background-color: #ebebeb;
     width: 18%;
     left: 0;
     bottom: 0;
@@ -520,7 +782,7 @@ menu{
     @include flexbox;
     @include flex-direction(column);
     @include align-items(center);
-    margin: 50px 0;
+    margin: 30px 0;
     #title{
       color: #666;
     }
@@ -537,7 +799,7 @@ menu{
     @include flexbox;
     @include align-items(center);
     @include justify-content(space-around);
-    margin: 0 0 50px 0;
+    margin: 0 0 30px 0;
     @include pc{
       width: 100%; }
     font-size: 20px;
@@ -549,7 +811,6 @@ menu{
   #mail{
     display: flex;
     justify-content: center;
-    margin-bottom: 30px;
     @include sp{flex-direction: column;}
     font-size: 17px;
     line-height: 23px;
@@ -564,7 +825,7 @@ menu{
 
 
 //contact
-#create_contact{
+#modalWindow{
   font-family: "メイリオ", sans-serif;
   font-size: 1.368rem;
   color: rgb(128, 128, 128);

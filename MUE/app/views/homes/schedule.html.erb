@@ -1,61 +1,104 @@
-<% set_meta_tags title: @selectedPrefecture.name+'での開催スケジュール', description: ''%>
-<div id="show_detail"></div>
+<% set_meta_tags title: @title, description: @description %>
+
+
+<div id="schedule">
+
+
 
 <!-- タイトル本文 -->
-<h1><%= @selectedPrefecture.name %>での開催スケジュール</h1>
-<%= if session[:role]  == "Admin" then link_to 'create new city', new_city_path(selected_prefecture: @selectedPrefecture_id), data: {"turbolinks"=>false} end %>
-<p style="margin: 0;">【参加方法】</p>
-<p style="margin: 0;">参加申し込みボタン又はTwitter,Instagram,Facebook,公式Lineにてご連絡ください。<br>初心者から上級者まで対応可能です。</p>
-<p style="margin-bottom: 0;">【料金説明】<br>[Meet up English Group の運営するイベント]</p>
-<a href=<%= schedule_path("1#schedule_index_1") %>><p style="margin: 0;text-decoration: underline;color: #616161;">町田:武相庵 での開催</p></a>
-<p style="margin: 0 1em;">料金　　：1000円（カフェにつき、ワンオーダーあり）<br>形態　　：１対3（最大）</p>
-<p style="margin: 0;">その他の開催</p>
-<p style="margin: 0 1em;">料金　　：1700円（カフェにつき、ワンオーダーあり）<br>形態　　：１対１（マンツーマン英会話）</p>
-<!-- <p style="margin-bottom: 0;">[Meet up English Group × <a href="https://www.cg-k.com/" style="text-decoration: underline;color: #616161;">町田コンディショニングジム健介</a> でのイベント]</p>
-<p style="margin: 0 1em;">日程　　：11/30 16:00~17:30<br>料金　　：90分1500円<br>ご予約は
-  <a href="/contacts/new?title=Meet up English Group × 町田コンディショニングジム健介" style="text-decoration: underline;color: #616161;" data-remote="true">こちら</a></p> -->
+<h1><%= @city.name %>での開催スケジュール</h1>
 
 
-<!-- メニュー -->
-<div class="toc_container">
-<p >この記事の目次</p>
-<ul style="display: block;">
-<% @cities.each do |n| %>
-    <li><a href="#shceduleIndex<%= n.id %>"><%= n.name %></a></li>
-<% end %>
-</ul>
+
+<h2>日時選択</h2>  <%= link_to 'create new event', new_home_path(selected_city: params[:id]) if (session[:role]  == "Admin") %>
+<div id="schedules">
+  <% @dates.each do |date| %>
+    <h3 class="toggle_active <%= active if @events.where(date: date).size==1 %>">
+      <%= date.strftime("%Y/%m/%d(#{%w(日 月 火 水 木 金 土)[date.wday]})") %>
+    </h3>
+    <div class="dates">
+      <% @events.where(date: date).each do |event| %>
+        <div class="details">
+          <div class="de_c">
+            <div class="de_c_1">
+              <p><%= event.start.strftime("%H:%M") %>~<%= event.end.strftime("%H:%M") %></p>
+              <p><a href="#teacher_<%= event.teacher.id %>"><span><%= "aaaaaaaaaaaaaaaaaaaaa" %></span>先生</a></p>
+            </div>
+            <div class="de_c_2">
+              <p><%= link_to event.cafe.name, "#cafe_#{event.cafe.id}" %></p>
+              <p>残席:<%= event.peopleNum %></p>
+            </div>
+          </div>
+          <a class="join <%= 'full' if event.peopleNum==0 %>" href="/contacts/<%= event.id %>/join" data-remote="true"><p>参加申込み</p></a>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
 
+<h2>担当先生</h2>
+<div id="teachers">
+  <% @teachers.each do |teacher| %> <div id="teacher_<%=teacher.id%>" class="eyecatch">
+    <%= image_tag teacher.avatar %>
+    <div class="text">
+      <p class="teacher_name"><%= teacher.name %>先生</p>
+      <div class="grad-btn toggle_active"><span class="fa fa-chevron-down"></span>プロフィールを見る</div>
+      <div class="teacher_profile"><%= simple_format(teacher.selfIntroduction) %></div>
+    </div>
+  </div> <% end %>
+</div>
 
-<% @cities.each do |n| %>
-  <h2 id="shceduleIndex<%= n.id %>"><%= n.name %>
-    <% if (session[:role]  == "Admin") %>
-      <%= link_to 'create new event', new_home_path(selected_city:n.id), data: {"turbolinks"=>false} %>
-    <% end %></h2>
-  <table>
-  <% Event.where(city_id: n.id).sort_by{|a|Time.zone.parse(a.date.strftime("%Y%m%d")+a.start.strftime("%H%M"))}.each do |event| %>
-    <% if Time.zone.parse(event.date.strftime("%Y%m%d")+event.end.strftime("%H%M"))<Time.current %>
-      <% event.contacts.each{|n|n.update(event_id: nil)} %>
-      <% event.destroy %>
-      <% next %>
-    <% end %>
-    <tr>
-      <td><%= event.date.strftime("%Y/%m/%d(#{%w(日 月 火 水 木 金 土)[event.date.wday]})") %><br><%= event.start.strftime("%H:%M") %>~<%= event.end.strftime("%H:%M") %></td>
-      <td class="onlypc"><%= link_to teacher_path(event.teacher_id), data: {"turbolinks"=>false} do %><%= Teacher.find(event.teacher_id).name %> <br>先生<%end%></td>
-      <td><p class="onlypc" style="margin:0px;"><%= link_to event.cafe.name, event.cafe.url ? event.cafe.url : cafe_path(event.cafe) %></p>
-        <p style="margin:0px;">残席:<%= event.peopleNum %></p></td>
-      <td class="onlysp green_button" style="background: linear-gradient(#15ab4f, #0dff07);width:70px">
-          <%= link_to '詳細', homes_showDetailSchedule_path(selected_cafe_id: event.cafe_id,selected_teacher_id: event.teacher_id), remote: true,style: "line-height: 4em;"%></td>
-      <td class="green_button"  <%= "style= background:linear-gradient(#9e9e9e,#535353);" if event.peopleNum == 0 %>>
-        <% if session[:role] == "Admin" %>
-          <a href="/homes/<%= event.id %>/edit">edit
-        <% elsif event.peopleNum != 0 %>
-          <a data-remote="true" href="/contacts/<%= event.id %>/join ">参加<br>申し込み
-        <% else %>
-          <a>参加<br>申し込み
-        <% end %>
-    </td></tr>
-  <% end %>
-  </table>
-<% end %>
+
+<h2>開催カフェ</h2>
+<p>注意:英会話について直接カフェに連絡するのはお控えください。</p>
+<div id="caves">
+  <% @caves.each do |cafe| %> <div id="cafe_<%=cafe.id%>">
+    <h3><%= cafe.name %></h3>
+    <ul class="slider">
+      <% cafe.images.each do |image| %> <li><%= image_tag image %></li> <% end %>
+    </ul>
+    <div class="description"><%= simple_format(cafe.description) %></div>
+  </div> <% end %>
+</div>
+
+<style>
+.slick-dots {
+      position: absolute !important;
+      bottom: 20px !important;
+      li {
+        font-size: 20px !important;
+        button:before {
+          content: "●" !important;
+          font-size: 14px !important;
+          color: rgb(60, 60, 60) !important;
+        }
+      }
+    }
+.slider{
+    margin: 30px auto;
+    width: 80%;
+    padding: 0;
+}
+.slider img{
+    height: 40vw;
+    width: 100%;
+    object-fit: cover;
+}
+/*slick setting*/
+.slick-prev:before,
+.slick-next:before {
+    color: #000;
+}
+</style>
+
+<h2>参加規約</h2>
+<div id="terms">
+  <p>1  参加申し込み後、数日以内にこちらからメールを差し上げます。<br>メールの受信確認のメールをよろしくお願い致します。</p>
+  <p>2 申し込み後のキャンセルは、開催日の前日の24時までと致します。<br>それ以降のキャンセルは受け付けませんので、ご了承ください。</p>
+  <p>4 お客様が英会話開始時間に遅れる場合などでも、料金割引などは致しかねます。ご了承ください。</p>
+  <p>その他、ご質問等はお問い合わせください。</p>
+</div>
+
+
+</div>

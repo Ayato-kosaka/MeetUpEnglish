@@ -3,23 +3,28 @@
     <div class="modal-message-box">
 
 
-      <h1>Blog Comment</h1>
-      <%= form_with(model: blogcomment,url: blogcomments_path(blogId: blogId), local: true) do |form| %>
+      <p>Meet Up English Group の記事を読んでいただきいただきありがとうございます。</p>
+      <%= form_with(model: blogcomment,url: blogcomments_path(blog_id: blogId), local: true) do |form| %>
 
 
-        <table id="blog_comment"><tbody>
-          <tr><th><%= form.label :name %></th></tr>
-          <tr><td><%= form.text_field :name, style:"height: 30px;" %></td></tr>
-          <tr><th><%= form.label :text, "comment" %></th></tr>
-          <tr><td><%= form.text_area :text, style:"height: 100px" %></td></tr>
-          <tr><td class="actions"><%= form.submit '投稿' ,:class=>'send'%></td></tr>
-        </tbody></table>
+        <div class="field">
+          <div id="label"><%= form.label :name %></div>
+          <div id="input"><%= form.text_field :name %></div>
+        </div>
 
+        <div class="field">
+          <div id="label"><%= form.label :text %></div>
+          <div id="input"><%= form.text_area :text %></div>
+        </div>
+
+        <button type="submit" name="commit" onclick="ga('send','event','submit','click',);" class="send" data-disable-with="Sending...">
+          Send <i class="fas fa-arrow-circle-right"></i>
+        </button>
       <% end %>
 
 
 
     </div>
-    <button class="modal-close-btn">close</button>
+    <button class="modal-close-btn">閉じる</button>
   </div>
 </div>

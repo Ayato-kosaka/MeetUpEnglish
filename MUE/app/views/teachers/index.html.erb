@@ -2,6 +2,8 @@
 
 <h1>Teachers</h1>
 
+<%= link_to 'New Teacher', new_teacher_path%>
+
 <table>
   <thead>
     <tr>
@@ -18,10 +20,10 @@
     <% @teachers.each do |teacher| %>
       <tr>
         <td><%= teacher.name %></td>
-        <td><%= teacher.gender %></td>
-        <td><%= teacher.selfIntroduction %></td>
-        <td><%= teacher.email %></td>
-        <td><%= teacher.avatar %></td>
+        <td><%= teacher.gender ? 'man' : 'woman' %></td>
+        <td><%= teacher.selfIntroduction.truncate(20) %></td>
+        <td><%= teacher.email.truncate(20) %></td>
+        <td><%= teacher.avatar.attached? %></td>
         <td><%= link_to 'Show', teacher %></td>
         <td><%= link_to 'Edit', edit_teacher_path(teacher) %></td>
         <td><%= link_to 'Destroy', teacher, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -31,5 +33,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Teacher', new_teacher_path%>

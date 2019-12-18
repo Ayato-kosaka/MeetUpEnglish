@@ -1,0 +1,319 @@
+// Place all the styles related to the blogs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'header.scss';
+
+//index
+$blog_index_image_width: 600px;
+#blog_index{
+  font-family: "メイリオ", sans-serif;
+  #eyecatch{
+    @include flexbox;
+    @include justify-content(center);
+    @include pc{margin: 30px 0 80px 0;}
+    img{
+      width: 100%;
+      max-width: $blog_index_image_width;
+    }
+  }
+  #other{
+    @include pc{
+      @include flexbox;
+      @include flex-direction(row-reverse);
+      @include justify-content(start);
+      margin: 0 20px;
+    }
+    #category{
+      color: gray;
+      width: calc(75% + 50px);
+      margin: 0 auto;
+      #category-title{
+        font-size: calc(27px + 1.8vw);
+        font-weight: 100;
+        text-shadow: 1px 2px 3px gray;
+        margin-bottom: 20px;
+      }
+      #name{
+        @include flexbox;
+        @include pc{
+          @include flex-direction(column);
+        }
+        @include sp{
+          @include flex-wrap(wrap);
+        }
+        padding: 0 25px;
+        .item{
+          font-size: calc(11px + 0.6vw);
+          color: gray;
+          @include sp{width: 33%;}
+        }
+        .active{
+          color: #44aefb;
+        }
+      }
+    }
+    #articles{
+      @include pc{width: 70%;}
+    }
+  }
+}
+
+
+a#blog{
+  @include pc{margin: 35px 0;max-width: 700px;}
+  @include sp{
+    width: 75%;
+    margin: 35px auto 35px auto;
+  }
+  display: block;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  padding: 25px;
+  background: #e8e8e7;
+  .eyecatch{width: 100%;height: auto;}
+  .eyecatch img{width: 100%;height: auto;}
+  &.youtube{
+    background-color: #ff9c9c;
+    .eyecatch{
+      @include flexbox;
+      @include justify-content(center);
+      overflow: hidden;
+    }
+  }
+  .explain{
+    @include flexbox;
+    @include align-items(center);
+    color: #adaaa5;
+    .explain-1{
+      .category{
+        font-size: 1.23rem;
+        text-align: center;
+      }
+      .blog_createdAt{
+        font-size: .62rem;
+        font-family: 'Poppins',sans-serif;
+        letter-spacing: .03125rem;
+        font-weight: 600;
+        text-align: center;
+      }
+    }
+    .commentnum_blog_index{
+      padding-left: 1.282rem;
+    }
+  }
+}
+
+
+.blog_h3{padding: 16px 16px 0;margin: 0;font-size: 16px;}
+.blogs_blog div{height: 18px;margin: 13px 0;line-height: 14px;border-left: 1px solid #eee;border-right: 1px solid #eee;padding: 2px 0;}
+.blog_image{width: 100%;
+}
+
+#blog_comment{max-width: 600px;margin: auto;
+  tr{text-align: left;}
+  input{width: 100%}
+  .send{margin:auto;}}
+
+
+$blog_font: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+//show
+#blog_paht{
+  background-color: white;
+  font-family: $blog_font;
+  h2{
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 50px -8px 40px;
+    color: #494949;
+    background-color: #4f9cff1a;
+    border-left: solid 8px #4f9cff;
+    padding: 20px 15px;
+    border-bottom: none;
+    font-family: $blog_font;
+  }
+  h3{
+    font-size: 1.692rem;
+    font-weight: bold;
+    margin: 30px 0 30px;
+    padding: 0 0 15px 0;
+    border-bottom: 3px solid #4f9cff;
+    color: #4f9cff;
+    font-family: $blog_font;
+  }
+  h4{
+    position: relative;/*相対位置*/
+    padding-left: 1.2em;/*アイコン分のスペース*/
+    line-height: 1.4;/*行高*/
+    &::before{
+      font-family: "Font Awesome 5 Free";
+      content: "\f075";/*アイコンのユニコード*/
+      position: absolute;/*絶対位置*/
+      font-size: 1em;/*サイズ*/
+      left: 0;/*アイコンの位置*/
+      top: 0;/*アイコンの位置*/
+      color: #5ab9ff; /*アイコン色*/
+      font-family: $blog_font;
+    }
+  }
+  p{
+    font-family: $blog_font;
+  }
+  #header{
+    @include flexbox;
+    @include justify-content(space-between);
+    @include align-items(flex-end);
+    width: 100%;
+    height: 145px;
+    background-image: url(<%= asset_url("homes/blog_show.jpg") %>);
+    background-position: center center;
+    background-size: cover;
+    img{
+      width: 40%;
+      max-width: 250px;
+      margin-left: 10px;
+    }
+    #categories{
+      @include flexbox;
+      @include align-items(end);
+      @include flex-wrap(wrap);
+      width: 43%;
+      margin: 8px;
+      *{
+        display: block;
+        color: white;
+        font-size: 1.385rem;
+        margin: 0.385rem;
+      }
+    }
+  }
+  .around_blog{
+    @include flexbox;
+    margin: 30px 15px;
+    font-size: 1.231rem;
+    >*{
+      @include flexbox;
+      @include align-items(center);
+      width: 50%;
+      color: #284196;
+      span{
+        text-decoration: underline;
+        margin: 0 10px;
+        &:hover{
+          text-decoration: none;
+        }
+      }
+      i{
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-top: 1px solid;
+        border-left: 1px solid;
+        display: table;
+        transform: rotate(-45deg);
+      }
+    }
+    .right_blog{
+      @include justify-content(flex-end);
+      i{transform: rotate(135deg);}
+      span{text-align: end;}
+    }
+  }
+  #title{
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 10px 0;
+    margin: 15px 0;
+    h1{
+      text-align: center;
+      width: 550px;
+      margin: 10px auto;
+      font-size: 1.846rem;
+      line-height: 1.9;
+      @include pc{
+        width: 550px;
+      }
+      @include sp{
+        width: 90%;
+      }
+    }
+    #date{
+      text-align: center;
+      background-color: #44aefb;
+      color:white;
+      width: 100px;
+      margin: auto;
+      padding: .5em 0;
+      font-size: 0.8rem;
+    }
+  }
+  #title_text{
+    .text{
+      margin: 10px 3%;
+    }
+  }
+  #sections{
+    margin: 0 5%;
+    section#blog_section{
+      img{
+        width: 100%;
+      }
+      #last_lesson{
+        @include flexbox;
+        width: 92%;
+        border: 2px solid #acacac;
+        margin: 0 4%;
+        max-height: 140px;
+        .image{
+          width: 30%;
+          border-right: 2px solid #acacac;
+          img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        .title{
+          @include flexbox;
+          @include justify-content(center);
+          @include align-items(center);
+          width: 70%;
+          background-color: white;
+          @include sp{
+            font-size: 2.7vw;
+            padding: 2.155vw;
+          }
+          @include pc{
+            font-size: 25px;
+            padding: 20px;
+          }
+        }
+      }
+    }
+  }
+  #posted_on{
+    text-align: end;
+    margin:  45px 20px;
+    color: #999;
+  }
+  #blog_index_comment{text-align: center;margin-top: 60px;
+    a{font-size: 16px;border-radius: 20px;display: inline-block;height: 50px;background-color: #44aefb;width: 220px;line-height: 50px;color: white;}
+    i{position: relative;font-size: 22px;top: 2px;right: 4px;}}
+    #blog_comments{
+      padding: 50px 5%;
+      th{text-align: left;}
+      td{text-align: left;}
+      .number_blog_comments{text-align: left;width: 80px;}
+      div{display: inline-block;font-size: 12px;}
+      .created_blog_comments{font-size: 12px;float: right;}}
+}
+
+
+
+#blog_form, #section_form{
+  textarea{
+    width: 50%;
+    height: 500px;
+  }
+}

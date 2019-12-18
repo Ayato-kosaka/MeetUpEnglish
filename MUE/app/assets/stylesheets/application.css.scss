@@ -22,11 +22,20 @@
  html{font-family:verdana, arial, helvetica, sans-serif;color:#333;line-height: 1.5;
 
 }
-h2 {border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#10081c;color:#0ba834f2;font-family:verdana, arial, helvetica, sans-serif;font-size:2.308rem;line-height:1.5;margin-top:30px;margin-bottom:23px;font-weight:inherit;}
 body {background-color:#fafafa;margin: 0;}
 h1{font-size:2.462rem;line-height:1.7;font-weight:inherit}
-
-
+// h2 {border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#10081c;color:#0ba834f2;font-family:verdana, arial, helvetica, sans-serif;font-size:2.308rem;line-height:1.5;margin-top:30px;margin-bottom:23px;font-weight:inherit;}
+//パンくず
+#pankuzu{
+  margin: 20px 0 0 20px;
+  a{
+    color: #0004ff;
+    text-decoration: underline;
+  }
+  i{
+    margin: 0 8px;
+  }
+}
 
 //ページトップへ、コンタクトのフッター
 #footer1.cmn-footer {background: -webkit-gradient(linear,left top,left bottom,color-stop(20%,rgba(226,255,222,0)),to(#179c17));background: -webkit-linear-gradient(rgba(226,255,222,0) 20%,#179c17 100%);background: -o-linear-gradient(rgba(226,255,222,0) 20%,#179c17 100%);background: linear-gradient(rgba(226,255,222,0) 20%,#179c17 100%);height: 300px; margin-top: 30px;

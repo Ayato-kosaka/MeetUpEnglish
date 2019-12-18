@@ -1,7 +1,7 @@
 class HomesController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :set_selectedPrefecture, only: [:schedule]
-  before_action :set_last_event_blog, except: [:about, :top]
+
+  layout 'about_layout.html.erb'
 
   skip_before_action :require_Admin, except: [:index, :show, :edit, :new]
 
@@ -75,11 +75,24 @@ class HomesController < ApplicationController
   end
 
   def home
-    @selectedPrefecture_id
+    # @prefectures = Prefecture.wher(cities: @cities)
+    @prefectures = [[1, "東京都"], [2, "神奈川県"], [3, "千葉県"]]
+    @cities = [[1, "町田", 1], [2, "相模原", 2], [3, "八王子", 1], [4, "橋本", 2], [5, "横浜", 2], [7, "新宿", 1], [8, "渋谷", 1], [9, "吉祥寺", 1], [10, "銀座", 1], [11, "池袋", 1], [12, "調布", 1], [13, "市川", 3], [14, "浦安", 3], [15, "千駄木", 1]]
   end
 
   def schedule
-    @cities = City.where(prefecture_id: @selectedPrefecture_id)
+    @city = City.find(params[:id])
+    # @events = @city.where(["date > ?",  Date.current])
+    @events = Event.where(["city_id = ? and date > ?",  1, Date.current])
+    @dates = @events.pluck(:date).uniq
+    @teachers = Teacher.where(id: @events.pluck(:teacher_id).uniq)
+    # @caves = Cafe.where(id: @events.pluck(:city_id).uniq)
+    @caves = City.find(1).caves
+    logger.debug("\n\n\n\n\n\n\n\ndebug")
+    @title = params[:id]==1 ? "武相庵での英会話開催" : @city.name+'での英会話開催スケジュール'
+    @description = params[:id]==1 ?
+      "町田市の駅近カフェ、武相庵で最大１：３で１時間１０００円で開催しています。気軽におしゃれなカフェで英会話をしませんか？授業形態は、全てフリーカンバセーションとなっています。初心者から上級者まで対応可能ですので、お気軽に参加ください。"
+      : "#{@city.name}の駅近カフェ、#{@caves.map{|m|m.name}.join("、")}で、マンツーマン１時間１７００円で開催しています。気軽におしゃれなカフェで英会話をしませんか？授業形態は、全てフリーカンバセーションとなっています。初心者から上級者まで対応可能ですので、お気軽に参加ください。"
   end
 
   def overview
@@ -111,10 +124,6 @@ class HomesController < ApplicationController
       @home = Event.find(params[:id])
     end
 
-    def set_selectedPrefecture
-      @selectedPrefecture = Prefecture.find(params[:id])
-      @selectedPrefecture_id = params[:id]
-    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:city_id, :date, :start, :end, :peopleNum, :teacher_id, :cafe_id)

@@ -16,9 +16,10 @@
     <%= form.text_field :name %>
   </div>
 
+
   <div class="field">
     <%= form.label :prefecture_id %>
-    <%= form.number_field :prefecture_id, value: params[:selected_prefecture] ? params[:selected_prefecture] : (@city.prefecture_id ? @city.prefecture_id : 1)%>
+    <%= form.select :prefecture_id, Prefecture.all.map{|m|[m.name,m.id]} %>
   </div>
   <div class="actions">
     <%= form.submit %>

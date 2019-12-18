@@ -29,8 +29,11 @@
       <div id="sidebox1" class="onlypc">
         <div id="sidebox2">
           <% unless session[:user].nil? %>
-          <p><%= link_to 'teacher', teachers_path %></p>
-          <p><%= link_to 'contact(' + Contact.where(checked: false).size.to_s + ')', contacts_path, data: {"turbolinks"=>false}, class: Contact.where(checked: false).size > 0 ? "text_orange_gradation" : '' %></p>
+            <p><%= link_to 'teacher', teachers_path %></p>
+            <p><%= link_to 'contact(' + Contact.where(checked: false).size.to_s + ')', contacts_path, data: {"turbolinks"=>false}, class: Contact.where(checked: false).size > 0 ? "text_orange_gradation" : '' %></p>
+            <p><%= link_to 'cafe', caves_path %></p>
+            <p><%= link_to 'city', cities_path %></p>
+            <p><%= link_to 'prefecture', prefectures_path %></p>
           <% end %>
 
           <%= link_to "カフェ開催スケジュール", root_path, class: "page_btn",style: "background-color: #179c17"%>
@@ -38,27 +41,27 @@
           <%= link_to "Meet Up English のブログ", blogs_path(event_search: "開催の様子"), class: "page_btn", style: "background-color: #1b95e0;", data: {"turbolinks"=>false} %>
 
           <!-- LineWidget -->
-          <a class="page_btn" style="background-color: #00b900;" href="http://nav.cx/alJd5yY">
-            <img alt="友達追加" border="0" height="28" src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png"></a>
+          <!-- <a class="page_btn" style="background-color: #00b900;" href="http://nav.cx/alJd5yY">
+            <img alt="友達追加" border="0" height="28" src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png"></a> -->
 
 
           <!-- InstaWidget -->
-          <a href="https://www.instagram.com/meet_up_english?ref=badge" class="insta_btn2">
+          <!-- <a href="https://www.instagram.com/meet_up_english?ref=badge" class="insta_btn2">
             <i class="fab fa-instagram"></i> <span>@meet_up_english</span>
-          </a>
+          </a> -->
 
           <!-- TwitterWidget -->
-          <a class="page_btn" style="background-color: #1b95e0;" href="https://twitter.com/meetup_english?ref_src=twsrc%5Etfw">
+          <!-- <a class="page_btn" style="background-color: #1b95e0;" href="https://twitter.com/meetup_english?ref_src=twsrc%5Etfw">
             <i class="fab fa-twitter"></i><span style="font: normal normal normal 11px/18px 'Helvetica Neue',Arial,sans-serif; font-size: 13px;">Follow @meetup_english</span>
-          </a>
+          </a> -->
 
           <!-- YoutubeWidget -->
-          <a class="page_btn" style="background-color: #da4f4f;" href="https://www.youtube.com/channel/UC1OTguN4K5GNf8I5ZeJZkGg">
+          <!-- <a class="page_btn" style="background-color: #da4f4f;" href="https://www.youtube.com/channel/UC1OTguN4K5GNf8I5ZeJZkGg">
             <i class="fab fa-youtube"></i><span>Subscribe Youtube</span>
-          </a>
+          </a> -->
 
           <!-- latest event -->
-          <div id="latest_event">
+          <!-- <div id="latest_event">
             <div class="text">
               <p>-----------------前回の開催-----------------</p>
             </div>
@@ -66,7 +69,7 @@
               <img src='<%= @latest_event_blog.image.attachment.service.send(:object_for, @latest_event_blog.image.key).public_url if @latest_event_blog %>'>
               <div class='title'><%= @latest_event_blog&.title %></div>
             </a>
-          </div>
+          </div> -->
 
         </div>
       </div>

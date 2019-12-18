@@ -10,9 +10,9 @@ class BlogcommentsController < ApplicationController
   end
 
   def create
-    @blogcomment = Blog.find(params[:blogId]).comments.new(blogcomment_params)
+    @blogcomment = Blog.find(params[:blog_id]).comments.new(blogcomment_params)
     if @blogcomment.save
-      redirect_to Blog.find(@blogcomment.blogId)
+      redirect_to Blog.find(@blogcomment.blog_id)
     else
       render :new
     end

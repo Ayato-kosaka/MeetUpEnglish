@@ -1,77 +1,87 @@
 <% set_meta_tags title: 'Groupの活動の様子をブログでみちゃおう！', description: 'Meet Up English Groupの「開催日記」「旅日記」「ご飯日記」「先生日記」「スタッフ日記」などなど、いろいろな情報を発信しております。
 開催時の様子や、先生の紹介など、【毎日更新】を続けておりますので、ご覧ください。'%>
 
-<% if session[:role]=="Admin" %><p id="notice"><%= notice %></p><% end %>
-
-<h1>Meet up English Blog</h1>
-
-<%= if session[:role]=="Admin" then link_to 'New Blog', new_blog_path end%>
-
-
-<h2 id="category-title">カテゴリー</h2>
-<p id="category-name"><%= Blogcategory.find(@selected_category_id).name %></p>
-<div id="category-blog">
-  <div class="flex-blog">
-    <% @category.each do |category| %>
-      <a class="item <%= "active" if (category.id ) == @selected_category_id %>" href="/blogs?event_search=<%= category.name %>" data-turbolinks="false">
-        <%= category.image ? image_tag(category.image) : category.name %>
-      </a>
-    <% end %>
+<div id="blog_index">
+  <div id="eyecatch"><%= image_tag("homes/blog.jpg", alt: "image of MeetupEnglishGroup Blog") %></div>
+  <div id="pankuzu">
+    <a href="/top">TOP</a><i class="fas fa-chevron-right"></i>
+    <span>BLOG(<%= params[:event_search]||'all' %>)</span>
   </div>
-</div>
 
 
-<div class="skill-list jscroll">
-  <% if @blogs %>
+  <% if session[:role]=="Admin" %><p id="notice"><%= notice %></p><% end %>
+  <%= if session[:role]=="Admin" then link_to 'New Blog', new_blog_path end%>
 
-    <% @blogs.each do |blog| %>
 
-      <% if !blog.youtube? %>
-        <article id="blog"><a href="/blogs/<%= blog.id %>">
-          <div class="eyecatch">
-            <% if blog.image.attached? %>
-              <%= image_tag blog.image, :size=>"400x400" %>
+  <div id="other">
+    <div id="category">
+      <h3 id="category-title">Category</h3>
+      <div id="name">
+        <% @categories.each do |category| %>
+          <a class="item <%= "active" if (category.id ) == @selected_category_id %>" href="/blogs?event_search=<%= category.name %>" data-turbolinks="false">
+            <%= category.name %>(<%= category.blogs.count %>)
+          </a>
+        <% end %>
+      </div>
+    </div>
+
+    <div id="articles">
+      <div class="skill-list jscroll">
+        <% if @blogs %>
+          <% @blogs.each do |blog| %>
+
+            <% if !blog.youtube? %>
+              <a href="/blogs/<%= blog.id %>"id="blog">
+                <div class="eyecatch">
+                  <% if blog.image.attached? %>
+                    <%= image_tag blog.image, :size=>"400x400" %>
+                  <% end %>
+                </div>
+                <h3><%= blog.title %></h3>
+                <div class="explain">
+                  <div class="explain-1">
+                    <div class="category">
+                      カテゴリー:<%= blog.category&.name %>
+                    </div>
+                    <div class="blog_createdAt">
+                      <% if session[:role]=="Admin" %><%= link_to 'Edit', edit_blog_path(blog)%> | <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %><%end%>
+                      <%= blog.created_at.strftime("%Y.%m.%d") %>
+                    </div>
+                  </div>
+                  <div class="commentnum_blog_index"><i class="fas fa-comments"></i><%= blog.comments.count %></div>
+                </div>
+              </a>
+            <% else %>
+
+              <a id="blog" class="youtube" href="https://www.youtube.com/watch?v=<%= blog.text %>">
+                <div class="eyecatch">
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= blog.text %>" data-src="https://www.youtube.com/embed/<%= blog.text %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <h3><%= blog.title%></h3>
+                <div class="explain">
+                  <div class="explain-1">
+                    <div class="category">
+                      カテゴリー:<%= blog.category&.name %>
+                    </div>
+                    <div class="blog_createdAt">
+                      <% if session[:role]=="Admin" %><%= link_to 'Edit', edit_blog_path(blog)%> | <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %><%end%>
+                      <%= blog.created_at.strftime("%Y.%m.%d") %>
+                    </div>
+                  </div>
+                </div>
+              </a>
+
             <% end %>
-          </div>
-          <h3><%= blog.title %></h3>
-          <div class="explain">
-            <div class="explain-1">
-              <div class="category">
-                カテゴリー:<%= blog.category&.name %>
-              </div>
-              <div class="blog_createdAt">
-                <% if session[:role]=="Admin" %><%= link_to 'Edit', edit_blog_path(blog)%> | <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %><%end%>
-                <%= blog.created_at.strftime("%Y.%m.%d") %>
-              </div>
-            </div>
-            <div class="commentnum_blog_index"><i class="fas fa-comments"></i><%= blog.comments.count %></div>
-          </div>
-        </a></article>
 
-      <% else %>
+          <% end %>
+        <% end %>
 
-        <article id="blog" class="youtube"><a href="https://www.youtube.com/watch?v=<%= blog.text %>">
-          <div class="eyecatch">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= blog.text %>" data-src="https://www.youtube.com/embed/<%= blog.text %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-          <h3><%= blog.title%></h3>
-          <div class="explain">
-            <div class="explain-1">
-              <div class="category">
-                カテゴリー:<%= blog.category&.name %>
-              </div>
-              <div class="blog_createdAt">
-                <% if session[:role]=="Admin" %><%= link_to 'Edit', edit_blog_path(blog)%> | <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %><%end%>
-                <%= blog.created_at.strftime("%Y.%m.%d") %>
-              </div>
-            </div>
-          </div>
-        </a></article>
+        <%== pagy_nav(@pagy) %>
+      </div>
 
-      <% end %>
 
-    <% end %>
-  <% end %>
 
-  <%== pagy_nav(@pagy) %>
+    </div>
+  </div>
+
 </div>
