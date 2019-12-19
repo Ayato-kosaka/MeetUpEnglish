@@ -53,7 +53,7 @@
 <h2>開催カフェ</h2>
 <p>注意:英会話について直接カフェに連絡するのはお控えください。</p>
 <div id="caves">
-  <% @caves.each do |cafe| %> <div id="cafe_<%=cafe.id%>">
+  <% @caves.each do |cafe| %> <div id="cafe_<%=cafe.id%>" class="eyecatch">
     <h3><%= cafe.name %></h3>
     <ul class="slider">
       <% cafe.images.each do |image| %> <li><%= image_tag image %></li> <% end %>

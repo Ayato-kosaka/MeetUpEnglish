@@ -441,14 +441,16 @@ p.read_more{
     .eyecatch{
       @include flexbox;
       margin: 3rem 0;
-      border: 2px solid #797979;
+      margin-top: calc( 3rem + -100px);
+      padding-top: 100px;
       .teacher_profile{display: none}
       img{
         @include flex-shrink(0);
-        border-right: 2px solid #797979;
         width: 30%;
         object-fit: contain;
         object-position: 0 0;
+        border: 2px solid #797979;
+        border-right: none;
       }
       .text{
         @include flexbox;
@@ -456,6 +458,7 @@ p.read_more{
         @include align-items(center);
         width: 100%;
         padding: 10px;
+        border: 2px solid #797979;
         .teacher_name{
           margin: 0;
           font-size: 2rem;
@@ -549,6 +552,10 @@ p.read_more{
   }
   #caves{
     margin-left: 10px;
+    .eyecatch{
+      margin-top: -100px;
+      padding-top: 100px;
+    }
     .description{
       @include pc{
         margin: 0 10%;
