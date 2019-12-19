@@ -444,14 +444,18 @@ p.read_more{
       margin-top: calc( 3rem + -100px);
       padding-top: 100px;
       .teacher_profile{display: none}
-      img{
+      .teacher_img{
         @include flex-shrink(0);
         width: 30%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover;
         object-position: 0 0;
         border: 2px solid #797979;
         border-right: none;
+        &.active{
+          height: auto;
+          object-fit: contain;
+        }
       }
       .text{
         @include flexbox;

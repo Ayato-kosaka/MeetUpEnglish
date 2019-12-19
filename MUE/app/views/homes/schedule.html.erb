@@ -40,7 +40,7 @@
 <h2>担当先生</h2>
 <div id="teachers">
   <% @teachers.each do |teacher| %> <div id="teacher_<%=teacher.id%>" class="eyecatch">
-    <%= image_tag teacher.avatar %>
+    <%= image_tag teacher.avatar, class: "teacher_img" %>
     <div class="text">
       <p class="teacher_name"><%= teacher.name %>先生</p>
       <div class="grad-btn toggle_active"><span class="fa fa-chevron-down"></span>プロフィールを見る</div>
@@ -102,3 +102,15 @@
 
 
 </div>
+
+
+<script type="text/javascript">
+(function() {
+  $(document).on('turbolinks:load', function() {
+    $(".teacher_img").css('min-height',$('.text').height());
+    return $(".toggle_active").click(function() {
+      return $(this).parent().prev(".teacher_img").toggleClass('active');
+    });
+  });
+}).call(this);
+</script>
