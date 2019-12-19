@@ -13,7 +13,7 @@
 <h2>日時選択</h2>  <%= link_to 'create new event', new_home_path(selected_city: params[:id]) if (session[:role]  == "Admin") %>
 <div id="schedules">
   <% @dates.each do |date| %>
-    <h3 class="toggle_active <%= active if @events.where(date: date).size==1 %>">
+    <h3 class="toggle_active <%= "active" if @events.where(date: date).size==1 %>">
       <%= date.strftime("%Y/%m/%d(#{%w(日 月 火 水 木 金 土)[date.wday]})") %>
     </h3>
     <div class="dates">
