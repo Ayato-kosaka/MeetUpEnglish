@@ -18,6 +18,7 @@ class BlogsController < ApplicationController
   # GET /blogs/1
   # GET /blogs/1.json
   def show
+    @categories = Blogcategory.all.order(:id)
     @next_blog =  Blog.order('created_at desc, id desc').where(youtube: false).where('created_at >= ? and id > ?', @blog.created_at, @blog.id).reverse.first
     @before_blog =  Blog.order('created_at desc, id desc').where(youtube: false).where('created_at <= ? and id < ?', @blog.created_at, @blog.id).first
     render layout: 'about_layout.html.erb'

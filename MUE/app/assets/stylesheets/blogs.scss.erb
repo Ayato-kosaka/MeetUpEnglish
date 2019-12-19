@@ -9,9 +9,11 @@ $blog_index_image_width: 600px;
 #blog_index{
   font-family: "メイリオ", sans-serif;
   #eyecatch{
-    @include flexbox;
-    @include justify-content(center);
-    @include pc{margin: 30px 0 80px 0;}
+    @include pc{
+      @include flexbox;
+      @include justify-content(center);
+      margin: 30px 0 80px 0;
+    }
     img{
       width: 100%;
       height: auto;

@@ -7,7 +7,7 @@
 
   <div id="header">
     <%= image_tag 'homes/officialblog.png' %>
-    <div id="categories"><% Blogcategory.all.each do |category| %>
+    <div id="categories"><% @categories.each do |category| %>
       <a href="/blogs?event_search=<%= category.name %>"><%= category.name %></a>
     <% end %></div>
   </div>
