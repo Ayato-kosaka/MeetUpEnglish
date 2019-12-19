@@ -107,7 +107,9 @@
 <script type="text/javascript">
 (function() {
   $(document).on('turbolinks:load', function() {
-    $(".teacher_img").css('min-height',$('.text').height());
+    $(".teacher_img").each(function(){
+      $(this).css('min-height',$(this).width());
+    });
     return $(".toggle_active").click(function() {
       return $(this).parent().prev(".teacher_img").toggleClass('active');
     });
