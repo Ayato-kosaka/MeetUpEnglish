@@ -75,20 +75,20 @@ class HomesController < ApplicationController
   end
 
   def home
-    # @prefectures = Prefecture.wher(cities: @cities)
-    @prefectures = [[1, "東京都"], [2, "神奈川県"], [3, "千葉県"]]
-    @cities = [[1, "町田", 1], [2, "相模原", 2], [3, "八王子", 1], [4, "橋本", 2], [5, "横浜", 2], [7, "新宿", 1], [8, "渋谷", 1], [9, "吉祥寺", 1], [10, "銀座", 1], [11, "池袋", 1], [12, "調布", 1], [13, "市川", 3], [14, "浦安", 3], [15, "千駄木", 1]]
+    @cities = City.where(id: Event.pluck(:city_id).uniq)
+    @prefectures = Prefecture.where(cities: @cities)
+    # @prefectures = [[1, "東京都"], [2, "神奈川県"], [3, "千葉県"]]
+    # @cities = [[1, "町田", 1], [2, "相模原", 2], [3, "八王子", 1], [4, "橋本", 2], [5, "横浜", 2], [7, "新宿", 1], [8, "渋谷", 1], [9, "吉祥寺", 1], [10, "銀座", 1], [11, "池袋", 1], [12, "調布", 1], [13, "市川", 3], [14, "浦安", 3], [15, "千駄木", 1]]
   end
 
   def schedule
     @city = City.find(params[:id])
-    # @events = @city.where(["date > ?",  Date.current])
-    @events = Event.where(["city_id = ? and date > ?",  1, Date.current])
+    @events = @city.where(["date > ?",  Date.current])
+    # @events = Event.where(["city_id = ? and date > ?",  1, Date.current])
     @dates = @events.pluck(:date).uniq
     @teachers = Teacher.where(id: @events.pluck(:teacher_id).uniq)
-    # @caves = Cafe.where(id: @events.pluck(:city_id).uniq)
-    @caves = City.find(1).caves
-    logger.debug("\n\n\n\n\n\n\n\ndebug")
+    @caves = Cafe.where(id: @events.pluck(:city_id).uniq)
+    # @caves = City.find(1).caves
     @title = params[:id]==1 ? "武相庵での英会話開催" : @city.name+'での英会話開催スケジュール'
     @description = params[:id]==1 ?
       "町田市の駅近カフェ、武相庵で最大１：３で１時間１０００円で開催しています。気軽におしゃれなカフェで英会話をしませんか？授業形態は、全てフリーカンバセーションとなっています。初心者から上級者まで対応可能ですので、お気軽に参加ください。"

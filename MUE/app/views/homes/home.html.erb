@@ -33,11 +33,10 @@
     <ul class="prefectures">
       <% @prefectures.each do |prefecture| %>
         <li>
-          <div class="prefecture_a"><%= prefecture[1] %></div>
+          <div class="prefecture_a"><%= prefecture.name %></div>
           <ul class="cities">
-            <% @cities.find_all{|n| n[2]==prefecture[0] }.each do |city| %>
-              <%# <% next if city.events==0 %>
-              <%= link_to city[1], schedule_path(city[0]), data: {"turbolinks"=>false}  %>
+            <% @cities.where(prefecture: prefecture) do |city| %>
+              <%= link_to city.name, schedule_path(city.id), data: {"turbolinks"=>false}  %>
             <% end %>
           </ul>
         </li>
