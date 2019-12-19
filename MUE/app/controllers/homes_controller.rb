@@ -1,7 +1,7 @@
 class HomesController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
-  layout 'about_layout.html.erb'
+  layout 'about_layout.html.erb', except: [:index, :show, :edit, :new]
 
   skip_before_action :require_Admin, except: [:index, :show, :edit, :new]
 
@@ -75,7 +75,7 @@ class HomesController < ApplicationController
   end
 
   def home
-    @cities = City.where(id: Event.pluck(:city_id).uniq)
+    @cities = City.where(id: Event.where(["date > ?",  Date.current]).pluck(:city_id).uniq)
     @prefectures = Prefecture.where(cities: @cities)
     # @prefectures = [[1, "東京都"], [2, "神奈川県"], [3, "千葉県"]]
     # @cities = [[1, "町田", 1], [2, "相模原", 2], [3, "八王子", 1], [4, "橋本", 2], [5, "横浜", 2], [7, "新宿", 1], [8, "渋谷", 1], [9, "吉祥寺", 1], [10, "銀座", 1], [11, "池袋", 1], [12, "調布", 1], [13, "市川", 3], [14, "浦安", 3], [15, "千駄木", 1]]

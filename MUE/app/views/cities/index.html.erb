@@ -9,7 +9,7 @@
       <th>Id</th>
       <th>Name</th>
       <th>Prefectureid</th>
-      <th colspan="2"></th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -19,6 +19,7 @@
         <td><%= city.id %></td>
         <td><%= city.name %></td>
         <td><%= Prefecture.find(city.prefecture_id).name %></td>
+        <td><%= link_to 'new event', new_home_path(selected_city: city.id) %></td>
         <td><%= link_to 'Edit', edit_city_path(city) %></td>
         <td><%= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
