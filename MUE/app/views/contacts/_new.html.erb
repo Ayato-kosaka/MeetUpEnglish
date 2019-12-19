@@ -38,7 +38,7 @@
           <div id="label"><%= form.label :message %></div>
           <div id="input"><%= form.text_area :message, value: (@message_value ? @message_value : (contact.message ? contact.message : ''))  %></div>
         </div>
-        <button type="submit" name="commit" onclick=<%= @google_analytics||'' %> class="send" data-disable-with="Sending...">
+        <button type="submit" name="commit" class="send" data-disable-with="Sending..." onclick=<%= @google_analytics||'' %> >
           <%= @send_value %> <i class="fas fa-arrow-circle-right"></i>
         </button>
 
