@@ -35,8 +35,8 @@
         <li>
           <div class="prefecture_a"><%= prefecture.name %></div>
           <ul class="cities">
-            <% @cities.where(prefecture: prefecture) do |city| %>
-              <%= link_to city.name, schedule_path(city.id), data: {"turbolinks"=>false}  %>
+            <% @cities.where(prefecture_id: prefecture.id).each do |city| %>
+              <%= link_to city.name, schedule_path(city.id) %>
             <% end %>
           </ul>
         </li>

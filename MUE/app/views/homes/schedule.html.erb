@@ -22,7 +22,7 @@
           <div class="de_c">
             <div class="de_c_1">
               <p><%= event.start.strftime("%H:%M") %>~<%= event.end.strftime("%H:%M") %></p>
-              <p><a href="#teacher_<%= event.teacher.id %>"><span><%= "aaaaaaaaaaaaaaaaaaaaa" %></span>先生</a></p>
+              <p><a href="#teacher_<%= event.teacher.id %>"><span><%= event.teacher.name %></span>先生</a></p>
             </div>
             <div class="de_c_2">
               <p><%= link_to event.cafe.name, "#cafe_#{event.cafe.id}" %></p>

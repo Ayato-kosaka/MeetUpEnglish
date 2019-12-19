@@ -83,7 +83,7 @@ class HomesController < ApplicationController
 
   def schedule
     @city = City.find(params[:id])
-    @events = @city.where(["date > ?",  Date.current])
+    @events = @city.events.where(["date > ?",  Date.current])
     # @events = Event.where(["city_id = ? and date > ?",  1, Date.current])
     @dates = @events.pluck(:date).uniq
     @teachers = Teacher.where(id: @events.pluck(:teacher_id).uniq)
