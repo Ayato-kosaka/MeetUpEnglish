@@ -46,7 +46,7 @@
 
       <div id="create_contact"></div>
       <div class="contact-top">
-          <a class="contact_btn" data-remote="true" href="/contacts/new">
+          <a class="contact_btn" href=<%= (session[:role]  == "Admin") ? "/contacts" : "/contacts/new" %> <%= "data-remote='true'" unless(session[:role]  == "Admin") %>>
             <span class="">
               お問い合わせはこちら
             </span>
@@ -68,7 +68,7 @@
           <%= link_to '開催スケジュール', root_path, data: {"turbolinks"=>false} %>
           <%= link_to 'ブログ', blogs_path(event_search: "開催の様子"), data: {"turbolinks"=>false} %>
         </div>
-        <span id="mail">mail: meetup_english-tokyo@yahoo.co.jp</span>
+        <span id="mail"><%= (session[:role]  == "Admin") ? (link_to "ログアウト", logout_url, method: :delete) : "mail: meetup_english-tokyo@yahoo.co.jp" %></span>
         <span class="footer3-top">© Meet up English Group</span>
       </footer>
     </main>
