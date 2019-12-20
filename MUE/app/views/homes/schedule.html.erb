@@ -8,6 +8,12 @@
 <!-- タイトル本文 -->
 <h1><%= @city.name %>での開催スケジュール</h1>
 
+<div id="pankuzu">
+  <a href="/top">TOP</a><i class="fas fa-chevron-right"></i>
+  <a href="/">SCHEDULE</a><i class="fas fa-chevron-right"></i>
+  <span><%= @city.name %></span>
+</div>
+
 
 
 <h2>日時選択</h2>  <%= link_to 'create new event', new_home_path(selected_city: params[:id]) if (session[:role]  == "Admin") %>
