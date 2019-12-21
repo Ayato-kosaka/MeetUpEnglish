@@ -46,7 +46,7 @@
 <h2>担当先生</h2>
 <div id="teachers">
   <% @teachers.each do |teacher| %> <div id="teacher_<%=teacher.id%>" class="eyecatch">
-    <%= image_tag teacher.avatar, class: "teacher_img" %>
+    <div class="teacher_img"><%= image_tag teacher.avatar, class: "" %></div>
     <div class="text">
       <p class="teacher_name"><%= teacher.name %>先生</p>
       <div class="grad-btn toggle_active"><span class="fa fa-chevron-down"></span>プロフィールを見る</div>
