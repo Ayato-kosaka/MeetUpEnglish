@@ -18,22 +18,6 @@
 //= require_tree .
 
 
-(function() {
-  var ready;
-
-  ready = function() {
-    $(".teacher_img").each(function(){
-      $(this).css('min-height',$(this).width());
-    });
-    return $(".toggle_active").click(function() {
-      return $(this).parent().prev(".teacher_img").toggleClass('active');
-    });
-  };
-
-  $(document).ready(ready);
-
-  $(document).on('page:load', ready);
-}).call(this);
 
 var swi = 0;
 $(window).scroll(function() { //サイドボックスの固定 1=>固定状態 0=>固定されていない

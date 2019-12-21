@@ -40,3 +40,5 @@ $(document).on 'turbolinks:load', ->
 #schedule
   $(".toggle_active").click ->
     $(@).toggleClass('active')
+  $("#schedule .toggle_active").click ->
+    $(@).parent().prev(".teacher_img").toggleClass('active')
