@@ -19,7 +19,7 @@
       <div id="name">
         <% @categories.each do |category| %>
           <a class="item <%= "active" if (category.id ) == @selected_category_id %>" href="/blogs?event_search=<%= category.name %>" data-turbolinks="false">
-            <%= category.name %>(<%= category.blogs.count %>)
+            <%= category.name %>(<%= category.id == 1 ? Blog.count : category.blogs.count %>)
           </a>
         <% end %>
       </div>
