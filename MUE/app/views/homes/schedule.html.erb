@@ -35,7 +35,11 @@
               <p>残席:<%= event.peopleNum %></p>
             </div>
           </div>
-          <a class="join <%= 'full' if event.peopleNum==0 %>" href="/contacts/<%= event.id %>/join" data-remote="true"><p>参加申込み</p></a>
+          <% if session[:role]  == "Admin" %>
+            <a class="join <%= 'full' if event.peopleNum==0 %>" href="/homes/<%=event.id%>/edit"><p>edit</p></a>
+          <% else %>
+            <a class="join <%= 'full' if event.peopleNum==0 %>" href="/contacts/<%= event.id %>/join" data-remote="true"><p>参加申込み</p></a>
+          <% end %>
         </div>
       <% end %>
     </div>

@@ -25,9 +25,9 @@
         <td><%= home.end.strftime("%H:%M") %></td>
         <td><%= home.peopleNum %></td>
         <td><%= home.teacher.name %></td>
-        <td><%= home.cafe.name %></td>
+        <td><%= home.cafe&.name %></td>
         <td><%= link_to 'Show', home_path(home.id) %></td>
-        <td><%= link_to 'Edit', edit_home_path(home) %></td>
+        <td><%= link_to 'Edit', edit_home_path(home.id) %></td>
         <td><%= link_to 'Destroy', home_path(home.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
